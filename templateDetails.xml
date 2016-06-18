@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.1" type="template" client="site" method="upgrade">
+	<name>wsa_bootstrap</name>
+	<version>1.2.1</version>
+	<creationDate>13-9-2016</creationDate>
+	<author>AHC Waasdorp</author>
+	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
+	<copyright>AHC Waasdorp</copyright>
+	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>favicon_as_2015.ico</filename>
+		<filename>favicon_ws.ico</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>css</folder>
+		<folder>fields</folder>
+		<folder>html</folder>
+		<folder>img</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>rules</folder>
+		<folder>scss</folder>
+	</files>
+
+	<positions>
+		<position>logo</position>
+        	<position>breadcrumb</position>
+	    	<position>headerleft</position>
+	    	<position>icons</position>
+		<position>left</position>
+		<position>right</position>
+		<position>top</position>
+		<position>topright</position>
+		<position>position-0</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-7</position>
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>posleftnav</position>
+		<position>messageIE</position>	
+		<position>debug</position>
+	</positions>
+
+	<languages folder="language">
+        	<language tag="en-GB">en-GB/en-GB.tpl_wsa_bootstrap.ini</language>
+        	<language tag="en-GB">en-GB/en-GB.tpl_wsa_bootstrap.sys.ini</language>
+         	<language tag="nl-NL">nl-NL/nl-NL.tpl_wsa_bootstrap.ini</language>
+        	<language tag="nl-NL">nl-NL/nl-NL.tpl_wsa_bootstrap.sys.ini</language>
+ 	</languages>
+	<config>
+		<fields name="params" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
+			<fieldset name="Background">
+				<field name="explanation0"  type="spacer" hr="false"
+					 />
+				<field name="bg0Image" type="media" default="" 
+                                       	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
+				<field name="bg0Size" type="list" default=""
+					label="BGSIZE_LABEL"	
+ 				    description="BGSIZE_DESCRIPTION"
+				>
+					<option value="auto">Size of image</option>
+					<option value="contain">Maximum inside background</option>
+					<option value="cover">Minimum covering background</option>
+					<option value="%">Width percentage of background</option>
+					<option value="html">Width percentage of background (via html)</option>
+					<option value="px">Width in pixels</option>
+				</field>
+				<field name="bg0Width"   class="validate-numeric" type="text" default="80.0"
+					label="BGWIDTH_LABEL"
+					description="Width background image if Size = percentage or pixels"
+					 />
+				<field name="bg0Pos" type="list" default="%"
+					label="BGPOSITION_LABEL"	
+ 				    description="Unit of measure background position."
+				>
+					<option value="%">Distance percentage of background</option>
+					<option value="px">Distance in pixels</option>
+				</field>
+				<field name="bg0Top"  class="validate-numeric" type="text" default=""
+					label="BGTOP_LABEL"
+					description="Background image margin top"
+					 />	
+				<field name="bg0Left"  class="validate-numeric" type="text" default=""
+					label="BGLEFT_LABEL"
+					description="Background image margin left"
+					 />					 
+				<field name="bg0Repeat" type="list" default=""
+					label="BGREPEAT_LABEL"	
+ 				    description="Repeat mechanism bg image."
+				>
+					<option value="">Default</option>
+					<option value="repeat">Repeat both directions</option>
+					<option value="no-repeat">No repeat</option>
+					<option value="repeat-x">Repeat horizontal</option>
+					<option value="repeat-y">Repeat vertical</option>
+				</field>
+					 
+				<field name="bg0Color"  type="color" default=""
+					label="BGCOLOR_LABEL"
+					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
+					 />
+				<field name="explanation1"  type="spacer" hr="false"
+					 />
+				<field name="bg1Image" type="media" default="" 
+                                       	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
+				<field name="bg1Size" type="list" default=""
+					label="BGSIZE_LABEL"	
+ 				    description="BGSIZE_DESCRIPTION"
+				>
+					<option value="auto">Size of image</option>
+					<option value="contain">Maximum inside background</option>
+					<option value="cover">Minimum covering background</option>
+					<option value="%">Width percentage of background</option>
+					<option value="html">Width percentage of background (via html)</option>
+					<option value="px">Width in pixels</option>
+				</field>
+				<field name="bg1Width"   class="validate-numeric" type="text" default="80.0"
+					label="BGWIDTH_LABEL"
+					description="Width background image if Size = percentage or pixels"
+					 />
+				<field name="bg1Pos" type="list" default="%"
+					label="BGPOSITION_LABEL"	
+ 				    description="Measure background position."
+				>
+					<option value="%">Distance percentage of background</option>
+					<option value="px">Distance in pixels</option>
+				</field>
+				<field name="bg1Top"  class="validate-numeric" type="text" default=""
+					label="BGTOP_LABEL"
+					description="Background image margin top"
+					 />	
+				<field name="bg1Left"  class="validate-numeric" type="text" default=""
+					label="BGLEFT_LABEL"
+					description="Background image margin left"
+					 />					 
+				<field name="bg1Repeat" type="list" default=""
+					label="BGREPEAT_LABEL"	
+ 				    description="Repeat mechanism bg image."
+				>
+					<option value="">Default</option>
+					<option value="repeat">Repeat both directions</option>
+					<option value="no-repeat">No repeat</option>
+					<option value="repeat-x">Repeat horizontal</option>
+					<option value="repeat-y">Repeat vertical</option>
+				</field>
+					 
+				<field name="bg1Color"  type="color" default=""
+					label="BGCOLOR_LABEL"
+					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
+					 />
+				<field name="explanation2"  type="spacer" hr="false"
+					 />
+				<field name="bg2Image" type="media" default="" 
+                                       	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
+				<field name="bg2Size" type="list" default=""
+					label="BGSIZE_LABEL"	
+ 				    description="BGSIZE_DESCRIPTION"
+				>
+					<option value="auto">Size of image</option>
+					<option value="contain">Maximum inside background</option>
+					<option value="cover">Minimum covering background</option>
+					<option value="%">Width percentage of background</option>
+					<option value="html">Width percentage of background (via html)</option>
+					<option value="px">Width in pixels</option>
+				</field>
+				<field name="bg2Width"   class="validate-numeric" type="text" default="80.0"
+					label="BGWIDTH_LABEL"
+					description="Width background image if Size = percentage or pixels"
+					 />
+				<field name="bg2Pos" type="list" default="%"
+					label="BGPOSITION_LABEL"	
+ 				    description="Measure background position."
+				>
+					<option value="%">Distance percentage of background</option>
+					<option value="px">Distance in pixels</option>
+				</field>
+				<field name="bg2Top"  class="validate-numeric" type="text" default=""
+					label="BGTOP_LABEL"
+					description="Background image margin top"
+					 />	
+				<field name="bg2Left"  class="validate-numeric" type="text" default=""
+					label="BGLEFT_LABEL"
+					description="Background image margin left"
+					 />					 
+				<field name="bg2Repeat" type="list" default=""
+					label="BGREPEAT_LABEL"	
+ 				    description="Repeat mechanism bg image."
+				>
+					<option value="">Default</option>
+					<option value="repeat">Repeat both directions</option>
+					<option value="no-repeat">No repeat</option>
+					<option value="repeat-x">Repeat horizontal</option>
+					<option value="repeat-y">Repeat vertical</option>
+				</field>
+			</fieldset>
+			<fieldset name="Advanced">
+				<field name="explanation3"  type="spacer" hr="false"
+					label="Other lay-out variables. &lt;br /&gt;"
+					 />
+				<field name="fgColor"  type="color" default=""
+					label="Foreground color:"
+					description="If not empty overwrite color of most texts .  Color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default empty"
+					 />
+				<field name="marginLeftRight"  class="validate-numeric" type="text" default="2.0"
+					label="Margins left and right:"
+					description="Margins left and right as percentage"
+					 />
+				<field name="hlMarginTop"  class="validate-numeric" type="text" default="1.0"
+					label="Margin top headerleft block:"
+					description="Margin top headerleft block as percentage"
+					 />
+				<field name="hlMarginLeft"  class="validate-numeric" type="text" default="0.0"
+					label="Margin left headerleft block:"
+					description="Margin left headerleft block as percentage"
+					 />
+				<field name="hlWidth"  class="validate-numeric" type="text" default="25"
+					label="Width headerleft block:"
+					description="Width headerleft block as percentage, 100 = full screen"
+					 />
+				<field name="hlHeight"  class="validate-numeric" type="text" default="25"
+					label="Heigh headerleft block:"
+					description="Height headerleft block as percentage, 100 = full screen"
+					 />
+				<field name="hlMarginBottom"  class="validate-numeric" type="text" default="0.0"
+					label="Margin bottom headerleft block:"
+					description="Margin bottom headerleft block as percentage"
+					 />
+				<field name="iconsWidth"  class="validate-numeric" type="text" default="24.5"
+					label="Width icons:"
+					description="Width icons social media as percentage of pagewidth"
+					 />
+				<field name="iconsPosLeft"  class="validate-numeric" type="text" default="75"
+					label="Left margin icons:"
+					description="Position left margin icons as percentage of width 0 = left edge, 100 = right edge"
+					 />
+				<field name="iconsPosTop"  class="validate-numeric" type="text" default="0.0"
+					label="Top margin icons:"
+					description="Position top icons as percentage of height, 0 = top, 100 = (under) bottom"
+					 />
+				<field name="itemPageWidth"  class="validate-numeric" type="text" default=""
+					label="Width single article:"
+					description="Width single article as percentage"
+					 />
+				<field name="itemVideoHeight"  class="validate-numeric" type="text" default="56.25"
+					label="Height % Video:"
+					description="Height / Width percentage iframe (of video)."
+					/>
+				<field name="expl-blog-lead"  type="spacer" hr="false"
+					label="Dimensions blog leading articles."
+					 />
+				<field name="itemLeadHeight"  class="validate-numeric" type="text" default=""
+					label="Row height leading:"
+					description="Row height leading articles."
+					/>
+				<field name="itemLeadWidth"  class="validate-numeric" type="text" default=""
+					label="Article width leading:"
+					description="Width leading article."
+					/>
+				<field name="itemLeadMargin"  class="validate-numeric" type="text" default=""
+					label="Margin leading:"
+					description="Margin leading articles."
+					/>
+				<field name="expl-blog-articles"  type="spacer" hr="false"
+					label="Dimensions blog other articles."
+					 />
+				<field name="itemHeight"  class="validate-numeric" type="text" default=""
+					label="Row height:"
+					description="Row height articles."
+					/>
+				<field name="itemWidth"  class="validate-numeric" type="text" default=""
+					label="Article width:"
+					description="Width article."
+					/>
+				<field name="itemMargin"  class="validate-numeric" type="text" default=""
+					label="Margin:"
+					description="Margin between articles."
+					/>
+              <field name="wsaCustomSCSS" type="filelist" directory="images/scss" hide_default="true"
+                   	label="WSACUSTOMSCSS_LABEL" description="WSACUSTOMSCSS_DESCRIPTION" />
+			</fieldset>
+			<fieldset name="Navbar">
+				<field name="brandImage" type="media" default="" 
+                                       	label="BRANDIMAGE_LABEL" description="BRANDIMAGE_DESCRIPTION" />
+				<field name="brandSize" type="list" default=""
+					label="BRANDSIZE_LABEL"	
+ 				    description="BRANDSIZE_DESCRIPTION"
+				>
+					<option value="auto">Size of image</option>
+					<option value="%">Width percentage of background</option>
+					<option value="px">Width in pixels</option>
+				</field>
+				<field name="brandWidth"   class="validate-numeric" type="text" default=""
+					label="BRANDWIDTH_LABEL"
+					description="Width brand image"
+					 />
+				<field name="menuFontSize"   type="text" default=""
+					label="Menu text size:"
+					description="Menu text font size (pixels)."
+					 />
+				<field name="menuDisplay" type="list" default=""
+					label="Horizontal menu"	
+ 				    description="Underline menu text."
+				>
+					<option value="">Default</option>
+					<option value="inline">Horizontal</option>
+					<option value="inline-block center">Horizontal centered</option>
+					<option value="inline-block left">Horizontal left</option>
+					<option value="inline-block right">Horizontal right</option>
+					<option value="block">Vertical (down)</option>
+				</field>
+				<field name="menuType" type="list" default=""
+					label="Type menu"	
+ 				    description="Type backround inverse etc. of menu"
+				>
+					<option value="">Default</option>
+					<option value="transparent">Transparent</option>
+					<option value="inverse">Inverse</option>
+					<option value="inverse transparent">Inverse Transparent</option>
+				</field>
+				<field name="displaySitename" type="list" default="1" label="Display sitename" description="Display sitename in menubar">
+					<option value="1">JYES</option>
+					<option value="2">JNO</option>
+				</field>
+				<field name="menuColor"  type="color" default=""
+					label="Menutext color:"
+					description="If not empty overwrite color of menu text. Default empty  "
+					 />
+				<field name="menuActiveColor"  type="color" default=""
+					label="Menuactive color:"
+					description="If not empty overwrite color of active menu text. Default empty  "
+					 />
+				<field name="menuDisabledColor"  type="color" default=""
+					label="Menudisabled color:"
+					description="If not empty overwrite color of disabled menu text. Default empty  "
+					 />
+				<field name="menuBgColor"  type="color" default=""
+					label="Menubackground color:"
+					description="If not empty overwrite color of menu background. Default empty  "
+					 />
+				<field name="menuActiveBgColor"  type="color" default=""
+					label="Menuactivebg color:"
+					description="If not empty overwrite color of active menu background. Default empty  "
+					 />
+
+			</fieldset>
+			<fieldset name="Developer" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
+				<field name="compile" type="radio"
+					class="btn-group btn-group-yesno"
+ 					label="COMPILE_LABEL" default="1"
+					description="COMPILE_DESCRIPTION" validate="wsa.compiler">
+  					<option value="1">JYES</option>
+  					<option value="0">JNO</option>
+				</field>
+				<field name="compress" type="radio"
+					class="btn-group btn-group-yesno"
+ 					label="COMPRESS_CSS_LABEL" default="1"
+					description="COMPRESS_CSS_DESCRIPTION" >
+  					<option value="1">JYES</option>
+  					<option value="0">JNO</option>
+				</field>
+
+
+			</fieldset>
+		</fields>
+	</config>
+    <updateservers>
+	<server type="extension" priority="1" name="Asha S Template"><![CDATA[http://www.waasdorpsoekhan.nl/update/wsabootstrap/wsabootstrap.xml]]></server>
+<server type="collection" priority="2" name="WaasdorpSoekhan extensions"><![CDATA[http://www.waasdorpsoekhan.nl/update/waasdorpsoekhan_list.xml]]></server>
+	</updateservers>
+
+</extension>
+
