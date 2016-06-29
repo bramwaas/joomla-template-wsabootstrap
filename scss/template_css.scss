@@ -1,0 +1,418 @@
+/* template_css.scss */
+// template standaard less afgeleid van template css voor standaard style van dit template
+// in eerste instatie door kleuren in variabele te zetten.
+// BW 9-6-2016
+// CSS Document for Joomla 3 styles 21-9-2015 
+//
+/* ===========================
+	FONT STYLES
+	========================== */
+body { 
+	font-family: Verdana, Arial, sans-serif;
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: 700;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* ======================
+	GENERAL STYLES
+	===================== */
+/* Write your general styles here */
+
+
+
+
+
+/* ======================
+	MODULES
+	===================== */
+
+/* ----------------------
+	Special module styles
+	--------------------- */
+/* Special general */
+[class*="special"] .module-content ul {
+	margin: 0 0 10px 17px;
+}
+
+[class*="special"] .module-content ul.unstyled {
+	margin: 0 0 10px 0;
+}
+body {
+	overflow: auto;
+}
+#wrapper, 
+body>div.container {
+	position: relative;
+	overflow-x: hidden;
+    border-radius: $wrapperBorderRadius;
+}
+#wrapper1
+{
+/* voor achtergrondafbeeldingen van #wrapper geen extra margin ed toevoegen, anders klopt lay-out niet meer */
+position: relative;
+}
+
+#headerleft {
+  position: relative;
+  float:left;
+  width:$asHeadLeftWidth;
+  height: 0px;
+  margin-top: $hlMarginTop;
+  margin-left:$hlMarginLeft;
+  margin-bottom: $hlMarginBottom; 	
+  padding-top:0;
+  padding-bottom: $hlHeight;
+      div.inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;}
+}
+
+#icons
+{   /* icons social media boven logo */
+position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+}
+
+
+.pos1,
+#sidebarleft,
+#content,
+#sidebarright
+{
+//padding-left: $asMarginStd;
+//padding-right: $asMarginStd;
+}
+.blog,
+.blog-featured,
+div.newsfeed,
+div[class^="newsfeed"],
+.contentpane,
+.contact,
+.tag-category,
+.item-page
+{ /* in principe alle types content, margin en padding werken hier ok, maar % is wel van het blok ipv van de container */
+/* margin-left: $asMarginStd; */
+}
+
+
+
+.mod-languages {
+    float: $asModLangFloat;
+}
+
+/* aanpassingen voor newsfeeds uit oudere templates van mij */
+/* rss fotos van flickr en picasa met suffix _rssfoto */
+/* rss fotos van flickr en picasa met suffix _rssfoto */
+/* rss flickr images (ul li p a img) */
+/* rss picasa images (ul li a img) */
+div.newsfeed_rsspicasa,
+div.newsfeed_rssfoto01,
+div.newsfeed_rssfoto,
+div[class^="newsfeed"]
+{
+margin: 0;
+padding: 0;
+width: auto;
+
+ h2
+	{
+	margin: 0;
+	font-weight: bold;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 1.5em;
+	padding-left: 0px;
+	margin-bottom: 10px;
+	text-align: left;
+	}
+
+  h3
+	{
+	font-size: 1.3em;
+	line-height: 1.3em;
+	padding-left: 0px;
+	margin-bottom: 0px;
+	text-align: left;
+	}
+
+  ol
+	{
+	padding:0;
+
+	 li
+		{
+		float: left;
+		margin-left: 0;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		height: 320px; /* vaste hoogte (en breedte) voor mooier ordenen */
+		width: 250px;
+		list-style-type: none;
+		overflow: hidden;
+		}
+	
+	}	
+
+
+
+	
+/* einde div[class^="newsfeed"] */	
+}
+
+div.newsfeed_rssfoto01 ol li
+{
+background-color: #ccc;
+}
+div.newsfeed_rsspicasa ol li
+{
+height: 210px; /* picasa foto's zijn kleiner en vierkant */
+background-color: #ccc;
+}
+div.newsfeed_rsspicasa ol li a img,
+div.newsfeed_rssfoto ol li a img
+{
+background-color: #6F571B;
+padding:2px;
+border: 3px solid black; /*ridge */
+}
+div.newsfeed_rssfoto01 ol li a img
+{
+padding:5px;
+}
+/* ongewenste tekst van newsfeed onzichtbaar maken j3 zodat override niet nodig is */
+div.newsfeed_rssfoto ol li div.feed-item-description p:first-child,
+div.newsfeed_rssfoto01 ol li div.feed-item-description p:first-child
+{
+font-size: 4%;
+opacity: 0.1;
+}
+div.newsfeed_rssfoto ol li div.feed-item-description p:first-child a,
+div.newsfeed_rssfoto01 ol li div.feed-item-description p:first-child a
+{
+font-size: 2500%;
+opacity: 1.0;
+
+}
+
+/* einde rss fotos van flickr en picasa met suffix _rssfoto */
+
+/* blog en tags */
+
+
+.list-striped, .row-striped {
+    border-top: none;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+    border-bottom: none;
+    padding: 0;
+}
+div.tag-category ul 
+{ /* tag-list inline maken in plaats van opsomming */
+    padding-left: 0;
+	
+ li 
+	{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+	max-width: $tagListItemWidth;
+	margin-right: $marginArea;
+	margin-bottom: $marginArea;
+	}
+  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+	{
+	width: $tagListItemWidth;
+	background-color: transparent;
+	}	
+
+ li h3 
+	{
+	display: $tagItemTitleDisplay;
+	}	
+}
+
+.tag-category fieldset
+{ /* tot joomla het zoekveld goed verbergt */
+display: $tagItemSearchDisplay; 
+}
+
+
+div.items-leading  div .videoWrapper,
+.videoWrapper {
+  position:relative;
+  padding-bottom: $asVideoHeight;
+  padding-top: $asVideoHeightExtra;
+  width:100%;
+  height:0;
+  object, embed, iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;  // breedte video binnen blok, onnodig om aan te passen.
+    height:100%;
+  }
+}
+/* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
+div.pagination   // normale bootstrap class is ul.pagination
+{
+margin-top: 0px;
+width: 100%;
+p {margin-top: 20px;}
+}
+
+div div.pagination ul /* tag-list inline maken in plaats van opsomming */
+{
+    padding-left: 0px;
+ //   list-style-type: circle;
+}
+
+div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: 100%;
+   margin-right: 0px; // $marginArea;
+   margin-bottom: 0px; //$marginArea;
+}
+
+/* overige aanpassingen pagination tbv bootstrap 3 */
+    ul.pagination-list li a [class*="icon-"] {
+    }
+     
+    ul.pagination-list li a:hover [class*="icon-"] {
+    }
+/* aanpassing alleen voor pagination */
+
+@media (max-width: $screen-xs-max) {
+
+
+/* tag smal */
+
+div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: 100%;
+   width: $asMinWidthItem;
+}
+div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+{
+max-width: 100%;
+width: $asMinWidthItem;
+}
+
+}
+
+/* tag smal */
+
+
+/* einde blog en tags */
+
+
+
+
+/* background images via absoluut geplaatste html */
+/* overall background */
+#img_bg0Image 
+{
+  position:absolute;
+  width:$bg0Width;
+  left:$bg0Left;
+/*  margin-top:$bg0Top; ivm fout in safari */
+  padding-top:$bg0Top;
+/*  z-index: $bg0Z-index; */
+}
+/* content background */
+#img_bg1Image 
+{
+  position:absolute;
+  width:$bg1Width;
+  left:$bg1Left;
+/*  margin-top:$bg1Top; ivm fout in safari */
+  padding-top:$bg1Top;
+/*  z-index: $bg1Z-index; */
+}
+/* #logo image */
+#img_bg2Image 
+{
+  position:absolute;
+  width:$bg2Width;
+  left:$bg2Left;
+/*  margin-top:$bg2Top; ivm fout in safari */
+  padding-top:$bg2Top;
+/*  z-index: $bg2Z-index; */
+}
+
+/* tijdelijk toegvoegd voor bs 3 */
+.navbar-toggle .icon-bar {
+    background-color: $navbar-default-toggle-icon-bar-bg;
+}
+
+.navbar-collapse.in {
+    overflow-y: visible;
+}
+
+
+/* tijdelijk overgenomen uit bootstrap css v2 */
+.icons .icon-cog,
+.icon-cog
+ {
+    background-position: -432px 0;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+
+
+
+
