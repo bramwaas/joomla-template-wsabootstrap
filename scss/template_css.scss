@@ -1,7 +1,7 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 9-6-2016
+// BW 2-7-2016
 // CSS Document for Joomla 3 styles 21-9-2015 
 //
 /* ===========================
@@ -11,6 +11,7 @@ body {
 	font-family: Verdana, Arial, sans-serif;
 	padding-top: 10px;
 	padding-bottom: 40px;
+	overflow: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,7 +52,25 @@ h6 {
 /* ======================
 	GENERAL STYLES
 	===================== */
-/* Write your general styles here */
+/* Write your general styles eerst voor alle schermbreedtes, daarna uit6zionderingen voor brdere schermen (mobile first)*/
+.img-fluid,
+.img-fluid-w50,
+.img-fluid-w33
+ { /* vooruitlopend op bt4 in 3 is dit img-responsive  */
+ max-width: 100%;
+ height: auto;
+}
+@media (min-width: $screen-xs-min) {
+.img-fluid-w50
+{ 
+  max-width:50%;
+}
+.img-fluid-w33
+{ 
+ max-width:33%;
+}
+
+/* einde (min-width: $screen-xs-min) */}
 
 
 
@@ -72,9 +91,7 @@ h6 {
 [class*="special"] .module-content ul.unstyled {
 	margin: 0 0 10px 0;
 }
-body {
-	overflow: auto;
-}
+
 #wrapper, 
 body>div.container {
 	position: relative;
