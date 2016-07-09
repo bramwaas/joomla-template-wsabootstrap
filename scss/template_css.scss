@@ -219,11 +219,13 @@ border: 3px solid black; /*ridge */
 .newsfeed_rssfoto01 ol li div.feed-item-description p:first-child
 {
 font-size: 4%;
-opacity: 0.1;
+//opacity: 0.1;
+color: transparent;
     a
 	{
 	font-size: 2500%;
-	opacity: 1.0;
+	//opacity: 1.0;
+	color: $link-color;
 	}
 }
 .newsfeed_rssfoto01 ol li
