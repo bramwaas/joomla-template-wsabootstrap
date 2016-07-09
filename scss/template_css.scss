@@ -1,96 +1,14 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 5-7-2016
+// BW 9-7-2016
 // CSS Document for Joomla 3 styles 21-9-2015 
 //
 /* ===========================
-	FONT STYLES
+	alle schermbreedtes
+	Write your general styles eerst voor alle schermbreedtes, 
+	daarna uitzonderingen voor steeds bredere schermen (mobile first)
 	========================== */
-body { 
-	font-family: Verdana, Arial, sans-serif;
-	padding-top: 10px;
-	padding-bottom: 40px;
-	overflow: auto;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Open Sans Condensed',sans-serif;
-	font-weight: 700;
-}
-
-h1 {
-  font-size: 30px;
-  line-height: 34px;
-}
-
-h2 {
-  font-size: 26px;
-  line-height: 30px;
-}
-
-h3 {
-  font-size: 22px;
-  line-height: 26px;
-}
-
-h4 {
-  font-size: 18px;
-  line-height: 20px;
-}
-
-h5 {
-  font-size: 14px;
-  line-height: 20px;
-}
-
-h6 {
-  font-size: 12px;
-  line-height: 20px;
-}
-
-/* ======================
-	GENERAL STYLES
-	===================== */
-/* Write your general styles eerst voor alle schermbreedtes, daarna uit6zionderingen voor brdere schermen (mobile first)*/
-.img-fluid,
-.img-fluid-w50,
-.img-fluid-w33
- { /* vooruitlopend op bt4 in 3 is dit img-responsive  */
- max-width: 100%;
- height: auto;
-}
-@media (min-width: $screen-xs-min) {
-.img-fluid-w50
-{ 
-  max-width:50%;
-}
-.img-fluid-w33
-{ 
- max-width:33%;
-}
-
-/* einde (min-width: $screen-xs-min) */}
-
-
-
-
-
-/* ======================
-	MODULES
-	===================== */
-
-/* ----------------------
-	Special module styles
-	--------------------- */
-/* Special general */
-[class*="special"] .module-content ul {
-	margin: 0 0 10px 17px;
-}
-
-[class*="special"] .module-content ul.unstyled {
-	margin: 0 0 10px 0;
-}
 
 #content,
 #sidebarleft,
@@ -174,30 +92,76 @@ body>div.container {
 
 .blog,
 .blog-featured,
-div.newsfeed,
-div[class^="newsfeed"],
 .contentpane,
 .contact,
+.item-page,
 .tag-category,
-.item-page
-{ /* in principe alle types content, margin en padding werken hier ok, maar % is wel van het blok ipv van de container */
+div.newsfeed,
+div[class^="newsfeed"]
+{ 
 /* margin-left: $asMarginStd; */
 }
 
 
+.icon-cog,
+.icons .icon-cog
+ {
+    background-position: -432px 0;
+}
+
+
+.img-fluid,
+.img-fluid-w33,
+.img-fluid-w50
+ { /* vooruitlopend op bt4 in 3 is dit img-responsive  */
+ max-width: 100%;
+ height: auto;
+}
+
+.items-leading  div .videoWrapper,
+.videoWrapper {
+  position:relative;
+  padding-bottom: $asVideoHeight;
+  padding-top: $asVideoHeightExtra;
+  width:100%;
+  height:0;
+  object, embed, iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;  // breedte video binnen blok, onnodig om aan te passen.
+    height:100%;
+  }
+}
+
+.list-striped, .row-striped {
+    border-top: none;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+    border-bottom: none;
+    padding: 0;
+}
 
 .mod-languages {
     float: $asModLangFloat;
 }
+/* tijdelijk toegvoegd voor bs 3 */
+.navbar-collapse.in {
+    overflow-y: visible;
+}
+.navbar-toggle .icon-bar {
+    background-color: $navbar-default-toggle-icon-bar-bg;
+}
+/* einde tijdelijk toegvoegd voor bs 3 */
 
 /* aanpassingen voor newsfeeds uit oudere templates van mij */
 /* rss fotos van flickr en picasa met suffix _rssfoto */
 /* rss fotos van flickr en picasa met suffix _rssfoto */
 /* rss flickr images (ul li p a img) */
 /* rss picasa images (ul li a img) */
-div.newsfeed_rssfoto,
-div.newsfeed_rssfoto01,
-div.newsfeed_rsspicasa,
+.newsfeed_rssfoto,
+.newsfeed_rssfoto01,
+.newsfeed_rsspicasa,
 div[class^="newsfeed"]
 {
 margin: 0;
@@ -239,63 +203,49 @@ width: auto;
 		list-style-type: none;
 		overflow: hidden;
 		}
-	
 	}	
 
+/* einde div[class^="newsfeed"] */}
 
-
-	
-/* einde div[class^="newsfeed"] */	
-}
-
-div.newsfeed_rssfoto01 ol li
-{
-background-color: #ccc;
-}
-div.newsfeed_rsspicasa ol li
-{
-height: 210px; /* picasa foto's zijn kleiner en vierkant */
-background-color: #ccc;
-}
-div.newsfeed_rsspicasa ol li a img,
-div.newsfeed_rssfoto ol li a img
+.newsfeed_rssfoto ol li a img,
+.newsfeed_rsspicasa ol li a img
 {
 background-color: #6F571B;
 padding:2px;
 border: 3px solid black; /*ridge */
 }
-div.newsfeed_rssfoto01 ol li a img
-{
-padding:5px;
-}
 /* ongewenste tekst van newsfeed onzichtbaar maken j3 zodat override niet nodig is */
-div.newsfeed_rssfoto ol li div.feed-item-description p:first-child,
-div.newsfeed_rssfoto01 ol li div.feed-item-description p:first-child
+.newsfeed_rssfoto ol li div.feed-item-description p:first-child,
+.newsfeed_rssfoto01 ol li div.feed-item-description p:first-child
 {
 font-size: 4%;
 opacity: 0.1;
+    a
+	{
+	font-size: 2500%;
+	opacity: 1.0;
+	}
 }
-div.newsfeed_rssfoto ol li div.feed-item-description p:first-child a,
-div.newsfeed_rssfoto01 ol li div.feed-item-description p:first-child a
+.newsfeed_rssfoto01 ol li
 {
-font-size: 2500%;
-opacity: 1.0;
-
+background-color: #ccc;
+}
+.newsfeed_rssfoto01 ol li a img
+{
+padding:5px;
+}
+.newsfeed_rsspicasa ol li
+{
+height: 210px; /* picasa foto's zijn kleiner en vierkant */
+background-color: #ccc;
 }
 
-/* einde rss fotos van flickr en picasa met suffix _rssfoto */
-
-/* blog en tags */
-
-
-.list-striped, .row-striped {
-    border-top: none;
+.tag-category fieldset
+{ /* tot joomla het zoekveld goed verbergt */
+display: $tagItemSearchDisplay; 
 }
-.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
-    border-bottom: none;
-    padding: 0;
-}
-div.tag-category ul 
+
+.tag-category ul 
 { /* tag-list inline maken in plaats van opsomming */
     padding-left: 0;
 	
@@ -319,30 +269,16 @@ div.tag-category ul
 	display: $tagItemTitleDisplay;
 	}	
 }
-
-.tag-category fieldset
-{ /* tot joomla het zoekveld goed verbergt */
-display: $tagItemSearchDisplay; 
+	
+body { 
+	font-family: Verdana, Arial, sans-serif;
+	padding-top: 10px;
+	padding-bottom: 40px;
+	overflow: auto;
 }
 
-
-div.items-leading  div .videoWrapper,
-.videoWrapper {
-  position:relative;
-  padding-bottom: $asVideoHeight;
-  padding-top: $asVideoHeightExtra;
-  width:100%;
-  height:0;
-  object, embed, iframe {
-    position:absolute;
-    top:0;
-    left:0;
-    width: 100%;  // breedte video binnen blok, onnodig om aan te passen.
-    height:100%;
-  }
-}
 /* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
-div.pagination   // normale bootstrap class is ul.pagination
+div.pagination   /* normale bootstrap class is ul.pagination */
 {
 margin-top: 0px;
 width: 100%;
@@ -364,6 +300,43 @@ div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list
    margin-right: 0px; // $marginArea;
    margin-bottom: 0px; //$marginArea;
 }
+/* einde aanpassing alleen voor pagination */
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: 700;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
 
 /* overige aanpassingen pagination tbv bootstrap 3 */
     ul.pagination-list li a [class*="icon-"] {
@@ -371,12 +344,39 @@ div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list
      
     ul.pagination-list li a:hover [class*="icon-"] {
     }
-/* aanpassing alleen voor pagination */
+/* einde overige aanpassingen pagination tbv bootstrap 3 */
 
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+/* einde tijdelijk overgenomen uit bootstrap css v2 */
+
+/* Special general */
+[class*="special"] .module-content ul {
+	margin: 0 0 10px 17px;
+}
+
+[class*="special"] .module-content ul.unstyled {
+	margin: 0 0 10px 0;
+}
+
+
+
+/* ===========================
+	einde alle schermbreedtes
+	========================== */
 @media (max-width: $screen-xs-max) {
 
 
-/* tag smal */
 
 div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
 {
@@ -392,46 +392,18 @@ max-width: 100%;
 width: $asMinWidthItem;
 }
 
+/* einde (max-width: $screen-xs-max) */ }
+
+
+
+@media (min-width: $screen-xs-min) {
+.img-fluid-w33
+{ 
+ max-width:33%;
+}
+	.img-fluid-w50
+{ 
+  max-width:50%;
 }
 
-/* tag smal */
-
-
-/* einde blog en tags */
-
-
-
-
-
-/* tijdelijk toegvoegd voor bs 3 */
-.navbar-toggle .icon-bar {
-    background-color: $navbar-default-toggle-icon-bar-bg;
-}
-
-.navbar-collapse.in {
-    overflow-y: visible;
-}
-
-
-/* tijdelijk overgenomen uit bootstrap css v2 */
-.icons .icon-cog,
-.icon-cog
- {
-    background-position: -432px 0;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    margin-top: 1px;
-    line-height: 14px;
-    vertical-align: text-top;
-    background-image: url("../img/glyphicons-halflings.png");
-    background-position: 14px 14px;
-    background-repeat: no-repeat;
-}
-
-
-
-
+/* einde (min-width: $screen-xs-min) */}
