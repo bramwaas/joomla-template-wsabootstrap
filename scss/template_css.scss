@@ -198,14 +198,26 @@ width: auto;
 		margin-left: 0;
 		margin-right: 10px;
 		margin-bottom: 10px;
+		}
+	}	
+
+/* einde div[class^="newsfeed"] */}
+.newsfeed_rssfoto,
+.newsfeed_rssfoto01,
+.newsfeed_rsspicasa
+{
+ ol
+	{
+
+	 li
+		{
 		height: 320px; /* vaste hoogte (en breedte) voor mooier ordenen */
 		width: 250px;
 		list-style-type: none;
 		overflow: hidden;
 		}
 	}	
-
-/* einde div[class^="newsfeed"] */}
+/* einde newsfeed_rssfoto */}
 
 .newsfeed_rssfoto ol li a img,
 .newsfeed_rsspicasa ol li a img
@@ -218,7 +230,10 @@ border: 3px solid black; /*ridge */
 .newsfeed_rssfoto ol li div.feed-item-description p:first-child,
 .newsfeed_rssfoto01 ol li div.feed-item-description p:first-child
 {
-font-size: 4%;
+font-size: 4%;div[class^="newsfeed"] */}
+
+.newsfeed_rssfoto ol li a img,
+.newsfeed_rsspicasa ol li a i
 //opacity: 0.1;
 color: transparent;
     a
@@ -256,14 +271,16 @@ display: $tagItemSearchDisplay;
     display: inline-block;
     position: static;
     vertical-align: top;
-	max-width: $tagListItemWidth;
+	max-width: 100%;
 	margin-right: $marginArea;
 	margin-bottom: $marginArea;
 	}
   &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
 	{
-	width: $tagListItemWidth;
 	background-color: transparent;
+	max-width: 100%;
+    width: $asMinWidthItem;
+	
 	}	
 
  li h3 
@@ -379,21 +396,6 @@ h6 {
 @media (max-width: $screen-xs-max) {
 
 
-
-div.tag-category ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
-{
-    display: inline-block;
-    position: static;
-    vertical-align: top;
-   max-width: 100%;
-   width: $asMinWidthItem;
-}
-div.tag-category ul.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-{
-max-width: 100%;
-width: $asMinWidthItem;
-}
-
 /* einde (max-width: $screen-xs-max) */ }
 
 
@@ -406,6 +408,20 @@ width: $asMinWidthItem;
 	.img-fluid-w50
 { 
   max-width:50%;
+}
+.tag-category ul 
+{
+	li
+	{
+   	max-width: $tagListItemWidth;
+   	width: auto;
+	}
+  &.category.list-striped li 
+	{
+	max-width: $tagListItemWidth;
+   	width: auto;
+	}	
+	
 }
 
 /* einde (min-width: $screen-xs-min) */}
