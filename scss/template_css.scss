@@ -194,7 +194,7 @@ width: auto;
 
 	 li
 		{
-		float: left;
+		list-style-type: none;
 		margin-left: 0;
 		margin-right: 10px;
 		margin-bottom: 10px;
@@ -211,9 +211,9 @@ width: auto;
 
 	 li
 		{
+		float: left;
 		height: 320px; /* vaste hoogte (en breedte) voor mooier ordenen */
 		width: 250px;
-		list-style-type: none;
 		overflow: hidden;
 		}
 	}	
