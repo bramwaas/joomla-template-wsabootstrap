@@ -1,7 +1,7 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 12-7-2016
+// BW 14-7-2016
 // CSS Document for Joomla 3 styles 21-9-2015 
 //
 /* ===========================
@@ -101,6 +101,7 @@ div[class^="newsfeed"]
 { 
 /* margin-left: $asMarginStd; */
 }
+
 
 
 .icon-cog,
@@ -422,3 +423,9 @@ h6 {
 }
 
 /* einde (min-width: $screen-xs-min) */}
+@media (min-width: $screen-sm-min){
+	.form-horizontal .control-label {
+    text-align: left;
+}
+/* einde (min-width: $screen-sm-min) */}
+
