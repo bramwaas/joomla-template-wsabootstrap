@@ -1,7 +1,7 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 14-7-2016
+// BW 15-7-2016
 // CSS Document for Joomla 3 styles 21-9-2015 
 //
 /* ===========================
@@ -424,8 +424,13 @@ h6 {
 
 /* einde (min-width: $screen-xs-min) */}
 @media (min-width: $screen-sm-min){
-	.form-horizontal .control-label {
-    text-align: left;
-}
+	.form-horizontal .control-group {
+		.control-label {
+		@include make-xs-column(2);
+		}
+		.controls {
+		@include make-xs-column(10);
+		}
+	}
 /* einde (min-width: $screen-sm-min) */}
 
