@@ -16,6 +16,7 @@
 		<filename>templateDetails.xml</filename>
 		<filename>template_preview.png</filename>
 		<filename>template_thumbnail.png</filename>
+		<filename>LICENSE</filename>
 		<folder>css</folder>
 		<folder>fields</folder>
 		<folder>html</folder>
