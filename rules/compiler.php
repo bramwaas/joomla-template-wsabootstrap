@@ -20,6 +20,7 @@ V 27-5-2016 kleuren navbar toggle button
 V 29-5-2016 breakpointmobile verwijderd.
 V juni 2016 overgang naar SASS (scss)
 v 12-6-2016 fout in bg1Pos (weer) opgelost
+v 15-7-2016 grid.scss toegevoegd
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -348,6 +349,7 @@ fwrite($st_file, '@import "variables.scss";' . "\n");
 fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
 fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
 fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
+fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
 // standaard bootstrap variables mixins etc. einde
 //fwrite($st_file, '@import "system.scss";' . "\n");
 //fwrite($st_file, '@import "general.scss";' . "\n");
