@@ -426,10 +426,11 @@ h6 {
 @media (min-width: $screen-sm-min){
 	.form-horizontal .control-group {
 		.control-label {
-		@include make-xs-column(2);
+		text-align: left;
+		//@include make-xs-column(2);
 		}
 		.controls {
-		@include make-xs-column(10);
+		//@include make-xs-column(10);
 		}
 	}
 /* einde (min-width: $screen-sm-min) */}
