@@ -6,7 +6,7 @@
 	<creationDate>28-6-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
-	<copyright>AHC Waasdorp</copyright>
+	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
 	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
 	<files>
 		<filename>component.php</filename>
@@ -30,9 +30,9 @@
 
 	<positions>
 		<position>logo</position>
-        	<position>breadcrumb</position>
-	    	<position>headerleft</position>
-	    	<position>icons</position>
+       	<position>breadcrumb</position>
+    	<position>headerleft</position>
+    	<position>icons</position>
 		<position>left</position>
 		<position>right</position>
 		<position>top</position>

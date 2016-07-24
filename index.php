@@ -1,5 +1,12 @@
 <?php defined('_JEXEC') or die;
 /*
+ * @copyright  Copyright (C) 2015 - 2016 AHC Waasdorp. All rights reserved.
+ * @license    GNU/GPL, see LICENSE
+ * Joomla! is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+
  * 24-4-2016 ook begin en eind van navbar naar module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
 * 22-5-1016 brandImage toegevoegd
 */
