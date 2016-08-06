@@ -329,7 +329,7 @@ if ($marginLeftRight > ' '  ) 	{
 				fwrite($tv_file, '$asMarginStd:       '  . $marginLeftRight .  "%;\n");
 				fwrite($tv_file, '$marginArea:        '  . ($marginLeftRight / 2) .  "%;\n");
 };
-if ($itemVideoHeight > ' '  ) 	fwrite($tv_file, '$asVideoHeight:     '  . $itemVideoHeight .  "%;\n");
+if ($itemVideoHeight > ' '  ) 	fwrite($tv_file, '$wsaVideoHeight:     '  . $itemVideoHeight .  "%;\n");
   
 if ($footerWidth > ' '  ) 	fwrite($tv_file, '$footerWidth:       '  . $footerWidth .  "%;\n");
 if ($footerPosLeft > ' '  ) 	fwrite($tv_file, '$footerPosLeft:     '  . $footerPosLeft .  "%;\n");

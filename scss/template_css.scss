@@ -122,9 +122,10 @@ div[class^="newsfeed"]
 .items-leading  div .videoWrapper,
 .videoWrapper {
   position:relative;
-  padding-bottom: $asVideoHeight;
-  padding-top: $asVideoHeightExtra;
-  width:100%;
+  padding-bottom: $wsaVideoHeight;
+  padding-top: $wsaVideoHeightExtra;
+  max-width: $wsaVideoItemWidth;
+  width: $wsaVideoAutoItemWidth;
   height:0;
   object, embed, iframe {
     position:absolute;
