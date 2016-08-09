@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
-	<version>1.2.2</version>
-	<creationDate>04-08-6-2016</creationDate>
+	<version>1.2.3</version>
+	<creationDate>09-08-6-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
