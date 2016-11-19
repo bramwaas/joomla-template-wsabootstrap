@@ -1,5 +1,6 @@
 /* magnificpopup.scss */
 // aangepast om meer op modal van joomla (squeezebox mootools) te laten lijken bw 20160402 
+// aangepast om afsluitknop niet te laten overriden door dj-imageslider bw 2016119
 .mfp-bg { 
   top: 0;
   left: 0;
@@ -9,7 +10,8 @@
   overflow: hidden;
   position: fixed;
   background: #0b0b0b;
-  opacity: 0.8; }
+  opacity: 0.8; 
+  filter: alpha(opacity=80);}
 
 .mfp-wrap {
   top: 0;
@@ -136,6 +138,8 @@ button::-moz-focus-inner {
   text-decoration: none;
   text-align: center;
 //  opacity: 0.65;
+  opacity: 1;
+  filter: alpha(opacity=100);
   padding: 0 0 18px 10px;
 //  color: #FFF;
   font-style: normal;
@@ -145,7 +149,8 @@ button::-moz-focus-inner {
 }
   .mfp-close:hover,
   .mfp-close:focus {
-    opacity: 1; }
+    opacity: 1;
+    filter: alpha(opacity=100); }
   .mfp-close:active {
     top: 1px; }
 
@@ -172,6 +177,7 @@ button::-moz-focus-inner {
 .mfp-arrow {
   position: absolute;
   opacity: 0.65;
+  filter: alpha(opacity=65);
   margin: 0;
   top: 50%;
   margin-top: -55px;
@@ -183,7 +189,8 @@ button::-moz-focus-inner {
     margin-top: -54px; }
   .mfp-arrow:hover,
   .mfp-arrow:focus {
-    opacity: 1; }
+    opacity: 1;
+    filter: alpha(opacity=100); }
   .mfp-arrow:before,
   .mfp-arrow:after {
     content: '';
@@ -203,7 +210,8 @@ button::-moz-focus-inner {
   .mfp-arrow:before {
     border-top-width: 21px;
     border-bottom-width: 21px;
-    opacity: 0.7; }
+    opacity: 0.7;
+    filter: alpha(opacity=70); }
 
 .mfp-arrow-left {
   left: 0; }
@@ -371,6 +379,7 @@ line-height: 10px;
 top: $mfp-img-buttop; /* must be the same as margin top of image - 15 */
 right: 5px; /* must be the same as margin right of figure - 15 */
 padding-right: 5px;
+color: transparent;
 }
 
 .mfp-image-holder figure 
