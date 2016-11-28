@@ -3,6 +3,10 @@
 // in eerste instatie door kleuren in variabele te zetten.
 // BW 15-7-2016
 // CSS Document for Joomla 3 styles 21-9-2015 
+// 20161128 paginaweergave class blog_inline gedefinieerd 
+// om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
+// items in twee kolommen weer te geven. 
+// tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
 //
 /* ===========================
 	alle schermbreedtes
@@ -100,6 +104,34 @@ div.newsfeed,
 div[class^="newsfeed"]
 { 
 /* margin-left: $asMarginStd; */
+}
+.blog_inline {
+/* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  blog_inline)
+   heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
+   spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
+   (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
+   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog_inline lead-cols-2 )	
+*/	
+	.items-leading > div,
+	.items-row > div,
+	.items-row > div > div { 
+		display: inline-block;
+		vertical-align: top;
+		float: none;
+	}
+
+	.item, .span6, .span4, .span3, .span2 { 
+			width: 100%;
+			margin-right: 0px; 
+	}
+	
+}
+.blog_inline .items-leading {
+    width:100%;
+    div {
+      float:none;
+      display:inline-block;
+    }
 }
 
 
@@ -397,9 +429,23 @@ h6 {
 
 /* einde (max-width: $screen-xs-max) */ }
 
+@media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
+.blog_inline {
+	.span6, .span4,	.span3, .span2 { 
+		width: 48.5%;
+		margin-right: 1%; 
+	}
+}
+	
+.blog_inline.lead-cols-2 {
+	.items-leading 	 > div { 
+		width: 48.5%;
+		margin-right: 1%; 
+		
+	}
+	
+}
 
-
-@media (min-width: $screen-xs-min) {
 .img-fluid-w33
 { 
  max-width:33%;
@@ -422,9 +468,30 @@ h6 {
 	}	
 	
 }
-
 /* einde (min-width: $screen-xs-min) */}
+
 @media (min-width: $screen-sm-min){
+.blog_inline {
+
+	.span4 { 
+			width: 32%;
+	}
+	.span3, .span2 { 
+			width: 23.5%;
+	}
+	
+}
+.blog_inline.lead-cols-3 {
+	.items-leading 	 > div { 
+		width: 32%;
+		margin-right: 1%; 
+		
+	}
+	
+}
+
+
+	
 	.form-horizontal .control-group {
 		.control-label {
 		text-align: left;
@@ -434,5 +501,31 @@ h6 {
 		//@include make-xs-column(10);
 		}
 	}
+	
 /* einde (min-width: $screen-sm-min) */}
+
+@media (min-width: @screen-md-min )  { /* desktop (width >= 992px) */
+
+.blog_inline {
+	.cols-5 .span2	{ 
+			width: 18.7%;
+		}
+	
+	.span2	{ 
+			width: 15.3%;
+		}
+	.cols-8 .span1	{ 
+			width: 11.3%;
+		}
+	 .span1	{ 
+			width: 7.2%;
+		}
+	
+
+	
+}
+
+}
+/* einde @media  @screen-md-min */
+
 
