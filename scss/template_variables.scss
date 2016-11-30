@@ -87,23 +87,23 @@ $tagListItemWidth:          30.0%;
 $wrapperBorderRadius:         10px;
 
 // variabelen voor .blog_inline       
-$wsaInnerMargin = $marginArea / 2;
-// aantal margins is aantal kolommen plus 1 van 100% aftrekken => ruimte voor inhoud, deze delen door aantal kolommen.
-$wsa02Col = (100% - (3 * $wsaInnerMargin)) / 2 ;
-$span6 = $wsa02Col;
-$wsa03Col = (100% - (4 * $wsaInnerMargin)) / 3 ;
-$span4 = $wsa03Col;
-$wsa04Col = (100% - (5 * $wsaInnerMargin)) / 4 ;
-$span3 = $wsa04Col;
-$wsa05Col = (100% - (6 * $wsaInnerMargin)) / 5 ;
-$wsa06Col = (100% - (7 * $wsaInnerMargin)) / 6 ; 
-$span2 = $wsa06Col;
-$wsa07Col = (100% - (8 * $wsaInnerMargin)) / 7 ; 
-$wsa08Col = (100% - (9 * $wsaInnerMargin)) / 8 ;
-$wsa09Col = (100% - (10 * $wsaInnerMargin)) / 9 ; 
-$wsa10Col = (100% - (11 * $wsaInnerMargin)) / 10 ;
-$wsa11Col = (100% - (12 * $wsaInnerMargin)) / 11 ;
-$wsa12Col = (100% - (13 * $wsaInnerMargin)) / 12 ; 
-$span1 = $wsa12Col;
+$wsaInnerMargin : $marginArea / 2;
+// aantal margins is aantal kolommen plus 1 van 100% aftrekken :> ruimte voor inhoud, deze delen door aantal kolommen.
+$wsa02Col : (100% - (3 * $wsaInnerMargin)) / 2 ;
+$span6 : $wsa02Col;
+$wsa03Col : (100% - (4 * $wsaInnerMargin)) / 3 ;
+$span4 : $wsa03Col;
+$wsa04Col : (100% - (5 * $wsaInnerMargin)) / 4 ;
+$span3 : $wsa04Col;
+$wsa05Col : (100% - (6 * $wsaInnerMargin)) / 5 ;
+$wsa06Col : (100% - (7 * $wsaInnerMargin)) / 6 ; 
+$span2 : $wsa06Col;
+$wsa07Col : (100% - (8 * $wsaInnerMargin)) / 7 ; 
+$wsa08Col : (100% - (9 * $wsaInnerMargin)) / 8 ;
+$wsa09Col : (100% - (10 * $wsaInnerMargin)) / 9 ; 
+$wsa10Col : (100% - (11 * $wsaInnerMargin)) / 10 ;
+$wsa11Col : (100% - (12 * $wsaInnerMargin)) / 11 ;
+$wsa12Col : (100% - (13 * $wsaInnerMargin)) / 12 ; 
+$span1 : $wsa12Col;
 
 
