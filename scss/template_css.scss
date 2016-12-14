@@ -8,7 +8,9 @@
 // items in twee kolommen weer te geven. 
 // tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
 // 20161210 word-space klein gemaakt om te voorkomen dat spaties tussen kolom-html de lay-out verknooeien
-/* ===========================
+// 20161214 bolg_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
+// voor tags moet class blog worden toegevoegd in plaats van blog_inline.
+/ * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
 	daarna uitzonderingen voor steeds bredere schermen (mobile first)
@@ -105,13 +107,13 @@ div[class^="newsfeed"]
 { 
 /* margin-left: $asMarginStd; */
 }
-.blog_inline {
-/* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  blog_inline)
+.blog {
+/* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
    heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
    spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
    (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
-   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog_inline lead-cols-2 )
-   .blog_inline ook voor kop ul.list-striped komt overeen met div.items-row (maar cols-1 etc kan hier niet gevuld worden
+   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog lead-cols-2 )
+   .blog ook voor kop ul.list-striped komt overeen met div.items-row (maar cols-1 etc kan hier niet gevuld worden
    volgende nivo li.cat-list-row0 en li.cat-list-row1 komen overeen met div.span1 span2 enz
    volgende nivo ontbreekt bij taglist   komt overeen met div.item
    volgende nivo span.tag-body (en h3)   komt overeen met p	
@@ -138,7 +140,7 @@ div[class^="newsfeed"]
 	}
 	
 }
-.blog_inline .items-leading {
+.blog .items-leading {
     width:100%;
     div {
       float:none;
@@ -442,7 +444,7 @@ h6 {
 /* einde (max-width: $screen-xs-max) */ }
 
 @media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
-.blog_inline {
+.blog {
 	.span6, .span4,	.span3, .span2, .span1,
 	&.cols-2 .cat-list-row0, &.cols-3 .cat-list-row0, &.cols-4 .cat-list-row0, &.cols-5 .cat-list-row0, &.cols-6 .cat-list-row0,
 	&.cols-2 .cat-list-row1, &.cols-3 .cat-list-row1, &.cols-4 .cat-list-row1, &.cols-5 .cat-list-row1, &.cols-6 .cat-list-row1
@@ -453,7 +455,7 @@ h6 {
 	}
 }
 	
-.blog_inline.lead-cols-2 {
+.blog.lead-cols-2 {
 	.items-leading 	 > div { 
 		width: $wsa02Col;
 		margin-right: $wsaInnerMargin; 
@@ -488,7 +490,7 @@ h6 {
 /* einde (min-width: $screen-xs-min) */}
 
 @media (min-width: $screen-sm-min){
-.blog_inline {
+.blog {
 
 	.span4,
 	&.cols-3 .cat-list-row0,
@@ -502,7 +504,7 @@ h6 {
 	}
 	
 }
-.blog_inline.lead-cols-3 {
+.blog.lead-cols-3 {
 	.items-leading 	 > div { 
 		width:  $wsa03Col;
 		margin-right: $wsaInnerMargin; 
@@ -528,7 +530,7 @@ h6 {
 
 @media (min-width: @screen-md-min )  { /* desktop (width >= 992px) */
 
-.blog_inline {
+.blog {
 	.cols-5 .span2,
 	&.cols-5 .cat-list-row0,
 	&.cols-5 .cat-list-row1 { 
