@@ -211,7 +211,12 @@ if  ($bg2Left > ' ')
    {$bg2Left = 'auto';
    if ($bg2Top != 'auto'  ) {$bg2Pos = '50% '.$bg2Top;} else {$bg2Pos = '';}}
 
-
+   $bg0Size='';
+   $bg1Size='';
+   $bg2Size='';
+   $bg0Repeat='';
+   $bg1Repeat='';
+   $bg2Repeat='';
 
 try
  { /*begin try */
