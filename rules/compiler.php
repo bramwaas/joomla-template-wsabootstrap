@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) 2014 Robert Went. All rights reserved.
+ * @copyright Copyright (C) 2016 Bram Waasdorp. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor
@@ -21,6 +21,7 @@ V 29-5-2016 breakpointmobile verwijderd.
 V juni 2016 overgang naar SASS (scss)
 v 12-6-2016 fout in bg1Pos (weer) opgelost
 v 15-7-2016 grid.scss toegevoegd
+v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -137,25 +138,23 @@ if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'i
 
 
 
-$bg0Image    	= htmlspecialchars($params['bg0Image']); // url
-$bg0Size    	= htmlspecialchars($params['bg0Size']); // auto cover contain <width> % or px 
-$bg0Width    	= htmlspecialchars($params['bg0Width']); // number
-$bg0Pos    	= htmlspecialchars($params['bg0Pos']); // <top> <left> % or px 
+$bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
+if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
+ {$bg0Image = '/' . $bg0Image;}; 
+$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
+if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
+ {$bg0Image_lg = '/' . $bg0Image_lg;};
+ $bg0Width    	= htmlspecialchars($params['bg0Width']); // number
+$bg0Pos    		= htmlspecialchars($params['bg0Pos']); //  % or px 
 $bg0Top      	= htmlspecialchars($params['bg0Top']); // number
 $bg0Left      	= htmlspecialchars($params['bg0Left']); // number
 $bg0Repeat    	= htmlspecialchars($params['bg0Repeat']); // repeat no-repeat repeat-x repeat-y 
 $bg0Color    	= htmlspecialchars($params['bg0Color']); // name or hex
 $bg0Dim         = 'px';
 $bg0DimPos      = 'px';
-if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
- {$bg0Image = '/' . $bg0Image;}; 
-if ($bg0Image > ' ') $bg0Image = 'url("' . $bg0Image . '")'; else $bg0Image = 'none';
-if ($bg0Size == 'html'  or $bg0Size == '%')  {$bg0Dim = '%';};
+if ($bg0Pos ==  '%')  {$bg0Dim = '%'; $bg0DimPos = '%';};
 if ($bg0Width > ' ') {$bg0Width = $bg0Width.$bg0Dim;} else {$bg0Width = 'auto';};
-if ($bg0Pos ==  '%')  {$bg0DimPos = '%';};
 
-if ($bg0Size == 'html' ) {$bg0Image = 'none; // via html ' . $bg0Image;};
-if ( $bg0Size != 'auto' && $bg0Size != 'contain' && $bg0Size != 'cover') { $bg0Size = $bg0Width;};
 if ($bg0Top > ' '  ) {$bg0Top = $bg0Top.$bg0DimPos;} else {$bg0Top = 'auto';};
 if  ($bg0Left > ' ') 
     {$bg0Left = $bg0Left.$bg0DimPos;
@@ -164,26 +163,22 @@ if  ($bg0Left > ' ')
    {$bg0Left = 'auto';
     if ($bg0Top != 'auto'  ) {$bg0Pos = '50% '.$bg0Top;} else {$bg0Pos = '';}}
 
-$bg1Image    	= htmlspecialchars($params['bg1Image']); // url
-$bg1Size    	= htmlspecialchars($params['bg1Size']); // auto cover contain <width> % or px 
+$bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
+if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
+ {$bg1Image = '/' . $bg1Image;};
+$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
+if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg1Image_lg = '/' . $bg1Image_lg;};
 $bg1Width    	= htmlspecialchars($params['bg1Width']); // number
-$bg1Pos    	= htmlspecialchars($params['bg1Pos']); // <top> <left> % or px 
+$bg1Pos    		= htmlspecialchars($params['bg1Pos']); //  % or px 
 $bg1Top      	= htmlspecialchars($params['bg1Top']); // number
 $bg1Left      	= htmlspecialchars($params['bg1Left']); // number
-$bg1Repeat    	= htmlspecialchars($params['bg1Repeat']); // repeat no-repeat repeat-x repeat-y 
 $bg1Color    	= htmlspecialchars($params['bg1Color']); // name or hex
 $bg1Dim         = 'px';
 $bg1DimPos      = 'px';
-if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;}; 
-if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
-
-if ($bg1Size == 'html'  or $bg1Size == '%')  {$bg1Dim = '%';};
+if ($bg1Pos ==  '%')  {$bg1Dim = '%'; $bg1DimPos = '%';};
 if ($bg1Width > ' ') {$bg1Width = $bg1Width.$bg1Dim;} else {$bg1Width = 'auto';};
-if ($bg1Pos ==  '%')  {$bg1DimPos = '%';};
 
-if ($bg1Size == 'html' ) {$bg1Image = 'none';};
-if ($bg1Size != 'auto' && $bg1Size != 'contain' && $bg1Size != 'cover') { $bg1Size = $bg1Width;};
 if ($bg1Top > ' '  ) {$bg1Top = $bg1Top.$bg1DimPos;} else {$bg1Top = 'auto';};
 if  ($bg1Left > ' ') 
     {$bg1Left = $bg1Left.$bg1DimPos;
@@ -192,26 +187,22 @@ if  ($bg1Left > ' ')
    {$bg1Left = 'auto';
 	if ($bg1Top != 'auto'  ) {$bg1Pos = '50% '.$bg1Top;} else {$bg1Pos = '';}}
 
-$bg2Image    	= htmlspecialchars($params['bg2Image']); // url
-$bg2Size    	= htmlspecialchars($params['bg2Size']); // auto cover contain <width> % or px 
+$bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
+if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
+ {$bg2Image = '/' . $bg2Image;}; 
+$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
+if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg2Image_lg = '/' . $bg2Image_lg;}; 
 $bg2Width    	= htmlspecialchars($params['bg2Width']); // number
-$bg2Pos    	= htmlspecialchars($params['bg2Pos']); // <top> <left> % or px 
+$bg2Pos     	= htmlspecialchars($params['bg2Pos']); //  % or px 
 $bg2Top      	= htmlspecialchars($params['bg2Top']); // number
 $bg2Left      	= htmlspecialchars($params['bg2Left']); // number
-$bg2Repeat    	= htmlspecialchars($params['bg2Repeat']); // repeat no-repeat repeat-x repeat-y 
 $bg2Color    	= htmlspecialchars($params['bg2Color']); // name or hex
 $bg2Dim         = 'px';
 $bg2DimPos      = 'px';
-if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
- {$bg2Image = '/' . $bg2Image;}; 
-if ($bg2Image > ' ') $bg2Image = 'url("' . $bg2Image . '")'; else $bg2Image = 'none';
-
-if ($bg2Size == 'html'  or $bg2Size == '%')  {$bg2Dim = '%';};
+if ($bg2Pos ==  '%')  {$bg2Dim = '%'; $bg2DimPos = '%';};
 if ($bg2Width > ' ') {$bg2Width = $bg2Width.$bg2Dim;} else {$bg2Width = 'auto';};
-if ($bg2Pos ==  '%')  {$bg2DimPos = '%';};
 
-if ($bg2Size == 'html' ) {$bg2Image = 'none';};
-if ($bg2Size != 'auto' && $bg2Size != 'contain' && $bg2Size != 'cover') { $bg2Size = $bg2Width;};
 if ($bg2Top > ' '  ) {$bg2Top = $bg2Top.$bg2DimPos;} else {$bg2Top = 'auto';};
 if  ($bg2Left > ' ') 
     {$bg2Left = $bg2Left.$bg2DimPos;
@@ -220,10 +211,6 @@ if  ($bg2Left > ' ')
    {$bg2Left = 'auto';
    if ($bg2Top != 'auto'  ) {$bg2Pos = '50% '.$bg2Top;} else {$bg2Pos = '';}}
 
-
-if ($bg1Image > ' ') {$bg1Image = $bg2Image.', '.$bg1Image;} else {$bg1Image = $bg2Image;};   
-if ($bg2pos > ' ') {if ($bg1Pos > ' ') {$bg1Pos = $bg2Pos.', '.$bg1Pos;} else {$bg1Pos = $bg2Pos;};};  
-if ($bg1Repeat > ' ') {$bg1Repeat = $bg2Repeat.', '.$bg1Repeat;} else {$bg1Repeat = $bg2Repeat;};
 
 
 try
@@ -253,30 +240,27 @@ if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . 
 
 
 if ($bg0Image > ' ' ) fwrite($tv_file, '$bg0Image:          ' . $bg0Image .  ";\n");
-if ($bg0Size > ' '  ) fwrite($tv_file, '$bg0Size:           ' . $bg0Size . ";\n");
+if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
 if ($bg0Width > ' ' ) fwrite($tv_file, '$bg0Width:          ' . $bg0Width . ";\n");
 if ($bg0Pos > ' '   ) fwrite($tv_file, '$bg0Pos:            ' . $bg0Pos . ";\n");
 if ($bg0Top > ' '  )  fwrite($tv_file, '$bg0Top:            ' . $bg0Top . ";\n");
 if ($bg0Left > ' '  ) fwrite($tv_file, '$bg0Left:           ' . $bg0Left . ";\n");
-if ($bg0Repeat > ' ') fwrite($tv_file, '$bg0Repeat:         ' . $bg0Repeat . ";\n");
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
 
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
-if ($bg1Size > ' '  ) fwrite($tv_file, '$bg1Size:           ' . $bg1Size . ";\n");
+if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
 if ($bg1Width > ' ' ) fwrite($tv_file, '$bg1Width:          ' . $bg1Width . ";\n");
 if ($bg1Pos > ' '   ) fwrite($tv_file, '$bg1Pos:            ' . $bg1Pos . ";\n");
 if ($bg1Top > ' '  )  fwrite($tv_file, '$bg1Top:            ' . $bg1Top . ";\n");
 if ($bg1Left > ' '  ) fwrite($tv_file, '$bg1Left:           ' . $bg1Left . ";\n");
-if ($bg1Repeat > ' ') fwrite($tv_file, '$bg1Repeat:         ' . $bg1Repeat . ";\n");
 if ($bg1Color > ' ' ) fwrite($tv_file, '$bg1Color:          ' . $bg1Color . ";\n");
 
 if ($bg2Image > ' ' ) fwrite($tv_file, '$bg2Image:          ' . $bg2Image .  ";\n");
-if ($bg2Size > ' '  ) fwrite($tv_file, '$bg2Size:           ' . $bg2Size . ";\n");
+if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
 if ($bg2Width > ' ' ) fwrite($tv_file, '$bg2Width:          ' . $bg2Width . ";\n");
 if ($bg2Pos > ' '   ) fwrite($tv_file, '$bg2Pos:            ' . $bg2Pos . ";\n");
 if ($bg2Top > ' '  )  fwrite($tv_file, '$bg2Top:            ' . $bg2Top . ";\n");
 if ($bg2Left > ' '  ) fwrite($tv_file, '$bg2Left:           ' . $bg2Left . ";\n");
-if ($bg2Repeat > ' ') fwrite($tv_file, '$bg2Repeat:         ' . $bg2Repeat . ";\n");
 if ($bg2Color > ' ' ) fwrite($tv_file, '$bg2Color:          ' . $bg2Color . ";\n");
 
 if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '$hlMarginTop:       '  . $hlMarginTop .  "%;\n");
@@ -374,18 +358,10 @@ fwrite($st_file, '@import "template_css.scss";' . "\n");
 fwrite($st_file, "body {\n");
 if ($fgColor > " "  ) fwrite($st_file, "color:  $fgColor ;\n");
 if ($bg0Color > " " ) fwrite($st_file, "background-color:  $bg0Color;\n");
-if ($bg0Image > ' ' ) fwrite($st_file, "background-image: $bg0Image;\n"); 
-if ($bg0Size > ' '  ) fwrite($st_file, "background-size: $bg0Size;\n");
-if ($bg0Repeat > ' ') fwrite($st_file, "background-repeat:  $bg0Repeat;\n");
-if ($bg0Pos > ' '   ) fwrite($st_file, "background-position: $bg0Pos;\n");
 fwrite($st_file, "}\n");
 
 fwrite($st_file, "#wrapper, \nbody>div.container {\n");
 if ($bg1Color > " " ) fwrite($st_file, "background-color:  $bg1Color;\n");
-if ($bg1Image > ' ' ) fwrite($st_file, "background-image: $bg1Image;\n"); 
-if ($bg1Size > ' '  ) fwrite($st_file, "background-size: $bg1Size;\n");
-if ($bg1Repeat > ' ') fwrite($st_file, "background-repeat:  $bg1Repeat;\n");
-if ($bg1Pos > ' '   ) fwrite($st_file, "background-position: $bg1Pos;\n");
 fwrite($st_file, "}\n");
 
 if ($menuType == 'transparent') 

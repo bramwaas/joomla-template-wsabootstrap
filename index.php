@@ -8,7 +8,9 @@
  * other free or open source software licenses.
 
  * 24-4-2016 ook begin en eind van navbar naar module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
-* 22-5-1016 brandImage toegevoegd
+* 22-5-2016 brandImage toegevoegd
+* 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
+* wel extra images voor grotere breedte met toevoeging _lg 
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -30,28 +32,45 @@ $displaySitename = htmlspecialchars($templateparams->get('displaySitename')); //
 $bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
 if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
  {$bg0Image = '/' . $bg0Image;}; 
+$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
+if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
+ {$bg0Image_lg = '/' . $bg0Image_lg;};
 $bg0Width    	= htmlspecialchars($this->params->get('bg0Width'));
 $bg0Top      	= htmlspecialchars($this->params->get('bg0Top'));
 $bg0Left      	= htmlspecialchars($this->params->get('bg0Left'));
 $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
-$bg0Size    	= htmlspecialchars($this->params->get('bg0Size'));
+$bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
+$bg0ImageH    	= htmlspecialchars($this->params->get('bg0ImageH'));
+$bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
 
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;};$bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
+ {$bg1Image = '/' . $bg1Image;};
+$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
+if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg1Image_lg = '/' . $bg1Image_lg;};
+ $bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
 $bg1Top      	= htmlspecialchars($this->params->get('bg1Top'));
 $bg1Left      	= htmlspecialchars($this->params->get('bg1Left'));
 $bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
-$bg1Size    	= htmlspecialchars($this->params->get('bg1Size'));
+$bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
+$bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
+$bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
 
 $bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
 if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
  {$bg2Image = '/' . $bg2Image;}; 
-$bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
+$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
+if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg2Image_lg = '/' . $bg2Image_lg;}; 
+ $bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
 $bg2Top      	= htmlspecialchars($this->params->get('bg2Top'));
 $bg2Left      	= htmlspecialchars($this->params->get('bg2Left'));
 $bg2Color    	= htmlspecialchars($this->params->get('bg2Color'));
-$bg2Size    	= htmlspecialchars($this->params->get('bg2Size'));
+$bg2ImageW    	= htmlspecialchars($this->params->get('bg2ImageW'));
+$bg2ImageH    	= htmlspecialchars($this->params->get('bg2ImageH'));
+$bg2Image_lgW  	= htmlspecialchars($this->params->get('bg2Image_lgW'));
+
 
 
 
@@ -123,8 +142,15 @@ else
 <![endif]-->
 </head>
 <body id="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>">
-<?php if ($bg0Size == 'html' && $bg0Image > " ") : ?>
-<img id="img_bg0Image" src="<?php echo $bg0Image; ?>" alt="Background image" />
+<?php if ($bg0Image > " " ) : ?>
+<img id="img_bg0Image" src="<?php echo $bg0Image; ?>" alt="Background image"
+	<?php if ($bg0ImageW > 0 ) : ?>width="<?php echo $bg0ImageW; ?>"<?php endif; ?>
+	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
+	<?php if ($bg0Image_lg > " " && $bg0ImageW > 0 && $bg0Image_lgW > 0 ) : ?>
+	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w,'. $bg0Image_lg .' ' . $bg0Image_lgW . 'w'  ; ?>"
+	sizes="<?php echo '(min-width: 768px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+	<?php endif; ?>
+ />
 <?php endif; ?>
 	<!-- Begin Container-->
         <div id="wrapper" class="container">

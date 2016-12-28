@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
-	<version>1.2.6</version>
-	<creationDate>10-12-2016</creationDate>
+	<version>1.3.0</version>
+	<creationDate>28-12-2016</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
@@ -64,27 +64,30 @@
 					 />
 				<field name="bg0Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg0Size" type="list" default=""
-					label="BGSIZE_LABEL"	
- 				    description="BGSIZE_DESCRIPTION"
-				>
-					<option value="auto">Size of image</option>
-					<option value="contain">Maximum inside background</option>
-					<option value="cover">Minimum covering background</option>
-					<option value="%">Width percentage of background</option>
-					<option value="html">Width percentage of background (via html)</option>
-					<option value="px">Width in pixels</option>
-				</field>
+				<field name="bg0Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
+				<field name="bg0ImageW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEW_LABEL"
+					description="BGIMAGEW_DESCRIPTION"
+					 />	
+				<field name="bg0ImageH"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEH_LABEL"
+					description="BGIMAGEH_DESCRIPTION"
+					 />	
+				<field name="bg0Image_lgW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGELGW_LABEL"
+					description="BGIMAGELGW_DESCRIPTION"
+					 />	
 				<field name="bg0Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
 					description="Width background image if Size = percentage or pixels"
 					 />
 				<field name="bg0Pos" type="list" default="%"
 					label="BGPOSITION_LABEL"	
- 				    description="Unit of measure background position."
+ 				    description=BGPOSITION_DESCRIPTION
 				>
-					<option value="%">Distance percentage of background</option>
-					<option value="px">Distance in pixels</option>
+					<option value="%">BGPERCENTAGE</option>
+					<option value="px">BGPIXELS</option>
 				</field>
 				<field name="bg0Top"  class="validate-numeric" type="text" default=""
 					label="BGTOP_LABEL"
@@ -94,17 +97,6 @@
 					label="BGLEFT_LABEL"
 					description="Background image margin left"
 					 />					 
-				<field name="bg0Repeat" type="list" default=""
-					label="BGREPEAT_LABEL"	
- 				    description="Repeat mechanism bg image."
-				>
-					<option value="">Default</option>
-					<option value="repeat">Repeat both directions</option>
-					<option value="no-repeat">No repeat</option>
-					<option value="repeat-x">Repeat horizontal</option>
-					<option value="repeat-y">Repeat vertical</option>
-				</field>
-					 
 				<field name="bg0Color"  type="color" default=""
 					label="BGCOLOR_LABEL"
 					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
@@ -113,27 +105,30 @@
 					 />
 				<field name="bg1Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg1Size" type="list" default=""
-					label="BGSIZE_LABEL"	
- 				    description="BGSIZE_DESCRIPTION"
-				>
-					<option value="auto">Size of image</option>
-					<option value="contain">Maximum inside background</option>
-					<option value="cover">Minimum covering background</option>
-					<option value="%">Width percentage of background</option>
-					<option value="html">Width percentage of background (via html)</option>
-					<option value="px">Width in pixels</option>
-				</field>
+				<field name="bg1Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
+				<field name="bg1ImageW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEW_LABEL"
+					description="BGIMAGEW_DESCRIPTION"
+					 />	
+				<field name="bg1ImageH"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEH_LABEL"
+					description="BGIMAGEH_DESCRIPTION"
+					 />	
+				<field name="bg1Image_lgW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGELGW_LABEL"
+					description="BGIMAGELGW_DESCRIPTION"
+					 />	
 				<field name="bg1Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
 					description="Width background image if Size = percentage or pixels"
 					 />
 				<field name="bg1Pos" type="list" default="%"
 					label="BGPOSITION_LABEL"	
- 				    description="Measure background position."
+ 				    description="BGPOSITION_DESCRIPTION"
 				>
-					<option value="%">Distance percentage of background</option>
-					<option value="px">Distance in pixels</option>
+					<option value="%">BGPERCENTAGE</option>
+					<option value="px">BGPIXELS</option>
 				</field>
 				<field name="bg1Top"  class="validate-numeric" type="text" default=""
 					label="BGTOP_LABEL"
@@ -143,17 +138,6 @@
 					label="BGLEFT_LABEL"
 					description="Background image margin left"
 					 />					 
-				<field name="bg1Repeat" type="list" default=""
-					label="BGREPEAT_LABEL"	
- 				    description="Repeat mechanism bg image."
-				>
-					<option value="">Default</option>
-					<option value="repeat">Repeat both directions</option>
-					<option value="no-repeat">No repeat</option>
-					<option value="repeat-x">Repeat horizontal</option>
-					<option value="repeat-y">Repeat vertical</option>
-				</field>
-					 
 				<field name="bg1Color"  type="color" default=""
 					label="BGCOLOR_LABEL"
 					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
@@ -162,27 +146,30 @@
 					 />
 				<field name="bg2Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg2Size" type="list" default=""
-					label="BGSIZE_LABEL"	
- 				    description="BGSIZE_DESCRIPTION"
-				>
-					<option value="auto">Size of image</option>
-					<option value="contain">Maximum inside background</option>
-					<option value="cover">Minimum covering background</option>
-					<option value="%">Width percentage of background</option>
-					<option value="html">Width percentage of background (via html)</option>
-					<option value="px">Width in pixels</option>
-				</field>
+				<field name="bg2Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
+				<field name="bg2ImageW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEW_LABEL"
+					description="BGIMAGEW_DESCRIPTION"
+					 />	
+				<field name="bg2ImageH"  class="validate-numeric" type="text" default=""
+					label="BGIMAGEH_LABEL"
+					description="BGIMAGEH_DESCRIPTION"
+					 />	
+				<field name="bg2Image_lgW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGELGW_LABEL"
+					description="BGIMAGELGW_DESCRIPTION"
+					 />	
 				<field name="bg2Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
 					description="Width background image if Size = percentage or pixels"
 					 />
 				<field name="bg2Pos" type="list" default="%"
 					label="BGPOSITION_LABEL"	
- 				    description="Measure background position."
+ 				    description="BGPOSITION_DESCRIPTION"
 				>
-					<option value="%">Distance percentage of background</option>
-					<option value="px">Distance in pixels</option>
+					<option value="%">BGPERCENTAGE</option>
+					<option value="px">BGPIXELS</option>
 				</field>
 				<field name="bg2Top"  class="validate-numeric" type="text" default=""
 					label="BGTOP_LABEL"
@@ -192,16 +179,6 @@
 					label="BGLEFT_LABEL"
 					description="Background image margin left"
 					 />					 
-				<field name="bg2Repeat" type="list" default=""
-					label="BGREPEAT_LABEL"	
- 				    description="Repeat mechanism bg image."
-				>
-					<option value="">Default</option>
-					<option value="repeat">Repeat both directions</option>
-					<option value="no-repeat">No repeat</option>
-					<option value="repeat-x">Repeat horizontal</option>
-					<option value="repeat-y">Repeat vertical</option>
-				</field>
 			</fieldset>
 			<fieldset name="Advanced">
 				<field name="explanation3"  type="spacer" hr="false"
