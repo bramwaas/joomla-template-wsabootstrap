@@ -138,12 +138,15 @@ if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'i
 
  
 
-$bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
+$bg0Image    	= htmlspecialchars($params['bg0Image']);
 if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
  {$bg0Image = '/' . $bg0Image;}; 
-//$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
-//if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
-// {$bg0Image_lg = '/' . $bg0Image_lg;};
+$bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
+if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
+ {$bg0Image_lg = '/' . $bg0Image_lg;};
+if ($bg0Image > ' ') $bg0Image = 'url("' . $bg0Image . '")'; else $bg0Image = 'none';
+if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
+ 
 $bg0Width    	= htmlspecialchars($params['bg0Width']); // number
 $bg0Pos    		= htmlspecialchars($params['bg0Pos']); //  % or px 
 $bg0Top      	= htmlspecialchars($params['bg0Top']); // number
@@ -162,13 +165,15 @@ if  ($bg0Left > ' ')
    {$bg0Left = 'auto';
     if ($bg0Top != 'auto'  ) {$bg0Pos = '50% '.$bg0Top;} else {$bg0Pos = '';}}
 
-$bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
+$bg1Image    	= htmlspecialchars($params['bg1Image']);
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
-//$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-//if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
-// {$bg1Image_lg = '/' . $bg1Image_lg;};
-$bg1Width    	= htmlspecialchars($params['bg1Width']); // number
+$bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
+if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg1Image_lg = '/' . $bg1Image_lg;};
+if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
+if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
+ $bg1Width    	= htmlspecialchars($params['bg1Width']); // number
 $bg1Pos    		= htmlspecialchars($params['bg1Pos']); //  % or px 
 $bg1Top      	= htmlspecialchars($params['bg1Top']); // number
 $bg1Left      	= htmlspecialchars($params['bg1Left']); // number
@@ -186,13 +191,15 @@ if  ($bg1Left > ' ')
    {$bg1Left = 'auto';
 	if ($bg1Top != 'auto'  ) {$bg1Pos = '50% '.$bg1Top;} else {$bg1Pos = '';}}
 
-$bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
+$bg2Image    	= htmlspecialchars($params['bg2Image']);
 if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
  {$bg2Image = '/' . $bg2Image;}; 
-//$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
-//if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
-// {$bg2Image_lg = '/' . $bg2Image_lg;}; 
-$bg2Width    	= htmlspecialchars($params['bg2Width']); // number
+$bg2Image_lg    	= htmlspecialchars($params['bg2Image_lg']);
+if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
+ {$bg2Image_lg = '/' . $bg2Image_lg;}; 
+if ($bg2Image > ' ') $bg2Image = 'url("' . $bg2Image . '")'; else $bg2Image = 'none';
+if ($bg2Image_lg > ' ') $bg2Image_lg = 'url("' . $bg2Image_lg . '")'; else $bg2Image_lg = 'none';
+ $bg2Width    	= htmlspecialchars($params['bg2Width']); // number
 $bg2Pos     	= htmlspecialchars($params['bg2Pos']); //  % or px 
 $bg2Top      	= htmlspecialchars($params['bg2Top']); // number
 $bg2Left      	= htmlspecialchars($params['bg2Left']); // number
