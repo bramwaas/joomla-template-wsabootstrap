@@ -136,19 +136,18 @@ if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
 
-
+ 
 
 $bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
 if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
  {$bg0Image = '/' . $bg0Image;}; 
-$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
-if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
- {$bg0Image_lg = '/' . $bg0Image_lg;};
- $bg0Width    	= htmlspecialchars($params['bg0Width']); // number
+//$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
+//if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
+// {$bg0Image_lg = '/' . $bg0Image_lg;};
+$bg0Width    	= htmlspecialchars($params['bg0Width']); // number
 $bg0Pos    		= htmlspecialchars($params['bg0Pos']); //  % or px 
 $bg0Top      	= htmlspecialchars($params['bg0Top']); // number
 $bg0Left      	= htmlspecialchars($params['bg0Left']); // number
-$bg0Repeat    	= htmlspecialchars($params['bg0Repeat']); // repeat no-repeat repeat-x repeat-y 
 $bg0Color    	= htmlspecialchars($params['bg0Color']); // name or hex
 $bg0Dim         = 'px';
 $bg0DimPos      = 'px';
@@ -166,9 +165,9 @@ if  ($bg0Left > ' ')
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
  {$bg1Image = '/' . $bg1Image;};
-$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg1Image_lg = '/' . $bg1Image_lg;};
+//$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
+//if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
+// {$bg1Image_lg = '/' . $bg1Image_lg;};
 $bg1Width    	= htmlspecialchars($params['bg1Width']); // number
 $bg1Pos    		= htmlspecialchars($params['bg1Pos']); //  % or px 
 $bg1Top      	= htmlspecialchars($params['bg1Top']); // number
@@ -190,9 +189,9 @@ if  ($bg1Left > ' ')
 $bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
 if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
  {$bg2Image = '/' . $bg2Image;}; 
-$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
-if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg2Image_lg = '/' . $bg2Image_lg;}; 
+//$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
+//if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
+// {$bg2Image_lg = '/' . $bg2Image_lg;}; 
 $bg2Width    	= htmlspecialchars($params['bg2Width']); // number
 $bg2Pos     	= htmlspecialchars($params['bg2Pos']); //  % or px 
 $bg2Top      	= htmlspecialchars($params['bg2Top']); // number
@@ -211,12 +210,7 @@ if  ($bg2Left > ' ')
    {$bg2Left = 'auto';
    if ($bg2Top != 'auto'  ) {$bg2Pos = '50% '.$bg2Top;} else {$bg2Pos = '';}}
 
-   $bg0Size='';
-   $bg1Size='';
-   $bg2Size='';
-   $bg0Repeat='';
-   $bg1Repeat='';
-   $bg2Repeat='';
+
 
 try
  { /*begin try */
@@ -245,7 +239,7 @@ if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . 
 
 
 if ($bg0Image > ' ' ) fwrite($tv_file, '$bg0Image:          ' . $bg0Image .  ";\n");
-if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
+//if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
 if ($bg0Width > ' ' ) fwrite($tv_file, '$bg0Width:          ' . $bg0Width . ";\n");
 if ($bg0Pos > ' '   ) fwrite($tv_file, '$bg0Pos:            ' . $bg0Pos . ";\n");
 if ($bg0Top > ' '  )  fwrite($tv_file, '$bg0Top:            ' . $bg0Top . ";\n");
@@ -253,7 +247,7 @@ if ($bg0Left > ' '  ) fwrite($tv_file, '$bg0Left:           ' . $bg0Left . ";\n"
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
 
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
-if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
+//if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
 if ($bg1Width > ' ' ) fwrite($tv_file, '$bg1Width:          ' . $bg1Width . ";\n");
 if ($bg1Pos > ' '   ) fwrite($tv_file, '$bg1Pos:            ' . $bg1Pos . ";\n");
 if ($bg1Top > ' '  )  fwrite($tv_file, '$bg1Top:            ' . $bg1Top . ";\n");
@@ -261,7 +255,7 @@ if ($bg1Left > ' '  ) fwrite($tv_file, '$bg1Left:           ' . $bg1Left . ";\n"
 if ($bg1Color > ' ' ) fwrite($tv_file, '$bg1Color:          ' . $bg1Color . ";\n");
 
 if ($bg2Image > ' ' ) fwrite($tv_file, '$bg2Image:          ' . $bg2Image .  ";\n");
-if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
+//if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
 if ($bg2Width > ' ' ) fwrite($tv_file, '$bg2Width:          ' . $bg2Width . ";\n");
 if ($bg2Pos > ' '   ) fwrite($tv_file, '$bg2Pos:            ' . $bg2Pos . ";\n");
 if ($bg2Top > ' '  )  fwrite($tv_file, '$bg2Top:            ' . $bg2Top . ";\n");
