@@ -246,7 +246,7 @@ if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . 
 
 
 if ($bg0Image > ' ' ) fwrite($tv_file, '$bg0Image:          ' . $bg0Image .  ";\n");
-//if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
+if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
 if ($bg0Width > ' ' ) fwrite($tv_file, '$bg0Width:          ' . $bg0Width . ";\n");
 if ($bg0Pos > ' '   ) fwrite($tv_file, '$bg0Pos:            ' . $bg0Pos . ";\n");
 if ($bg0Top > ' '  )  fwrite($tv_file, '$bg0Top:            ' . $bg0Top . ";\n");
@@ -254,7 +254,7 @@ if ($bg0Left > ' '  ) fwrite($tv_file, '$bg0Left:           ' . $bg0Left . ";\n"
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
 
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
-//if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
+if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
 if ($bg1Width > ' ' ) fwrite($tv_file, '$bg1Width:          ' . $bg1Width . ";\n");
 if ($bg1Pos > ' '   ) fwrite($tv_file, '$bg1Pos:            ' . $bg1Pos . ";\n");
 if ($bg1Top > ' '  )  fwrite($tv_file, '$bg1Top:            ' . $bg1Top . ";\n");
@@ -262,7 +262,7 @@ if ($bg1Left > ' '  ) fwrite($tv_file, '$bg1Left:           ' . $bg1Left . ";\n"
 if ($bg1Color > ' ' ) fwrite($tv_file, '$bg1Color:          ' . $bg1Color . ";\n");
 
 if ($bg2Image > ' ' ) fwrite($tv_file, '$bg2Image:          ' . $bg2Image .  ";\n");
-//if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
+if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
 if ($bg2Width > ' ' ) fwrite($tv_file, '$bg2Width:          ' . $bg2Width . ";\n");
 if ($bg2Pos > ' '   ) fwrite($tv_file, '$bg2Pos:            ' . $bg2Pos . ";\n");
 if ($bg2Top > ' '  )  fwrite($tv_file, '$bg2Top:            ' . $bg2Top . ";\n");
