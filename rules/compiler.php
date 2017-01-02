@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) 2016 Bram Waasdorp. All rights reserved.
+ * @copyright Copyright (C) 2016 - 2017 Bram Waasdorp. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor
@@ -22,6 +22,7 @@ V juni 2016 overgang naar SASS (scss)
 v 12-6-2016 fout in bg1Pos (weer) opgelost
 v 15-7-2016 grid.scss toegevoegd
 v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
+v 2-1-2017 breakpoint voor sizes
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -146,7 +147,8 @@ if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'image
  {$bg0Image_lg = '/' . $bg0Image_lg;};
 if ($bg0Image > ' ') $bg0Image = 'url("' . $bg0Image . '")'; else $bg0Image = 'none';
 if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
- 
+$bg0Breakpoint    	= htmlspecialchars($params['bg0Breakpoint']);
+
 $bg0Width    	= htmlspecialchars($params['bg0Width']); // number
 $bg0Pos    		= htmlspecialchars($params['bg0Pos']); //  % or px 
 $bg0Top      	= htmlspecialchars($params['bg0Top']); // number
@@ -173,7 +175,9 @@ if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'image
  {$bg1Image_lg = '/' . $bg1Image_lg;};
 if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
 if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
- $bg1Width    	= htmlspecialchars($params['bg1Width']); // number
+$bg1Breakpoint    	= htmlspecialchars($params['bg1Breakpoint']);
+
+$bg1Width    	= htmlspecialchars($params['bg1Width']); // number
 $bg1Pos    		= htmlspecialchars($params['bg1Pos']); //  % or px 
 $bg1Top      	= htmlspecialchars($params['bg1Top']); // number
 $bg1Left      	= htmlspecialchars($params['bg1Left']); // number
@@ -199,7 +203,9 @@ if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'image
  {$bg2Image_lg = '/' . $bg2Image_lg;}; 
 if ($bg2Image > ' ') $bg2Image = 'url("' . $bg2Image . '")'; else $bg2Image = 'none';
 if ($bg2Image_lg > ' ') $bg2Image_lg = 'url("' . $bg2Image_lg . '")'; else $bg2Image_lg = 'none';
- $bg2Width    	= htmlspecialchars($params['bg2Width']); // number
+$bg2Breakpoint    	= htmlspecialchars($params['bg2Breakpoint']);
+
+$bg2Width    	= htmlspecialchars($params['bg2Width']); // number
 $bg2Pos     	= htmlspecialchars($params['bg2Pos']); //  % or px 
 $bg2Top      	= htmlspecialchars($params['bg2Top']); // number
 $bg2Left      	= htmlspecialchars($params['bg2Left']); // number
@@ -252,6 +258,8 @@ if ($bg0Pos > ' '   ) fwrite($tv_file, '$bg0Pos:            ' . $bg0Pos . ";\n")
 if ($bg0Top > ' '  )  fwrite($tv_file, '$bg0Top:            ' . $bg0Top . ";\n");
 if ($bg0Left > ' '  ) fwrite($tv_file, '$bg0Left:           ' . $bg0Left . ";\n");
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
+if ($bg0Breakpoint > ' '  ) fwrite($tv_file, '$bg0Breakpoint:             '  . $bg0Breakpoint .  "px;\n");
+
 
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
 if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
@@ -260,6 +268,7 @@ if ($bg1Pos > ' '   ) fwrite($tv_file, '$bg1Pos:            ' . $bg1Pos . ";\n")
 if ($bg1Top > ' '  )  fwrite($tv_file, '$bg1Top:            ' . $bg1Top . ";\n");
 if ($bg1Left > ' '  ) fwrite($tv_file, '$bg1Left:           ' . $bg1Left . ";\n");
 if ($bg1Color > ' ' ) fwrite($tv_file, '$bg1Color:          ' . $bg1Color . ";\n");
+if ($bg1Breakpoint > ' '  ) fwrite($tv_file, '$bg1Breakpoint:             '  . $bg1Breakpoint .  "px;\n");
 
 if ($bg2Image > ' ' ) fwrite($tv_file, '$bg2Image:          ' . $bg2Image .  ";\n");
 if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
@@ -268,6 +277,7 @@ if ($bg2Pos > ' '   ) fwrite($tv_file, '$bg2Pos:            ' . $bg2Pos . ";\n")
 if ($bg2Top > ' '  )  fwrite($tv_file, '$bg2Top:            ' . $bg2Top . ";\n");
 if ($bg2Left > ' '  ) fwrite($tv_file, '$bg2Left:           ' . $bg2Left . ";\n");
 if ($bg2Color > ' ' ) fwrite($tv_file, '$bg2Color:          ' . $bg2Color . ";\n");
+if ($bg2Breakpoint > ' '  ) fwrite($tv_file, '$bg2Breakpoint:             '  . $bg2Breakpoint .  "px;\n");
 
 if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '$hlMarginTop:       '  . $hlMarginTop .  "%;\n");
 if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '$hlMarginLeft:      '  . $hlMarginLeft .  "%;\n");

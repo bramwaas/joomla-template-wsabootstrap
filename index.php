@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die;
 /*
- * @copyright  Copyright (C) 2015 - 2016 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2017 AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -11,6 +11,7 @@
 * 22-5-2016 brandImage toegevoegd
 * 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
 * wel extra images voor grotere breedte met toevoeging _lg 
+* 2-1-2017 breakpoint for sizes srcset
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -35,6 +36,8 @@ if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' )
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
+$bg0Breakpoint 	= htmlspecialchars($this->params->get('bg0Breakpoint'));
+
 $bg0Width    	= htmlspecialchars($this->params->get('bg0Width'));
 $bg0Top      	= htmlspecialchars($this->params->get('bg0Top'));
 $bg0Left      	= htmlspecialchars($this->params->get('bg0Left'));
@@ -49,7 +52,9 @@ if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg1Image_lg = '/' . $bg1Image_lg;};
- $bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
+$bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
+ 
+$bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
 $bg1Top      	= htmlspecialchars($this->params->get('bg1Top'));
 $bg1Left      	= htmlspecialchars($this->params->get('bg1Left'));
 $bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
@@ -63,7 +68,10 @@ if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' )
 $bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
 if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg2Image_lg = '/' . $bg2Image_lg;}; 
- $bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
+$bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
+ 
+ 
+$bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
 $bg2Top      	= htmlspecialchars($this->params->get('bg2Top'));
 $bg2Left      	= htmlspecialchars($this->params->get('bg2Left'));
 $bg2Color    	= htmlspecialchars($this->params->get('bg2Color'));
@@ -148,18 +156,40 @@ else
 	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
 	<?php if ($bg0Image_lg > " " && $bg0ImageW > 0 && $bg0Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w,'. $bg0Image_lg .' ' . $bg0Image_lgW . 'w'  ; ?>"
-	sizes="<?php echo '(min-width: 768px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+		<?php if ($bg0Breakpoint > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg0Breakpoint .'px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+		<?php endif; ?>
 	<?php endif; ?>
  />
 <?php endif; ?>
 	<!-- Begin Container-->
         <div id="wrapper" class="container">
 <!-- begin html content background images -->
-<?php if ($bg1Size == 'html' && $bg1Image > " ") : ?>
-<img id="img_bg1Image" src="<?php echo $bg1Image; ?>" alt="Background image content" />
+<?php if ($bg1Image > " ") : ?>
+<img id="img_bg1Image" src="<?php echo $bg1Image; ?>" alt="Background image content"
+	  <?php if ($bg1ImageW > 0 ) : ?>width="<?php echo $bg1ImageW; ?>"<?php endif; ?>
+	  <?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
+	  <?php if ($bg1Image_lg > " " && $bg1ImageW > 0 && $bg1Image_lgW > 0 ) : ?>
+	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w,'. $bg1Image_lg .' ' . $bg1Image_lgW . 'w'  ; ?>"
+		<?php if ($bg1Breakpoint > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg1Breakpoint .'px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
+		<?php endif; ?>
+	  <?php endif; ?>
+
+ />
 <?php endif; ?>
-<?php if ($bg2Size == 'html' && $bg2Image > " ") : ?>
-<img id="img_bg2Image" src="<?php echo $bg2Image; ?>" alt="Logo image" />
+<?php if ($bg2Image > " ") : ?>
+<img id="img_bg2Image" src="<?php echo $bg2Image; ?>" alt="Logo image" 
+	  <?php if ($bg2ImageW > 0 ) : ?>width="<?php echo $bg2ImageW; ?>"<?php endif; ?>
+	  <?php if ($bg2ImageH > 0 ) : ?>height="<?php echo $bg2ImageH; ?>"<?php endif; ?>
+	  <?php if ($bg2Image_lg > " " && $bg2ImageW > 0 && $bg2Image_lgW > 0 ) : ?>
+	srcset="<?php echo $bg2Image .' '. $bg2ImageW .'w,'. $bg2Image_lg .' ' . $bg2Image_lgW . 'w'  ; ?>"
+		<?php if ($bg2Breakpoint > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg2Breakpoint .'px) '.$bg2Image_lgW .'px,'. $bg2ImageW .'px'; ?>"
+		<?php endif; ?>
+	  <?php endif; ?>
+
+/>
 <?php endif; ?>
 <div id="wrapper1">
 <!-- eindel content background images -->

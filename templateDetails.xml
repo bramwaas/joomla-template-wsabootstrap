@@ -3,7 +3,7 @@
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
 	<version>1.3.0</version>
-	<creationDate>28-12-2016</creationDate>
+	<creationDate>2-1-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
@@ -78,6 +78,10 @@
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
+				<field name="bg0Breakpoint"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
 				<field name="bg0Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
 					description="Width background image if Size = percentage or pixels"
@@ -119,6 +123,10 @@
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
+				<field name="bg1Breakpoint"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
 				<field name="bg1Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
 					description="Width background image if Size = percentage or pixels"
@@ -159,6 +167,10 @@
 				<field name="bg2Image_lgW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
+					 />	
+				<field name="bg2Breakpoint"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
 					 />	
 				<field name="bg2Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
