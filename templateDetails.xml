@@ -3,7 +3,7 @@
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
 	<version>1.3.0</version>
-	<creationDate>2-1-2017</creationDate>
+	<creationDate>5-1-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
@@ -64,8 +64,6 @@
 					 />
 				<field name="bg0Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg0Image_lg" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg0ImageW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGEW_LABEL"
 					description="BGIMAGEW_DESCRIPTION"
@@ -74,11 +72,23 @@
 					label="BGIMAGEH_LABEL"
 					description="BGIMAGEH_DESCRIPTION"
 					 />	
+				<field name="bg0Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg0Image_lgW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
-				<field name="bg0Breakpoint"  class="validate-numeric" type="text" default=""
+				<field name="bg0Breakpoint_lg"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
+				<field name="bg0Image_sm" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
+				<field name="bg0Image_smW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGESMW_LABEL"
+					description="BGIMAGESMW_DESCRIPTION"
+					 />	
+				<field name="bg0Breakpoint_sm"  class="validate-numeric" type="text" default=""
 					label="BGBREAKPOINT_LABEL"
 					description="BGBREAKPOINT_DESCRIPTION"
 					 />	
@@ -109,8 +119,6 @@
 					 />
 				<field name="bg1Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg1Image_lg" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg1ImageW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGEW_LABEL"
 					description="BGIMAGEW_DESCRIPTION"
@@ -119,11 +127,23 @@
 					label="BGIMAGEH_LABEL"
 					description="BGIMAGEH_DESCRIPTION"
 					 />	
+				<field name="bg1Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg1Image_lgW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
-				<field name="bg1Breakpoint"  class="validate-numeric" type="text" default=""
+				<field name="bg1Breakpoint_lg"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
+				<field name="bg1Image_sm" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
+				<field name="bg1Image_smW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGESMW_LABEL"
+					description="BGIMAGESMW_DESCRIPTION"
+					 />	
+				<field name="bg1Breakpoint_sm"  class="validate-numeric" type="text" default=""
 					label="BGBREAKPOINT_LABEL"
 					description="BGBREAKPOINT_DESCRIPTION"
 					 />	
@@ -154,8 +174,6 @@
 					 />
 				<field name="bg2Image" type="media" default="" 
                                        	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg2Image_lg" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg2ImageW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGEW_LABEL"
 					description="BGIMAGEW_DESCRIPTION"
@@ -164,11 +182,23 @@
 					label="BGIMAGEH_LABEL"
 					description="BGIMAGEH_DESCRIPTION"
 					 />	
+				<field name="bg2Image_lg" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
 				<field name="bg2Image_lgW"  class="validate-numeric" type="text" default=""
 					label="BGIMAGELGW_LABEL"
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
-				<field name="bg2Breakpoint"  class="validate-numeric" type="text" default=""
+				<field name="bg2Breakpoint_lg"  class="validate-numeric" type="text" default=""
+					label="BGBREAKPOINT_LABEL"
+					description="BGBREAKPOINT_DESCRIPTION"
+					 />	
+				<field name="bg2Image_sm" type="media" default="" 
+                                       	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
+				<field name="bg2Image_smW"  class="validate-numeric" type="text" default=""
+					label="BGIMAGESMW_LABEL"
+					description="BGIMAGESMW_DESCRIPTION"
+					 />	
+				<field name="bg2Breakpoint_sm"  class="validate-numeric" type="text" default=""
 					label="BGBREAKPOINT_LABEL"
 					description="BGBREAKPOINT_DESCRIPTION"
 					 />	

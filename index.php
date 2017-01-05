@@ -12,6 +12,7 @@
 * 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
 * wel extra images voor grotere breedte met toevoeging _lg 
 * 2-1-2017 breakpoint for sizes srcset
+* 5-1-2017 naast -lg nu ook _sm
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -36,7 +37,11 @@ if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' )
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
 if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
  {$bg0Image_lg = '/' . $bg0Image_lg;};
-$bg0Breakpoint 	= htmlspecialchars($this->params->get('bg0Breakpoint'));
+$bg0Breakpoint_lg 	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
+$bg0Image_sm    	= htmlspecialchars($this->params->get('bg0Image_sm'));
+if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
+{$bg0Image_sm = '/' . $bg0Image_sm;};
+$bg0Breakpoint_sm 	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
 
 $bg0Width    	= htmlspecialchars($this->params->get('bg0Width'));
 $bg0Top      	= htmlspecialchars($this->params->get('bg0Top'));
@@ -52,8 +57,12 @@ if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg1Image_lg = '/' . $bg1Image_lg;};
-$bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
- 
+$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
+$bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
+if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
+{$bg1Image_sm = '/' . $bg1Image_sm;};
+$bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
+
 $bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
 $bg1Top      	= htmlspecialchars($this->params->get('bg1Top'));
 $bg1Left      	= htmlspecialchars($this->params->get('bg1Left'));
@@ -68,8 +77,11 @@ if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' )
 $bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
 if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
  {$bg2Image_lg = '/' . $bg2Image_lg;}; 
-$bg1Breakpoint    	= htmlspecialchars($this->params->get('bg1Breakpoint'));
- 
+$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
+$bg2Image_sm    	= htmlspecialchars($this->params->get('bg2Image_sm'));
+if ($bg2Image_sm > ' ' and strtolower(substr ( $bg2Image_sm , 0 , 7 )) == 'images/' )
+{$bg2Image_sm = '/' . $bg2Image_sm;};
+$bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm')); 
  
 $bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
 $bg2Top      	= htmlspecialchars($this->params->get('bg2Top'));
@@ -156,8 +168,8 @@ else
 	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
 	<?php if ($bg0Image_lg > " " && $bg0ImageW > 0 && $bg0Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w,'. $bg0Image_lg .' ' . $bg0Image_lgW . 'w'  ; ?>"
-		<?php if ($bg0Breakpoint > 0 ) : ?>
-	sizes="<?php echo '(min-width: ' . $bg0Breakpoint .'px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
+		<?php if ($bg0Breakpoint_lg > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'. $bg0ImageW .'px'; ?>"
 		<?php endif; ?>
 	<?php endif; ?>
  />
@@ -171,8 +183,8 @@ else
 	  <?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
 	  <?php if ($bg1Image_lg > " " && $bg1ImageW > 0 && $bg1Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w,'. $bg1Image_lg .' ' . $bg1Image_lgW . 'w'  ; ?>"
-		<?php if ($bg1Breakpoint > 0 ) : ?>
-	sizes="<?php echo '(min-width: ' . $bg1Breakpoint .'px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
+		<?php if ($bg1Breakpoint_lg > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg1Breakpoint_lg .'px) '.$bg1Image_lgW .'px,'. $bg1ImageW .'px'; ?>"
 		<?php endif; ?>
 	  <?php endif; ?>
 
@@ -184,8 +196,8 @@ else
 	  <?php if ($bg2ImageH > 0 ) : ?>height="<?php echo $bg2ImageH; ?>"<?php endif; ?>
 	  <?php if ($bg2Image_lg > " " && $bg2ImageW > 0 && $bg2Image_lgW > 0 ) : ?>
 	srcset="<?php echo $bg2Image .' '. $bg2ImageW .'w,'. $bg2Image_lg .' ' . $bg2Image_lgW . 'w'  ; ?>"
-		<?php if ($bg2Breakpoint > 0 ) : ?>
-	sizes="<?php echo '(min-width: ' . $bg2Breakpoint .'px) '.$bg2Image_lgW .'px,'. $bg2ImageW .'px'; ?>"
+		<?php if ($bg2Breakpoint_lg > 0 ) : ?>
+	sizes="<?php echo '(min-width: ' . $bg2Breakpoint_lg .'px) '.$bg2Image_lgW .'px,'. $bg2ImageW .'px'; ?>"
 		<?php endif; ?>
 	  <?php endif; ?>
 
