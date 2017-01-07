@@ -50,6 +50,7 @@ $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
 $bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
 $bg0ImageH    	= htmlspecialchars($this->params->get('bg0ImageH'));
 $bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
+$bg0Image_smW  	= htmlspecialchars($this->params->get('bg0Image_smW'));
 
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
 if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
@@ -70,6 +71,7 @@ $bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
 $bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
 $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
 $bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
+$bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 
 $bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
 if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
@@ -90,7 +92,7 @@ $bg2Color    	= htmlspecialchars($this->params->get('bg2Color'));
 $bg2ImageW    	= htmlspecialchars($this->params->get('bg2ImageW'));
 $bg2ImageH    	= htmlspecialchars($this->params->get('bg2ImageH'));
 $bg2Image_lgW  	= htmlspecialchars($this->params->get('bg2Image_lgW'));
-
+$bg2Image_smW  	= htmlspecialchars($this->params->get('bg2Image_smW'));
 
 
 
@@ -170,19 +172,19 @@ else
 	<?php if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  ) : ?>
 	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w'   ; ?>
 		<?php if ($bg0Image_lgW > 0) : ?>
-		<?php echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; ?>
+<?php echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; ?>
 		<?php endif; ?>
 		<?php if ($bg0Image_smW > 0) : ?>
-		<?php echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; ?>
+<?php echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; ?>
 		<?php endif; ?>"
 		<?php if ($bg0Breakpoint_lg > 0 || $bg0Breakpoint_sm > 0) : ?>
 		sizes="<?php if ($bg0Breakpoint_sm > 0 ) : ?>
-	<?php echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; ?>
+<?php echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; ?>
 			<?php endif; ?>
 			<?php if ($bg0Breakpoint_lg > 0 ) : ?>
-	<?php echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'; ?>
+<?php echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'; ?>
 			<?php endif; ?>
-		<?php echo $bg0ImageW .'px'; ?>"
+<?php echo $bg0ImageW .'px'; ?>"
 		<?php endif; ?>
 	<?php endif; ?>
  />
@@ -198,19 +200,19 @@ else
 	<?php if ($bg1ImageW > 0  && (($bg1Image_lg > " " && $bg1Image_lgW > 0) || ($bg1Image_sm > " " && $bg1Image_smW > 0))  ) : ?>
 	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w'   ; ?>
 		<?php if ($bg1Image_lgW > 0) : ?>
-		<?php echo ','. $bg1Image_lg .' ' . $bg1Image_lgW . 'w' ; ?>
+<?php echo ','. $bg1Image_lg .' ' . $bg1Image_lgW . 'w' ; ?>
 		<?php endif; ?>
 		<?php if ($bg1Image_smW > 0) : ?>
-		<?php echo ','. $bg1Image_sm .' ' . $bg1Image_smW . 'w' ; ?>
+<?php echo ','. $bg1Image_sm .' ' . $bg1Image_smW . 'w' ; ?>
 		<?php endif; ?>"
 		<?php if ($bg1Breakpoint_lg > 0 || $bg1Breakpoint_sm > 0) : ?>
 		sizes="<?php if ($bg1Breakpoint_sm > 0 ) : ?>
-	<?php echo '(max-width: ' . $bg1Breakpoint_sm .'px) '.$bg1Image_smW .'px,'; ?>
+<?php echo '(max-width: ' . $bg1Breakpoint_sm .'px) '.$bg1Image_smW .'px,'; ?>
 			<?php endif; ?>
 			<?php if ($bg1Breakpoint_lg > 0 ) : ?>
-	<?php echo '(min-width: ' . $bg1Breakpoint_lg .'px) '.$bg1Image_lgW .'px,'; ?>
+<?php echo '(min-width: ' . $bg1Breakpoint_lg .'px) '.$bg1Image_lgW .'px,'; ?>
 			<?php endif; ?>
-		<?php echo $bg1ImageW .'px'; ?>"
+<?php echo $bg1ImageW .'px'; ?>"
 		<?php endif; ?>
 	<?php endif; ?>
  />
@@ -223,19 +225,19 @@ else
 	<?php if ($bg2ImageW > 0  && (($bg2Image_lg > " " && $bg2Image_lgW > 0) || ($bg2Image_sm > " " && $bg2Image_smW > 0))  ) : ?>
 	srcset="<?php echo $bg2Image .' '. $bg2ImageW .'w'   ; ?>
 		<?php if ($bg2Image_lgW > 0) : ?>
-		<?php echo ','. $bg2Image_lg .' ' . $bg2Image_lgW . 'w' ; ?>
+<?php echo ','. $bg2Image_lg .' ' . $bg2Image_lgW . 'w' ; ?>
 		<?php endif; ?>
 		<?php if ($bg2Image_smW > 0) : ?>
-		<?php echo ','. $bg2Image_sm .' ' . $bg2Image_smW . 'w' ; ?>
+<?php echo ','. $bg2Image_sm .' ' . $bg2Image_smW . 'w' ; ?>
 		<?php endif; ?>"
 		<?php if ($bg2Breakpoint_lg > 0 || $bg2Breakpoint_sm > 0) : ?>
 		sizes="<?php if ($bg2Breakpoint_sm > 0 ) : ?>
-	<?php echo '(max-width: ' . $bg2Breakpoint_sm .'px) '.$bg2Image_smW .'px,'; ?>
+<?php echo '(max-width: ' . $bg2Breakpoint_sm .'px) '.$bg2Image_smW .'px,'; ?>
 			<?php endif; ?>
 			<?php if ($bg2Breakpoint_lg > 0 ) : ?>
-	<?php echo '(min-width: ' . $bg2Breakpoint_lg .'px) '.$bg2Image_lgW .'px,'; ?>
+<?php echo '(min-width: ' . $bg2Breakpoint_lg .'px) '.$bg2Image_lgW .'px,'; ?>
 			<?php endif; ?>
-		<?php echo $bg2ImageW .'px'; ?>"
+<?php echo $bg2ImageW .'px'; ?>"
 		<?php endif; ?>
 	<?php endif; ?>
  />
