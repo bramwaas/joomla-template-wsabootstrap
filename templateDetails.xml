@@ -79,8 +79,8 @@
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
 				<field name="bg0Breakpoint_lg"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-LG"
+					description="BGBREAKPOINT_DESCRIPTION-LG"
 					 />	
 				<field name="bg0Image_sm" type="media" default="" 
                                        	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
@@ -89,8 +89,8 @@
 					description="BGIMAGESMW_DESCRIPTION"
 					 />	
 				<field name="bg0Breakpoint_sm"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-SM"
+					description="BGBREAKPOINT_DESCRIPTION-SM"
 					 />	
 				<field name="bg0Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
@@ -134,8 +134,8 @@
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
 				<field name="bg1Breakpoint_lg"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-LG"
+					description="BGBREAKPOINT_DESCRIPTION-LG"
 					 />	
 				<field name="bg1Image_sm" type="media" default="" 
                                        	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
@@ -144,8 +144,8 @@
 					description="BGIMAGESMW_DESCRIPTION"
 					 />	
 				<field name="bg1Breakpoint_sm"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-SM"
+					description="BGBREAKPOINT_DESCRIPTION-SM"
 					 />	
 				<field name="bg1Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
@@ -189,8 +189,8 @@
 					description="BGIMAGELGW_DESCRIPTION"
 					 />	
 				<field name="bg2Breakpoint_lg"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-LG"
+					description="BGBREAKPOINT_DESCRIPTION-LG"
 					 />	
 				<field name="bg2Image_sm" type="media" default="" 
                                        	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
@@ -199,8 +199,8 @@
 					description="BGIMAGESMW_DESCRIPTION"
 					 />	
 				<field name="bg2Breakpoint_sm"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL"
-					description="BGBREAKPOINT_DESCRIPTION"
+					label="BGBREAKPOINT_LABEL-SM"
+					description="BGBREAKPOINT_DESCRIPTION-SM"
 					 />	
 				<field name="bg2Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
