@@ -164,31 +164,23 @@ else
 <![endif]-->
 </head>
 <body id="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>">
-<?php if ($bg0Image > " " ) : ?>
-<img id="img_bg0Image" src="<?php echo $bg0Image; ?>" alt="Background image"
-	<?php if ($bg0ImageW > 0 ) : ?>width="<?php echo $bg0ImageW; ?>"<?php endif; ?>
-	<?php if ($bg0ImageH > 0 ) : ?>height="<?php echo $bg0ImageH; ?>"<?php endif; ?>
-
-	<?php if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  ) : ?>
-	srcset="<?php echo $bg0Image .' '. $bg0ImageW .'w'   ; ?>
-		<?php if ($bg0Image_lgW > 0) : ?>
-<?php echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; ?>
-		<?php endif; ?>
-		<?php if ($bg0Image_smW > 0) : ?>
-<?php echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; ?>
-		<?php endif; ?>"
-		<?php if ($bg0Breakpoint_lg > 0 || $bg0Breakpoint_sm > 0) : ?>
-		sizes="<?php if ($bg0Breakpoint_sm > 0 ) : ?>
-<?php echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; ?>
-			<?php endif; ?>
-			<?php if ($bg0Breakpoint_lg > 0 ) : ?>
-<?php echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'; ?>
-			<?php endif; ?>
-<?php echo $bg0ImageW .'px'; ?>"
-		<?php endif; ?>
-	<?php endif; ?>
- />
-<?php endif; ?>
+<?php if ($bg0Image > " " )
+{ echo "\n" . '<img id="img_bg0Image" src="' . $bg0Image . '" alt="Background image"';
+	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}
+	if ($bg0ImageH > 0 ) {echo "\n\t" . 'height="' . $bg0ImageH . '"';}
+	if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  )
+	{echo "\n\t" . 'srcset="' . $bg0Image . ' ' . $bg0ImageW .'w'   ;
+	if ($bg0Image_lgW > 0) {echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; }
+	if ($bg0Image_smW > 0) {echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; }
+	if ($bg0Breakpoint_lg > 0 || $bg0Breakpoint_sm > 0)
+		{echo "\n\t" . 'sizes="';
+		if ($bg0Breakpoint_sm > 0 ) {echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; }
+		if ($bg0Breakpoint_lg > 0 ) {echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,';
+		echo $bg0ImageW .'px"'; 
+		}
+	} 
+ echo "\n" . '/>';
+}?>
 	<!-- Begin Container-->
         <div id="wrapper" class="container">
 <!-- begin html content background images -->
@@ -196,9 +188,8 @@ else
 <img id="img_bg1Image" src="<?php echo $bg1Image; ?>" alt="Background image content"
 	<?php if ($bg1ImageW > 0 ) : ?>width="<?php echo $bg1ImageW; ?>"<?php endif; ?>
 	<?php if ($bg1ImageH > 0 ) : ?>height="<?php echo $bg1ImageH; ?>"<?php endif; ?>
-
-	<?php if ($bg1ImageW > 0  && (($bg1Image_lg > " " && $bg1Image_lgW > 0) || ($bg1Image_sm > " " && $bg1Image_smW > 0))  ) : ?>
-	srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w'   ; ?>
+	<?php if ($bg1ImageW > 0  && (($bg1Image_lg > " " && $bg1Image_lgW > 0) || ($bg1Image_sm > " " && $bg1Image_smW > 0))  ) : 
+	?>srcset="<?php echo $bg1Image .' '. $bg1ImageW .'w'   ; ?>
 		<?php if ($bg1Image_lgW > 0) : ?>
 <?php echo ','. $bg1Image_lg .' ' . $bg1Image_lgW . 'w' ; ?>
 		<?php endif; ?>
@@ -222,8 +213,8 @@ else
 	<?php if ($bg2ImageW > 0 ) : ?>width="<?php echo $bg2ImageW; ?>"<?php endif; ?>
 	<?php if ($bg2ImageH > 0 ) : ?>height="<?php echo $bg2ImageH; ?>"<?php endif; ?>
 
-	<?php if ($bg2ImageW > 0  && (($bg2Image_lg > " " && $bg2Image_lgW > 0) || ($bg2Image_sm > " " && $bg2Image_smW > 0))  ) : ?>
-	srcset="<?php echo $bg2Image .' '. $bg2ImageW .'w'   ; ?>
+	<?php if ($bg2ImageW > 0  && (($bg2Image_lg > " " && $bg2Image_lgW > 0) || ($bg2Image_sm > " " && $bg2Image_smW > 0))  ) : 
+	?>srcset="<?php echo $bg2Image .' '. $bg2ImageW .'w'   ; ?>
 		<?php if ($bg2Image_lgW > 0) : ?>
 <?php echo ','. $bg2Image_lg .' ' . $bg2Image_lgW . 'w' ; ?>
 		<?php endif; ?>
