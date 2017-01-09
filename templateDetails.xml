@@ -6,7 +6,8 @@
 	<creationDate>5-1-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
-	<copyright>AHC Waasdorp, Amsterdam 2015 - 2016</copyright>
+	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
+	<copyright>AHC Waasdorp, Amsterdam 2015 - 2017</copyright>
 	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
 	<files>
 		<filename>component.php</filename>

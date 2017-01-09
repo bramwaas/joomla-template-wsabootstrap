@@ -110,8 +110,8 @@ $doc->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true
 $doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js');
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js');
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript', true, false);
 // Add Stylesheets
 //JHtmlBootstrap::loadCss();
 // Load optional rtl Bootstrap css and Bootstrap bugfixes
