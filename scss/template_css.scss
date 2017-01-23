@@ -10,6 +10,7 @@
 // 20161210 word-space klein gemaakt om te voorkomen dat spaties tussen kolom-html de lay-out verknooeien
 // 20161214 blog_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
+// 20170123 width 100% itemsleading div
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -125,6 +126,16 @@ div[class^="newsfeed"]
 	.items-row,
 	.list-striped
 	{ word-spacing: -0.25em;}
+	.items-leading {
+	    width:100%;
+ 	   div {
+  	    float:none;
+  	    display:inline-block;
+	    width:100%;
+  	  }
+	}
+
+
 	
 	.items-leading > div,
 	.items-row > div,
@@ -143,15 +154,6 @@ div[class^="newsfeed"]
 	}
 	
 }
-.blog .items-leading {
-    width:100%;
-    div {
-      float:none;
-      display:inline-block;
-    }
-}
-
-
 
 .icon-cog,
 .icons .icon-cog
