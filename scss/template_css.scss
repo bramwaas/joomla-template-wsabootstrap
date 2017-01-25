@@ -124,19 +124,11 @@ div[class^="newsfeed"]
 */
 	.items-leading,
 	.items-row,
-	.list-striped
-	{ word-spacing: -0.25em;}
-	.items-leading {
-	    width:100%;
- 	   div {
-  	    float:none;
-  	    display:inline-block;
-	    width:100%;
-  	  }
+	.list-striped 	{ 
+		word-spacing: -0.25em;
+		width: 100%
 	}
-
-
-	
+		
 	.items-leading > div,
 	.items-row > div,
 	.items-row > div > div,
@@ -145,12 +137,13 @@ div[class^="newsfeed"]
 		word-spacing: normal;
 		vertical-align: top;
 		float: none;
+		width:100%;
 	}
 
 	.item, .span6, .span4, .span3, .span2, .span1,
 	.cat-list-row0, .cat-list-row1  { 
-			width: 100%;
-			margin-right: 0px; 
+		width: 100%;
+		margin-right: 0px; 
 	}
 	
 }
