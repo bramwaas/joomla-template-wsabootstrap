@@ -13,6 +13,7 @@
 * wel extra images voor grotere breedte met toevoeging _lg 
 * 2-1-2017 breakpoint for sizes srcset
 * 7-1-2017 naast -lg nu ook _sm
+* 4-2-2017 ook defer bij caption.js
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -108,10 +109,8 @@ echo '<!-- base is ' . $doc->getBase() .' $templatestyleid ='.$templatestyleid .
 // Add extra metadata
 $doc->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
 $doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
-// Add JavaScript Frameworks
+// Add  Frameworks
 JHtml::_('bootstrap.framework');
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript', true, false);
 // Add Stylesheets
 //JHtmlBootstrap::loadCss();
 // Load optional rtl Bootstrap css and Bootstrap bugfixes
@@ -126,6 +125,11 @@ $doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstr
 // (for js $attribs = array('integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
 // template stijl
 $doc->addStyleSheet('templates/' . $this->template . '/css/template.min.' . $templatestyleid . '.css');
+// Add JavaScript 
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript', true, false);
+$doc->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false); // defer caption.js.  	
+	
 $doc->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
