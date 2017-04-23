@@ -2,8 +2,8 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
-	<version>1.3.1</version>
-	<creationDate>14-04-2017</creationDate>
+	<version>1.3.2</version>
+	<creationDate>23-04-2017</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -388,8 +388,10 @@
   					<option value="1">JYES</option>
   					<option value="0">JNO</option>
 				</field>
-
-
+				<field name="wsaCssFilename"  type="text" default=""
+					label="WSA_CSS_FILENAME_LABEL"
+					description="WSA_CSS_FILENAME_DESCRIPTION"
+                   	/>
 			</fieldset>
 			<fieldset name="Documentation" >
 				<field name="explanation4"  type="spacer" hr="false"
