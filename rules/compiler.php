@@ -24,7 +24,7 @@ v 15-7-2016 grid.scss toegevoegd
 v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
 v 2-1-2017 breakpoint voor sizes
 v 5-1-2017 ook breakpoint small
-v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd
+v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
