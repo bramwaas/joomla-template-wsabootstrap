@@ -24,6 +24,7 @@ v 15-7-2016 grid.scss toegevoegd
 v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
 v 2-1-2017 breakpoint voor sizes
 v 5-1-2017 ook breakpoint small
+v 27-4-2017 andere naam css mogelijk
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -137,7 +138,15 @@ $wsaCustomSCSS    	= htmlspecialchars($params['wsaCustomSCSS']); // url
 if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
-
+ 
+$wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
+ if ($wsaCssFilename > " ")
+ {$path_parts = pathinfo($wsaCssFilename);
+ if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+ }
+ else
+ { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
+ 
  
 
 $bg0Image    	= htmlspecialchars($params['bg0Image']);
@@ -366,6 +375,7 @@ $st_file =fopen($currentpath. '/../scss/style' . $templateid . '.scss', "w+");
 
 fwrite($st_file, "// style" . $templateid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
+fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables mixins etc.
 fwrite($st_file, '@import "variables.scss";' . "\n");
 fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
@@ -419,7 +429,7 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
- $server->compileFile($currentpath. '/../scss/style' . $templateid . '.scss', $currentpath.'/../css/template.min.' . $templateid . '.css');
+$server->compileFile($currentpath. '/../scss/style' . $templateid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 

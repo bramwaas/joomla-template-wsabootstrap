@@ -14,6 +14,7 @@
 * 2-1-2017 breakpoint for sizes srcset
 * 7-1-2017 naast -lg nu ook _sm
 * 4-2-2017 ook defer bij caption.js
+* 27-4-2017 naam CSS variabel
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -95,6 +96,13 @@ $bg2ImageH    	= htmlspecialchars($this->params->get('bg2ImageH'));
 $bg2Image_lgW  	= htmlspecialchars($this->params->get('bg2Image_lgW'));
 $bg2Image_smW  	= htmlspecialchars($this->params->get('bg2Image_smW'));
 
+$wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
+if ($wsaCssFilename > " ")
+{$path_parts = pathinfo($wsaCssFilename);
+if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+}
+else
+{ $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
 
 ?>
@@ -124,7 +132,8 @@ $doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstr
 // standaard bootstrap stijle
 // (for js $attribs = array('integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
 // template stijl
-$doc->addStyleSheet('templates/' . $this->template . '/css/template.min.' . $templatestyleid . '.css');
+$doc->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
+
 // Add JavaScript 
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript', true, false);
