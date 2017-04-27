@@ -44,7 +44,7 @@ class WsaFormRuleCompiler extends JFormRule
 public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
     {
 
- $templateid =  JURI::getInstance ()->getVar('id');
+ $templatestyleid =  JURI::getInstance ()->getVar('id');
  $app = JFactory::getApplication();
  $currentpath = realpath(__DIR__ ) ;
  $home = JFactory::getApplication()->input->get('jform', '', 'array')['home'];
@@ -256,7 +256,7 @@ try
 /* opslaan style parameters in style.scss bestanden */
 
 /* variabelen */
-$tv_file =fopen($currentpath. '/../scss/style' . $templateid . '.var.scss', "w+");
+$tv_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.var.scss', "w+");
 
 
 /* less files creeeren en compileren naar .css */
@@ -370,10 +370,10 @@ if ($footerPosBottom > ' '  ) 	fwrite($tv_file, '$footerPosBottom:   '  . $foote
 /* einde variabelen */
 fclose($tv_file);
 
-$st_file =fopen($currentpath. '/../scss/style' . $templateid . '.scss', "w+");
+$st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+");
 /* .scss file dat variabelen gebruikt */
 
-fwrite($st_file, "// style" . $templateid .  ".scss \n");
+fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables mixins etc.
@@ -398,7 +398,7 @@ if ($background > ' '  )
 	}
 	fwrite($st_file, '@import "'  . $background .  "\";\n");
 }
-fwrite($st_file, '@import "style' . $templateid . '.var.scss";' . "\n");
+fwrite($st_file, '@import "style' . $templatestyleid . '.var.scss";' . "\n");
 fwrite($st_file, '@import "magnificpopup.scss";' . "\n");
 fwrite($st_file, '@import "template_dropdown.scss";' . "\n");
 fwrite($st_file, '@import "template_css.scss";' . "\n");
@@ -429,14 +429,14 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
-$server->compileFile($currentpath. '/../scss/style' . $templateid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
+$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 
- {/* niet kunnen vinden van templateid bij root (lijkt inmiddels opgelost te zijn)*/ 
-  $server->compileFile($currentpath. '/../scss/style' . $templateid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+ {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
   /* ivm &tmpl=component */
-  $server->compileFile($currentpath. '/../scss/style' . $templateid . '.scss', $currentpath.'/../css/template'  . '.css');
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
 }
 
 /* einde les files compileren naar .css */
