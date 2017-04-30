@@ -6,16 +6,25 @@
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
+ * 30-4-2017 kleine aanpassingen vooruitlopend op BS4
  */
 
 defined('_JEXEC') or die;
+
+$id = '';
+
+if ($tagId = $params->get('tag_id', ''))
+{
+	$id = ' id="' . $tagId . '"';
+}
+
 // Note. It is important to remove spaces between elements.
 $app = JFactory::getApplication();
 $sitename = $app->getCfg('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
-$brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage')); 
-if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
- {$brandImage = '/' . $brandImage;}; 
+$brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
+if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' )
+{$brandImage = '/' . $brandImage;};
 
 ?>
 
@@ -45,18 +54,11 @@ if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/
 
 <!-- oude module -->
 
-<ul class="nav navbar-nav menu <?php echo $class_sfx;?>"<?php
-	$tag = '';
-	if ($params->get('tag_id') != null)
-	{
-		$tag = $params->get('tag_id').'';
-		echo ' id="'.$tag.'"';
-	}
-?>>
-<?php
-foreach ($list as $i => &$item) :
-	$class = 'item-'.$item->id;
-	if ($item->id == $active_id)
+<ul <?php echo $id; ?> class="nav navbar-nav menu<?php echo $class_sfx;?> flex-column<?php echo $class_sfx; ?>">
+<?php foreach ($list as $i => &$item) :
+	
+	$class = 'nav-item item-'.$item->id;
+	if ($item->id == $active_id  || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 	{
 		$class .= ' current';
 	}
@@ -65,9 +67,10 @@ foreach ($list as $i => &$item) :
 	{
 		$class .= ' active';
 	}
-	elseif ($item->type == 'alias')
+	elseif ($item->type === 'alias')
 	{
 		$aliasToId = $item->params->get('aliasoptions');
+
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
 			$class .= ' active';
@@ -78,7 +81,7 @@ foreach ($list as $i => &$item) :
 		}
 	}
 
-	if ($item->type == 'separator')
+	if ($item->type === 'separator')
 	{
 		$class .= ' divider';
 	}
@@ -97,19 +100,14 @@ foreach ($list as $i => &$item) :
 		$class .= ' parent';
 	}
 
-	if (!empty($class))
-	{
-		$class = ' class="'.trim($class) .'"';
-	}
-
-	echo '<li'.$class.'>';
+	echo '<li class="' . $class . '">';
 
 	// Render the menu item.
 	switch ($item->type) :
 		case 'separator':
-		case 'url':
 		case 'component':
 		case 'heading':
+		case 'url':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
 			break;
 
@@ -122,11 +120,9 @@ foreach ($list as $i => &$item) :
 	if ($item->deeper){
 		echo '<ul class="nav-child unstyled small dropdown-menu">';
 	}
-	elseif ($item->deeper) {
-		echo '<ul>';
-	}
 	// The next item is shallower.
-	elseif ($item->shallower) {
+	elseif ($item->shallower)
+	{
 		echo '</li>';
 		echo str_repeat('</ul></li>', $item->level_diff);
 	}
@@ -143,7 +139,6 @@ endforeach;
 		      	 </div> <!-- end navbar-inner -->
 		    	</div>
 <!--End navbar-->
-
 
 
 

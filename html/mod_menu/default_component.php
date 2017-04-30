@@ -6,6 +6,7 @@
  * @copyright   	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
+ * 30-4-2017 nav-link toegevoegd bij class voor <a> ivm BS4
  */
 
 defined('_JEXEC') or die;
@@ -17,16 +18,16 @@ $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 if ($item->menu_image)
 {
 	$item->params->get('menu_text', 1) ?
-		$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><div class="image-title">'.$item->title.'</div> ' :
-		$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
-
-		if ($item->deeper) {
+	$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><div class="image-title">'.$item->title.'</div> ' :
+	$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
+	
+	if ($item->deeper) {
 		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
 		$item->flink = '#';
 	}
 }
 
-elseif ($item->deeper) { 
+elseif ($item->deeper) {
 	$linktype = $item->title. '<b class="caret"></b>' ;
 	if ($item->level < 2) {
 		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
@@ -41,10 +42,12 @@ else {
 	$linktype = $item->title;
 }
 
+$class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'class="nav-link"';
+
 switch ($item->browserNav) :
-	default:
-	case 0:
-?><a <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><span><?php echo $linktype; ?></span></a><?php
+default:
+case 0:
+	?><a <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><span><?php echo $linktype; ?></span></a><?php
 		break;
 
 	case 1:
@@ -60,4 +63,3 @@ switch ($item->browserNav) :
 		break;
 
 endswitch;
-
