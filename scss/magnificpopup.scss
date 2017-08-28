@@ -1,6 +1,7 @@
 /* magnificpopup.scss */
 // aangepast om meer op modal van joomla (squeezebox mootools) te laten lijken bw 20160402 
 // aangepast om afsluitknop niet te laten overriden door dj-imageslider bw 2016119
+// bw 20170827 workaround verticalFit gallery
 .mfp-bg { 
   top: 0;
   left: 0;
@@ -397,6 +398,8 @@ padding:10px 10px;
 background: white;
 border-radius: 3px;
 box-shadow: $mfp-img-box-shadow; 
+max-height: calc(100vh -  #{2 * $mfp-img-margintopbottom}); /* work-around voor niet (goed) werken verticalFit in gallery */
+
 }
 div.mfp-iframe-scaler button.mfp-close
 {
