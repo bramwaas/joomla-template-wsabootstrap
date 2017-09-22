@@ -15,6 +15,7 @@
 * 7-1-2017 naast -lg nu ook _sm
 * 4-2-2017 ook defer bij caption.js
 * 27-4-2017 naam CSS variabel
+* 22/9/2017 http in https veranderd bij googleapis
 */
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
@@ -123,7 +124,7 @@ JHtml::_('bootstrap.framework');
 //JHtmlBootstrap::loadCss();
 // Load optional rtl Bootstrap css and Bootstrap bugfixes
 //JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
-$doc->addStyleSheet('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+$doc->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
 // bootstrap stylesheets van cdn
 $attribs = array('integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
 $doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'text/css', null,  $attribs);
