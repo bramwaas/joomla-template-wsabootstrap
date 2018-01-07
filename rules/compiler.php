@@ -25,13 +25,21 @@ v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
 v 2-1-2017 breakpoint voor sizes
 v 5-1-2017 ook breakpoint small
 v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
+v 7-1-2018 J3.8 j4 namespace
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
 use Leafo\ScssPhp\Compiler;
 use Leafo\ScssPhp\Server;
+
+use Joomla\CMS\Factory;   
+use Joomla\CMS\Uri\Uri;
+//use Joomla\CMS\HTML\HTMLHelper;
+//use Joomla\CMS\Language\Text;   // voor vertalingen???
+use Joomla\CMS\Form\FormRule;
+
  
-class WsaFormRuleCompiler extends JFormRule
+class WsaFormRuleCompiler extends FormRule
 /* voorbeeld eenvoudigste validatie dmv regexp
  uitgebreider gaat met functie test die ik hier wel ga gebruiken.
 {
@@ -41,14 +49,17 @@ class WsaFormRuleCompiler extends JFormRule
 
 { /* begin WsaFormRuleCompiler voert validatie wsa.compiler uit */
 
-public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
+//public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
+
+public function test(\SimpleXMLElement $element,  $value, string $group = null, \Joomla\Registry\Registry $input = null, \Joomla\CMS\Form\Form $form = null)
+
     {
 
- $templatestyleid =  JURI::getInstance ()->getVar('id');
- $app = JFactory::getApplication();
+ $templatestyleid =  Uri::getInstance ()->getVar('id');
+ $app = Factory::getApplication();
  $currentpath = realpath(__DIR__ ) ;
- $home = JFactory::getApplication()->input->get('jform', '', 'array')['home'];
- $params = JFactory::getApplication()->input->get('jform', '', 'array')['params'];
+ $home = Factory::getApplication()->input->get('jform', '', 'array')['home'];
+ $params = Factory::getApplication()->input->get('jform', '', 'array')['params'];
 
 
 if  (htmlspecialchars($params['compile']) == '1')

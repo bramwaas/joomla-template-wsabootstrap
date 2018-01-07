@@ -68,6 +68,7 @@ defined('_JEXEC') or die;
  *
  * @since   3.0
  */
+use Joomla\CMS\Language\Text;
 function pagination_list_footer($list)
 {
 	$html = "<div class=\"pagination\">\n";
@@ -144,34 +145,35 @@ function pagination_list_render($list)
  * @return  string                    HTML markup for active item
  *
  * @since   3.0
+  * JText veranderd in Text in verband met J4 namespaced classes
  */
 function pagination_item_active(&$item)
 {
 	$class = '';
 
 	// Check for "Start" item
-	if ($item->text == JText::_('JLIB_HTML_START'))
+	if ($item->text == Text::_('JLIB_HTML_START'))
 	{
 //		$display = '<span class="icon-first"></span>';
 		$display = '<span class="glyphicon glyphicon-fast-backward"></span>';
 	}
 
 	// Check for "Prev" item
-	if ($item->text == JText::_('JPREV'))
+	if ($item->text == Text::_('JPREV'))
 	{
 //		$display = '<span class="icon-previous"></span>';
 		$display = '<span class="glyphicon glyphicon-backward"></span>';
 	}
 
 	// Check for "Next" item
-	if ($item->text == JText::_('JNEXT'))
+	if ($item->text == Text::_('JNEXT'))
 	{
 //		$display = '<span class="icon-next"></span>';
 		$display = '<span class="glyphicon glyphicon-forward"></span>';
 	}
 
 	// Check for "End" item
-	if ($item->text == JText::_('JLIB_HTML_END'))
+	if ($item->text == Text::_('JLIB_HTML_END'))
 	{
 //		$display = '<span class="icon-last"></span>';
 		$display = '<span class="glyphicon glyphicon-fast-forward"></span>';
@@ -195,32 +197,33 @@ function pagination_item_active(&$item)
  * @return  string  HTML markup for inactive item
  *
  * @since   3.0
+ * JText veranderd in Text in verband met J4 namespaced classes
  */
 function pagination_item_inactive(&$item)
 {
 	// Check for "Start" item
-	if ($item->text == JText::_('JLIB_HTML_START'))
+	if ($item->text == Text::_('JLIB_HTML_START'))
 	{
 //		return '<li class="disabled"><a><span class="icon-first"></span></a></li>';
 		return '<li class="disabled"><a><span class="glyphicon glyphicon-fast-backward"></span></a></li>';
 	}
 
 	// Check for "Prev" item
-	if ($item->text == JText::_('JPREV'))
+	if ($item->text == Text::_('JPREV'))
 	{
 //		return '<li class="disabled"><a><span class="icon-previous"></span></a></li>';
 		return '<li class="disabled"><a><span class="glyphicon glyphicon-backward"></span></a></li>';
 	}
 
 	// Check for "Next" item
-	if ($item->text == JText::_('JNEXT'))
+	if ($item->text == Text::_('JNEXT'))
 	{
 //		return '<li class="disabled"><a><span class="icon-next"></span></a></li>';
 		return '<li class="disabled"><a><span class="glyphicon glyphicon-forward"></span></a></li>';
 	}
 
 	// Check for "End" item
-	if ($item->text == JText::_('JLIB_HTML_END'))
+	if ($item->text == Text::_('JLIB_HTML_END'))
 	{
 //		return '<li class="disabled"><a><span class="icon-last"></span></a></li>';
 		return '<li class="disabled"><a><span class="glyphicon glyphicon-fast-forward"></span></a></li>';

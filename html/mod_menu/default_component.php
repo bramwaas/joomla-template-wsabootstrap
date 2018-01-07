@@ -7,6 +7,7 @@
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * 30-4-2017 nav-link toegevoegd bij class voor <a> ivm BS4
+ * 1-1-2018 foutje in html na-link verbeterd door ontbrekende spatie na " in te voegen.
  */
 
 defined('_JEXEC') or die;
@@ -42,7 +43,7 @@ else {
 	$linktype = $item->title;
 }
 
-$class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'class="nav-link"';
+$class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'class="nav-link" ';
 
 switch ($item->browserNav) :
 default:

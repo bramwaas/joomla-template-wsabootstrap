@@ -1,12 +1,13 @@
 <?php defined('_JEXEC') or die;
 /*
- * @copyright  Copyright (C) 2015 - 2017 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2018 AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
-
+ * 20160121 variabele style niet meer inline, maar via template.min.<styleid>.css
+ * 3-4-2016 squeezebox verwijderd ten gunste van magnific popup
  * 24-4-2016 ook begin en eind van navbar naar module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
 * 22-5-2016 brandImage toegevoegd
 * 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
@@ -16,21 +17,42 @@
 * 4-2-2017 ook defer bij caption.js
 * 27-4-2017 naam CSS variabel
 * 22/9/2017 http in https veranderd bij googleapis
-*/
-$app = JFactory::getApplication();
-$doc = JFactory::getDocument();
-$sitename = $app->getCfg('sitename');
-$templateparams  = $app->getTemplate(true)->params;
+* 01/01/2018 6/1 voorbereidingen voor J4 door deleen van cassiopeia te kopieren en misschien aan te passen in die richting.
+// $app = JFactory::getApplication();  // using from cassiopeia
+// $doc = JFactory::getDocument();   // using J38+ Api
+//$doc = Factory::getDocument();
+// use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
+// addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
 
- // bw 6-4-2016
- // Get the template
-$template = $app->getTemplate(true);
-// Echo the ID
-$templatestyleid =  $template->id;  
-// v 20160121 variabele style niet meer inline, maar via template.min.<styleid>.css
-// 3-4-2016 squeezebox verwijderd ten gunste van magnific popup
+*/
+
+// copied from cassiopeia
+use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;   // voor vertalingen???
+// end copied from cassiopeia
+/** @var JDocumentHtml $this */
+
+$app  = Factory::getApplication();
+$lang = Factory::getLanguage();
+
 // Detecting Active Variables
+$option   = $app->input->getCmd('option', '');
+$view     = $app->input->getCmd('view', '');
+$layout   = $app->input->getCmd('layout', '');
+$task     = $app->input->getCmd('task', '');
 $itemid   = $app->input->getCmd('Itemid', '');
+$sitename = $app->get('sitename');
+$menu     = $app->getMenu()->getActive();
+$pageclass = $menu->params->get('pageclass_sfx');
+
+// end copied from cassiopeia
+
+// Get the template, params and id 
+$template = $app->getTemplate(true);
+$templateparams  = $template->params;
+$templatestyleid =  $template->id;  
 $displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no 
 
 
@@ -112,28 +134,31 @@ else
 <head>
 <jdoc:include type="head" />
 <?php
-echo '<!-- base is ' . $doc->getBase() .' $templatestyleid ='.$templatestyleid .'  -->';
+echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  -->';
 
 
 // Add extra metadata
-$doc->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
-$doc->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
-// Add Stylesheets
-$doc->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+$this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
+$this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
+// Add Stylesheets  // depreciated  v4 new signature 
+$this->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' , array('version'=>'auto'), array('id'=>'googleapis-fonts.css'));
 // bootstrap stylesheets van cdn
-$attribs = array('integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
-$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'text/css', null,  $attribs);
-$attribs = array('integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
-$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , 'text/css', null, $attribs);
+$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
+//$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'text/css', null,  $attribs);
+$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
+$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
+$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
 // template stijl
-$doc->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename);
+$attribs = array('id'=>'template.css');
+$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>'auto'), $attribs);
 
 // Add JavaScript 
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript', true, false);
-$doc->addScript($this->baseurl  . '/media/system/js/caption.js' , 'text/javascript', true, false); // defer caption.js.  	
+//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);  // depreciated  new signature in v4 
+$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', array('version'=>'1-1-0'), array('id'=>'MagnificPopupV1-1-0.js', 'defer'=>'defer'));
+$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', array('version'=>'auto'), array('id'=>'template.js', 'defer'=>'defer'));
+$this->addScript($this->baseurl  . '/media/system/js/caption.js' , array('version'=>'auto'), array('id'=>'caption.js', 'defer'=>'defer')); // defer caption.js.  	
 	
-$doc->addScriptDeclaration('jQuery(document).ready(function() {
+$this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
 , closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
@@ -170,7 +195,18 @@ else
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_IE9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 </head>
-<body id="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>">
+<body id="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>"
+<?php // added from cassiopeia ?>
+class="site-grid site <?php echo $option
+	. ' view-' . $view
+	. ($layout ? ' layout-' . $layout : ' no-layout')
+	. ($task ? ' task-' . $task : ' no-task')
+	. ($itemid ? ' itemid-' . $itemid : '')
+	. ' ' . $pageclass;
+	echo ($this->direction == 'rtl' ? ' rtl' : '');
+?>"
+
+>
 <?php if ($bg0Image > " " )
 { echo "\n" . '<img id="img_bg0Image" src="' . $bg0Image . '" alt="Background image"';
 	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}

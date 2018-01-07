@@ -11,6 +11,7 @@
 // 20161214 blog_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
 // 20170123 width 100% itemsleading div
+// 20180107 enkele variabele namen met @ beginnend vervangen door $
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -441,7 +442,7 @@ h6 {
 
 /* einde (max-width: $screen-xs-max) */ }
 
-@media (min-width: @screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
+@media (min-width: $screen-xs-min) { /* groter dan (meeste) smartphones (width >= 480px) */
 .blog {
 	.span6, .span4,	.span3, .span2, .span1,
 	&.cols-2 .cat-list-row0, &.cols-3 .cat-list-row0, &.cols-4 .cat-list-row0, &.cols-5 .cat-list-row0, &.cols-6 .cat-list-row0,
@@ -526,7 +527,7 @@ h6 {
 	
 /* einde (min-width: $screen-sm-min) */}
 
-@media (min-width: @screen-md-min )  { /* desktop (width >= 992px) */
+@media (min-width: $screen-md-min )  { /* desktop (width >= 992px) */
 
 .blog {
 	.cols-5 .span2,
@@ -552,6 +553,6 @@ h6 {
 }
 
 }
-/* einde @media  @screen-md-min */
+/* einde @media  $screen-md-min */
 
 

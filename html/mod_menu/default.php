@@ -7,9 +7,11 @@
  * Modifications	Joomla CSS
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
  * 30-4-2017 kleine aanpassingen vooruitlopend op BS4
+ * 7-1-2018 start with J4 namespaces
  */
 
 defined('_JEXEC') or die;
+use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 
 $id = '';
 
@@ -19,8 +21,8 @@ if ($tagId = $params->get('tag_id', ''))
 }
 
 // Note. It is important to remove spaces between elements.
-$app = JFactory::getApplication();
-$sitename = $app->getCfg('sitename');
+$app = Factory::getApplication();
+$sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
 if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' )
