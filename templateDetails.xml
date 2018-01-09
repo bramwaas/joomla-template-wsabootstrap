@@ -3,7 +3,7 @@
 <extension version="3.1" type="template" client="site" method="upgrade">
 	<name>wsa_bootstrap</name>
 	<version>1.4.0</version>
-	<creationDate>07-01-2018</creationDate>
+	<creationDate>09-01-2018</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>

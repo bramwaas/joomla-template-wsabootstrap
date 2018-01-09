@@ -12,6 +12,7 @@
 
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
+use Joomla\CMS\Helper\ModuleHelper;
 
 $id = '';
 
@@ -110,11 +111,11 @@ if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/
 		case 'component':
 		case 'heading':
 		case 'url':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
+		    require ModuleHelper::getLayoutPath('mod_menu', 'default_'.$item->type);
 			break;
 
 		default:
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+		    require ModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
 	endswitch;
 
