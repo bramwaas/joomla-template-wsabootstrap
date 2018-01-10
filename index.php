@@ -23,13 +23,13 @@
 //$doc = Factory::getDocument();
 // use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
 // addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
-
+10-1-2018
 */
 
 // copied from cassiopeia
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
-use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\HTML\HTMLHelper;
+//use Joomla\CMS\Uri\Uri;
+//use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;   // voor vertalingen???
 // end copied from cassiopeia
 /** @var JDocumentHtml $this */

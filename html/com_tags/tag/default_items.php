@@ -18,7 +18,7 @@ use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Facto
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;  
-use \Joomla\CMS\Router\Route;
+use Joomla\CMS\Router\Route;
 
 
 HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
