@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "https://www.joomla.org/xml/dtd/2.5/template-install.dtd">
-<extension version="3.1" type="template" client="site" method="upgrade">
+<extension version="3.8" type="template" client="site" method="upgrade">
   <compatibility>
     <include>
-      <versions from="3.1.0" to="3.99.99" />
+      <versions from="3.8.0" to="3.99.99" />
       <versions from="4.0.0" to="4.00.99" />
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>1.4.0</version>
-	<creationDate>19-01-2018</creationDate>
+	<creationDate>21-01-2018</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>

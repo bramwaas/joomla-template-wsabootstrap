@@ -3,6 +3,7 @@
 	<name>joomla-template-wsabootstrap</name>
 	<comment></comment>
 	<projects>
+		<project>joomla-cms</project>
 		<project>wordpress-simple-google-icalendar-widget</project>
 	</projects>
 	<buildSpec>
