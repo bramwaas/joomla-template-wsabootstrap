@@ -214,8 +214,8 @@
 					description="Width background image if Size = percentage or pixels"
 					 />
 				<field name="bg2Pos" type="list" default="%"
-http://www.waasdorpsoekhan.nl/update/ashas/ashas.xml					label="BGPOSITION_LABEL"	
- 				    description="BGPOSITION_DESCRIPTION"
+					label="BGPOSITION_LABEL"	
+ 				    	description="BGPOSITION_DESCRIPTION"
 				>
 					<option value="%">BGPERCENTAGE</option>
 					<option value="px">BGPIXELS</option>
