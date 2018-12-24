@@ -8,8 +8,8 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>1.4.0</version>
-	<creationDate>21-01-2018</creationDate>
+	<version>1.4.1</version>
+	<creationDate>24-12-2018</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
