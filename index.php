@@ -24,6 +24,7 @@
 // use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
 // addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
 10-1-2018
+// 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
 */
 
 // copied from cassiopeia
@@ -57,15 +58,12 @@ $displaySitename = htmlspecialchars($templateparams->get('displaySitename')); //
 
 
 $bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
-if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
- {$bg0Image = '/' . $bg0Image;}; 
+// if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' )  {$bg0Image = '/' . $bg0Image;}; 
 $bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
-if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
- {$bg0Image_lg = '/' . $bg0Image_lg;};
+// if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' ) {$bg0Image_lg = '/' . $bg0Image_lg;};
 $bg0Breakpoint_lg 	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
 $bg0Image_sm    	= htmlspecialchars($this->params->get('bg0Image_sm'));
-if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
- {$bg0Image_sm = '/' . $bg0Image_sm;};
+// if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )  {$bg0Image_sm = '/' . $bg0Image_sm;};
 $bg0Breakpoint_sm 	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
 
 $bg0Width    	= htmlspecialchars($this->params->get('bg0Width'));
@@ -78,15 +76,12 @@ $bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
 $bg0Image_smW  	= htmlspecialchars($this->params->get('bg0Image_smW'));
 
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
-if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;};
+// if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg1Image_lg = '/' . $bg1Image_lg;};
+// if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' )  {$bg1Image_lg = '/' . $bg1Image_lg;};
 $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
-if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
- {$bg1Image_sm = '/' . $bg1Image_sm;};
+// if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )  {$bg1Image_sm = '/' . $bg1Image_sm;};
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
 
 $bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
@@ -99,15 +94,12 @@ $bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
 $bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 
 $bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
-if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
- {$bg2Image = '/' . $bg2Image;}; 
+// if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' )  {$bg2Image = '/' . $bg2Image;}; 
 $bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
-if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg2Image_lg = '/' . $bg2Image_lg;}; 
+// if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' )  {$bg2Image_lg = '/' . $bg2Image_lg;}; 
 $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
 $bg2Image_sm    	= htmlspecialchars($this->params->get('bg2Image_sm'));
-if ($bg2Image_sm > ' ' and strtolower(substr ( $bg2Image_sm , 0 , 7 )) == 'images/' )
- {$bg2Image_sm = '/' . $bg2Image_sm;};
+// if ($bg2Image_sm > ' ' and strtolower(substr ( $bg2Image_sm , 0 , 7 )) == 'images/' )  {$bg2Image_sm = '/' . $bg2Image_sm;};
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm')); 
  
 $bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
