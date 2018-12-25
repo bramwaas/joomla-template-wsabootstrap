@@ -25,12 +25,13 @@
 // addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
 10-1-2018
 // 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
+25-12-2018 1.4.2 optioneel invoegen twbs js en css
 */
 
 // copied from cassiopeia
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 //use Joomla\CMS\Uri\Uri;
-//use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;   // voor vertalingen???
 // end copied from cassiopeia
 /** @var JDocumentHtml $this */
@@ -135,17 +136,47 @@ $this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
 // Add Stylesheets  // depreciated  v4 new signature 
 $this->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' , array('version'=>'auto'), array('id'=>'googleapis-fonts.css'));
 // bootstrap stylesheets van cdn
-$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
-//$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'text/css', null,  $attribs);
-$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
-$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
-$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+if ($params->get('twbs_version',4) == "3") {
+   if ($params->get('include_twbs_css') == "1") {
+	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
+	$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
+	$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
+	$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+   }
+}
+else {
+	if ($params->get('include_twbs_css') == "1") {
+	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', 'crossorigin' => 'anonymous');
+	$this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array('version'=>'4.1.3'),  $attribs);
+
+	//$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
+	//$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+	}
+}	
 // template stijl
 $attribs = array('id'=>'template.css');
 $this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>'auto'), $attribs);
 
 // Add JavaScript 
-//$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', 'text/javascript', true, false);  // depreciated  new signature in v4 
+
+HTMLHelper::_('jquery.framework');  // to be sure that jquery is loaded before dependent javascripts
+if ($params->get('twbs_version',4) == "3") {
+   if ($params->get('include_twbs_css') == "1") {
+    }
+    if ($params->get('include_twbs_js') == "1") {
+	$this->addScript($this->baseurl . '/templates/' . $this->template . '/js/jui/bootstrap.min.js', array('version'=>'3.3.7'), 
+		array('id'=>'bootstrap.min.js', 'defer'=>'defer'));
+    }
+}
+else {
+	if ($params->get('include_twbs_js') == "1") {
+	    $this->addScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js", array('version'=>'1.14.3'),
+	        array('id'=>'popper.js', 'integrity' => 'sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49',   'crossorigin' => 'anonymous'));
+	    $this->addScript("https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js", array('version'=>'4.1.3'),
+	        array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy',   'crossorigin' => 'anonymous'));
+    }
+	    
+}
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', array('version'=>'1-1-0'), array('id'=>'MagnificPopupV1-1-0.js', 'defer'=>'defer'));
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', array('version'=>'auto'), array('id'=>'template.js', 'defer'=>'defer'));
 $this->addScript($this->baseurl  . '/media/system/js/caption.js' , array('version'=>'auto'), array('id'=>'caption.js', 'defer'=>'defer')); // defer caption.js.  	
