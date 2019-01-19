@@ -26,6 +26,7 @@
 10-1-2018
 // 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
 25-12-2018 1.4.2 optioneel invoegen twbs js en css
+19-1-2019 timestamp als versie voor template.css
 */
 
 // copied from cassiopeia
@@ -123,6 +124,8 @@ else
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
 $include_twbs_css	= htmlspecialchars($this->params->get('include_twbs_css', '1'));
 $include_twbs_js	= htmlspecialchars($this->params->get('include_twbs_js','1'));
+$wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
+$wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ))
 
 ?>
 <!DOCTYPE html>
@@ -160,7 +163,7 @@ else {
 
 // template stijl
 $attribs = array('id'=>'template.css');
-$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>'auto'), $attribs);
+$this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>$wsaTime), $attribs);
 
 // Add JavaScript 
 
