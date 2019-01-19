@@ -8,8 +8,8 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>1.4.2</version>
-	<creationDate>25-12-2018</creationDate>
+	<version>1.4.3</version>
+	<creationDate>19-01-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -41,6 +41,7 @@
     	<position>headerleft</position>
     	<position>icons</position>
 		<position>left</position>
+		<position>navtext</position>
 		<position>right</position>
 		<position>top</position>
 		<position>topright</position>
@@ -311,8 +312,6 @@
 					label="Margin:"
 					description="Margin between articles."
 					/>
-              <field name="wsaCustomSCSS" type="filelist" directory="images/scss" hide_default="true"
-                   	label="WSACUSTOMSCSS_LABEL" description="WSACUSTOMSCSS_DESCRIPTION" />
 			</fieldset>
 			<fieldset name="Navbar">
 				<field name="brandImage" type="media" default="" 
@@ -352,6 +351,13 @@
 					<option value="transparent">Transparent</option>
 					<option value="inverse">Inverse</option>
 					<option value="inverse transparent">Inverse Transparent</option>
+  					<option value="default navbar-fixed-top">Default fixed top</option>
+  					<option value="default navbar-fixed-bottom">Default fixed bottom</option>
+  					<option value="default navbar-static-top">Default static top</option>
+  					<option value="inverse navbar-fixed-top">Inverse fixed top</option>
+  					<option value="inverse navbar-fixed-bottom">Inverse fixed bottom</option>
+  					<option value="inverse navbar-static-top">Inverse static top</option>
+                
 				</field>
 				<field name="displaySitename" type="list" default="1" label="Display sitename" description="Display sitename in menubar">
 					<option value="1">JYES</option>
@@ -405,10 +411,19 @@
   					<option value="1">JYES</option>
   					<option value="0">JNO</option>
 				</field>
+			 	<field name="wsaCustomSCSS" type="filelist" directory="images/scss" hide_default="true"
+                   	label="WSA_CUSTOMCSS_LABEL" 
+                   	description="WSA_CUSTOMCSS_DESCRIPTION"
+                   	/>
 				<field name="wsaCssFilename"  type="text" default=""
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
+				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
+	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
+	singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
+	filltable="true" readonly="false" />
+	
 			</fieldset>
 			<fieldset name="Documentation" >
 				<field name="explanation4"  type="spacer" hr="false"
