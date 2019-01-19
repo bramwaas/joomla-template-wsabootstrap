@@ -26,6 +26,7 @@ v 2-1-2017 breakpoint voor sizes
 v 5-1-2017 ook breakpoint small
 v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 v 7-1-2018 J3.8 j4 namespace
+v 19-1-2019 custom scss
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -139,8 +140,8 @@ $brandImage    	= htmlspecialchars($params['brandImage']); // url
 $brandSize    	= htmlspecialchars($params['brandSize']); // auto  <width> % or px 
 $brandWidth    	= htmlspecialchars($params['brandWidth']); // number
 $brandDim       = 'px';
-if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
- {$brandImage = '/' . $brandImage;}; 
+//if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
+// {$brandImage = '/' . $brandImage;}; 
 if ($brandImage > ' ') $brandImage = 'url("' . $brandImage . '")';
 if ($brandImage == '%')  {$brandDim = '%';};
 if ($brandWidth > ' ') {$brandWidth = $brandWidth.$brandDim;} else {$brandWidth = 'auto';};
