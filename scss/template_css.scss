@@ -12,6 +12,7 @@
 // voor tags moet class blog worden toegevoegd in plaats van blog_inline.
 // 20170123 width 100% itemsleading div
 // 20180107 enkele variabele namen met @ beginnend vervangen door $
+// 20190119 navbar transparent style toegevoegd. 1.4.3
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -199,6 +200,21 @@ div[class^="newsfeed"]
 .navbar-toggle .icon-bar {
     background-color: $navbar-default-toggle-icon-bar-bg;
 }
+/* transparent navbar */
+.navbar.navbar-default.transparent,
+.navbar.navbar-inverse.transparent{ 
+
+/*	.navbar-inner { */
+		border-width: 0px;
+		-webkit-box-shadow: 0px 0px;
+		box-shadow: 0px 0px;
+		background-color: rgba(0,0,0,0.0);
+		background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+		background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+		background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+/*	} */
+}	
+
 /* einde tijdelijk toegvoegd voor bs 3 */
 
 /* aanpassingen voor newsfeeds uit oudere templates van mij */
