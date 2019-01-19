@@ -8,6 +8,7 @@
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
  * 30-4-2017 kleine aanpassingen vooruitlopend op BS4
  * 7-1-2018 start with J4 namespaces
+ * 5-1-2019 brandimage geen extra / meer
  */
 
 defined('_JEXEC') or die;
@@ -26,14 +27,15 @@ $app = Factory::getApplication();
 $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
-if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' )
-{$brandImage = '/' . $brandImage;};
+$menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
+$navbar = 'navbar-default';
+if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 
 ?>
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<div class="navbar navbar-default " role="navigation">
+		    	<div class="navbar <?php echo $navbar; ?> " role="navigation">
 		         <div class="navbar-inner">
 		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -137,6 +139,8 @@ endforeach;
 ?></ul>
 
 <!-- einde oude module -->
+ 
+
 	          	   </div>
 		          </div>
 		      	 </div> <!-- end navbar-inner -->
