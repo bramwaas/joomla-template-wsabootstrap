@@ -148,9 +148,7 @@ endforeach;
 <!-- einde oude module -->
 
 <?php if ($wsaNavtext > " ") : ?>
-					<div class="navbar-text navbar-right collapse navbar-collapse" id="navbarText">
 						<?php echo $wsaNavtext;  ?>
-					</div>   
 <?php endif; ?>
 
 	          	   </div>
