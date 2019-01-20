@@ -27,6 +27,7 @@ v 5-1-2017 ook breakpoint small
 v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 v 7-1-2018 J3.8 j4 namespace
 v 19-1-2019 custom scss
+v 20-1-2019 wsaNavbarRightWidth
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -110,6 +111,7 @@ $hlMarginBottom = htmlspecialchars($params['hlMarginBottom']);
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
 $iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
+$wsaNavbarRightWidth = htmlspecialchars($params['wsaNavbarRightWidth']);
 $footerWidth    = htmlspecialchars($params['footericonsWidth']);
 $footerPosLeft  = htmlspecialchars($params['footerPosLeft']);
 $footerPosBottom	= htmlspecialchars($params['footerPosBottom']);
@@ -332,6 +334,7 @@ if ($iconsPosLeft > ' '  ) 	fwrite($tv_file, '$iconsPosLeft:      '  . $iconsPos
 if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosTop .  "%;\n");
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
+if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
 
 if ($menuColor > ' '  ) { 	fwrite($tv_file, '$menuColor:           '  . $menuColor .  ";\n");
 			  	fwrite($tv_file, '$graynavbarlighter:    lighten($menuColor,30%)' .  ";\n");
