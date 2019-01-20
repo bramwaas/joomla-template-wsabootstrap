@@ -96,6 +96,12 @@ margin-left: $iconsPosLeft;
 width: $iconsWidth; 
 max-width: 100%;
 }
+#navbar-right-mod
+{
+	display: inline-block;
+	width: $wsaNavbarRightWidth;
+	max-width: 100%;
+}
 
 #wrapper, 
 body>div.container {
@@ -513,6 +519,10 @@ h6 {
 /* einde (min-width: $screen-xs-min) */}
 
 @media (min-width: $screen-sm-min){
+#navbar-right-mod {
+    float: right;
+    margin-right: -15px;
+}
 .blog {
 
 	.span4,
