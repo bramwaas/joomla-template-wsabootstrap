@@ -9,11 +9,17 @@
  * 30-4-2017 kleine aanpassingen vooruitlopend op BS4
  * 7-1-2018 start with J4 namespaces
  * 5-1-2019 brandimage geen extra / meer
+ * 20-1-2019 navtext toegevoegd
  */
 
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 use Joomla\CMS\Helper\ModuleHelper;
+
+//use Joomla\CMS\HTML\HTMLHelper;
+//use Joomla\CMS\Plugin\ PluginHelper;
+
+
 
 $id = '';
 
@@ -30,8 +36,10 @@ $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
 $navbar = 'navbar-default';
 if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
+$wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 ?>
+
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
@@ -137,15 +145,16 @@ if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 	}
 endforeach;
 ?></ul>
-
 <!-- einde oude module -->
- 
+
+<?php if ($wsaNavtext > " ") : ?>
+					<div class="navbar-text navbar-right collapse navbar-collapse" id="navbarText">
+						<?php echo $wsaNavtext;  ?>
+					</div>   
+<?php endif; ?>
 
 	          	   </div>
 		          </div>
 		      	 </div> <!-- end navbar-inner -->
 		    	</div>
 <!--End navbar-->
-
-
-
