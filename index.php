@@ -27,6 +27,7 @@
 // 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
 25-12-2018 1.4.2 optioneel invoegen twbs js en css
 19-1-2019 timestamp als versie voor template.css
+20-1-2019 icons verplaatst
 */
 
 // copied from cassiopeia
@@ -303,6 +304,11 @@ class="site-grid site <?php echo $option
 					<div class="clearfix"></div>
 				</div><!--End Pos0-->
 				<?php endif; ?>
+				<?php if(  $this->countModules('icons'))    : ?>
+				<div id="icons">
+					<jdoc:include type="modules" name="icons" />
+				</div>   
+				<?php endif; ?>
 				<?php if(  $this->countModules('headerleft'))    : ?>
 				<div id="headerleft">
 					<div class="inner">
@@ -367,12 +373,6 @@ class="site-grid site <?php echo $option
 			</div><!--End Row-->
           
           </div><!--End Container Content-->
-      <?php if(  $this->countModules('icons'))    : ?>
-       <!-- social icons in principe absoluut geplaatst tov container -->
-          <div id="icons">
-           <jdoc:include type="modules" name="icons" />
-		</div>   
-      <?php endif; ?>
 	<!-- Begin Footer -->
 	<div class="footer">
 			<hr />
