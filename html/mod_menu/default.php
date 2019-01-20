@@ -17,7 +17,11 @@ use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Facto
 use Joomla\CMS\Helper\ModuleHelper;
 
 //use Joomla\CMS\HTML\HTMLHelper;
-//use Joomla\CMS\Plugin\ PluginHelper;
+//use Joomla\CMS\Plugin\PluginHelper;
+//use Joomla\CMS\Document\HtmlDocument;
+//use Joomla\CMS\Document\Renderer\Html\ModulesRenderer;
+
+
 
 
 
@@ -30,6 +34,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 // Note. It is important to remove spaces between elements.
 $app = Factory::getApplication();
+$document = Factory::getDocument();
 $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
@@ -38,6 +43,36 @@ $navbar = 'navbar-default';
 if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
+	/**
+	 * Loads and renders the module
+	 *
+	 * @param   string  $position  The position assigned to the module
+	 * @param   string  $style     The style assigned to the module
+	 *
+	 * @return  mixed
+	 *
+	 * copied from plugins\content\loadmodule 
+	 */
+	 function wsa_load($position, $style = 'none')
+	{
+		
+		//self::$modules[$position] = '';
+		$document = Factory::getDocument();
+		$renderer = $document->loadRenderer('module');
+		$modules  = ModuleHelper::getModules($position);
+		$params   = array('style' => $style);
+		//ob_start();
+
+		foreach ($modules as $module)
+		{
+			echo $renderer->render($module, $params);
+		}
+
+		// self::$modules[$position] = ob_get_clean();
+
+		return $modules[$position];
+		
+	}
 ?>
 
 
@@ -146,11 +181,14 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 endforeach;
 ?></ul>
 <!-- einde oude module -->
-
 <?php if ($wsaNavtext > " ") : ?>
 						<?php echo $wsaNavtext;  ?>
 <?php endif; ?>
-
+				<?php if(  $document->countModules('navbar-right'))    : ?>
+					<span id="navbar-right-mod" class="navbar-right" >
+					<?php wsa_load('navbar-right'); ?>
+					</span> <!-- end navbar-right -->
+				<?php endif; ?>
 	          	   </div>
 		          </div>
 		      	 </div> <!-- end navbar-inner -->
