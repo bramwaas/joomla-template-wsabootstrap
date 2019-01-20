@@ -83,10 +83,18 @@
 
 #icons
 {   /* icons social media boven logo */
+/* was
   position: absolute;
   top: $iconsPosTop;    
   left: $iconsPosLeft;
   width: $iconsWidth; 
+*/  
+position: relative;
+/* margin-top: $iconsPosTop;    
+margin-left: $iconsPosLeft;
+*/
+width: $iconsWidth; 
+max-width: 100%;
 }
 
 #wrapper, 
