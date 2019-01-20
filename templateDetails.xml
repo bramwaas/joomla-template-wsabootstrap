@@ -41,7 +41,7 @@
     	<position>headerleft</position>
     	<position>icons</position>
 		<position>left</position>
-		<position>navtext</position>
+		<position>navbar-right</position>
 		<position>right</position>
 		<position>top</position>
 		<position>topright</position>
@@ -379,6 +379,11 @@
 					label="Menubackground color:"
 					description="If not empty overwrite color of menu background. Default empty  "
 					 />
+				<field name="wsaNavbarRightWidth"  class="validate-numeric" type="text" default="340"
+					label="Width NavbarRight: WSA_NAVBARRIGHT_LABEL"
+					description="Width NavbarRight module in pixels WSA_NAVBARRIGHT_DESCRIPTION"
+					 />
+					 
 				<field
 					name="wsaNavtext"
 					type="textarea"
@@ -429,18 +434,6 @@
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
-				<field
-					name="wsaprepare_content"
-					type="radio"
-					label="WSA_PREPARE_CONTENT_LABEL"
-					description="WSA_PREPARE_CONTENT_DESCRIPTION"
-					class="btn-group btn-group-yesno"
-					default="0"
-					filter="integer"
-					>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
 	singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
