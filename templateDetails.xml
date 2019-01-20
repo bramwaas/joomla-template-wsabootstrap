@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>1.4.3</version>
-	<creationDate>19-01-2019</creationDate>
+	<creationDate>20-01-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -379,6 +379,16 @@
 					label="Menubackground color:"
 					description="If not empty overwrite color of menu background. Default empty  "
 					 />
+				<field
+					name="wsaNavtext"
+					type="textarea"
+					label="WSA_NAVTEXT_LABEL"
+					description="WSA_NAVTEXT_DESCRIPTION"
+					hint="WSA_NAVTEXT_HINT"
+					rows="10"
+					cols="12"
+					filter="raw"
+				/>
 				<field name="menuActiveBgColor"  type="color" default=""
 					label="Menuactivebg color:"
 					description="If not empty overwrite color of active menu background. Default empty  "
@@ -419,6 +429,18 @@
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
+				<field
+					name="wsaprepare_content"
+					type="radio"
+					label="WSA_PREPARE_CONTENT_LABEL"
+					description="WSA_PREPARE_CONTENT_DESCRIPTION"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
 	singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"
@@ -437,4 +459,3 @@
     </updateservers>
 
 </extension>
-
