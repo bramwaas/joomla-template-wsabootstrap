@@ -304,11 +304,6 @@ class="site-grid site <?php echo $option
 					<div class="clearfix"></div>
 				</div><!--End Pos0-->
 				<?php endif; ?>
-				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons">
-					<jdoc:include type="modules" name="icons" />
-				</div>   
-				<?php endif; ?>
 				<?php if(  $this->countModules('headerleft'))    : ?>
 				<div id="headerleft">
 					<div class="inner">
@@ -370,8 +365,13 @@ class="site-grid site <?php echo $option
 					<jdoc:include type="modules" name="position-7" style="well" /><!--End Position-7-->
 				</div><!--End Sidebar Right-->
 				<?php endif; ?>
+ 				<?php if(  $this->countModules('icons'))    : ?>
+				<div id="icons">
+					<jdoc:include type="modules" name="icons" />
+				</div>   
+				<?php endif; ?>
 			</div><!--End Row-->
-          
+         
           </div><!--End Container Content-->
 	<!-- Begin Footer -->
 	<div class="footer">
