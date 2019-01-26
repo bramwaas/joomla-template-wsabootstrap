@@ -8,8 +8,8 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>1.4.3</version>
-	<creationDate>20-01-2019</creationDate>
+	<version>1.4.4</version>
+	<creationDate>26-01-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -398,18 +398,6 @@
 					label="Menuactivebg color:"
 					description="If not empty overwrite color of active menu background. Default empty  "
 					 />
-				<field name="include_twbs_css" type="radio" class="switcher btn-group" default="1" label="TPL_WSABOOTSTRAP_INCLUDE_TWBS_CSS" description="TPL_WSABOOTSTRAP_INCLUDE_TWBS_CSS_DESC" >
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="include_twbs_js" type="radio" class="switcher btn-group" default="1" label="TPL_WSABOOTSTRAP_INCLUDE_TWBS_JS" description="TPL_WSABOOTSTRAP_INCLUDE_TWBS_JS_DESC" >
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="twbs_version" type="radio" class="switcher btn-group" default="3" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
-					<option value="3">3.3.7</option>
-					<option value="4">4.0</option>
-				</field>
 			</fieldset>
 			<fieldset name="Developer" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
 				<field name="compile" type="radio"
@@ -434,6 +422,18 @@
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
+				<field name="include_twbs_css" type="radio" class="switcher btn-group" default="1" label="TPL_WSABOOTSTRAP_INCLUDE_TWBS_CSS" description="TPL_WSABOOTSTRAP_INCLUDE_TWBS_CSS_DESC" >
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="include_twbs_js" type="radio" class="switcher btn-group" default="1" label="TPL_WSABOOTSTRAP_INCLUDE_TWBS_JS" description="TPL_WSABOOTSTRAP_INCLUDE_TWBS_JS_DESC" >
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="twbs_version" type="radio" class="switcher btn-group" default="3" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
+					<option value="3">3.3.7</option>
+					<option value="4">4.2.1</option>
+				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
 	singleheader="true" showtime="true" timeformat="24" todaybutton="true" weeknumbers="true"

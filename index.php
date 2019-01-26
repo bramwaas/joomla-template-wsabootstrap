@@ -28,6 +28,7 @@
 25-12-2018 1.4.2 optioneel invoegen twbs js en css
 19-1-2019 timestamp als versie voor template.css
 20-1-2019 icons verplaatst
+25-1-2019 nieuwe versie BS 4
 */
 
 // copied from cassiopeia
@@ -154,8 +155,8 @@ if ($twbs_version == "3") {
 }
 else {
 	if ($include_twbs_css == "1") {
-	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', 'crossorigin' => 'anonymous');
-	$this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', array('version'=>'4.1.3'),  $attribs);
+	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS', 'crossorigin' => 'anonymous');
+	$this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css', array('version'=>'4.2.1'),  $attribs);
 
 	//$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
 	//$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
@@ -177,10 +178,10 @@ if ($twbs_version == "3") {
 }
 else {
 	if ($include_twbs_js == "1") {
-	    $this->addScript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('version'=>'1.14.3'),
-	        array('id'=>'popper.js', 'integrity' => 'sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49',   'crossorigin' => 'anonymous'));
-	    $this->addScript('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', array('version'=>'4.1.3'),
-	        array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy',   'crossorigin' => 'anonymous'));
+	    $this->addScript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', array('version'=>'1.14.6'),
+	        array('id'=>'popper.js', 'integrity' => 'sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut',   'crossorigin' => 'anonymous'));
+	    $this->addScript('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', array('version'=>'4.2.1'),
+	        array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k',   'crossorigin' => 'anonymous'));
     }
 	    
 }

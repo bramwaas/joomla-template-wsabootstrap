@@ -28,6 +28,7 @@ v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 v 7-1-2018 J3.8 j4 namespace
 v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
+v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -94,6 +95,9 @@ $server = new Server($currentpath. '/../scss', null, $scss);
 // get params
 
 $gplusProfile   = htmlspecialchars($params['gplusProfile']);
+$twbs_version   = htmlspecialchars($params['twbs_version']);
+
+
 $itemVideoHeight= htmlspecialchars($params['itemVideoHeight']);
 $itemLeadHeight = htmlspecialchars($params['itemLeadHeight']);
 $itemLeadWidth  = htmlspecialchars($params['itemLeadWidth']);
@@ -392,18 +396,41 @@ fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // standaard bootstrap variables mixins etc.
+fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
+if($twbs_version == '3') {
 fwrite($st_file, '@import "variables.scss";' . "\n");
 fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
 fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
 fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
 fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
+} else { /* verion 4 */
+fwrite($st_file, '@import "variables.scss";' . "\n");  // nog even uit 3
+fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); // nog even uit 3
+fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");    // nog even uit 3
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+// Required
+fwrite($st_file, '@import "node_modules/bootstrap/scss/functions";' . "\n");
+fwrite($st_file, '@import "node_modules/bootstrap/scss/variables";' . "\n");
+fwrite($st_file, '@import "node_modules/bootstrap/scss/mixins";' . "\n");
+
+// Optional
+//fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
+//fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
+//fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
+//fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
+//fwrite($st_file, '@import "node_modules/bootstrap/scss/grid";' . "\n");
+}
 // standaard bootstrap variables mixins etc. einde
 //fwrite($st_file, '@import "system.scss";' . "\n");
 //fwrite($st_file, '@import "general.scss";' . "\n");
+fwrite($st_file, "//\n// other variables\n//\n");
 fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
 fwrite($st_file, '@import "template_variables.scss";' . "\n");
 //fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
 //fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
+fwrite($st_file, "//\n// css\n//\n");
 
 if ($background > ' '  )
 { 	$pos1 = stripos($background, ".css");

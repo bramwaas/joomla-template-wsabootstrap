@@ -10,6 +10,7 @@
  * 7-1-2018 start with J4 namespaces
  * 5-1-2019 brandimage geen extra / meer
  * 20-1-2019 navtext toegevoegd
+ * 26-1-2019  aanpassingen verschillen BS4 en BS3 mbv twbs_version
  */
 
 defined('_JEXEC') or die;
@@ -39,6 +40,7 @@ $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
+$twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3 of (default) 4 
 $navbar = 'navbar-default';
 if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
@@ -78,10 +80,16 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<div class="navbar <?php echo $navbar; ?> " role="navigation">
-		         <div class="navbar-inner">
+		    	<div class="navbar navbar-expand-md <?php echo $navbar; ?> " role="navigation">
+		         <!-- div class="navbar-inner" -->
 		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
+					<!-- navbar-header -->
+					<?php if ($displaySitename == "1") : ?>
+					<a class="navbar-brand brand" href="#"><?php echo $sitename ?></a>
+					<?php endif; ?>
+					<?php echo '<!-- $twbs_version=' . $twbs_version . ". -->\n"; ?>
+					<?php if ($twbs_version == '3') : ?>
 					<div class="navbar-header">
 					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-pos1" aria-controls="navbar-pos1" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
@@ -89,20 +97,25 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					  </button> 
+					<?php else: // $twbs_version == '4' ?>
+				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-pos1" aria-controls="#navbar-pos1" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+				    </button>
+					<!-- navbar-header -->
+					<?php endif; ?>
 					<?php if ($brandImage > " ") : ?>
 	         	   	<a class="navbar-brand brand" href="#">
-					<img id="img_brandImage" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
-				</a>
+					  <img id="img_brandImage" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
+					</a>
 					<?php endif; ?>
-			   <?php if ($displaySitename == "1") : ?>
-	         	   <a class="navbar-brand brand" href="#"><?php echo $sitename ?></a>
-			   <?php endif; ?>
+					<?php if ($twbs_version == '3') : ?>
 					</div> <!-- navbar-header -->
+					<?php endif; ?>
 				   <div id="navbar-pos1" class="collapse navbar-collapse">
 
 <!-- oude module -->
 
-<ul <?php echo $id; ?> class="nav navbar-nav menu<?php echo $class_sfx;?> flex-column<?php echo $class_sfx; ?>">
+<ul <?php echo $id; ?> class="navbar-nav mr-auto nav menu<?php echo $class_sfx;?>">
 <?php foreach ($list as $i => &$item) :
 	
 	$class = 'nav-item item-'.$item->id;
@@ -185,12 +198,12 @@ endforeach;
 						<?php echo $wsaNavtext;  ?>
 <?php endif; ?>
 				<?php if(  $document->countModules('navbar-right'))    : ?>
-					<span id="navbar-right-mod" class="navbar-right" >
+					<span id="navbar-right-mod" class="navbar-text navbar-right" >
 					<?php wsa_load('navbar-right'); ?>
 					</span> <!-- end navbar-right -->
 				<?php endif; ?>
 	          	   </div>
 		          </div>
-		      	 </div> <!-- end navbar-inner -->
+		      	 <!-- /div--> <!-- end navbar-inner -->
 		    	</div>
 <!--End navbar-->
