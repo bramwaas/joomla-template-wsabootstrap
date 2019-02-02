@@ -89,13 +89,13 @@
   top: $iconsPosTop;    
   left: $iconsPosLeft;
   width: $iconsWidth; 
-*/  
+
 position: relative;
-/* margin-top: $iconsPosTop;    
+ margin-top: $iconsPosTop;    
 margin-left: $iconsPosLeft;
-*/
 width: $iconsWidth; 
 max-width: 100%;
+*/
 }
 #navbar-right-mod
 {
@@ -170,6 +170,23 @@ div[class^="newsfeed"]
  {
     background-position: -432px 0;
 }
+.iconssm 
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+/* was
+  position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+*/  
+position: relative;
+display: block;
+/* margin-top: $iconsPosTop;    
+margin-left: $iconsPosLeft;
+*/
+width: $iconsWidth; 
+max-width: 100%;
+}
+
 
 
 .img-fluid,
@@ -557,8 +574,16 @@ h6 {
 		//@include make-xs-column(10);
 		}
 	}
+.iconssm.navbar-expand-sm
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+  max-width: 100%;
+}
 	
-/* einde (min-width: $screen-sm-min) */}
+}/* einde (min-width: $screen-sm-min) */
 
 @media (min-width: $screen-md-min )  { /* desktop (width >= 992px) */
 
@@ -584,8 +609,40 @@ h6 {
 
 	
 }
+.iconssm.navbar-expand-md
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+  max-width: 100%;
+}
 
 }
 /* einde @media  $screen-md-min */
+@media (min-width: $screen-lg-min )  { /* desktop (width >= 992px) */
 
+.iconssm.navbar-expand-lg
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+  max-width: 100%;
+}
 
+}
+/* einde @media  $screen-lg-min */
+@media (min-width: $screen-xl-min )  { /* desktop (width >= 992px) */
+
+.iconssm.navbar-expand-xl
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;    
+  left: $iconsPosLeft;
+  width: $iconsWidth; 
+  max-width: 100%;
+}
+
+}
+/* einde @media  $screen-xl-min */

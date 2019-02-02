@@ -11,6 +11,7 @@
  * 5-1-2019 brandimage geen extra / meer
  * 20-1-2019 navtext toegevoegd
  * 26-1-2019  aanpassingen verschillen BS4 en BS3 mbv twbs_version
+ * 1-2-2019
  */
 
 defined('_JEXEC') or die;
@@ -41,6 +42,17 @@ $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displa
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
 $twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3 of (default) 4 
+/*
+$wsaBreakpointxs =  htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxs'));
+$wsaContainerxs = $wsaBreakpointxs;
+$wsaBreakpointxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxx)'));
+$wsaContainerxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaContainerxxl'));
+if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
+$wsaBreakpointxxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxxxl'));
+$wsaContainerxxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaContainerxxxl'));
+if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
+*/
+$wsaNavbarExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaNavbarExpand', 'navbar-expand-md'));
 $navbar = 'navbar-default';
 if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
@@ -80,7 +92,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<div class="navbar navbar-expand-md <?php echo $navbar; ?> " role="navigation">
+		    	<div class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $navbar; ?> " role="navigation">
 		         <!-- div class="navbar-inner" -->
 		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->

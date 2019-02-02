@@ -29,6 +29,7 @@ v 7-1-2018 J3.8 j4 namespace
 v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
+v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -164,8 +165,16 @@ $wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
  }
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
- 
- 
+
+$wsaBreakpointxs =  htmlspecialchars($params['wsaBreakpointxs']);
+$wsaContainerxs = $wsaBreakpointxs;
+$wsaBreakpointxxl = htmlspecialchars($params['wsaBreakpointxxl']);
+$wsaContainerxxl = htmlspecialchars($params['wsaContainerxxl']);
+if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
+$wsaBreakpointxxxl = htmlspecialchars($params['wsaBreakpointxxxl']);
+$wsaContainerxxxl = htmlspecialchars($params['wsaContainerxxxl']);
+if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
+  
 
 $bg0Image    	= htmlspecialchars($params['bg0Image']);
 if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
@@ -333,9 +342,10 @@ if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '$hlMarginLeft:      '  . $hlMargin
 if ($hlWidth > ' '  ) 		fwrite($tv_file, '$asHeadLeftWidth:   '  . $hlWidth .  "%;\n");				
 if ($hlHeight > ' '  ) 		fwrite($tv_file, '$hlHeight:          '  . $hlHeight .  "%;\n");
 if ($hlMarginBottom > ' '  ) 	fwrite($tv_file, '$hlMarginBottom:    '  . $hlMarginBottom .  "%;\n");
-if ($iconsWidth > ' '  ) 	fwrite($tv_file, '$iconsWidth:        '  . $iconsWidth .  "%;\n");
-if ($iconsPosLeft > ' '  ) 	fwrite($tv_file, '$iconsPosLeft:      '  . $iconsPosLeft .  "%;\n");
-if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosTop .  "%;\n");
+if ($iconsWidth > ' '  ) 	fwrite($tv_file, '$iconsWidth:        '  . $iconsWidth .  "px;\n");
+if ($iconsPosLeft > ' '  ) 	{fwrite($tv_file, '$iconsPosLeft:      '  . $iconsPosLeft .  "%;\n");}
+	else {fwrite($tv_file, '$iconsPosLeft:      auto' . ";\n");}
+if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosTop .  "px;\n");
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
@@ -404,9 +414,9 @@ fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n");
 fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
 fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
 } else { /* verion 4 */
-fwrite($st_file, '@import "variables.scss";' . "\n");  // nog even uit 3
-fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); // nog even uit 3
-fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");    // nog even uit 3
+fwrite($st_file, '@import "variables.scss";' . " // nog even uit 3\n");  // nog even uit 3
+fwrite($st_file, '@import "mixins/reset-filter.scss";' . " // nog even uit 3\n"); // nog even uit 3
+fwrite($st_file, '@import "mixins/gradients.scss";' . " // nog even uit 3\n");    // nog even uit 3
 
 // Custom.scss
 // Option B: Include parts of Bootstrap
@@ -416,11 +426,80 @@ fwrite($st_file, '@import "node_modules/bootstrap/scss/variables";' . "\n");
 fwrite($st_file, '@import "node_modules/bootstrap/scss/mixins";' . "\n");
 
 // Optional
+fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
+//fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
+
+if ($wsaBreakpointxs > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
+{
+fwrite($st_file,
+'// Grid breakpoints
+$grid-breakpoints: (
+	xxs: 0');	
+if ($wsaBreakpointxs > 0 )
+{
+fwrite($st_file,
+',
+	xs: ' . $wsaBreakpointxs . 'px');	
+}	
+fwrite($st_file,
+',
+	sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px');
+if ($wsaBreakpointxxl > 0 )
+{
+fwrite($st_file,
+',
+	xxl: ' . $wsaBreakpointxxl . 'px');	
+}
+if ($wsaBreakpointxxxl > 0 )
+{
+fwrite($st_file,
+',
+	xxxl: ' . $wsaBreakpointxxxl . 'px');	
+}
+fwrite($st_file,
+' ) ;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
+// Grid containers
+$container-max-widths: (
+');	
+if ($wsaBreakpointxs > 0 )
+{
+fwrite($st_file,
+'	xs: ' . $wsaContainerxs . 'px,
+');	
+}
+fwrite($st_file,
+'    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px');
+if ($wsaBreakpointxxl > 0 )
+{
+fwrite($st_file,
+',
+	xxl: ' . $wsaContainerxxl . 'px');	
+}
+if ($wsaBreakpointxxxl > 0 )
+{
+fwrite($st_file,
+',
+	xxxl: ' . $wsaContainerxxxl . 'px');	
+}
+fwrite($st_file,
+' ) ;
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+');		
+	
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/grid";' . "\n");
+fwrite($st_file, '@import "node_modules/bootstrap/scss/grid";' . "\n");
+}
 }
 // standaard bootstrap variables mixins etc. einde
 //fwrite($st_file, '@import "system.scss";' . "\n");

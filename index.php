@@ -29,6 +29,7 @@
 19-1-2019 timestamp als versie voor template.css
 20-1-2019 icons verplaatst
 25-1-2019 nieuwe versie BS 4
+1-2-2019 
 */
 
 // copied from cassiopeia
@@ -59,7 +60,6 @@ $template = $app->getTemplate(true);
 $templateparams  = $template->params;
 $templatestyleid =  $template->id;  
 $displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no 
-
 
 $bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
 // if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' )  {$bg0Image = '/' . $bg0Image;}; 
@@ -127,8 +127,18 @@ $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
 $include_twbs_css	= htmlspecialchars($this->params->get('include_twbs_css', '1'));
 $include_twbs_js	= htmlspecialchars($this->params->get('include_twbs_js','1'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
-$wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ))
-
+$wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
+/*
+$wsaBreakpointxs =  htmlspecialchars($this->params->get('wsaBreakpointxs'));
+$wsaContainerxs = $wsaBreakpointxs;
+$wsaBreakpointxxl = htmlspecialchars($this->params->get('wsaBreakpointxxl']);
+$wsaContainerxxl = htmlspecialchars($this->params->get['wsaContainerxxl'));
+if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
+$wsaBreakpointxxxl = htmlspecialchars($this->params->get('wsaBreakpointxxxl'));
+$wsaContainerxxxl = htmlspecialchars($this->params->get('wsaContainerxxxl'));
+if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
+*/
+$wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" prefix="og: http://ogp.me/ns#  fb: http://www.facebook.com/2008/fbml" >
@@ -299,6 +309,11 @@ class="site-grid site <?php echo $option
 		<!-- Begin Header-->
 		<div class="header">
 			<div class="header-inner">
+ 				<?php if(  $this->countModules('icons'))    : ?>
+				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?>">
+					<jdoc:include type="modules" name="icons" />
+				</div>   
+				<?php endif; ?>
 				<?php if ($this->countModules('position-0')): ?>
 				<div class="pos0">
 					<jdoc:include type="modules" name="position-0" style="none" />
@@ -365,11 +380,6 @@ class="site-grid site <?php echo $option
 				<div id="sidebarright" class="pos7 span3  col-xs-12 col-md-3">
 					<jdoc:include type="modules" name="position-7" style="well" /><!--End Position-7-->
 				</div><!--End Sidebar Right-->
-				<?php endif; ?>
- 				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons">
-					<jdoc:include type="modules" name="icons" />
-				</div>   
 				<?php endif; ?>
 			</div><!--End Row-->
          
