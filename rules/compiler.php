@@ -30,6 +30,7 @@ v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
 v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
+V 1-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -72,6 +73,7 @@ if  (htmlspecialchars($params['compile']) == '1')
 
 // scss compiler van leafo http://leafo.github.io/scssphp/
 require_once "leafo/scss.inc.php";
+require_once "leafo/src/Server.php";
 
 
 $scss = new Compiler();
@@ -84,6 +86,7 @@ else
 {  // voor debug netter formatteren en commentaren behouden. 
  $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
 // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
+$scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
 $server = new Server($currentpath. '/../scss', null, $scss);
 //$server->serve();
