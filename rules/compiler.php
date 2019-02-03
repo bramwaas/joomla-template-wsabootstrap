@@ -30,7 +30,7 @@ v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
 v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
-V 1-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
+V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -297,6 +297,9 @@ fwrite($tv_file, "//  "  . "\n//\n");
 
 fwrite($tv_file, "//  "  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
+
+if ($twbs_version > ' '  ) 	fwrite($tv_file, '$twbs_version:              "'  . $twbs_version .  "\";\n");
+
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
 
 if ($fgColor > ' '  ) fwrite($tv_file, '$fgColor:          '  . $fgColor .  ";\n");
