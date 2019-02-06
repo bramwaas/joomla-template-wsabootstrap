@@ -120,6 +120,7 @@ $hlMarginBottom = htmlspecialchars($params['hlMarginBottom']);
 $iconsWidth    	= htmlspecialchars($params['iconsWidth']);
 $iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
 $iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
+$wsaIconsFlex   = htmlspecialchars($params['wsaIconsFlex']);
 $wsaNavbarRightWidth = htmlspecialchars($params['wsaNavbarRightWidth']);
 $footerWidth    = htmlspecialchars($params['footericonsWidth']);
 $footerPosLeft  = htmlspecialchars($params['footerPosLeft']);
@@ -352,6 +353,8 @@ if ($hlMarginBottom > ' '  ) 	fwrite($tv_file, '$hlMarginBottom:    '  . $hlMarg
 if ($iconsWidth > ' '  ) 	fwrite($tv_file, '$iconsWidth:        '  . $iconsWidth .  "px;\n");
 if ($iconsPosLeft > ' '  ) 	{fwrite($tv_file, '$iconsPosLeft:      '  . $iconsPosLeft .  "%;\n");}
 	else {fwrite($tv_file, '$iconsPosLeft:      auto' . ";\n");}
+if ($wsaIconsFlex > ' '  ) 	{fwrite($tv_file, '$wsaIconsFlex:      '  . $wsaIconsFlex .  ";\n");}
+	else {fwrite($tv_file, '$wsaIconsFlex:      row' . ";\n");}	
 if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosTop .  "px;\n");
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");

@@ -185,9 +185,9 @@ position: relative;
 display: block;
 /* margin-top: $iconsPosTop;    
 margin-left: $iconsPosLeft;
-*/
 width: $iconsWidth; 
-max-width: 100%;
+*/
+width: 100%;
 }
 
 
@@ -582,9 +582,12 @@ h6 {
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
   top: $iconsPosTop;    
-  left: $iconsPosLeft;
-  width: $iconsWidth; 
-  max-width: 100%;
+/*  left: $iconsPosLeft;
+    width: $iconsWidth;
+    max-width: 100%;
+	*/
+  display: flex;
+  flex-direction: $wsaIconsFlex;  
 }
 	
 }/* einde up(md) */
@@ -617,9 +620,8 @@ h6 {
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
   top: $iconsPosTop;    
-  left: $iconsPosLeft;
-  width: $iconsWidth; 
-  max-width: 100%;
+  display: flex;
+  flex-direction: $wsaIconsFlex;  
 }
 
 } /* einde up(lg) */
@@ -630,9 +632,8 @@ h6 {
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
   top: $iconsPosTop;    
-  left: $iconsPosLeft;
-  width: $iconsWidth; 
-  max-width: 100%;
+  display: flex;
+  flex-direction: $wsaIconsFlex;  
 }
 
 }

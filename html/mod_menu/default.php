@@ -43,21 +43,9 @@ $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
 $twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3 of (default) 4 
 if ($twbs_version == 3) {
-	$menuType = str_replace(array("light", "dark", array("default", "inverse")), $menuType);	
+	$menuType = str_replace(array("light", "dark", "bg-"), array("default", "inverse", ""), $menuType);	
 }
-/*
-$wsaBreakpointes =  htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointes'));
-$wsaContainerxs = $wsaBreakpointxs;
-$wsaBreakpointxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxx)'));
-$wsaContainerxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaContainerxxl'));
-if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-$wsaBreakpointxxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxxxl'));
-$wsaContainerxxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaContainerxxxl'));
-if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
-*/
 $wsaNavbarExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaNavbarExpand', 'navbar-expand-md'));
-$navbar = 'navbar-light';
-if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 	/**
@@ -95,11 +83,21 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<div class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $navbar; ?> " role="navigation">
+		    	<div class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
 		         <!-- div class="navbar-inner" -->
 		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
+					<?php if ($brandImage > " ") : ?>
+	         	   	<a class="navbar-brand brand" href="#">
+					  <img id="img_brandImage" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
+					</a>
+					<?php endif; ?>
+					<?php if(  $document->countModules('navbar-brand'))    : ?>
+					<span id="navbar-brand-mod" class="navbar-text navbar-brand" >
+					<?php wsa_load('navbar-brand'); ?>
+					</span> <!-- end navbar-brand -->
+					<?php endif; ?>
 					<?php if ($displaySitename == "1") : ?>
 					<a class="navbar-brand brand" href="#"><?php echo $sitename ?></a>
 					<?php endif; ?>
@@ -117,11 +115,6 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 					  <span class="navbar-toggler-icon"></span>
 				    </button>
 					<!-- navbar-header -->
-					<?php endif; ?>
-					<?php if ($brandImage > " ") : ?>
-	         	   	<a class="navbar-brand brand" href="#">
-					  <img id="img_brandImage" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
-					</a>
 					<?php endif; ?>
 					<?php if ($twbs_version == '3') : ?>
 					</div> <!-- navbar-header -->

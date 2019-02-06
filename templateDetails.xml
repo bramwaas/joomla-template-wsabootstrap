@@ -41,6 +41,7 @@
     	<position>headerleft</position>
     	<position>icons</position>
 		<position>left</position>
+		<position>navbar-brand</position>
 		<position>navbar-right</position>
 		<position>right</position>
 		<position>top</position>
@@ -303,10 +304,10 @@
 					label="Width icons:"
 					description="Width icons social media as percentage of pagewidth"
 					 />
-				<field name="iconsPosLeft"  class="validate-numeric" type="text" default="75"
-					label="Left margin icons:"
-					description="Position left margin icons as percentage of width 0 = left edge, 100 = right edge"
-					 />
+				<field name="wsaIconsFlex" type="radio" class="switcher btn-group" default="row" label="WSA_ICONSFLEX" >
+					<option value="row">WSA_LTR</option>
+					<option value="row-reverse">WSA_RTL</option>
+				</field>
 				<field name="iconsPosTop"  class="validate-numeric" type="text" default="0.0"
 					label="Top margin icons:"
 					description="Position top icons as percentage of height, 0 = top, 100 = (under) bottom"
@@ -384,16 +385,16 @@
 					label="Type menu"	
  				    description="Type backround inverse etc. of menu"
 				>
-					<option value="light bg-light">Default</option>
-					<option value="light bg-transparent">Transparent</option>
-					<option value="dark bg-dark">Inverse</option>
-					<option value="dark bg-transparent">Inverse Transparent</option>
-  					<option value="light bg-light navbar-fixed-top">Default fixed top</option>
-  					<option value="light bg-light navbar-fixed-bottom">Default fixed bottom</option>
-  					<option value="light bg-light navbar-static-top">Default static top</option>
-  					<option value="dark bg-dark navbar-fixed-top">Inverse fixed top</option>
-  					<option value="dark bg-dark navbar-fixed-bottom">Inverse fixed bottom</option>
-  					<option value="dark bg-dark navbar-static-top">Inverse static top</option>
+					<option value="navbar-light bg-light">Default</option>
+					<option value="navbar-light bg-transparent">Transparent</option>
+					<option value="navbar-dark bg-dark">Inverse</option>
+					<option value="navbar-dark bg-transparent">Inverse Transparent</option>
+  					<option value="navbar-light bg-light navbar-fixed-top">Default fixed top</option>
+  					<option value="navbar-light bg-light navbar-fixed-bottom">Default fixed bottom</option>
+  					<option value="navbar-light bg-light navbar-static-top">Default static top</option>
+  					<option value="navbar-dark bg-dark navbar-fixed-top">Inverse fixed top</option>
+  					<option value="navbar-dark bg-dark navbar-fixed-bottom">Inverse fixed bottom</option>
+  					<option value="navbar-dark bg-dark navbar-static-top">Inverse static top</option>
                 
 				</field>
 				<field name="displaySitename" type="list" default="1" label="WSA_DISPLAYSITENAME_LABEL" description="WSA_DISPLAYSITENAME_DESCRIPTION">
