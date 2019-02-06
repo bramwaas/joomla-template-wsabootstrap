@@ -128,6 +128,9 @@ div[class^="newsfeed"]
 { 
 /* margin-left: $asMarginStd; */
 }
+.bg-transparent { // 
+    background-color: transparent!important;
+}
 .blog {
 /* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
    heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 

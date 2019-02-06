@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>1.4.4</version>
-	<creationDate>01-02-2019</creationDate>
+	<creationDate>06-02-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -234,10 +234,10 @@
 				<field name="explanation3"  type="spacer" hr="false"
 					label="Other lay-out variables. &lt;br /&gt;"
 					 />
-				<field name="wsaBreakpointxs"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTXS_LABEL"
-					description="WSA_BREAKPOINTXS_DESCRIPTION"
-					hint="WSA_BREAKPOINTXS_HINT"
+				<field name="wsaBreakpointes"  class="validate-numeric" type="text" default=""
+					label="WSA_BREAKPOINTES_LABEL"
+					description="WSA_BREAKPOINTES_DESCRIPTION"
+					hint="WSA_BREAKPOINTES_HINT"
 					 />
 				<field name="wsaContainerxxl"  class="validate-numeric" type="text" default=""
 					label="WSA_CONTAINERXXL_LABEL"
@@ -384,16 +384,16 @@
 					label="Type menu"	
  				    description="Type backround inverse etc. of menu"
 				>
-					<option value="">Default</option>
-					<option value="transparent">Transparent</option>
-					<option value="inverse">Inverse</option>
-					<option value="inverse transparent">Inverse Transparent</option>
-  					<option value="default navbar-fixed-top">Default fixed top</option>
-  					<option value="default navbar-fixed-bottom">Default fixed bottom</option>
-  					<option value="default navbar-static-top">Default static top</option>
-  					<option value="inverse navbar-fixed-top">Inverse fixed top</option>
-  					<option value="inverse navbar-fixed-bottom">Inverse fixed bottom</option>
-  					<option value="inverse navbar-static-top">Inverse static top</option>
+					<option value="light bg-light">Default</option>
+					<option value="light bg-transparent">Transparent</option>
+					<option value="dark bg-dark">Inverse</option>
+					<option value="dark bg-transparent">Inverse Transparent</option>
+  					<option value="light bg-light navbar-fixed-top">Default fixed top</option>
+  					<option value="light bg-light navbar-fixed-bottom">Default fixed bottom</option>
+  					<option value="light bg-light navbar-static-top">Default static top</option>
+  					<option value="dark bg-dark navbar-fixed-top">Inverse fixed top</option>
+  					<option value="dark bg-dark navbar-fixed-bottom">Inverse fixed bottom</option>
+  					<option value="dark bg-dark navbar-static-top">Inverse static top</option>
                 
 				</field>
 				<field name="displaySitename" type="list" default="1" label="WSA_DISPLAYSITENAME_LABEL" description="WSA_DISPLAYSITENAME_DESCRIPTION">

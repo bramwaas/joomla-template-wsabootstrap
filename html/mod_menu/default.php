@@ -11,7 +11,7 @@
  * 5-1-2019 brandimage geen extra / meer
  * 20-1-2019 navtext toegevoegd
  * 26-1-2019  aanpassingen verschillen BS4 en BS3 mbv twbs_version
- * 3-2-2019
+ * 6-2-2019
  */
 
 defined('_JEXEC') or die;
@@ -42,11 +42,11 @@ $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displa
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
 $twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3 of (default) 4 
-if ($twbs_version == 4) {
-	$menuType = str_replace(array("default", "inverse"), array("light", "dark"), $menuType);	
+if ($twbs_version == 3) {
+	$menuType = str_replace(array("light", "dark", array("default", "inverse")), $menuType);	
 }
 /*
-$wsaBreakpointxs =  htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxs'));
+$wsaBreakpointes =  htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointes'));
 $wsaContainerxs = $wsaBreakpointxs;
 $wsaBreakpointxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaBreakpointxx)'));
 $wsaContainerxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaContainerxxl'));
@@ -56,7 +56,7 @@ $wsaContainerxxxl = htmlspecialchars($app->getTemplate(true)->params->get('wsaCo
 if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
 */
 $wsaNavbarExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaNavbarExpand', 'navbar-expand-md'));
-$navbar = 'navbar-default';
+$navbar = 'navbar-light';
 if ($menuType > ' ')  $navbar = 'navbar-' . $menuType;
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 

@@ -31,6 +31,7 @@ v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
 v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
 V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
+V 6-2-2019 navbar kleuren default bs4 ipv 3
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -169,8 +170,8 @@ $wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$wsaBreakpointxs =  htmlspecialchars($params['wsaBreakpointxs']);
-$wsaContainerxs = $wsaBreakpointxs;
+$wsaBreakpointes =  htmlspecialchars($params['wsaBreakpointes']);
+$wsaContaineres = $wsaBreakpointes;
 $wsaBreakpointxxl = htmlspecialchars($params['wsaBreakpointxxl']);
 $wsaContainerxxl = htmlspecialchars($params['wsaContainerxxl']);
 if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
@@ -289,7 +290,7 @@ try
 $tv_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.var.scss', "w+");
 
 
-/* less files creeeren en compileren naar .css */
+/* scss files creeeren en compileren naar .css */
 
 fwrite($tv_file, "// style variables \n");
 fwrite($tv_file, "// generated " . date("c")  . "\n//\n");
@@ -435,17 +436,17 @@ fwrite($st_file, '@import "node_modules/bootstrap/scss/mixins";' . "\n");
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
 //fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
 
-if ($wsaBreakpointxs > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
+if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
 {
 fwrite($st_file,
 '// Grid breakpoints
 $grid-breakpoints: (
-	xxs: 0');	
-if ($wsaBreakpointxs > 0 )
+	xs: 0');	
+if ($wsaBreakpointes > 0 )
 {
 fwrite($st_file,
 ',
-	xs: ' . $wsaBreakpointxs . 'px');	
+	es: ' . $wsaBreakpointes . 'px');	
 }	
 fwrite($st_file,
 ',
@@ -472,10 +473,10 @@ fwrite($st_file,
 // Grid containers
 $container-max-widths: (
 ');	
-if ($wsaBreakpointxs > 0 )
+if ($wsaBreakpointes > 0 )
 {
 fwrite($st_file,
-'	xs: ' . $wsaContainerxs . 'px,
+'	es: ' . $wsaContaineres . 'px,
 ');	
 }
 fwrite($st_file,
