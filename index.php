@@ -29,7 +29,7 @@
 19-1-2019 timestamp als versie voor template.css
 20-1-2019 icons verplaatst
 25-1-2019 nieuwe versie BS 4
-1-2-2019 
+7-2-2019 1.4.4 en minder achtergondafbeeldingen
 */
 
 // copied from cassiopeia
@@ -61,31 +61,13 @@ $templateparams  = $template->params;
 $templatestyleid =  $template->id;  
 $displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no 
 
-$bg0Image    	= htmlspecialchars($this->params->get('bg0Image'));
-// if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' )  {$bg0Image = '/' . $bg0Image;}; 
-$bg0Image_lg    	= htmlspecialchars($this->params->get('bg0Image_lg'));
-// if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' ) {$bg0Image_lg = '/' . $bg0Image_lg;};
-$bg0Breakpoint_lg 	= htmlspecialchars($this->params->get('bg0Breakpoint_lg'));
-$bg0Image_sm    	= htmlspecialchars($this->params->get('bg0Image_sm'));
-// if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )  {$bg0Image_sm = '/' . $bg0Image_sm;};
-$bg0Breakpoint_sm 	= htmlspecialchars($this->params->get('bg0Breakpoint_sm'));
 
-$bg0Width    	= htmlspecialchars($this->params->get('bg0Width'));
-$bg0Top      	= htmlspecialchars($this->params->get('bg0Top'));
-$bg0Left      	= htmlspecialchars($this->params->get('bg0Left'));
 $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
-$bg0ImageW    	= htmlspecialchars($this->params->get('bg0ImageW'));
-$bg0ImageH    	= htmlspecialchars($this->params->get('bg0ImageH'));
-$bg0Image_lgW  	= htmlspecialchars($this->params->get('bg0Image_lgW'));
-$bg0Image_smW  	= htmlspecialchars($this->params->get('bg0Image_smW'));
 
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
-// if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-// if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' )  {$bg1Image_lg = '/' . $bg1Image_lg;};
 $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
-// if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )  {$bg1Image_sm = '/' . $bg1Image_sm;};
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
 
 $bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
@@ -97,23 +79,6 @@ $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
 $bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
 $bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 
-$bg2Image    	= htmlspecialchars($this->params->get('bg2Image'));
-// if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' )  {$bg2Image = '/' . $bg2Image;}; 
-$bg2Image_lg    	= htmlspecialchars($this->params->get('bg2Image_lg'));
-// if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' )  {$bg2Image_lg = '/' . $bg2Image_lg;}; 
-$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
-$bg2Image_sm    	= htmlspecialchars($this->params->get('bg2Image_sm'));
-// if ($bg2Image_sm > ' ' and strtolower(substr ( $bg2Image_sm , 0 , 7 )) == 'images/' )  {$bg2Image_sm = '/' . $bg2Image_sm;};
-$bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm')); 
- 
-$bg2Width    	= htmlspecialchars($this->params->get('bg2Width'));
-$bg2Top      	= htmlspecialchars($this->params->get('bg2Top'));
-$bg2Left      	= htmlspecialchars($this->params->get('bg2Left'));
-$bg2Color    	= htmlspecialchars($this->params->get('bg2Color'));
-$bg2ImageW    	= htmlspecialchars($this->params->get('bg2ImageW'));
-$bg2ImageH    	= htmlspecialchars($this->params->get('bg2ImageH'));
-$bg2Image_lgW  	= htmlspecialchars($this->params->get('bg2Image_lgW'));
-$bg2Image_smW  	= htmlspecialchars($this->params->get('bg2Image_smW'));
 
 $wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
 if ($wsaCssFilename > " ")
@@ -128,16 +93,6 @@ $include_twbs_css	= htmlspecialchars($this->params->get('include_twbs_css', '1')
 $include_twbs_js	= htmlspecialchars($this->params->get('include_twbs_js','1'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
-/*
-$wsaBreakpointxs =  htmlspecialchars($this->params->get('wsaBreakpointxs'));
-$wsaContainerxs = $wsaBreakpointxs;
-$wsaBreakpointxxl = htmlspecialchars($this->params->get('wsaBreakpointxxl']);
-$wsaContainerxxl = htmlspecialchars($this->params->get['wsaContainerxxl'));
-if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-$wsaBreakpointxxxl = htmlspecialchars($this->params->get('wsaBreakpointxxxl'));
-$wsaContainerxxxl = htmlspecialchars($this->params->get('wsaContainerxxxl'));
-if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
-*/
 $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
 ?>
 <!DOCTYPE html>
@@ -249,24 +204,7 @@ class="site-grid site <?php echo $option
 ?>"
 
 >
-<?php if ($bg0Image > " " )
-{ echo "\n" . '<img id="img_bg0Image" src="' . $bg0Image . '" alt="Background image"';
-	if ($bg0ImageW > 0 ) {echo "\n\t" . 'width="' . $bg0ImageW .'"';}
-	if ($bg0ImageH > 0 ) {echo "\n\t" . 'height="' . $bg0ImageH . '"';}
-	if ($bg0ImageW > 0  && (($bg0Image_lg > " " && $bg0Image_lgW > 0) || ($bg0Image_sm > " " && $bg0Image_smW > 0))  )
-	{echo "\n\t" . 'srcset="' . $bg0Image . ' ' . $bg0ImageW .'w'   ;
-	if ($bg0Image_lgW > 0) {echo ','. $bg0Image_lg .' ' . $bg0Image_lgW . 'w' ; }
-	if ($bg0Image_smW > 0) {echo ','. $bg0Image_sm .' ' . $bg0Image_smW . 'w' ; }
-	echo '"';
-	if ($bg0Breakpoint_lg > 0 || $bg0Breakpoint_sm > 0)
-		{echo "\n\t" . 'sizes="';
-		if ($bg0Breakpoint_sm > 0 ) {echo '(max-width: ' . $bg0Breakpoint_sm .'px) '.$bg0Image_smW .'px,'; }
-		if ($bg0Breakpoint_lg > 0 ) {echo '(min-width: ' . $bg0Breakpoint_lg .'px) '.$bg0Image_lgW .'px,'; }
-		echo $bg0ImageW .'px"'; 
-		}
-	} 
- echo  ' />' . "\n";
-}?>
+
 <!-- Begin Container-->
 	<div id="wrapper" class="container">
 <?php if ($bg1Image > " " )
@@ -287,24 +225,7 @@ class="site-grid site <?php echo $option
 	} 
  echo  ' />' . "\n";
 }?>
-<?php if ($bg2Image > " " )
-{ echo "\n" . '<img id="img_bg2Image" src="' . $bg2Image . '" alt="Logo image"';
-	if ($bg2ImageW > 0 ) {echo "\n\t" . 'width="' . $bg2ImageW .'"';}
-	if ($bg2ImageH > 0 ) {echo "\n\t" . 'height="' . $bg2ImageH . '"';}
-	if ($bg2ImageW > 0  && (($bg2Image_lg > " " && $bg2Image_lgW > 0) || ($bg2Image_sm > " " && $bg2Image_smW > 0))  )
-	{echo "\n\t" . 'srcset="' . $bg2Image . ' ' . $bg2ImageW .'w'   ;
-	if ($bg2Image_lgW > 0) {echo ','. $bg2Image_lg .' ' . $bg2Image_lgW . 'w' ; }
-	if ($bg2Image_smW > 0) {echo ','. $bg2Image_sm .' ' . $bg2Image_smW . 'w' ; }
-	echo '"';
-	if ($bg2Breakpoint_lg > 0 || $bg2Breakpoint_sm > 0)
-		{echo "\n\t" . 'sizes="';
-		if ($bg2Breakpoint_sm > 0 ) {echo '(max-width: ' . $bg2Breakpoint_sm .'px) '.$bg2Image_smW .'px,'; }
-		if ($bg2Breakpoint_lg > 0 ) {echo '(min-width: ' . $bg2Breakpoint_lg .'px) '.$bg2Image_lgW .'px,'; }
-		echo $bg2ImageW .'px"'; 
-		}
-	} 
- echo  ' />' . "\n";
-}?>
+
 <div id="wrapper1">
 		<!-- Begin Header-->
 		<div class="header">

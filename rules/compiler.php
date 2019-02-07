@@ -32,6 +32,7 @@ v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding 
 v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
 V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 V 6-2-2019 navbar kleuren default bs4 ipv 3
+v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -181,51 +182,20 @@ $wsaContainerxxxl = htmlspecialchars($params['wsaContainerxxxl']);
 if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
   
 
-$bg0Image    	= htmlspecialchars($params['bg0Image']);
-if ($bg0Image > ' ' and strtolower(substr ( $bg0Image , 0 , 7 )) == 'images/' ) 
- {$bg0Image = '/' . $bg0Image;}; 
-if ($bg0Image > ' ') $bg0Image = 'url("' . $bg0Image . '")'; else $bg0Image = 'none';
-$bg0Image_lg    	= htmlspecialchars($params['bg0Image_lg']);
-if ($bg0Image_lg > ' ' and strtolower(substr ( $bg0Image_lg , 0 , 7 )) == 'images/' )
- {$bg0Image_lg = '/' . $bg0Image_lg;};
-if ($bg0Image_lg > ' ') $bg0Image_lg = 'url("' . $bg0Image_lg . '")'; else $bg0Image_lg = 'none';
-$bg0Breakpoint_lg    	= htmlspecialchars($params['bg0Breakpoint_lg']);
-$bg0Image_sm    	= htmlspecialchars($params['bg0Image_sm']);
-if ($bg0Image_sm > ' ' and strtolower(substr ( $bg0Image_sm , 0 , 7 )) == 'images/' )
-{$bg0Image_sm = '/' . $bg0Image_sm;};
-if ($bg0Image_sm > ' ') $bg0Image_sm = 'url("' . $bg0Image_sm . '")'; else $bg0Image_sm = 'none';
-$bg0Breakpoint_sm    	= htmlspecialchars($params['bg0Breakpoint_sm']);
 
-$bg0Width    	= htmlspecialchars($params['bg0Width']); // number
-$bg0Pos    		= htmlspecialchars($params['bg0Pos']); //  % or px 
-$bg0Top      	= htmlspecialchars($params['bg0Top']); // number
-$bg0Left      	= htmlspecialchars($params['bg0Left']); // number
+
+
 $bg0Color    	= htmlspecialchars($params['bg0Color']); // name or hex
-$bg0Dim         = 'px';
-$bg0DimPos      = 'px';
-if ($bg0Pos ==  '%')  {$bg0Dim = '%'; $bg0DimPos = '%';};
-if ($bg0Width > ' ') {$bg0Width = $bg0Width.$bg0Dim;} else {$bg0Width = 'auto';};
 
-if ($bg0Top > ' '  ) {$bg0Top = $bg0Top.$bg0DimPos;} else {$bg0Top = 'auto';};
-if  ($bg0Left > ' ') 
-    {$bg0Left = $bg0Left.$bg0DimPos;
-     if ($bg0Top != 'auto'  ) {$bg0Pos = $bg0Left.' '.$bg0Top;}  else {$bg0Pos = $bg0Left;}}
- else
-   {$bg0Left = 'auto';
-    if ($bg0Top != 'auto'  ) {$bg0Pos = '50% '.$bg0Top;} else {$bg0Pos = '';}}
-
-$bg1Image    	= htmlspecialchars($params['bg1Image']);
-if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' ) 
- {$bg1Image = '/' . $bg1Image;};
+$bg1Image    	= htmlspecialchars($params['bg1Image']); 
+//if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
 $bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
-if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg1Image_lg = '/' . $bg1Image_lg;};
+//if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' )  {$bg1Image_lg = '/' . $bg1Image_lg;};
 if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
 $bg1Breakpoint_lg    	= htmlspecialchars($params['bg1Breakpoint_lg']);
 $bg1Image_sm    	= htmlspecialchars($params['bg1Image_sm']);
-if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' )
-{$bg1Image_sm = '/' . $bg1Image_sm;};
+//if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' ) {$bg1Image_sm = '/' . $bg1Image_sm;};
 if ($bg1Image_sm > ' ') $bg1Image_sm = 'url("' . $bg1Image_sm . '")'; else $bg1Image_sm = 'none';
 $bg1Breakpoint_sm    	= htmlspecialchars($params['bg1Breakpoint_sm']);
 
@@ -246,40 +216,6 @@ if  ($bg1Left > ' ')
  else
    {$bg1Left = 'auto';
 	if ($bg1Top != 'auto'  ) {$bg1Pos = '50% '.$bg1Top;} else {$bg1Pos = '';}}
-
-$bg2Image    	= htmlspecialchars($params['bg2Image']);
-if ($bg2Image > ' ' and strtolower(substr ( $bg2Image , 0 , 7 )) == 'images/' ) 
- {$bg2Image = '/' . $bg2Image;}; 
-if ($bg2Image > ' ') $bg2Image = 'url("' . $bg2Image . '")'; else $bg2Image = 'none';
-$bg2Image_lg    	= htmlspecialchars($params['bg2Image_lg']);
-if ($bg2Image_lg > ' ' and strtolower(substr ( $bg2Image_lg , 0 , 7 )) == 'images/' ) 
- {$bg2Image_lg = '/' . $bg2Image_lg;}; 
-if ($bg2Image_lg > ' ') $bg2Image_lg = 'url("' . $bg2Image_lg . '")'; else $bg2Image_lg = 'none';
-$bg2Breakpoint_lg    	= htmlspecialchars($params['bg2Breakpoint_lg']);
-$bg2Image_sm    	= htmlspecialchars($params['bg2Image_sm']);
-if ($bg2Image_sm > ' ' and strtolower(substr ( $bg2Image_sm , 0 , 7 )) == 'images/' )
-{$bg2Image_sm = '/' . $bg2Image_sm;};
-if ($bg2Image_sm > ' ') $bg2Image_sm = 'url("' . $bg2Image_sm . '")'; else $bg2Image_sm = 'none';
-$bg2Breakpoint_sm    	= htmlspecialchars($params['bg2Breakpoint_sm']);
-
-$bg2Width    	= htmlspecialchars($params['bg2Width']); // number
-$bg2Pos     	= htmlspecialchars($params['bg2Pos']); //  % or px 
-$bg2Top      	= htmlspecialchars($params['bg2Top']); // number
-$bg2Left      	= htmlspecialchars($params['bg2Left']); // number
-$bg2Color    	= htmlspecialchars($params['bg2Color']); // name or hex
-$bg2Dim         = 'px';
-$bg2DimPos      = 'px';
-if ($bg2Pos ==  '%')  {$bg2Dim = '%'; $bg2DimPos = '%';};
-if ($bg2Width > ' ') {$bg2Width = $bg2Width.$bg2Dim;} else {$bg2Width = 'auto';};
-
-if ($bg2Top > ' '  ) {$bg2Top = $bg2Top.$bg2DimPos;} else {$bg2Top = 'auto';};
-if  ($bg2Left > ' ') 
-    {$bg2Left = $bg2Left.$bg2DimPos;
-     if ($bg2Top != 'auto'  ) {$bg2Pos = $bg2Left.' '.$bg2Top;}  else {$bg2Pos = $bg2Left;}}
- else
-   {$bg2Left = 'auto';
-   if ($bg2Top != 'auto'  ) {$bg2Pos = '50% '.$bg2Top;} else {$bg2Pos = '';}}
-
 
 
 try
@@ -311,17 +247,7 @@ if ($brandSize > ' '  ) fwrite($tv_file, '$brandSize:         ' . $brandSize . "
 if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . ";\n");
 
 
-if ($bg0Image > ' ' ) fwrite($tv_file, '$bg0Image:          ' . $bg0Image .  ";\n");
-if ($bg0Image_lg > ' ' ) fwrite($tv_file, '$bg0Image_lg:       ' . $bg0Image_lg .  ";\n");
-if ($bg0Image_sm > ' ' ) fwrite($tv_file, '$bg0Image_sm:       ' . $bg0Image_sm .  ";\n");
-if ($bg0Width > ' ' ) fwrite($tv_file, '$bg0Width:          ' . $bg0Width . ";\n");
-if ($bg0Pos > ' '   ) fwrite($tv_file, '$bg0Pos:            ' . $bg0Pos . ";\n");
-if ($bg0Top > ' '  )  fwrite($tv_file, '$bg0Top:            ' . $bg0Top . ";\n");
-if ($bg0Left > ' '  ) fwrite($tv_file, '$bg0Left:           ' . $bg0Left . ";\n");
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
-if ($bg0Breakpoint_lg > ' '  ) fwrite($tv_file, '$bg0Breakpoint_lg:          '  . $bg0Breakpoint_lg .  "px;\n");
-if ($bg0Breakpoint_sm > ' '  ) fwrite($tv_file, '$bg0Breakpoint_sm:          '  . $bg0Breakpoint_sm .  "px;\n");
-
 
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
 if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
@@ -333,17 +259,6 @@ if ($bg1Left > ' '  ) fwrite($tv_file, '$bg1Left:           ' . $bg1Left . ";\n"
 if ($bg1Color > ' ' ) fwrite($tv_file, '$bg1Color:          ' . $bg1Color . ";\n");
 if ($bg1Breakpoint_lg > ' '  ) fwrite($tv_file, '$bg1Breakpoint_lg:          '  . $bg1Breakpoint_lg .  "px;\n");
 if ($bg1Breakpoint_sm > ' '  ) fwrite($tv_file, '$bg1Breakpoint_sm:          '  . $bg1Breakpoint_sm .  "px;\n");
-
-if ($bg2Image > ' ' ) fwrite($tv_file, '$bg2Image:          ' . $bg2Image .  ";\n");
-if ($bg2Image_lg > ' ' ) fwrite($tv_file, '$bg2Image_lg:       ' . $bg2Image_lg .  ";\n");
-if ($bg2Image_sm > ' ' ) fwrite($tv_file, '$bg2Image_sm:       ' . $bg2Image_sm .  ";\n");
-if ($bg2Width > ' ' ) fwrite($tv_file, '$bg2Width:          ' . $bg2Width . ";\n");
-if ($bg2Pos > ' '   ) fwrite($tv_file, '$bg2Pos:            ' . $bg2Pos . ";\n");
-if ($bg2Top > ' '  )  fwrite($tv_file, '$bg2Top:            ' . $bg2Top . ";\n");
-if ($bg2Left > ' '  ) fwrite($tv_file, '$bg2Left:           ' . $bg2Left . ";\n");
-if ($bg2Color > ' ' ) fwrite($tv_file, '$bg2Color:          ' . $bg2Color . ";\n");
-if ($bg2Breakpoint_lg > ' '  ) fwrite($tv_file, '$bg2Breakpoint_lg:          '  . $bg2Breakpoint_lg .  "px;\n");
-if ($bg2Breakpoint_sm > ' '  ) fwrite($tv_file, '$bg2Breakpoint_sm:          '  . $bg2Breakpoint_sm .  "px;\n");
 
 if ($hlMarginTop > ' '  ) 	fwrite($tv_file, '$hlMarginTop:       '  . $hlMarginTop .  "%;\n");
 if ($hlMarginLeft > ' '  ) 	fwrite($tv_file, '$hlMarginLeft:      '  . $hlMarginLeft .  "%;\n");
@@ -543,7 +458,7 @@ fwrite($st_file, "#wrapper, \nbody>div.container {\n");
 if ($bg1Color > " " ) fwrite($st_file, "background-color:  $bg1Color;\n");
 fwrite($st_file, "}\n");
 
-if ($menuType == 'transparent') 
+if (strpos($menuType,'transparent') !== false) // != is onvoldoende omdat pos vanaf 0 telt.
 {
 fwrite($st_file, "\n.navbar,\n.navbar-inner,\n.nav-tabs,\n.breadcrumb\n{\n");
 fwrite($st_file, "background-color: transparent;\n");

@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>1.4.4</version>
-	<creationDate>06-02-2019</creationDate>
+	<creationDate>07-02-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -71,55 +71,6 @@
 			<fieldset name="Background">
 				<field name="explanation0"  type="spacer" hr="false"
 					 />
-				<field name="bg0Image" type="media" default="" 
-                                       	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg0ImageW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGEW_LABEL"
-					description="BGIMAGEW_DESCRIPTION"
-					 />	
-				<field name="bg0ImageH"  class="validate-numeric" type="text" default=""
-					label="BGIMAGEH_LABEL"
-					description="BGIMAGEH_DESCRIPTION"
-					 />	
-				<field name="bg0Image_lg" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
-				<field name="bg0Image_lgW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGELGW_LABEL"
-					description="BGIMAGELGW_DESCRIPTION"
-					 />	
-				<field name="bg0Breakpoint_lg"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL-LG"
-					description="BGBREAKPOINT_DESCRIPTION-LG"
-					 />	
-				<field name="bg0Image_sm" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
-				<field name="bg0Image_smW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGESMW_LABEL"
-					description="BGIMAGESMW_DESCRIPTION"
-					 />	
-				<field name="bg0Breakpoint_sm"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL-SM"
-					description="BGBREAKPOINT_DESCRIPTION-SM"
-					 />	
-				<field name="bg0Width"   class="validate-numeric" type="text" default="80.0"
-					label="BGWIDTH_LABEL"
-					description="Width background image if Size = percentage or pixels"
-					 />
-				<field name="bg0Pos" type="list" default="%"
-					label="BGPOSITION_LABEL"	
- 				    description="BGPOSITION_DESCRIPTION"
-				>
-					<option value="%">BGPERCENTAGE</option>
-					<option value="px">BGPIXELS</option>
-				</field>
-				<field name="bg0Top"  class="validate-numeric" type="text" default=""
-					label="BGTOP_LABEL"
-					description="Background image margin top"
-					 />	
-				<field name="bg0Left"  class="validate-numeric" type="text" default=""
-					label="BGLEFT_LABEL"
-					description="Background image margin left"
-					 />					 
 				<field name="bg0Color"  type="color" default=""
 					label="BGCOLOR_LABEL"
 					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
@@ -179,57 +130,6 @@
 					label="BGCOLOR_LABEL"
 					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
 					 />
-				<field name="explanation2"  type="spacer" hr="false"
-					 />
-				<field name="bg2Image" type="media" default="" 
-                                       	label="BGIMAGE_LABEL" description="BGIMAGE_DESCRIPTION" />
-				<field name="bg2ImageW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGEW_LABEL"
-					description="BGIMAGEW_DESCRIPTION"
-					 />	
-				<field name="bg2ImageH"  class="validate-numeric" type="text" default=""
-					label="BGIMAGEH_LABEL"
-					description="BGIMAGEH_DESCRIPTION"
-					 />	
-				<field name="bg2Image_lg" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_LG" description="BGIMAGE_DESCRIPTION_LARGE" />
-				<field name="bg2Image_lgW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGELGW_LABEL"
-					description="BGIMAGELGW_DESCRIPTION"
-					 />	
-				<field name="bg2Breakpoint_lg"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL-LG"
-					description="BGBREAKPOINT_DESCRIPTION-LG"
-					 />	
-				<field name="bg2Image_sm" type="media" default="" 
-                                       	label="BGIMAGE_LABEL_SM" description="BGIMAGE_DESCRIPTION_SMALL" />
-				<field name="bg2Image_smW"  class="validate-numeric" type="text" default=""
-					label="BGIMAGESMW_LABEL"
-					description="BGIMAGESMW_DESCRIPTION"
-					 />	
-				<field name="bg2Breakpoint_sm"  class="validate-numeric" type="text" default=""
-					label="BGBREAKPOINT_LABEL-SM"
-					description="BGBREAKPOINT_DESCRIPTION-SM"
-					 />	
-				<field name="bg2Width"   class="validate-numeric" type="text" default="80.0"
-					label="BGWIDTH_LABEL"
-					description="Width background image if Size = percentage or pixels"
-					 />
-				<field name="bg2Pos" type="list" default="%"
-					label="BGPOSITION_LABEL"	
- 				    	description="BGPOSITION_DESCRIPTION"
-				>
-					<option value="%">BGPERCENTAGE</option>
-					<option value="px">BGPIXELS</option>
-				</field>
-				<field name="bg2Top"  class="validate-numeric" type="text" default=""
-					label="BGTOP_LABEL"
-					description="Background image margin top"
-					 />	
-				<field name="bg2Left"  class="validate-numeric" type="text" default=""
-					label="BGLEFT_LABEL"
-					description="Background image margin left"
-					 />					 
 			</fieldset>
 			<fieldset name="Advanced">
 				<field name="explanation3"  type="spacer" hr="false"

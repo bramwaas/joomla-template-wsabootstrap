@@ -30,17 +30,6 @@
 }
 
 /* background images via absoluut geplaatste html */
-/* overall background */
-#img_bg0Image 
-{
-  position:absolute;
-  width:$bg0Width;
-  height: auto;
-  left:$bg0Left;
-/*  margin-top:$bg0Top; ivm fout in safari */
-  padding-top:$bg0Top;
-/*  z-index: $bg0Z-index; */
-}
 /* content background */
 #img_bg1Image 
 {
@@ -51,17 +40,6 @@
 /*  margin-top:$bg1Top; ivm fout in safari */
   padding-top:$bg1Top;
 /*  z-index: $bg1Z-index; */
-}
-/* #logo image */
-#img_bg2Image 
-{
-  position:absolute;
-  width:$bg2Width;
-  height: auto;
-  left:$bg2Left;
-/*  margin-top:$bg2Top; ivm fout in safari */
-  padding-top:$bg2Top;
-/*  z-index: $bg2Z-index; */
 }
 
 #headerleft {
