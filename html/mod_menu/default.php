@@ -23,10 +23,6 @@ use Joomla\CMS\Helper\ModuleHelper;
 //use Joomla\CMS\Document\HtmlDocument;
 //use Joomla\CMS\Document\Renderer\Html\ModulesRenderer;
 
-
-
-
-
 $id = '';
 
 if ($tagId = $params->get('tag_id', ''))
@@ -123,10 +119,15 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 <!-- oude module -->
 
-<ul <?php echo $id; ?> class="navbar-nav mr-auto nav menu<?php echo $class_sfx;?>">
-<?php foreach ($list as $i => &$item) :
-	
+<ul <?php echo $id; ?> class="mod-menu nav navbar-nav mr-auto menu<?php echo $class_sfx;?>">
+<?php foreach ($list as $i => &$item) 
+{
 	$class = 'nav-item item-'.$item->id;
+	
+	if ($item->id == $default_id)
+	{
+	    $class .= ' default';
+	}
 	if ($item->id == $active_id  || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 	{
 		$class .= ' current';
@@ -187,7 +188,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 	// The next item is deeper.
 	if ($item->deeper){
-		echo '<ul class="nav-child unstyled small dropdown-menu">';
+		echo '<ul class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu">';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
@@ -199,7 +200,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 	else {
 		echo '</li>';
 	}
-endforeach;
+}
 ?></ul>
 <!-- einde oude module -->
 <?php if ($wsaNavtext > " ") : ?>

@@ -3,7 +3,7 @@
 	<name>joomla-template-wsabootstrap</name>
 	<comment></comment>
 	<projects>
-		<project>joomla-cms-4.0-dev</project>
+		<project>joomla-cms</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
