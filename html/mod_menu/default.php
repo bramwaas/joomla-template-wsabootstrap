@@ -171,6 +171,8 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 	}
 
 	echo '<li class="' . $class . '">';
+	
+	echo '<!--Itemtype =' . $item->type . ' -->' ;
 
 	// Render the menu item.
 	switch ($item->type) :
@@ -188,7 +190,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 	// The next item is deeper.
 	if ($item->deeper){
-		echo '<ul class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu">';
+		echo '<ul id=data-item-' . $item->id . ' class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu" . aria-labelledby="dropdownMenuLink-' . $item->id . '">';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

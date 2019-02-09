@@ -8,6 +8,7 @@
  * Modifications	Joomla CSS
  * 30-4-2017 nav-link toegevoegd bij class voor <a> ivm BS4
  * 1-1-2018 foutje in html na-link verbeterd door ontbrekende spatie na " in te voegen.
+ * 9-2-2019 data-target toegevoegd voor openen submenu's 
  */
 
 defined('_JEXEC') or die;
@@ -32,7 +33,7 @@ elseif ($item->deeper) {
 	$linktype = $item->title. '<b class="caret"></b>' ;
 	if ($item->level < 2) {
 		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
-		$item->flink = '#';
+		$item->flink = '#data-item-' . $item->id;
 	}
 	else { // level >= 2
 		$linktype = $item->title;  // origineel alleen deze
@@ -48,7 +49,7 @@ $class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'c
 switch ($item->browserNav) :
 default:
 case 0:
-	?><a <?php echo $class; ?>href="<?php echo $item->flink; ?>" <?php echo $title; ?>><span><?php echo $linktype; ?></span></a><?php
+	?><a id="dropdownMenuLink-<?php echo $item->id . '" ' . $class; ?>href="<?php echo $item->flink; ?>"  <?php echo $title; ?>><span><?php echo $linktype; ?></span></a><?php
 		break;
 
 	case 1:

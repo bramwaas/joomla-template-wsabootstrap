@@ -206,9 +206,10 @@ width: 100%;
 .mod-languages {
     float: $asModLangFloat;
 }
-/* tijdelijk toegvoegd voor bs 3 */
+/* tijdelijk toegvoegd voor bs 3 en bs4  */
 .navbar-collapse.in {
     overflow-y: visible;
+	display:block;  // bs 4 voorlopig
 }
 .navbar-toggle .icon-bar {
     background-color: $navbar-default-toggle-icon-bar-bg;
