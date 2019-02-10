@@ -33,6 +33,7 @@ v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven
 V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 V 6-2-2019 navbar kleuren default bs4 ipv 3
 v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
+v 10-2-2019 naam veranderd en enkele aanpassingen voor v4
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -345,10 +346,13 @@ fclose($tv_file);
 
 $st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+");
 /* .scss file dat variabelen gebruikt */
-
 fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
+
+fwrite($st_file, '// compiler param  $value ' . $value  . "\n//\n");
+fwrite($st_file, '// compiler param  $group ' . $group  . "\n//\n");
+
 // standaard bootstrap variables mixins etc.
 fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
 if($twbs_version == '3') {
