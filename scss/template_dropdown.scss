@@ -5,6 +5,7 @@
 01-5-2016
 23-5-2016
 9-6-2016
+10-2-2019 bs 4 ipv alleen navbar-defualt (bs3) zelfdekleueren voo
 -----------------------------------------*/
 #img_brandImage
 { 
@@ -14,7 +15,11 @@ width: $brandWidth;
 // Alternate navbars uit navbar.less
 // --------------------------------------------------
 
+
+
 // Default navbar 
+.navbar-dark,
+.navbar-light,
 .navbar-default {
   background-color: $navbar-default-bg;
   border-color: $navbar-default-border;
@@ -33,6 +38,7 @@ width: $brandWidth;
   }
 
   .navbar-nav {
+    .nav-link,
     > li > a {
       color: $navbar-default-link-color;
 
