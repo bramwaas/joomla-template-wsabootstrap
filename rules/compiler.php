@@ -204,6 +204,14 @@ $wsaBreakpointxxxl = htmlspecialchars($params['wsaBreakpointxxxl']);
 $wsaContainerxxxl = htmlspecialchars($params['wsaContainerxxxl']);
 if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
   
+if (strpos($menuType, 'navbar-dark') !== false)
+{$navbartheme = 'navbar-dark';}
+else
+{$navbartheme = 'navbar-light';}
+if (strpos($menuType, 'bg-dark') !== false)
+{$navbarbg = 'bg-dark';}
+else
+{$navbarbg = 'bg-light';}
 
 
 
@@ -297,6 +305,11 @@ if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosT
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
+
+
+fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");
+fwrite($tv_file, '$navbar-theme:        ' . $navbartheme . ";\n");
+fwrite($tv_file, '$navbar-bg:           ' . $navbarbg . ";\n");
 
 if ($menuColor > ' '  ) { 	fwrite($tv_file, '$menuColor:           '  . $menuColor .  ";\n");
 			  	fwrite($tv_file, '$graynavbarlighter:    lighten($menuColor,30%)' .  ";\n");
