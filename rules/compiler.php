@@ -34,6 +34,7 @@ V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 V 6-2-2019 navbar kleuren default bs4 ipv 3
 v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
 v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat cluasule van compiler veld
+v 11-2-2019 params as an object
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -89,7 +90,8 @@ class WsaFormRuleCompiler extends FormRule
 //$params = Factory::getApplication()->input->get('jform', '', 'array')['params'];
 $templatestyleid = $input->get('id');
 $home = $input->get('home');
-$params = json_decode(json_encode ($input->get('params')),true); // stdobject omzetten naar assoc array
+//$params = json_decode(json_encode ($input->get('params')),true); // stdobject omzetten naar assoc array
+$params = $input->get('params'); // stdobject params are properties.
 
 
 if  (htmlspecialchars($value) == '1')
@@ -103,7 +105,7 @@ require_once "leafo/src/Server.php";
 
 $scss = new Compiler();
 
-if ( htmlspecialchars($params["compress"]) == "1")
+if ( htmlspecialchars($params->compress) == "1")
 {
 $scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
 }
@@ -123,58 +125,58 @@ $server = new Server($currentpath. '/../scss', null, $scss);
 
 // get params
 
-$gplusProfile   = htmlspecialchars($params['gplusProfile']);
-$twbs_version   = htmlspecialchars($params['twbs_version']);
+$gplusProfile   = htmlspecialchars($params->gplusProfile);
+$twbs_version   = htmlspecialchars($params->twbs_version);
 
 
-$itemVideoHeight= htmlspecialchars($params['itemVideoHeight']);
-$itemLeadHeight = htmlspecialchars($params['itemLeadHeight']);
-$itemLeadWidth  = htmlspecialchars($params['itemLeadWidth']);
-$itemLeadMargin = htmlspecialchars($params['itemLeadMargin']);
-$itemHeight    	= htmlspecialchars($params['itemHeight']);
-$itemWidth    	= htmlspecialchars($params['itemWidth']);
-$itemMargin    	= htmlspecialchars($params['itemMargin']);
+$itemVideoHeight= htmlspecialchars($params->itemVideoHeight);
+$itemLeadHeight = htmlspecialchars($params->itemLeadHeight);
+$itemLeadWidth  = htmlspecialchars($params->itemLeadWidth);
+$itemLeadMargin = htmlspecialchars($params->itemLeadMargin);
+$itemHeight    	= htmlspecialchars($params->itemHeight);
+$itemWidth    	= htmlspecialchars($params->itemWidth);
+$itemMargin    	= htmlspecialchars($params->itemMargin);
 
-$hlMarginTop    = htmlspecialchars($params['hlMarginTop']);
-$hlMarginLeft   = htmlspecialchars($params['hlMarginLeft']);
+$hlMarginTop    = htmlspecialchars($params->hlMarginTop);
+$hlMarginLeft   = htmlspecialchars($params->hlMarginLeft);
 if ($hlMarginLeft > " " ) {} else { $hlMarginLeft = 0; }
-$hlWidth    	= htmlspecialchars($params['hlWidth']);
-$hlHeight    	= htmlspecialchars($params['hlHeight']);
-$hlMarginBottom = htmlspecialchars($params['hlMarginBottom']);
-$iconsWidth    	= htmlspecialchars($params['iconsWidth']);
-$iconsPosLeft   = htmlspecialchars($params['iconsPosLeft']);
-$iconsPosTop    = htmlspecialchars($params['iconsPosTop']);
-$wsaIconsFlex   = htmlspecialchars($params['wsaIconsFlex']);
-$wsaNavbarRightWidth = htmlspecialchars($params['wsaNavbarRightWidth']);
-$footerWidth    = htmlspecialchars($params['footericonsWidth']);
-$footerPosLeft  = htmlspecialchars($params['footerPosLeft']);
-$footerPosBottom	= htmlspecialchars($params['footerPosBottom']);
+$hlWidth    	= htmlspecialchars($params->hlWidth);
+$hlHeight    	= htmlspecialchars($params->hlHeight);
+$hlMarginBottom = htmlspecialchars($params->hlMarginBottom);
+$iconsWidth    	= htmlspecialchars($params->iconsWidth);
+$iconsPosLeft   = htmlspecialchars($params->iconsPosLeft);
+$iconsPosTop    = htmlspecialchars($params->iconsPosTop);
+$wsaIconsFlex   = htmlspecialchars($params->wsaIconsFlex);
+$wsaNavbarRightWidth = htmlspecialchars($params->wsaNavbarRightWidth);
+$footerWidth    = htmlspecialchars($params->footericonsWidth);
+$footerPosLeft  = htmlspecialchars($params->footerPosLeft);
+$footerPosBottom	= htmlspecialchars($params->footerPosBottom);
 
-$menuType 		= htmlspecialchars($params['menuType']); 
-$menuColor 		= htmlspecialchars($params['menuColor']);
-$menuActiveColor 	= htmlspecialchars($params['menuActiveColor']);
-$menuDisabledColor 	= htmlspecialchars($params['menuDisabledColor']);
-$menuBgColor 		= htmlspecialchars($params['menuBgColor']);
-$menuActiveBgColor 	= htmlspecialchars($params['menuActiveBgColor']);
+$menuType 		= htmlspecialchars($params->menuType); 
+$menuColor 		= htmlspecialchars($params->menuColor);
+$menuActiveColor 	= htmlspecialchars($params->menuActiveColor);
+$menuDisabledColor 	= htmlspecialchars($params->menuDisabledColor);
+$menuBgColor 		= htmlspecialchars($params->menuBgColor);
+$menuActiveBgColor 	= htmlspecialchars($params->menuActiveBgColor);
 
 $iconsMobileLeft = '';
 $iconsMobileWidth =  ''; 
 
-$contentPosLeft	= htmlspecialchars($params['contentPosLeft']);
-$contentPosRight	= htmlspecialchars($params['contentPosRight']);
-$contentPosTop  = htmlspecialchars($params['contentPosTop']);
-$marginLeftRight	= htmlspecialchars($params['marginLeftRight']);
+$contentPosLeft	= htmlspecialchars($params->contentPosLeft);
+$contentPosRight	= htmlspecialchars($params->contentPosRight);
+$contentPosTop  = htmlspecialchars($params->contentPosTop);
+$marginLeftRight	= htmlspecialchars($params->marginLeftRight);
 
 if ( $hlWidth > " " and $hlWidth < 40) {
 $iconsMobileLeft = $hlWidth;
 $iconsMobileWidth =  100 - $hlWidth; 
 }
 
-$fgColor    	= htmlspecialchars($params['fgColor']);
+$fgColor    	= htmlspecialchars($params->fgColor);
 
-$brandImage    	= htmlspecialchars($params['brandImage']); // url
-$brandSize    	= htmlspecialchars($params['brandSize']); // auto  <width> % or px 
-$brandWidth    	= htmlspecialchars($params['brandWidth']); // number
+$brandImage    	= htmlspecialchars($params->brandImage); // url
+$brandSize    	= htmlspecialchars($params->brandSize); // auto  <width> % or px 
+$brandWidth    	= htmlspecialchars($params->brandWidth); // number
 $brandDim       = 'px';
 //if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
 // {$brandImage = '/' . $brandImage;}; 
@@ -182,12 +184,12 @@ if ($brandImage > ' ') $brandImage = 'url("' . $brandImage . '")';
 if ($brandImage == '%')  {$brandDim = '%';};
 if ($brandWidth > ' ') {$brandWidth = $brandWidth.$brandDim;} else {$brandWidth = 'auto';};
 
-$wsaCustomSCSS    	= htmlspecialchars($params['wsaCustomSCSS']); // url
+$wsaCustomSCSS    	= htmlspecialchars($params->wsaCustomSCSS); // url
 if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
  
-$wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
+$wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  if ($wsaCssFilename > " ")
  {$path_parts = pathinfo($wsaCssFilename);
  if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
@@ -195,13 +197,13 @@ $wsaCssFilename = strtolower(htmlspecialchars($params['wsaCssFilename']));
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$wsaBreakpointes =  htmlspecialchars($params['wsaBreakpointes']);
+$wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
 $wsaContaineres = $wsaBreakpointes;
-$wsaBreakpointxxl = htmlspecialchars($params['wsaBreakpointxxl']);
-$wsaContainerxxl = htmlspecialchars($params['wsaContainerxxl']);
+$wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
+$wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
 if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-$wsaBreakpointxxxl = htmlspecialchars($params['wsaBreakpointxxxl']);
-$wsaContainerxxxl = htmlspecialchars($params['wsaContainerxxxl']);
+$wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
+$wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
 if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
   
 if (strpos($menuType, 'navbar-dark') !== false)
@@ -216,25 +218,25 @@ else
 
 
 
-$bg0Color    	= htmlspecialchars($params['bg0Color']); // name or hex
+$bg0Color    	= htmlspecialchars($params->bg0Color); // name or hex
 
-$bg1Image    	= htmlspecialchars($params['bg1Image']); 
+$bg1Image    	= htmlspecialchars($params->bg1Image); 
 //if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
-$bg1Image_lg    	= htmlspecialchars($params['bg1Image_lg']);
+$bg1Image_lg    	= htmlspecialchars($params->bg1Image_lg);
 //if ($bg1Image_lg > ' ' and strtolower(substr ( $bg1Image_lg , 0 , 7 )) == 'images/' )  {$bg1Image_lg = '/' . $bg1Image_lg;};
 if ($bg1Image_lg > ' ') $bg1Image_lg = 'url("' . $bg1Image_lg . '")'; else $bg1Image_lg = 'none';
-$bg1Breakpoint_lg    	= htmlspecialchars($params['bg1Breakpoint_lg']);
-$bg1Image_sm    	= htmlspecialchars($params['bg1Image_sm']);
+$bg1Breakpoint_lg    	= htmlspecialchars($params->bg1Breakpoint_lg);
+$bg1Image_sm    	= htmlspecialchars($params->bg1Image_sm);
 //if ($bg1Image_sm > ' ' and strtolower(substr ( $bg1Image_sm , 0 , 7 )) == 'images/' ) {$bg1Image_sm = '/' . $bg1Image_sm;};
 if ($bg1Image_sm > ' ') $bg1Image_sm = 'url("' . $bg1Image_sm . '")'; else $bg1Image_sm = 'none';
-$bg1Breakpoint_sm    	= htmlspecialchars($params['bg1Breakpoint_sm']);
+$bg1Breakpoint_sm    	= htmlspecialchars($params->bg1Breakpoint_sm);
 
-$bg1Width    	= htmlspecialchars($params['bg1Width']); // number
-$bg1Pos    		= htmlspecialchars($params['bg1Pos']); //  % or px 
-$bg1Top      	= htmlspecialchars($params['bg1Top']); // number
-$bg1Left      	= htmlspecialchars($params['bg1Left']); // number
-$bg1Color    	= htmlspecialchars($params['bg1Color']); // name or hex
+$bg1Width    	= htmlspecialchars($params->bg1Width); // number
+$bg1Pos    		= htmlspecialchars($params->bg1Pos); //  % or px 
+$bg1Top      	= htmlspecialchars($params->bg1Top); // number
+$bg1Left      	= htmlspecialchars($params->bg1Left); // number
+$bg1Color    	= htmlspecialchars($params->bg1Color); // name or hex
 $bg1Dim         = 'px';
 $bg1DimPos      = 'px';
 if ($bg1Pos ==  '%')  {$bg1Dim = '%'; $bg1DimPos = '%';};
