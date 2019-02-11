@@ -30,6 +30,7 @@
 20-1-2019 icons verplaatst
 25-1-2019 nieuwe versie BS 4
 7-2-2019 1.4.4 en minder achtergondafbeeldingen
+111-2-2019 icons weer naar onder menu
 */
 
 // copied from cassiopeia
@@ -230,16 +231,16 @@ class="site-grid site <?php echo $option
 		<!-- Begin Header-->
 		<div class="header">
 			<div class="header-inner">
- 				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?>">
-					<jdoc:include type="modules" name="icons" />
-				</div>   
-				<?php endif; ?>
 				<?php if ($this->countModules('position-0')): ?>
 				<div class="pos0">
 					<jdoc:include type="modules" name="position-0" style="none" />
 					<div class="clearfix"></div>
 				</div><!--End Pos0-->
+				<?php endif; ?>
+ 				<?php if(  $this->countModules('icons'))    : ?>
+				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?>">
+					<jdoc:include type="modules" name="icons" />
+				</div><!--End Icons-->   
 				<?php endif; ?>
 				<?php if(  $this->countModules('headerleft'))    : ?>
 				<div id="headerleft">
