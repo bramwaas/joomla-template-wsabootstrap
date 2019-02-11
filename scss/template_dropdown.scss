@@ -6,10 +6,11 @@
 23-5-2016
 9-6-2016
 10-2-2019 bs 4 ipv alleen navbar-defualt (bs3) zelfdekleueren voo
+11-2-2019 brandwith relatief tov lg
 -----------------------------------------*/
 #img_brandImage
 { 
-width: $brandWidth;
+width: $brandWidth * 300 / 960; // < es = 375
 }
 
 // Alternate navbars uit navbar.less
@@ -453,21 +454,13 @@ width: $brandWidth;
 	BOOTSTRAP MEDIA QUERIES OVERRIDES
 	NOTE: The order of the media queries is important when styles overwrite each other
 	================================================================================== 
-@media (min-width: 768px) {}
-@media (min-width: 980px) {}
-@media (min-width: 1200px) {}
-@media (max-width: 979px) {}
-@media (min-width: 768px) and (max-width: 979px) {}
-@media (max-width: 767px) {}
-@media (max-width: 480px) {}
-
 */
 
 /* make sidebar nav vertical */ 
 /* from http://www.jonathanbriehl.com/2014/01/17/vertical-menu-for-bootstrap-3/ 
 At a resolution of 768px or greater you see vertical menu in one of my two main columns.
 When scaled down to less than 768px, the menu collapses and works just like the normal theme menu.
-I only made one small addition to the standard HTML – I added a container div around the menu with a class called “sidebar-nav”.
+I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
 (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
 */
 @media (min-width: $screen-sm-min) {
@@ -571,4 +564,46 @@ I only made one small addition to the standard HTML – I added a container div 
    }
 
 }
+
+@if $twbs_version == 4 {
+@include media-breakpoint-up(sm)
+{  // min 576
+#img_brandImage
+{ 
+width: $brandWidth * 540 / 960; // sm cont = 540
+}
+}/* einde up(sm) */
+
+@include media-breakpoint-up(md) { // min 768
+#img_brandImage
+{ 
+width: $brandWidth * 720 / 960; // md cont = 720
+}
+}/* einde up(md) */
+
+@include media-breakpoint-up(lg) { // min 992
+#img_brandImage
+{ 
+width: $brandWidth ; // lg 100%
+}
+}/* einde up(lg) */
+} // end twbs 4
+@else { // bs3
+// @include media-breakpoint-up(md) { bs4
+@media (min-width: $screen-sm-min){
+#img_brandImage
+{ 
+width: $brandWidth * 720 / 960; // md cont = 720
+}
+}
+// @include media-breakpoint-up(lg) { bs4
+@media (min-width: $screen-md-min )  { /* desktop (width >= 992px) */
+#img_brandImage
+{ 
+width: $brandWidth ; // lg 100%
+}
+}
+
+} // end twbs 3
+
 
