@@ -14,6 +14,7 @@
 // 20180107 enkele variabele namen met @ beginnend vervangen door $
 // 20190119 navbar transparent style toegevoegd. 1.4.3
 // 20190126 navbar-inner was al afgesterd nu helemaal verwijderd
+// 20190212 iconssm via flexbox order -1 naar top.
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -145,6 +146,13 @@ div[class^="newsfeed"]
 	}
 	
 }
+.header-inner
+{
+display: -ms-flexbox;
+display: flex;
+-ms-flex-direction: column;
+flex-direction: column;
+}
 
 .icon-cog,
 .icons .icon-cog
@@ -166,6 +174,8 @@ margin-left: $iconsPosLeft;
 width: $iconsWidth; 
 */
 width: 100%;
+-ms-flex-order: -1;
+order: -1;
 }
 
 
