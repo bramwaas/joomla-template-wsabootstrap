@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>1.4.4</version>
-	<creationDate>07-02-2019</creationDate>
+	<creationDate>17-02-2019</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -370,7 +370,7 @@
 				</field>
 				<field name="twbs_version" type="radio" class="switcher btn-group" default="3" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
 					<option value="3">3.3.7</option>
-					<option value="4">4.2.1</option>
+					<option value="4">4.3.1</option>
 				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
