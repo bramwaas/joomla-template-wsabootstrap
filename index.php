@@ -32,6 +32,7 @@
 7-2-2019 1.4.4 en minder achtergondafbeeldingen
 11-2-2019 icons weer naar onder menu
 17-2-2019 nieuwe versie bs4 (4.3.1)
+27-2-2019 enkele sidebar span4 ipv 3
 */
 
 // copied from cassiopeia
@@ -162,19 +163,18 @@ type: \'image\'
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
 {
-	$span = "span6  col-xs-12 col-md-6" ;
+	$spanc = "span6  col-md-6" ;
+	$spans = "span3  col-md-3";
 }
-elseif ($this->countModules('position-7') && !$this->countModules('position-8'))
+elseif (!$this->countModules('position-7') || !$this->countModules('position-8'))
+    
 {
-	$span = "span9  col-xs-12 col-md-9";
-}
-elseif (!$this->countModules('position-7') && $this->countModules('position-8'))
-{
-	$span = "span9  col-xs-12 col-md-9";
+	$spanc = "span8  col-md-8";
+	$spans = "span4  col-md-4";
 }
 else
 {
-	$span = "span12  col-xs-12";
+	$spanc = "span12  col-12";
 }
 ?>
 
@@ -276,11 +276,11 @@ class="site-grid site <?php echo $option
 		    	<?php endif; ?>
 			<div class="row">
 				<?php if ($this->countModules('position-8')): ?>
-				<div id="sidebarleft" class="pos8 span3  col-xs-12 col-md-3">
+				<div id="sidebarleft" class="pos8 <?php echo $spans;?>">
 					<jdoc:include type="modules" name="position-8" style="well" /><!--End Position-8-->
 				</div><!--End Sidebar Left-->
 				<?php endif; ?>
-				<div id="content" class="<?php echo $span;?>">
+				<div id="content" class="<?php echo $spanc;?>">
 					<?php if ($this->countModules('position-2')): ?>
 					<div class="pos2">
 						<jdoc:include type="modules" name="position-2" style="none" />
@@ -297,7 +297,7 @@ class="site-grid site <?php echo $option
 					<jdoc:include type="component" />
 				</div><!--Content -->
 				<?php if ($this->countModules('position-7')) : ?>
-				<div id="sidebarright" class="pos7 span3  col-xs-12 col-md-3">
+				<div id="sidebarright" class="pos7 <?php echo $spans;?>">
 					<jdoc:include type="modules" name="position-7" style="well" /><!--End Position-7-->
 				</div><!--End Sidebar Right-->
 				<?php endif; ?>
