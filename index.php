@@ -33,6 +33,7 @@
 11-2-2019 icons weer naar onder menu
 17-2-2019 nieuwe versie bs4 (4.3.1)
 27-2-2019 enkele sidebar span4 ipv 3
+3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
 */
 
 // copied from cassiopeia
@@ -176,6 +177,19 @@ else
 {
 	$spanc = "span12  col-12";
 }
+$hi_mods = ($this->countModules('position-0')? ' hipos0': '')
+. ($this->countModules('icons')? ' hiicons': '')
+. ($this->countModules('headerleft')? ' hihl': '')
+. ($this->countModules('position-4')? ' hipos4': '')
+. ($this->countModules('position-5')? ' hipos5': '')
+. ($this->countModules('position-6')? ' hipos6': '')
+;
+$cnt_mods = ($this->countModules('position-1')? ' cntpos1': '')
+. ($this->countModules('position-2')? ' cntpos2': '')
+. ($this->countModules('position-3')? ' cntpos3': '')
+. ($this->countModules('position-7')? ' cntpos7': '')
+. ($this->countModules('position-8')? ' cntpos8': '')
+. ($this->countModules('message')? ' cntmsg': ''); 
 ?>
 
 <!--[if lt IE 9]>
@@ -228,7 +242,7 @@ class="site-grid site <?php echo $option
 <div id="wrapper1">
 		<!-- Begin Header-->
 		<div class="header">
-			<div class="header-inner">
+			<div class="header-inner<?php echo $hi_mods; ?>">
 				<?php if ($this->countModules('position-0')): ?>
 				<div class="pos0">
 					<jdoc:include type="modules" name="position-0" style="none" />
@@ -270,7 +284,7 @@ class="site-grid site <?php echo $option
 			</div><!--End Header-Inner-->
 		</div><!--End Header-->
 		<!-- Begin Container content-->
-		<div class="container-content">
+		<div class="container-content<?php echo $cnt_mods; ?>">
 		    	<?php if ($this->countModules('position-1')): ?>
 	            	    <jdoc:include type="modules" name="position-1" style="none" />
 		    	<?php endif; ?>
