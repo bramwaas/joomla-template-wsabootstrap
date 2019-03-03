@@ -562,6 +562,13 @@ h6 {
   top: $iconsPosTop;  
  }   
 }	
+.navbar.navbar-expand-md
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
+}
 
 	
 }/* einde up(md) */
@@ -598,6 +605,13 @@ h6 {
   top: $iconsPosTop;  
  }   
 }
+.navbar.navbar-expand-lg
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
+}
 
 } /* einde up(lg) */
 
@@ -605,11 +619,18 @@ h6 {
 
 @if $iconsPosTop > 0px
 {
-.iconssm.navbar-expand-x
+.iconssm.navbar-expand-xl
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
   top: $iconsPosTop;  
  }   
+}
+.navbar.navbar-expand-xl
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
 }
 
 }
