@@ -15,6 +15,8 @@
 // 20190119 navbar transparent style toegevoegd. 1.4.3
 // 20190126 navbar-inner was al afgesterd nu helemaal verwijderd
 // 20190212 iconssm via flexbox order -1 naar top.
+// 20190303 header inner navbar padding 0.
+//  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen.
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -61,21 +63,7 @@
 	height: 100%;}
 }
 
-#icons
-{   /* icons social media boven logo */
-/* was
-  position: absolute;
-  top: $iconsPosTop;    
-  left: $iconsPosLeft;
-  width: $iconsWidth; 
 
-position: relative;
- margin-top: $iconsPosTop;    
-margin-left: $iconsPosLeft;
-width: $iconsWidth; 
-max-width: 100%;
-*/
-}
 #navbar-right-mod
 {
 	display: inline-block;
@@ -94,7 +82,6 @@ body>div.container {
 /* voor achtergrondafbeeldingen van #wrapper geen extra margin ed toevoegen, anders klopt lay-out niet meer */
    position: relative;
 }
-
 
 .blog,
 .blog-featured,
@@ -152,6 +139,11 @@ display: -ms-flexbox;
 display: flex;
 -ms-flex-direction: column;
 flex-direction: column;
+	.navbar{ padding:0;
+	}
+	.navbar>.container, .navbar>.container-fluid {
+    align-items: flex-start;
+	}
 }
 
 .icon-cog,
@@ -161,18 +153,13 @@ flex-direction: column;
 }
 .iconssm 
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
-/* was
-  position: absolute;
-  top: $iconsPosTop;    
-  left: $iconsPosLeft;
-  width: $iconsWidth; 
-*/  
+
 position: relative;
 display: block;
-/* margin-top: $iconsPosTop;    
-margin-left: $iconsPosLeft;
-width: $iconsWidth; 
-*/
+display: -ms-flexbox;
+display: flex;
+-ms-flex-direction: $wsaIconsFlex;  
+flex-direction: $wsaIconsFlex;  
 width: 100%;
 -ms-flex-order: -1;
 order: -1;
@@ -567,17 +554,15 @@ h6 {
 		//@include make-xs-column(10);
 		}
 	}
+@if $iconsPosTop > 0px
+{
 .iconssm.navbar-expand-md
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
-  top: $iconsPosTop;    
-/*  left: $iconsPosLeft;
-    width: $iconsWidth;
-    max-width: 100%;
-	*/
-  display: flex;
-  flex-direction: $wsaIconsFlex;  
-}
+  top: $iconsPosTop;  
+ }   
+}	
+
 	
 }/* einde up(md) */
 
@@ -605,24 +590,26 @@ h6 {
 
 	
 }
+@if $iconsPosTop > 0px
+{
 .iconssm.navbar-expand-lg
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
-  top: $iconsPosTop;    
-  display: flex;
-  flex-direction: $wsaIconsFlex;  
+  top: $iconsPosTop;  
+ }   
 }
 
 } /* einde up(lg) */
 
 @include media-breakpoint-up(xl) { // min 1200 px
 
-.iconssm.navbar-expand-xl
+@if $iconsPosTop > 0px
+{
+.iconssm.navbar-expand-x
 {    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
   position: absolute;
-  top: $iconsPosTop;    
-  display: flex;
-  flex-direction: $wsaIconsFlex;  
+  top: $iconsPosTop;  
+ }   
 }
 
 }
