@@ -242,40 +242,40 @@ class="site-grid site <?php echo $option
 <div id="wrapper1">
 		<!-- Begin Header-->
 		<div class="header">
-			<div class="header-inner<?php echo $hi_mods; ?>">
+			<div class="header-inner container-content<?php echo $hi_mods; ?>">
 				<?php if ($this->countModules('position-0')): ?>
-				<div class="pos0">
+				<div class="pos0 row">
 					<jdoc:include type="modules" name="position-0" style="none" />
 					<div class="clearfix"></div>
 				</div><!--End Pos0-->
 				<?php endif; ?>
  				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?>">
+				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?> row">
 					<jdoc:include type="modules" name="icons" />
 				</div><!--End Icons-->   
 				<?php endif; ?>
 				<?php if(  $this->countModules('headerleft'))    : ?>
-				<div id="headerleft">
-					<div class="inner d-flex justify-content-between ">
+				<div id="headerleft ">
+					<div class="inner d-flex justify-content-between row">
 						<jdoc:include type="modules" name="headerleft"  />
 					<div class="clearfix"></div>
 					</div>
 				</div><!--einde headerleft-->  
   				<?php endif; ?>
 				<?php if ($this->countModules('position-4')): ?>
-				<div class="pos4">
+				<div class="pos4 row">
 					<jdoc:include type="modules" name="position-4" style="none" />
 					<div class="clearfix"></div>
 				</div><!--End Pos4-->
 				<?php endif; ?>
 				<?php if ($this->countModules('position-5')): ?>
-				<div class="pos5 bigimage">
+				<div class="pos5 row bigimage">
 					<jdoc:include type="modules" name="position-5" style="none" />
 					<div class="clearfix"></div>
 				</div><!--End Bigimage-->
 				<?php endif; ?>
 				<?php if ($this->countModules('position-6')): ?>
-				<div class="pos6">
+				<div class="pos6 row">
 					<jdoc:include type="modules" name="position-6" style="none" />
 					<div class="clearfix"></div>
 				</div><!--End Pos6-->
