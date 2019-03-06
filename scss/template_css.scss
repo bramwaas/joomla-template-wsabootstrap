@@ -45,7 +45,27 @@
   padding-top:$bg1Top;
 /*  z-index: $bg1Z-index; */
 }
-
+@if $twbs_version == 4 {
+#headerleft {
+  position: relative;
+  float:left;
+  width:$asHeadLeftWidth;
+  // height: 0px;
+  margin-top: $hlMarginTop;
+  margin-left:$hlMarginLeft;
+  margin-bottom: $hlMarginBottom; 	
+  padding-top:0;
+  padding-bottom: 0; // $hlHeight;
+      div.inner {
+	position: relative;
+	//top: 0;
+	//left: 0;
+	width: 100%;
+	//height: 100%;
+	}
+}
+} // einde bs4
+@else { // bs3
 #headerleft {
   position: relative;
   float:left;
@@ -64,8 +84,7 @@
 	height: 100%;
 	}
 }
-
-
+}
 #navbar-right-mod
 {
 	display: inline-block;
