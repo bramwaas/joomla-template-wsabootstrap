@@ -16,7 +16,8 @@
 // 20190126 navbar-inner was al afgesterd nu helemaal verwijderd
 // 20190212 iconssm via flexbox order -1 naar top.
 // 20190303 header inner navbar padding 0.
-//  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen.
+//  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen. 
+// 20190306 display flex voor headerleft.
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -60,7 +61,14 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;}
+	height: 100%;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;	
+	div {
+		display: inline-block;
+	}
 }
 
 
