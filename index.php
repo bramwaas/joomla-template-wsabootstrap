@@ -256,7 +256,7 @@ class="site-grid site <?php echo $option
 				<?php endif; ?>
 				<?php if(  $this->countModules('headerleft'))    : ?>
 				<div id="headerleft">
-					<div class="inner">
+					<div class="inner d-flex justify-content-between ">
 						<jdoc:include type="modules" name="headerleft"  />
 					<div class="clearfix"></div>
 					</div>
