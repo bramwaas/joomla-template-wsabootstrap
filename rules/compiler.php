@@ -35,6 +35,7 @@ V 6-2-2019 navbar kleuren default bs4 ipv 3
 v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
 v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat cluasule van compiler veld
 v 11-2-2019 params as an object
+v 20-3-2019 border en active link colors nav-bar
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -318,13 +319,19 @@ if ($menuColor > ' '  ) { 	fwrite($tv_file, '$menuColor:           '  . $menuCol
 			  	fwrite($tv_file, '$graynavbardarker:     $menuColor' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-color: $menuColor' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-link-color: $menuColor' .  ";\n");
-			  	fwrite($tv_file, '$navbar-default-link-hover-color: darken($menuColor, 10%)' .  ";\n");
+				
+			  	fwrite($tv_file, '$navbar-default-border: rgba($menuColor, .5)' .  ";\n");
+			  	fwrite($tv_file, '$nav-tabs-border-color: $navbar-default-border' .  ";\n");
+
+//				fwrite($tv_file, '$nav-link-hover-bg: $navbar-default-border' .  ";\n");  // nog even niet onbekend welke kleur te gebruiken
+
 };
 if ($menuActiveColor > ' '  ) { fwrite($tv_file, '$menuActiveColor:     '  . $menuActiveColor .  ";\n");
 			  	fwrite($tv_file, '$graynavbarfg:         $menuActiveColor' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-link-active-color: $menuActiveColor' .  ";\n");
 			  	fwrite($tv_file, '$nav-tabs-active-link-hover-border-color: $menuActiveColor' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-toggle-icon-bar-bg: $menuActiveColor' .  ";\n");
+			  	fwrite($tv_file, '$navbar-default-link-hover-color: $menuActiveColor' .  ";\n");
 				                  
 };
 if ($menuDisabledColor > ' '  ) { fwrite($tv_file, '$menuDisabledColor: '  . $menuDisabledColor .  ";\n");
@@ -332,17 +339,17 @@ if ($menuDisabledColor > ' '  ) { fwrite($tv_file, '$menuDisabledColor: '  . $me
 };
 if ($menuBgColor > ' '  ) { 	fwrite($tv_file, '$menuBgColor:         '  . $menuBgColor .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-bg:    $menuBgColor' .  ";\n");
-			  	fwrite($tv_file, '$navbar-default-border: darken($navbar-default-bg, 6.5%)' .  ";\n");
 			  	fwrite($tv_file, '$dropdown-bg:    $menuBgColor' .  ";\n");
-			  	fwrite($tv_file, '$dropdown-border: darken($navbar-default-bg, 6.5%)' .  ";\n");
-			  	fwrite($tv_file, '$nav-tabs-border-color: $navbar-default-border' .  ";\n");
-			  	fwrite($tv_file, '$navbar-default-toggle-border-color: darken($navbar-default-bg, 6.5%)' .  ";\n");
+			  	fwrite($tv_file, '$dropdown-border: rgba($navbar-default-bg, .5)' .  ";\n");
+			  	fwrite($tv_file, '$navbar-default-toggle-border-color: rgba($navbar-default-bg, .5)' .  ";\n");
 };
 if ($menuActiveBgColor > ' '  ) { fwrite($tv_file, '$menuActiveBgColor: '  . $menuActiveBgColor .  ";\n");
 			  	fwrite($tv_file, '$graynavbarbg:         $menuActiveBgColor' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-link-active-bg: $menuActiveBgColor' .  ";\n");
-			  	fwrite($tv_file, '$nav-tabs-link-hover-border-color: darken($navbar-default-link-active-bg, 6.5%)' .  ";\n");
+			  	fwrite($tv_file, '$nav-tabs-link-hover-border-color: rgba($navbar-default-link-active-bg, .5)' .  ";\n");
 			  	fwrite($tv_file, '$navbar-default-toggle-hover-bg: $menuActiveBgColor' .  ";\n");
+			  	fwrite($tv_file, '$navbar-default-link-hover-bg: $menuActiveBgColor' .  ";\n");
+				
 };
 
 /* overgenomen uit asha-s werkt mogelijk (nog) niet */
