@@ -2,7 +2,7 @@
 /**
  * @package     	Joomla.Site
  * @subpackage  	mod_menu override
- * @copyright   	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright   	Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
@@ -12,6 +12,7 @@
  * 20-1-2019 navtext toegevoegd
  * 26-1-2019  aanpassingen verschillen BS4 en BS3 mbv twbs_version
  * 6-2-2019
+ * 26-5-2020 diverse Id's beter uniek gemaakt met <?php echo $moduleIdPos; ?> en moduletag gebruikt
  */
 
 defined('_JEXEC') or die;
@@ -43,6 +44,10 @@ if ($twbs_version == 3) {
 }
 $wsaNavbarExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaNavbarExpand', 'navbar-expand-md'));
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
+
+$moduleTag     = $params->get('module_tag', 'div');
+$moduleIdPos          = 'M' . $module->id . $module->position;
+
 
 	/**
 	 * Loads and renders the module
@@ -79,18 +84,18 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<div class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
+		    	<<?php echo $moduleTag; ?> class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
 		         <!-- div class="navbar-inner" -->
 		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
 	         	   	<a class="navbar-brand brand" href="#">
-					  <img id="img_brandImage" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
+					  <img id="img_brandImage<?php echo $moduleIdPos; ?>" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
 					</a>
 					<?php endif; ?>
 					<?php if(  $document->countModules('navbar-brand'))    : ?>
-					<span id="navbar-brand-mod" class="navbar-text navbar-brand" >
+					<span id="navbar-brand-mod<?php echo $moduleIdPos; ?>" class="navbar-text navbar-brand" >
 					<?php wsa_load('navbar-brand'); ?>
 					</span> <!-- end navbar-brand -->
 					<?php endif; ?>
@@ -100,14 +105,14 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 					<?php echo '<!-- $twbs_version=' . $twbs_version . ". -->\n"; ?>
 					<?php if ($twbs_version == '3') : ?>
 					<div class="navbar-header">
-					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-pos1" aria-controls="navbar-pos1" aria-expanded="false">
+					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
  						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					  </button> 
 					<?php else: // $twbs_version == '4' ?>
-				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-pos1" aria-controls="#navbar-pos1" aria-expanded="false" aria-label="Toggle navigation">
+				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="#navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false" aria-label="Toggle navigation">
 					  <span class="navbar-toggler-icon"></span>
 				    </button>
 					<!-- navbar-header -->
@@ -115,7 +120,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 					<?php if ($twbs_version == '3') : ?>
 					</div> <!-- navbar-header -->
 					<?php endif; ?>
-				   <div id="navbar-pos1" class="collapse navbar-collapse">
+				   <div id="navbar-<?php echo $moduleIdPos; ?>" class="collapse navbar-collapse">
 
 <!-- oude module -->
 
@@ -190,7 +195,7 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 	// The next item is deeper.
 	if ($item->deeper){
-		echo '<ul id=data-item-' . $item->id . ' class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu" . aria-labelledby="dropdownMenuLink-' . $item->id . '">';
+	    echo '<ul id=data-item-' . $moduleIdPos . $item->id . ' class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu" . aria-labelledby="dropdownMenuLink-' . $moduleIdPos . $item->id . '">';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
@@ -209,12 +214,12 @@ $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 						<?php echo $wsaNavtext;  ?>
 <?php endif; ?>
 				<?php if(  $document->countModules('navbar-right'))    : ?>
-					<span id="navbar-right-mod" class="navbar-text navbar-right" >
+					<span id="navbar-right-mod<?php echo $moduleIdPos; ?>" class="navbar-text navbar-right" >
 					<?php wsa_load('navbar-right'); ?>
 					</span> <!-- end navbar-right -->
 				<?php endif; ?>
 	          	   </div>
 		          </div>
 		      	 <!-- /div--> <!-- end navbar-inner -->
-		    	</div>
+		    	</<?php echo $moduleTag; ?>>
 <!--End navbar-->
