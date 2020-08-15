@@ -18,6 +18,7 @@
 // 20190303 header inner navbar padding 0.
 //  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen. 
 // 20190306 display flex voor headerleft.
+// 20200815 for the onepage template rssfoto elements inline-block instead of float left, to keep space for the containing block
 / * ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -304,7 +305,7 @@ width: auto;
 
 	 li
 		{
-		float: left;
+		display: inline-block;
 		height: 320px; /* vaste hoogte (en breedte) voor mooier ordenen */
 		width: 250px;
 		overflow: hidden;
