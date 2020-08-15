@@ -167,15 +167,15 @@ if ($this->countModules('position-7') && $this->countModules('position-8'))
 	$spanc = "span6  col-md-6" ;
 	$spans = "span3  col-md-3";
 }
-elseif (!$this->countModules('position-7') || !$this->countModules('position-8'))
+elseif (!$this->countModules('position-7') && !$this->countModules('position-8'))
     
 {
-	$spanc = "span8  col-md-8";
-	$spans = "span4  col-md-4";
+    $spanc = "span12  col-12";
 }
 else
 {
-	$spanc = "span12  col-12";
+	$spanc = "span8  col-md-8";
+	$spans = "span4  col-md-4";
 }
 $hi_mods = ($this->countModules('position-0')? ' hipos0': '')
 . ($this->countModules('icons')? ' hiicons': '')
