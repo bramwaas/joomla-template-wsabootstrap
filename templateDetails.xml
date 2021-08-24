@@ -8,7 +8,7 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>1.4.6</version>
+	<version>2.0.0</version>
 	<creationDate>26-05-2020</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
@@ -352,9 +352,11 @@
   					<option value="1">JYES</option>
   					<option value="0">JNO</option>
 				</field>
-			 	<field name="wsaCustomSCSS" type="filelist" directory="images/scss" hide_default="true"
+			 	<field name="wsaCustomSCSS" type="filelist" directory="images" hide_default="true"
                    	label="WSA_CUSTOMCSS_LABEL" 
                    	description="WSA_CUSTOMCSS_DESCRIPTION"
+                   	filter="*css"
+                   	fileFilter="*css"
                    	/>
 				<field name="wsaCssFilename"  type="text" default=""
 					label="WSA_CSS_FILENAME_LABEL"

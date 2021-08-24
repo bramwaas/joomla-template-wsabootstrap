@@ -34,15 +34,35 @@
 17-2-2019 nieuwe versie bs4 (4.3.1)
 27-2-2019 enkele sidebar span4 ipv 3
 3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
+24-8-2021 updated parts copied from cassiopeia.
 */
-
+\defined('_JEXEC') or die;
 // copied from cassiopeia
-use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
-//use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;   // voor vertalingen???
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
+/** @var Joomla\CMS\Document\HtmlDocument $this */
+
+$app = Factory::getApplication();
+//$wa  = $this->getWebAssetManager();
+
+$app  = Factory::getApplication();
+$lang = Factory::getLanguage();
+
+// Detecting Active Variables
+$option   = $app->input->getCmd('option', '');
+$view     = $app->input->getCmd('view', '');
+$layout   = $app->input->getCmd('layout', '');
+$task     = $app->input->getCmd('task', '');
+$itemid   = $app->input->getCmd('Itemid', '');
+$sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
+$menu     = $app->getMenu()->getActive();
+$pageclass = $menu !== null ? $menu->getParams()->get('pageclass_sfx', '') : '';
+
+
 // end copied from cassiopeia
-/** @var JDocumentHtml $this */
 
 $app  = Factory::getApplication();
 $lang = Factory::getLanguage();
