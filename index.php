@@ -64,20 +64,6 @@ $pageclass = $menu !== null ? $menu->getParams()->get('pageclass_sfx', '') : '';
 
 // end copied from cassiopeia
 
-$app  = Factory::getApplication();
-$lang = Factory::getLanguage();
-
-// Detecting Active Variables
-$option   = $app->input->getCmd('option', '');
-$view     = $app->input->getCmd('view', '');
-$layout   = $app->input->getCmd('layout', '');
-$task     = $app->input->getCmd('task', '');
-$itemid   = $app->input->getCmd('Itemid', '');
-$sitename = $app->get('sitename');
-$menu     = $app->getMenu()->getActive();
-$pageclass = (isset($menu)) ? $menu->params->get('pageclass_sfx'): '';
-
-// end copied from cassiopeia
 
 // Get the template, params and id 
 $template = $app->getTemplate(true);
