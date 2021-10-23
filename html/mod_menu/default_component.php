@@ -8,8 +8,9 @@
  * Modifications	Joomla CSS
  * 30-4-2017 nav-link toegevoegd bij class voor <a> ivm BS4
  * 1-1-2018 foutje in html na-link verbeterd door ontbrekende spatie na " in te voegen.
- * 9-2-2019 data-target toegevoegd voor openen submenu's 
-* 2020-05-26 Item->id gekwalificeerd met $moduleIdPos om hem beter uniek te maken
+ * 9-2-2019 data-target toegevoegd voor openen submenu's
+ * 2020-05-26 Item->id gekwalificeerd met $moduleIdPos om hem beter uniek te maken
+ * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  */
 
 defined('_JEXEC') or die;
@@ -20,29 +21,29 @@ $title = $item->anchor_title ? 'title="'.$item->anchor_title.'" ' : '';
 
 if ($item->menu_image)
 {
-	$item->params->get('menu_text', 1) ?
-	$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><div class="image-title">'.$item->title.'</div> ' :
-	$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
-	
-	if ($item->deeper) {
-		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
-		$item->flink = '#';
-	}
+    $item->getParams()->get('menu_text', 1) ?
+    $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" /><div class="image-title">'.$item->title.'</div> ' :
+    $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
+    
+    if ($item->deeper) {
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
+        $item->flink = '#';
+    }
 }
 
 elseif ($item->deeper) {
-	$linktype = $item->title. '<b class="caret"></b>' ;
-	if ($item->level < 2) {
-		$class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
-		$item->flink = '#data-item-' . $moduleIdPos . $item->id;
-	}
-	else { // level >= 2
-		$linktype = $item->title;  // origineel alleen deze
-	}
+    $linktype = $item->title. '<b class="caret"></b>' ;
+    if ($item->level < 2) {
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
+        $item->flink = '#data-item-' . $moduleIdPos . $item->id;
+    }
+    else { // level >= 2
+        $linktype = $item->title;  // origineel alleen deze
+    }
 }
 
 else {
-	$linktype = $item->title;
+    $linktype = $item->title;
 }
 
 $class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'class="nav-link" ';

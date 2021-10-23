@@ -35,8 +35,8 @@
 27-2-2019 enkele sidebar span4 ipv 3
 3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
 24-8-2021 updated parts copied from cassiopeia.
+23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
 */
-\defined('_JEXEC') or die;
 // copied from cassiopeia
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -45,11 +45,9 @@ use Joomla\CMS\Uri\Uri;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 
-$app = Factory::getApplication();
-//$wa  = $this->getWebAssetManager();
-
 $app  = Factory::getApplication();
 $lang = Factory::getLanguage();
+//$wa  = $this->getWebAssetManager();
 
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
@@ -59,7 +57,7 @@ $task     = $app->input->getCmd('task', '');
 $itemid   = $app->input->getCmd('Itemid', '');
 $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
 $menu     = $app->getMenu()->getActive();
-$pageclass = $menu !== null ? $menu->getParams()->get('pageclass_sfx', '') : '';
+$pageclass = (isset($menu)) ? $menu->getParams()->get('pageclass_sfx'): '';
 
 
 // end copied from cassiopeia

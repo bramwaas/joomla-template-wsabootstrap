@@ -13,9 +13,10 @@
  * 26-1-2019  aanpassingen verschillen BS4 en BS3 mbv twbs_version
  * 6-2-2019
  * 26-5-2020 diverse Id's beter uniek gemaakt met <?php echo $moduleIdPos; ?> en moduletag gebruikt
+ * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  */
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 use Joomla\CMS\Helper\ModuleHelper;
 
@@ -133,7 +134,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 	{
 	    $class .= ' default';
 	}
-	if ($item->id == $active_id  || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
+	if ($item->id == $active_id  || ($item->type === 'alias' && $item->getParams()->get('aliasoptions') == $active_id))
 	{
 		$class .= ' current';
 	}
@@ -144,7 +145,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 	}
 	elseif ($item->type === 'alias')
 	{
-		$aliasToId = $item->params->get('aliasoptions');
+		$aliasToId = $item->getParams()->get('aliasoptions');
 
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{

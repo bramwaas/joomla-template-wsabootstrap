@@ -13,7 +13,7 @@
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
-	<copyright>AHC Waasdorp, Amsterdam 2015 - 2020</copyright>
+	<copyright>AHC Waasdorp, Amsterdam 2015 - 2021</copyright>
 	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
 	<files>
 		<filename>component.php</filename>
