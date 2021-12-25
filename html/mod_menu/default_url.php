@@ -7,6 +7,7 @@
  * Modifications	Joomla CSS
  * bw 2015-09-26       line 56 </a></span> changed in </span></a></span>
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
+ * 25-12-2021 eerste aanpassingen BS5 (data- => data-bs- )
  */
 
 defined('_JEXEC') or die;
@@ -22,7 +23,7 @@ if ($item->menu_image)
     $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />	<span class="image-title">'.$item->title.'</span> ' :
     $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
     if ($item->deeper) {
-        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
     
@@ -30,7 +31,7 @@ if ($item->menu_image)
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
     if ($item->level < 2) {
-        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
     else {

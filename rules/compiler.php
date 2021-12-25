@@ -48,7 +48,6 @@ use Joomla\CMS\Uri\Uri;
 //use Joomla\CMS\Language\Text;   // voor vertalingen???
 use Joomla\CMS\Form\FormRule;
 use Joomla\CMS\Form\Form;
-use Joomla\Registry\Registry;
 
 
  
@@ -72,7 +71,7 @@ class WsaFormRuleCompiler extends FormRule
      * @param   string             $group    The field name group control value. This acts as as an array container for the field.
      *                                       For example if the field has name="foo" and the group value is set to "bar" then the
      *                                       full field name would end up being "bar[foo]".
-     * @param   Registry           $input    An optional Registry object with the entire data set to validate against the entire form.
+     * @param   ArrayAccess        $input    An optional Registry object with the entire data set to validate against the entire form.
      * @param   Form               $form     The form object for which the field is being tested.
      *
      * @return  boolean  True if the value is valid, false otherwise.
@@ -80,7 +79,7 @@ class WsaFormRuleCompiler extends FormRule
      * @since   1.7.0
      * @throws  \UnexpectedValueException if rule is invalid.
      */
-    public function test(\SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null)
+    public function test(\SimpleXMLElement $element, $value, $group = null,  $input = null, Form $form = null)
     
     {
 
