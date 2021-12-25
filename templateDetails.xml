@@ -8,12 +8,12 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<creationDate>26-05-2020</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
-	<copyright>AHC Waasdorp, Amsterdam 2015 - 2021</copyright>
+	<copyright>AHC Waasdorp, Amsterdam 2015 - 2022</copyright>
 	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
 	<files>
 		<filename>component.php</filename>
@@ -371,6 +371,7 @@
 				<field name="twbs_version" type="radio" class="switcher btn-group" default="3" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
 					<option value="3">3.3.7</option>
 					<option value="4">4.3.1</option>
+					<option value="5">5.1.x</option>
 				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
@@ -386,7 +387,7 @@
 		</fields>
 	</config>
     <updateservers>
-	<server type="extension" priority="1" name="Bootstrap 3 Template"><![CDATA[https://www.waasdorpsoekhan.nl/update/wsabootstrap/wsabootstrap.xml]]></server>
+	<server type="extension" priority="1" name="Bootstrap Template"><![CDATA[https://www.waasdorpsoekhan.nl/update/wsabootstrap/wsabootstrap.xml]]></server>
     </updateservers>
 
 </extension>
