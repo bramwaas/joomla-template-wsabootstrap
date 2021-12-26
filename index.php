@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die;
 /*
- * @copyright  Copyright (C) 2015 - 2018 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2022 AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -9,45 +9,47 @@
  * 20160121 variabele style niet meer inline, maar via template.min.<styleid>.css
  * 3-4-2016 squeezebox verwijderd ten gunste van magnific popup
  * 24-4-2016 ook begin en eind van navbar naar module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
-* 22-5-2016 brandImage toegevoegd
-* 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
-* wel extra images voor grotere breedte met toevoeging _lg 
-* 2-1-2017 breakpoint for sizes srcset
-* 7-1-2017 naast -lg nu ook _sm
-* 4-2-2017 ook defer bij caption.js
-* 27-4-2017 naam CSS variabel
-* 22/9/2017 http in https veranderd bij googleapis
-* 01/01/2018 6/1 voorbereidingen voor J4 door deleen van cassiopeia te kopieren en misschien aan te passen in die richting.
-// $app = JFactory::getApplication();  // using from cassiopeia
-// $doc = JFactory::getDocument();   // using J38+ Api
-//$doc = Factory::getDocument();
-// use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
-// addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
-10-1-2018
-// 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
-25-12-2018 1.4.2 optioneel invoegen twbs js en css
-19-1-2019 timestamp als versie voor template.css
-20-1-2019 icons verplaatst
-25-1-2019 nieuwe versie BS 4
-7-2-2019 1.4.4 en minder achtergondafbeeldingen
-11-2-2019 icons weer naar onder menu
-17-2-2019 nieuwe versie bs4 (4.3.1)
-27-2-2019 enkele sidebar span4 ipv 3
-3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
-24-8-2021 updated parts copied from cassiopeia.
-23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
-*/
+ * 22-5-2016 brandImage toegevoegd
+ * 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
+ * wel extra images voor grotere breedte met toevoeging _lg
+ * 2-1-2017 breakpoint for sizes srcset
+ * 7-1-2017 naast -lg nu ook _sm
+ * 4-2-2017 ook defer bij caption.js
+ * 27-4-2017 naam CSS variabel
+ * 22/9/2017 http in https veranderd bij googleapis
+ * 01/01/2018 6/1 voorbereidingen voor J4 door deleen van cassiopeia te kopieren en misschien aan te passen in die richting.
+ // $app = JFactory::getApplication();  // using from cassiopeia
+ // $doc = JFactory::getDocument();   // using J38+ Api
+ //$doc = Factory::getDocument();
+ // use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
+ // addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
+ 10-1-2018
+ // 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
+ 25-12-2018 1.4.2 optioneel invoegen twbs js en css
+ 19-1-2019 timestamp als versie voor template.css
+ 20-1-2019 icons verplaatst
+ 25-1-2019 nieuwe versie BS 4
+ 7-2-2019 1.4.4 en minder achtergondafbeeldingen
+ 11-2-2019 icons weer naar onder menu
+ 17-2-2019 nieuwe versie bs4 (4.3.1)
+ 27-2-2019 enkele sidebar span4 ipv 3
+ 3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
+ 24-8-2021 updated parts copied from cassiopeia.
+ 23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
+ 26-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
+ */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Version;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
-
+$joomlaverge4 = (new Version)->isCompatible('4.0.0');
 $app  = Factory::getApplication();
 $lang = Factory::getLanguage();
-//$wa  = $this->getWebAssetManager();
+if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
 
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
@@ -59,16 +61,13 @@ $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
 $menu     = $app->getMenu()->getActive();
 $pageclass = (isset($menu)) ? $menu->getParams()->get('pageclass_sfx'): '';
 
-
 // end copied from cassiopeia
 
-
-// Get the template, params and id 
+// Get the template, params and id
 $template = $app->getTemplate(true);
 $templateparams  = $template->params;
-$templatestyleid =  $template->id;  
-$displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no 
-
+$templatestyleid =  $template->id;
+$displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no
 
 $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
 
@@ -108,7 +107,7 @@ $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navba
 <head>
 <jdoc:include type="head" />
 <?php
-echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  -->';
+echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  Jversie  >=  4: ' . $joomlaverge4 , '. -->  ';
 
 
 // Add extra metadata
@@ -169,7 +168,6 @@ if ($include_twbs_js == "1") {
 
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', array('version'=>'1-1-0'), array('id'=>'MagnificPopupV1-1-0.js', 'defer'=>'defer'));
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', array('version'=>'auto'), array('id'=>'template.js', 'defer'=>'defer'));
-$this->addScript($this->baseurl  . '/media/system/js/caption.js' , array('version'=>'auto'), array('id'=>'caption.js', 'defer'=>'defer')); // defer caption.js.  	
 	
 $this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({

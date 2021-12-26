@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) 2016 - 2017 Bram Waasdorp. All rights reserved.
+ * @copyright Copyright (C) 2016 - 2022 Bram Waasdorp. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor
@@ -36,6 +36,7 @@ v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
 v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat cluasule van compiler veld
 v 11-2-2019 params as an object
 v 20-3-2019 border en active link colors nav-bar
+v 26-12-2021 added Joomla version info to use J4 specific code.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -43,12 +44,10 @@ use Leafo\ScssPhp\Compiler;
 use Leafo\ScssPhp\Server;
 
 use Joomla\CMS\Factory;   
-use Joomla\CMS\Uri\Uri;
-//use Joomla\CMS\HTML\HTMLHelper;
-//use Joomla\CMS\Language\Text;   // voor vertalingen???
 use Joomla\CMS\Form\FormRule;
 use Joomla\CMS\Form\Form;
-
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Version;
 
  
 class WsaFormRuleCompiler extends FormRule
@@ -82,15 +81,12 @@ class WsaFormRuleCompiler extends FormRule
     public function test(\SimpleXMLElement $element, $value, $group = null,  $input = null, Form $form = null)
     
     {
-
-//$templatestyleid =  Uri::getInstance ()->getVar('id');
- $app = Factory::getApplication();
- $currentpath = realpath(__DIR__ ) ;
-//$home = Factory::getApplication()->input->get('jform', '', 'array')['home'];
-//$params = Factory::getApplication()->input->get('jform', '', 'array')['params'];
+$joomlaverge4 = (new Version)->isCompatible('4.0.0');
+        
+$app = Factory::getApplication();
+$currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
 $home = $input->get('home');
-//$params = json_decode(json_encode ($input->get('params')),true); // stdobject omzetten naar assoc array
 $params = $input->get('params'); // stdobject params are properties.
 
 
