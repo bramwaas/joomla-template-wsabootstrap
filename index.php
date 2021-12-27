@@ -36,7 +36,9 @@
  3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
  24-8-2021 updated parts copied from cassiopeia.
  23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
- 26-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
+ 27-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
+     Joomla ge 4  stylesheets and javascript via webasset
+     Joomla 3 addStylesheet, addScript 
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -113,6 +115,43 @@ echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid 
 // Add extra metadata
 $this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
 $this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
+if ($joomlaverge4) { // Joomla 4 stylesheets and javascript via webassets
+// register overrides for older BS versions
+switch ($twbs_version) {
+    case "4" :  {
+        $wa->registerStyle('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', ['version'=>'4.3.1'], ['integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous'],[]);       
+//            $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous');
+//            $this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array('version'=>'4.3.1'),  $attribs);
+        }
+        break;
+        case "3" : {
+            $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
+            $this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
+            $attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
+            $this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+        }
+}
+    
+
+
+
+// Enable assets
+    $wa->usePreset('template.wsa_bootstrap')
+    ->useStyle('template.active.language')
+    ->addInlineScript('jQuery(document).ready(function() {
+  jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
+type: \'image\'
+, closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
+});})',
+['position' => 'after'],
+['data-foo' => 'bar'],
+['magnificpopup']
+    
+    );
+		
+		
+} // end Joomla 4 up
+else { // Joomla lower then 4
 // stylesheets
 $this->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' , array('version'=>'auto'), array('id'=>'googleapis-fonts.css'));
 // bootstrap stylesheets van cdn
@@ -173,7 +212,9 @@ $this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
 , closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
-});})');  
+});})'); 
+
+} // end Joomla lower than 4
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
 {
