@@ -73,8 +73,9 @@
         "defer": true
       },
       "dependencies": [
-        "core"
-      ]
+        "core",
+        "bootstrap"
+     ]
     },
     {
       "name": "bootstrap.5.1.3",
