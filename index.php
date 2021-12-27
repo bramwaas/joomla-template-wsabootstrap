@@ -142,8 +142,9 @@ switch ($twbs_version) {
 
 
 // Enable assets
-    $wa->usePreset('template.wsa_bootstrap')
-    //    ->useStyle('template.wsa_bootstrap')
+//    $wa->usePreset('template.wsa_bootstrap')
+      $wa->useStyle('template.wsa_bootstrap')
+      ->usescript('template.wsa_bootstrap')
     ->addInlineScript('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
