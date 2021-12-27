@@ -37,7 +37,7 @@
  24-8-2021 updated parts copied from cassiopeia.
  23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
  27-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
-     Joomla ge 4  stylesheets and javascript via webasset
+     Joomla ge 4  stylesheets and javascript via webassets
      Joomla 3 addStylesheet, addScript 
  */
 // copied from cassiopeia
@@ -134,12 +134,11 @@ switch ($twbs_version) {
     case "3" : {
         $wa->registerStyle('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous'],[])
         ->registerAndUseStyle('bootstrap-theme', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous'],[])
-        ->registerScript('bootstrap', 'templates/' . $this->template . '/js/jui/bootstrap.min.js', ['version'=>'3.3.7'], ['defer' => TRUE],['jquery'])
+        ->registerScript('bootstrap', 'jui/bootstrap.min.js', ['version'=>'3.3.7'], ['defer' => TRUE],['jquery'])
         ;
     }
 }
 // Enable assets
-//    $wa->usePreset('template.wsa_bootstrap')
 $wa->registerAndUseStyle('template.wsa_bootstrap', $wsaCssFilename, ['version' => $wsaTime], [],['bootstrap'])
    ->usescript('template.wsa_bootstrap')
    ->addInlineScript('jQuery(document).ready(function() {
