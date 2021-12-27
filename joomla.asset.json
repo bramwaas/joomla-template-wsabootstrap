@@ -6,7 +6,7 @@
   "license": "GPL-2.0-or-later",
   "assets": [
     {
-      "name": "template.wsa_bootstrap",
+      "name": "template.wsa_bootstrap.default",
       "description": "The css file to be used when there is no specific styleid known, will be overridden by template.min.<templatestyleid>.css.",
       "type": "style",
       "uri": "template.css",
