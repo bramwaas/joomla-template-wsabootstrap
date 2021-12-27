@@ -76,7 +76,7 @@
       ]
     },
     {
-      "name": "bootstrap",
+      "name": "bootstrap.5.1.3",
       "description": "The default file containing the javascript used with bootstrap 5.1.3, can be overridden by older versions",
       "type": "script",
       "uri": "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
