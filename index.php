@@ -138,27 +138,19 @@ switch ($twbs_version) {
         ;
     }
 }
-    
-
-
-$wa->registerStyle('template.wsa_bootstrap', $wsaCssFilename, ['version' => $wsaTime], [],['bootstrap'])
-;
 // Enable assets
 //    $wa->usePreset('template.wsa_bootstrap')
-      $wa->useStyle('template.wsa_bootstrap')
-      ->usescript('template.wsa_bootstrap')
-    ->addInlineScript('jQuery(document).ready(function() {
+$wa->registerAndUseStyle('template.wsa_bootstrap', $wsaCssFilename, ['version' => $wsaTime], [],['bootstrap'])
+   ->usescript('template.wsa_bootstrap')
+   ->addInlineScript('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
 , closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
 });})',
 ['position' => 'after'],
-['data-foo' => 'bar'],
+[],
 ['magnificpopup']
-    
-    );
-		
-		
+);
 } // end Joomla 4 up
 else { // Joomla lower then 4
 // stylesheets
