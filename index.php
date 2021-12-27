@@ -133,7 +133,7 @@ switch ($twbs_version) {
     break;
     case "3" : {
         $wa->registerStyle('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous'],[])
-        ->registerAndUseStyle('bootstrap-theme', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous'],[])
+        ->registerAndUseStyle('bootstrap-theme', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous'],['bootstrap'])
         ->registerScript('bootstrap', 'jui/bootstrap.min.js', ['version'=>'3.3.7'], ['defer' => TRUE],['jquery'])
         ;
     }
