@@ -2,12 +2,13 @@
 /**
  * @package     	Joomla.Site
  * @subpackage  	mod_menu override
- * @copyright   	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright   	Copyright (C) 2005 - 2022 Open Source Matters, Inc. All rights reserved.
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * bw 2015-09-26       line 56 </a></span> changed in </span></a></span>
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  * 25-12-2021 eerste aanpassingen BS5 (data- => data-bs- )
+ * 28-12-2021  ook hier nav-link toegevoegd bij class voor <a> ivm BS5
  */
 
 defined('_JEXEC') or die;
@@ -41,6 +42,8 @@ elseif ($item->deeper) {
 else {
     $linktype = $item->title;
 }
+
+$class = ($class > ' ') ? str_ireplace('class="','class="nav-link ',$class) : 'class="nav-link" ';
 
 $flink = $item->flink;
 $flink = OutputFilter::ampReplace(htmlspecialchars($flink));

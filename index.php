@@ -71,7 +71,6 @@ $pageclass = (isset($menu)) ? $menu->getParams()->get('pageclass_sfx'): '';
 $template = $app->getTemplate(true);
 $templateparams  = $template->params;
 $templatestyleid =  $template->id;
-$displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no
 
 $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
 
@@ -81,9 +80,6 @@ $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'))
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
 
-$bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
-$bg1Top      	= htmlspecialchars($this->params->get('bg1Top'));
-$bg1Left      	= htmlspecialchars($this->params->get('bg1Left'));
 $bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
 $bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
 $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
