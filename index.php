@@ -39,7 +39,8 @@
  27-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
      Joomla ge 4  stylesheets and javascript via webassets
      Joomla 3 addStylesheet, addScript 
- 28-12-2021 default BS5 style and javascript in joomla.asset.json and overrides in code  for lower BS versions and styleid specific template style    
+ 28-12-2021 default BS5 style and javascript in joomla.asset.json and overrides in code for lower BS versions and styleid specific template style
+     and removed conditional inclusion BS stylesheet an javascript       
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -99,8 +100,6 @@ else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
-$include_twbs_css	= htmlspecialchars($this->params->get('include_twbs_css', '1'));
-$include_twbs_js	= htmlspecialchars($this->params->get('include_twbs_js','1'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
 $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
@@ -111,7 +110,6 @@ $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navba
 <jdoc:include type="head" />
 <?php
 echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  Jversie  >=  4: ' . $joomlaverge4 , '. -->  ';
-
 
 // Add extra metadata
 $this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
