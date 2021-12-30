@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die;
 /*
- * @copyright  Copyright (C) 2015 - 2018 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2022 AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -9,45 +9,51 @@
  * 20160121 variabele style niet meer inline, maar via template.min.<styleid>.css
  * 3-4-2016 squeezebox verwijderd ten gunste van magnific popup
  * 24-4-2016 ook begin en eind van navbar naar module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
-* 22-5-2016 brandImage toegevoegd
-* 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
-* wel extra images voor grotere breedte met toevoeging _lg 
-* 2-1-2017 breakpoint for sizes srcset
-* 7-1-2017 naast -lg nu ook _sm
-* 4-2-2017 ook defer bij caption.js
-* 27-4-2017 naam CSS variabel
-* 22/9/2017 http in https veranderd bij googleapis
-* 01/01/2018 6/1 voorbereidingen voor J4 door deleen van cassiopeia te kopieren en misschien aan te passen in die richting.
-// $app = JFactory::getApplication();  // using from cassiopeia
-// $doc = JFactory::getDocument();   // using J38+ Api
-//$doc = Factory::getDocument();
-// use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
-// addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
-10-1-2018
-// 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
-25-12-2018 1.4.2 optioneel invoegen twbs js en css
-19-1-2019 timestamp als versie voor template.css
-20-1-2019 icons verplaatst
-25-1-2019 nieuwe versie BS 4
-7-2-2019 1.4.4 en minder achtergondafbeeldingen
-11-2-2019 icons weer naar onder menu
-17-2-2019 nieuwe versie bs4 (4.3.1)
-27-2-2019 enkele sidebar span4 ipv 3
-3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
-24-8-2021 updated parts copied from cassiopeia.
-23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
-*/
+ * 22-5-2016 brandImage toegevoegd
+ * 28-12-2016 alle achtergrond images in html en met srcset, dus geen uitvraging op Bg.size = 'html' meer,
+ * wel extra images voor grotere breedte met toevoeging _lg
+ * 2-1-2017 breakpoint for sizes srcset
+ * 7-1-2017 naast -lg nu ook _sm
+ * 4-2-2017 ook defer bij caption.js
+ * 27-4-2017 naam CSS variabel
+ * 22/9/2017 http in https veranderd bij googleapis
+ * 01/01/2018 6/1 voorbereidingen voor J4 door deleen van cassiopeia te kopieren en misschien aan te passen in die richting.
+ // $app = JFactory::getApplication();  // using from cassiopeia
+ // $doc = JFactory::getDocument();   // using J38+ Api
+ //$doc = Factory::getDocument();
+ // use Joomla\CMS\Document\Document;  // o.a. metadata stylesheet en script komt kennelijk overeen met $this dus overal $doc vervangen door $this
+ // addStylesheet and addScript Deprecated  in 4.0 The (url, mime, defer, async) method signature is deprecated, use (url, options, attributes) instead.
+ 10-1-2018
+ // 24-12-2018 1.4.1 december 2018 leading / deleted in images directory for use in subdomain
+ 25-12-2018 1.4.2 optioneel invoegen twbs js en css
+ 19-1-2019 timestamp als versie voor template.css
+ 20-1-2019 icons verplaatst
+ 25-1-2019 nieuwe versie BS 4
+ 7-2-2019 1.4.4 en minder achtergondafbeeldingen
+ 11-2-2019 icons weer naar onder menu
+ 17-2-2019 nieuwe versie bs4 (4.3.1)
+ 27-2-2019 enkele sidebar span4 ipv 3
+ 3-3-2019 door classes aangeven welke modules actief zijn in header-inner en content
+ 24-8-2021 updated parts copied from cassiopeia.
+ 23-10-2021 reviewed en overgenomen aanpassingen tbv J4  van wsa_onepage template.
+ 27-12-2021 check Joomla-version ge 4 to use compatible classes like WebAsset
+     Joomla ge 4  stylesheets and javascript via webassets
+     Joomla 3 addStylesheet, addScript 
+ 28-12-2021 default BS5 style and javascript in joomla.asset.json and overrides in code for lower BS versions and styleid specific template style
+     and removed conditional inclusion BS stylesheet an javascript       
+ */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Version;
 
 /** @var Joomla\CMS\Document\HtmlDocument $this */
-
+$joomlaverge4 = (new Version)->isCompatible('4.0.0');
 $app  = Factory::getApplication();
 $lang = Factory::getLanguage();
-//$wa  = $this->getWebAssetManager();
+if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
 
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
@@ -59,16 +65,12 @@ $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
 $menu     = $app->getMenu()->getActive();
 $pageclass = (isset($menu)) ? $menu->getParams()->get('pageclass_sfx'): '';
 
-
 // end copied from cassiopeia
 
-
-// Get the template, params and id 
+// Get the template, params and id
 $template = $app->getTemplate(true);
 $templateparams  = $template->params;
-$templatestyleid =  $template->id;  
-$displaySitename = htmlspecialchars($templateparams->get('displaySitename')); // 1 yes 2 no 
-
+$templatestyleid =  $template->id;
 
 $bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
 
@@ -78,9 +80,6 @@ $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'))
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
 
-$bg1Width    	= htmlspecialchars($this->params->get('bg1Width'));
-$bg1Top      	= htmlspecialchars($this->params->get('bg1Top'));
-$bg1Left      	= htmlspecialchars($this->params->get('bg1Left'));
 $bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
 $bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
 $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
@@ -97,8 +96,6 @@ else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
-$include_twbs_css	= htmlspecialchars($this->params->get('include_twbs_css', '1'));
-$include_twbs_js	= htmlspecialchars($this->params->get('include_twbs_js','1'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
 $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
@@ -108,31 +105,72 @@ $wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navba
 <head>
 <jdoc:include type="head" />
 <?php
-echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  -->';
-
+echo '<!-- base is ' . $this->getBase() .' $templatestyleid ='.$templatestyleid .'  Jversie  >=  4: ' . $joomlaverge4 , '. -->  ';
 
 // Add extra metadata
 $this->setMetaData( 'X-UA-Compatible', 'IE=edge', true ); // http-equiv = true 
 $this->setMetaData( 'viewport', 'width=device-width, initial-scale=1.0' );
+if ($joomlaverge4) { // Joomla 4 stylesheets and javascript via webassets
+// Enable assets
+$wa->usePreset('template.wsa_bootstrap')
+   ->addInlineScript('jQuery(document).ready(function() {
+  jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
+type: \'image\'
+, closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
+});})',
+['position' => 'after'],
+[],
+['magnificpopup']
+);
+// overrides defaults from joomla.asset.json for lower BS versions and styleid specific template style
+// register overrides for older BS versions
+switch ($twbs_version) {
+//   case "5" : {
+//       $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', ['version'=>'5.1.3'], ['integrity' => 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3', 'crossorigin' => 'anonymous'],[])
+//       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', ['version'=>'5.1.3'], ['integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
+//       ;
+//   }
+//   break;
+   case "4" :  {
+       $wa->registerStyle('bootstrap.css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', ['version'=>'4.3.1'], ['integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous'],[])
+       ->registerScript('popper.js', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', ['version'=>'1.14.7'], ['integrity' => 'sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
+       ->registerScript('bootstrap.js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', ['version'=>'4.3.1'], ['integrity' => 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', 'crossorigin' => 'anonymous', 'defer' => TRUE],['popper.js'])
+       ;
+   }
+   break;
+   case "3" : {
+       $wa->registerStyle('bootstrap.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous'],[])
+       ->registerAndUseStyle('bootstrap.theme.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous'],['bootstrap.css'])
+       ->registerScript('bootstrap.js', 'jui/bootstrap.min.js', ['version'=>'3.3.7'], ['defer' => TRUE],['jquery'])
+       ;
+   }
+}
+ 
+$wa->registerStyle('template.wsa_bootstrap', $wsaCssFilename, ['version' => $wsaTime], [],['bootstrap.theme.css']);
+// overrides end
+} // end Joomla 4 up
+else { // Joomla lower then 4
 // stylesheets
 $this->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' , array('version'=>'auto'), array('id'=>'googleapis-fonts.css'));
 // bootstrap stylesheets van cdn
-
-if ($twbs_version == "3") {
-   if ($include_twbs_css == "1") {
-	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
-	$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
-	$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
-	$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
-   }
+switch ($twbs_version) { 
+case "5" :  {
+    $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3', 'crossorigin' => 'anonymous');
+    $this->addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', array('version'=>'5.1.3'),  $attribs);
+    }
+break;
+case "4" :  {
+    $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous');
+    $this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array('version'=>'4.3.1'),  $attribs);
+    }
+break;
+case "3" : {
+$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
+$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
+$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
+$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+    }
 }
-else {
-	if ($include_twbs_css == "1") {
-	$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous');
-	$this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array('version'=>'4.3.1'),  $attribs);
-	}
-}	
-
 // template stijl
 $attribs = array('id'=>'template.css');
 $this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>$wsaTime), $attribs);
@@ -140,31 +178,36 @@ $this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename 
 // Add JavaScript 
 
 //HTMLHelper::_('jquery.framework');  // to be sure that jquery is loaded before dependent javascripts
-if ($twbs_version == "3") {
-    if ($include_twbs_js == "1") {
-	$this->addScript('templates/' . $this->template . '/js/jui/bootstrap.min.js', array('version'=>'3.3.7'), 
-		array('id'=>'bootstrap.min.js', 'defer'=>'defer'));
+
+switch ($twbs_version) {
+case "5" :  {
+    $this->addScript('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', array('version'=>'5.1.3'),
+    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p',   'crossorigin' => 'anonymous'));
     }
-}
-else {
-	if ($include_twbs_js == "1") {
-	    $this->addScript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', array('version'=>'1.14.7'),
-	        array('id'=>'popper.js', 'integrity' => 'sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1',   'crossorigin' => 'anonymous'));
-	    $this->addScript('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('version'=>'4.3.1'),
-	        array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM',   'crossorigin' => 'anonymous'));
+break;
+case "4" : {
+    $this->addScript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', array('version'=>'1.14.7'),
+    array('id'=>'popper.js', 'integrity' => 'sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1',   'crossorigin' => 'anonymous'));
+    $this->addScript('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('version'=>'4.3.1'),
+    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM',   'crossorigin' => 'anonymous'));
     }
-	    
+break;
+case "3" :{
+    $this->addScript('templates/' . $this->template . '/js/jui/bootstrap.min.js', array('version'=>'3.3.7'), 
+	array('id'=>'bootstrap.min.js', 'defer'=>'defer'));
+    }
 }
 
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/magnificpopup/MagnificPopupV1-1-0.js', array('version'=>'1-1-0'), array('id'=>'MagnificPopupV1-1-0.js', 'defer'=>'defer'));
 $this->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', array('version'=>'auto'), array('id'=>'template.js', 'defer'=>'defer'));
-$this->addScript($this->baseurl  . '/media/system/js/caption.js' , array('version'=>'auto'), array('id'=>'caption.js', 'defer'=>'defer')); // defer caption.js.  	
 	
 $this->addScriptDeclaration('jQuery(document).ready(function() {
   jQuery(\'a[rel*="lightbox"], a[data-wsmodal]\').magnificPopup({
 type: \'image\'
 , closeMarkup : \'<button title="%title%" type="button" class="mfp-close">&nbsp;</button>\'
-});})');  
+});})'); 
+
+} // end Joomla lower than 4
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
 {

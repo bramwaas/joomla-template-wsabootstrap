@@ -19,20 +19,16 @@
 //  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen. 
 // 20190306 display flex voor headerleft.
 // 20200815 for the onepage template rssfoto elements inline-block instead of float left, to keep space for the containing block
-/ * ===========================
+// 20211225 .visually-hidden. activated this is perhaps default in bs5 but we don't use that alle the times.'
+// 20211229 header-inner navbar width 100% toegevoegd om toggler rechts te kunnen plaatsen, buiten header inner gaat dit al goed.
+// 20211230 padding .span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
+//            padding header-inner .navbar alleen nog 0 voor BS3
+
+/* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
 	daarna uitzonderingen voor steeds bredere schermen (mobile first)
 	========================== */
-
-#content,
-#sidebarleft,
-#sidebarright,
-.pos1
-{
-//padding-left: $asMarginStd;
-//padding-right: $asMarginStd;
-}
 
 /* background images via absoluut geplaatste html */
 /* content background */
@@ -46,12 +42,11 @@
   padding-top:$bg1Top;
 /*  z-index: $bg1Z-index; */
 }
-@if $twbs_version == 4 {
+@if $twbs_version == 5 {
 #headerleft {
   position: relative;
   float:left;
   width:$asHeadLeftWidth;
-  // height: 0px;
   margin-top: $hlMarginTop;
   margin-left:$hlMarginLeft;
   margin-bottom: $hlMarginBottom; 	
@@ -59,14 +54,28 @@
   padding-bottom: 0; // $hlHeight;
       div.inner {
 	position: relative;
-	//top: 0;
-	//left: 0;
 	width: 100%;
-	//height: 100%;
 	}
 }
+} // einde bs5
+@if $twbs_version == 4 {
+#headerleft {
+  position: relative;
+  float:left;
+  width:$asHeadLeftWidth;
+  margin-top: $hlMarginTop;
+  margin-left:$hlMarginLeft;
+  margin-bottom: $hlMarginBottom; 	
+  padding-top:0;
+  padding-bottom: 0; // $hlHeight;
+      div.inner {
+	position: relative;
+	width: 100%;
+	}
+}
+.visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
 } // einde bs4
-@else { // bs3
+@if $twbs_version == 3 { // bs3
 #headerleft {
   position: relative;
   float:left;
@@ -85,7 +94,15 @@
 	height: 100%;
 	}
 }
+.header-inner .navbar
+ {padding:0;}
+.span12
+{ //padding span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
+padding-right: 15px;
+padding-left: 15px;	
 }
+.visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
+} // einde bs3
 #navbar-right-mod
 {
 	display: inline-block;
@@ -105,17 +122,6 @@ body>div.container {
    position: relative;
 }
 
-.blog,
-.blog-featured,
-.contentpane,
-.contact,
-.item-page,
-.tag-category,
-div.newsfeed,
-div[class^="newsfeed"]
-{ 
-/* margin-left: $asMarginStd; */
-}
 .bg-transparent { // 
     background-color: transparent!important;
 }
@@ -161,7 +167,7 @@ display: -ms-flexbox;
 display: flex;
 -ms-flex-direction: column;
 flex-direction: column;
-	.navbar{ padding:0;
+	.navbar{width: 100%;
 	}
 	.navbar>.container, .navbar>.container-fluid {
     align-items: flex-start;
@@ -192,7 +198,7 @@ order: -1;
 .img-fluid,
 .img-fluid-w33,
 .img-fluid-w50
- { /* vooruitlopend op bt4 in 3 is dit img-responsive  */
+ { /* vooruitlopend op bs4 in 3 is dit img-responsive  */
  max-width: 100%;
  height: auto;
 }
@@ -245,7 +251,6 @@ order: -1;
 		background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
 		background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
 }	
-
 /* einde tijdelijk toegvoegd voor bs 3 */
 
 /* aanpassingen voor newsfeeds uit oudere templates van mij */

@@ -11,6 +11,7 @@
  * 9-2-2019 data-target toegevoegd voor openen submenu's
  * 2020-05-26 Item->id gekwalificeerd met $moduleIdPos om hem beter uniek te maken
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
+ * 25-12-2021 eerste aanpassingen BS5 (data- => data-bs- )
  */
 
 defined('_JEXEC') or die;
@@ -26,7 +27,7 @@ if ($item->menu_image)
     $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
     
     if ($item->deeper) {
-        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
 }
@@ -34,8 +35,8 @@ if ($item->menu_image)
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
     if ($item->level < 2) {
-        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" ';
-        $item->flink = '#data-item-' . $moduleIdPos . $item->id;
+        $class = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
+        $item->flink = '#data-item-' . $moduleIdPos . $item->id ;
     }
     else { // level >= 2
         $linktype = $item->title;  // origineel alleen deze

@@ -7,6 +7,9 @@
 9-6-2016
 10-2-2019 bs 4 ipv alleen navbar-defualt (bs3) zelfdekleueren voo
 11-2-2019 brandwith relatief tov lg
+28-12-2021 .dropdown-menu > li > a replaced by .dropdown-menu > .nav-item > .nav-link to give it higher priority in BS4 and BS5
+ and padding and line-height px value changed to rem value
+
 -----------------------------------------*/
 #img_brandImage
 { 
@@ -245,13 +248,13 @@ width: $brandWidth * 300 / 960; // < es = 375
   border: 1px solid $dropdown-fallback-border; // IE8 fallback
   border: 1px solid $dropdown-border;
 
-  > li > a {
+  > .nav-item > .nav-link {
     clear: both;
     color: $graynavbardarker;
     display: block;
     font-weight: normal;
-    line-height: 20px;
-    padding: 3px 20px;
+    line-height: 1.1rem;
+    padding: 0.15rem 1rem;
     white-space: nowrap;
   }
 

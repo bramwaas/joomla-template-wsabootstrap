@@ -2,7 +2,7 @@
 /**
  * @package     	Joomla.Site
  * @subpackage  	mod_menu override
- * @copyright   	Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   	Copyright (C) 2005 - 2021 Open Source Matters, Inc. All rights reserved.
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
@@ -14,16 +14,13 @@
  * 6-2-2019
  * 26-5-2020 diverse Id's beter uniek gemaakt met <?php echo $moduleIdPos; ?> en moduletag gebruikt
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
+ * 25-12-2021 adjustments for Joomla 4 and first for BS5 
+ * 30-12-2021 overbodige container-fluid bij eerder verwijderde navbar-inner verwijderd vanwege onnodige padding. 
  */
 
 \defined('_JEXEC') or die;
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 use Joomla\CMS\Helper\ModuleHelper;
-
-//use Joomla\CMS\HTML\HTMLHelper;
-//use Joomla\CMS\Plugin\PluginHelper;
-//use Joomla\CMS\Document\HtmlDocument;
-//use Joomla\CMS\Document\Renderer\Html\ModulesRenderer;
 
 $id = '';
 
@@ -39,7 +36,7 @@ $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
-$twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3 of (default) 4 
+$twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3, 5 or (default) 4 
 if ($twbs_version == 3) {
 	$menuType = str_replace(array("light", "dark", "bg-"), array("default", "inverse", ""), $menuType);	
 }
@@ -86,8 +83,6 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
 		    	<<?php echo $moduleTag; ?> class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
-		         <!-- div class="navbar-inner" -->
-		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
@@ -106,14 +101,14 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 					<?php echo '<!-- $twbs_version=' . $twbs_version . ". -->\n"; ?>
 					<?php if ($twbs_version == '3') : ?>
 					<div class="navbar-header">
-					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false">
+					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>"  aria-controls="navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
  						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					  </button> 
-					<?php else: // $twbs_version == '4' ?>
-				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="#navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false" aria-label="Toggle navigation">
+					<?php else: // $twbs_version == '4' or '5' ?>
+				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"  data-target="#navbar-<?php echo $moduleIdPos; ?>" data-bs-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="#navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false" aria-label="Toggle navigation">
 					  <span class="navbar-toggler-icon"></span>
 				    </button>
 					<!-- navbar-header -->
@@ -220,7 +215,5 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 					</span> <!-- end navbar-right -->
 				<?php endif; ?>
 	          	   </div>
-		          </div>
-		      	 <!-- /div--> <!-- end navbar-inner -->
 		    	</<?php echo $moduleTag; ?>>
 <!--End navbar-->
