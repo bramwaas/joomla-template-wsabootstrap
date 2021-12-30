@@ -2,7 +2,7 @@
 /**
  * @package     	Joomla.Site
  * @subpackage  	mod_menu override
- * @copyright   	Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   	Copyright (C) 2005 - 2021 Open Source Matters, Inc. All rights reserved.
  * @license     	GNU General Public License version 2 or later; see LICENSE.txt
  * Modifications	Joomla CSS
  * 24-4-2016 ook begin en eind van navbar naar deze module-override gehaald (uit module position-1), zodat deze overal in index.php geplaatst kan worden
@@ -15,6 +15,7 @@
  * 26-5-2020 diverse Id's beter uniek gemaakt met <?php echo $moduleIdPos; ?> en moduletag gebruikt
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  * 25-12-2021 adjustments for Joomla 4 and first for BS5 
+ * 30-12-2021 overbodige container-fluid bij eerder verwijderde navbar-inner verwijderd vanwege onnodige padding. 
  */
 
 \defined('_JEXEC') or die;
@@ -82,8 +83,6 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
 		    	<<?php echo $moduleTag; ?> class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
-		         <!-- div class="navbar-inner" -->
-		          <div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
@@ -216,7 +215,5 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 					</span> <!-- end navbar-right -->
 				<?php endif; ?>
 	          	   </div>
-		          </div>
-		      	 <!-- /div--> <!-- end navbar-inner -->
 		    	</<?php echo $moduleTag; ?>>
 <!--End navbar-->
