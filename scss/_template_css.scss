@@ -21,6 +21,7 @@
 // 20200815 for the onepage template rssfoto elements inline-block instead of float left, to keep space for the containing block
 // 20211225 .visually-hidden. activated this is perhaps default in bs5 but we don't use that alle the times.'
 // 20211229 header-inner navbar width 100% toegevoegd om toggler rechts te kunnen plaatsen, buiten header inner gaat dit al goed.
+// 20211230 padding .span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
 
 /* ===========================
 	alle schermbreedtes
@@ -100,6 +101,11 @@
 	width: 100%;
 	height: 100%;
 	}
+}
+.span12
+{ //padding span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
+padding-right: 15px;
+padding-left: 15px;	
 }
 .visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
 } // einde bs3
