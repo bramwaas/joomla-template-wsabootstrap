@@ -16,6 +16,8 @@
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  * 25-12-2021 adjustments for Joomla 4 and first for BS5 
  * 30-12-2021 overbodige container-fluid bij eerder verwijderde navbar-inner verwijderd vanwege onnodige padding. 
+ * 31-1-2022 referentie naar 'default_'.$item->type verbeterd, zodat deze ook bij gebruik in ander template werkt 
+ *  entries voor seperator en heading gekopieerd van mod_menu
  */
 
 \defined('_JEXEC') or die;

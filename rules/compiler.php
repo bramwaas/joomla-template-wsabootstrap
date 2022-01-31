@@ -81,7 +81,7 @@ class WsaFormRuleCompiler extends FormRule
     public function test(\SimpleXMLElement $element, $value, $group = null,  $input = null, Form $form = null)
     
     {
-$joomlaverge4 = (new Version)->isCompatible('4.0.0');
+// $joomlaverge4 = (version_compare(JVERSION, '4.0', '>='));
         
 $app = Factory::getApplication();
 $currentpath = realpath(__DIR__ ) ;
@@ -371,15 +371,6 @@ $st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+
 fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
-
-//fwrite($st_file, '// compiler param  $value ' . $value  . "\n//\n");
-//fwrite($st_file, '// compiler param  $group ' . $group  . "\n//\n");
-//fwrite($st_file, '// compiler param  $input ' . $input  . "\n//\n");
-//fwrite($st_file, '// compiler param  $input->get(home) ' . $input->get('home') . "\n//\n");
-//fwrite($st_file, '// compiler param  $input->get(id) ' . $input->get('id') . "\n//\n");
-//fwrite($st_file, '/*' . "\n//\n");
-//fwrite($st_file, '// compiler param  print_r($input) ' . print_r($input->get('params'),true)  . "\n//\n");
-//fwrite($st_file, '*/' . "\n//\n");
 
 // standaard bootstrap variables mixins etc.
 fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
