@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) 2016 - 2022 Bram Waasdorp. All rights reserved.
+ * @copyright Copyright (C) 2016 - 2024 Bram Waasdorp. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor
@@ -37,6 +37,7 @@ v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand m
 v 11-2-2019 params as an object
 v 20-3-2019 border en active link colors nav-bar
 v 26-12-2021 added Joomla version info to use J4 specific code.
+2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -188,7 +189,7 @@ if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'i
 $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  if ($wsaCssFilename > " ")
  {$path_parts = pathinfo($wsaCssFilename);
- if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+ if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
  }
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
