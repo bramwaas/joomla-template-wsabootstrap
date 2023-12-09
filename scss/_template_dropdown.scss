@@ -179,7 +179,8 @@ width: $brandWidth * 300 / 960; // < es = 375
   .navbar-brand {
     color: $navbar-default-brand-color;
 
-    @include hover-focus {
+   &:hover,
+   &:focus  {
       color: $navbar-default-brand-hover-color;
     }
   }
@@ -188,7 +189,8 @@ width: $brandWidth * 300 / 960; // < es = 375
     .nav-link {
       color: $navbar-default-color;
 
-      @include hover-focus {
+      &:hover,
+      &:focus  {
         color: $navbar-default-link-hover-color;
       }
 
@@ -219,7 +221,8 @@ width: $brandWidth * 300 / 960; // < es = 375
     a {
       color: $navbar-default-link-active-color;
 
-      @include hover-focus {
+      &:hover,
+  &:focus  {
         color: $navbar-default-link-active-color;
       }
     }
