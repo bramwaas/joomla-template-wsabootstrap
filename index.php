@@ -40,7 +40,8 @@
      Joomla ge 4  stylesheets and javascript via webassets
      Joomla 3 addStylesheet, addScript 
  28-12-2021 default BS5 style and javascript in joomla.asset.json and overrides in code for lower BS versions and styleid specific template style
-     and removed conditional inclusion BS stylesheet an javascript       
+     and removed conditional inclusion BS stylesheet an javascript 
+ 01-10-2024 2.1.3 make content wider to display 3 columns in rssfot newsfeed          
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -221,8 +222,8 @@ elseif (!$this->countModules('position-7') && !$this->countModules('position-8')
 }
 else
 {
-	$spanc = "span8  col-md-8";
-	$spans = "span4  col-md-4";
+	$spanc = "span9  col-md-9";
+	$spans = "span3  col-md-3";
 }
 $hi_mods = ($this->countModules('position-0')? ' hipos0': '')
 . ($this->countModules('icons')? ' hiicons': '')

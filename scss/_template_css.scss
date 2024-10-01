@@ -23,7 +23,7 @@
 // 20211229 header-inner navbar width 100% toegevoegd om toggler rechts te kunnen plaatsen, buiten header inner gaat dit al goed.
 // 20211230 padding .span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
 //            padding header-inner .navbar alleen nog 0 voor BS3
-//  20240930 Redesigned block for RSS (Flickr) fotos newsfeed component, because J4, J5 module class is not a suffix after the component class,
+//  20240930 2.1.3 Redesigned block for RSS (Flickr) fotos newsfeed component, because J4, J5 module class is not a suffix after the component class,
 //     but an extra class in the page header,  ul may be used in stead of ol and Pias is stopped. So .newsfeed_rssfoto is approximately 
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
@@ -305,9 +305,9 @@ order: -1;
 			{
 			background-color: rgba(255,255,255,0.75);
 			padding:4px;
-			border: 1px solid lightgray; 
+			border: 1px solid rgba(0,0,0,0.3); 
 		    border-radius: 5px;
-		    box-shadow:	0 0 8px 4px lightgray;
+		    box-shadow:	0 0 8px 4px rgba(0,0,0,0.2);
 		    margin: 5px;
 			}
 
