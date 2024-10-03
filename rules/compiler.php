@@ -99,8 +99,9 @@ if ( htmlspecialchars($params->compress) == "1")
 else
 {  // voor debug netter formatteren en commentaren behouden.
 //    $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
-    $scss->setOutputStyle ('ScssPhp\ScssPhp\Formatter\Expanded');
-// $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
+    $scss->setOutputStyle ('ScssPhp\ScssPhp\OutputStyle::EXPANDED');
+//    $scss->setOutputStyle ('expanded');
+    // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
 //$server = new Server($currentpath. '/../scss', null, $scss);
