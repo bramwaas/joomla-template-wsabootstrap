@@ -93,11 +93,13 @@ $scss = new Compiler();
 
 if ( htmlspecialchars($params->compress) == "1")
 {
+// $scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
     $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::COMPRESSED');
 }
 else
-{  // voor debug netter formatteren en commentaren behouden. 
-    $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::EXPANDED');
+{  // voor debug netter formatteren en commentaren behouden.
+//    $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
+    $scss->setOutputStyle ('ScssPhp\ScssPhp\OutputStyle::EXPANDED');
 // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
