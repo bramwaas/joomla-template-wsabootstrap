@@ -10,39 +10,26 @@
    de save  
 v 23-2-2016
 v 20-3-2016 bootstrap 3
-V 6-4-2016 magnific popup
-V 24-4-2016 dropdown menu in apart .less bestand
-V 16-5-2016 kleuren dropdownmenu variabel gemaakt.
-V 18-5-2016 compiler uit template.php gebruikt, deze werkt beter met mixins en functies
-V 19-5-2016 kleine aanpassing instellingen compiler
-V 22-5-2016 brandImage toegevoegd
-V 27-5-2016 kleuren navbar toggle button
-V 29-5-2016 breakpointmobile verwijderd.
-V juni 2016 overgang naar SASS (scss)
-v 12-6-2016 fout in bg1Pos (weer) opgelost
-v 15-7-2016 grid.scss toegevoegd
-v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
-v 2-1-2017 breakpoint voor sizes
-v 5-1-2017 ook breakpoint small
-v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 v 7-1-2018 J3.8 j4 namespace
 v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
-v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
+v 30-1-2019 uitbreiding breakpoints voorwaardelijk in style<...>.scss schrijven ipv in apart .scss file.
 V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 V 6-2-2019 navbar kleuren default bs4 ipv 3
 v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
-v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat cluasule van compiler veld
+v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat clausule van compiler veld
 v 11-2-2019 params as an object
 v 20-3-2019 border en active link colors nav-bar
 v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
+2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 as continuation of leafo/scssphp. remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2
+  of BS 5 and 4.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
-use Leafo\ScssPhp\Compiler;
-use Leafo\ScssPhp\Server;
+use ScssPhp\ScssPhp\Compiler;
+//use Leafo\ScssPhp\Server;
 
 use Joomla\CMS\Factory;   
 use Joomla\CMS\Form\FormRule;
@@ -96,23 +83,25 @@ if  (htmlspecialchars($value) == '1')
 { /* creeren en compileren */
 
 // scss compiler van leafo http://leafo.github.io/scssphp/
-require_once "leafo/scss.inc.php";
-require_once "leafo/src/Server.php";
+// require_once "leafo/scss.inc.php";
+// require_once "leafo/src/Server.php";
+// scss compiler van scssphp https://scssphp.github.io/scssphp/
+    require_once "scssphp/scss.inc.php";
 
 
 $scss = new Compiler();
 
 if ( htmlspecialchars($params->compress) == "1")
 {
-$scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
+    $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::COMPRESSED');
 }
 else
 {  // voor debug netter formatteren en commentaren behouden. 
- $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
+    $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::EXPANDED');
 // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
-$server = new Server($currentpath. '/../scss', null, $scss);
+//$server = new Server($currentpath. '/../scss', null, $scss);
 //$server->serve();
 
 
@@ -518,14 +507,14 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
-$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
+$scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+     $scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
   /* ivm &tmpl=component */
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
+     $scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
 }
 
 /* einde les files compileren naar .css */
