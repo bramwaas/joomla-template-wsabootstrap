@@ -81,14 +81,10 @@ $params = $input->get('params'); // stdobject params are properties.
 if  (htmlspecialchars($value) == '1')
 
 { /* creeren en compileren */
-
-// scss compiler van leafo http://leafo.github.io/scssphp/
-// require_once "leafo/scss.inc.php";
-// require_once "leafo/src/Server.php";
-// scss compiler van scssphp https://scssphp.github.io/scssphp/
+    // scss compiler and server by scssphp https://scssphp.github.io/scssphp/
     require_once "scssphp/scss.inc.php";
-    require_once "server/src/Server.php";
-    require_once "server/src/ServerException.php";
+    require_once "server/server.inc.php";
+    
 
 
 $scss = new Compiler();
@@ -107,7 +103,7 @@ else
     // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
-//$server = new Server($currentpath. '/../scss', null, $scss);
+$server = new Server($currentpath. '/../scss', null, $scss);
 //$server->serve();
 
 
@@ -513,14 +509,14 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
-$scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
+$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
-     $scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
   /* ivm &tmpl=component */
-     $scss->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
+  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
 }
 
 /* einde les files compileren naar .css */
