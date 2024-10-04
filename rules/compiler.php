@@ -77,44 +77,32 @@ $templatestyleid = $input->get('id');
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
 
-
 if  (htmlspecialchars($value) == '1')
 
 { /* creeren en compileren */
     // scss compiler and server by scssphp https://scssphp.github.io/scssphp/
     require_once "scssphp/scss.inc.php";
     require_once "server/server.inc.php";
-    
-
 
 $scss = new Compiler();
 
 if ( htmlspecialchars($params->compress) == "1")
 {
-// $scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
     $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
-//    $scss->setOutputStyle ('compressed');
 }
 else
 {  // voor debug netter formatteren en commentaren behouden.
-//    $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
     $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
-//    $scss->setOutputStyle ('expanded');
-    // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
 $server = new Server($currentpath. '/../scss', null, $scss);
-//$server->serve();
-
-
 
 // einde initialisatie compiler
-
 
 // get params
 
 $gplusProfile   = htmlspecialchars($params->gplusProfile);
-$twbs_version   = htmlspecialchars($params->twbs_version);
+$twbs_version   = htmlspecialchars($params->get(twbs_version, '5'));
 
 
 $itemVideoHeight= htmlspecialchars($params->itemVideoHeight);
@@ -340,8 +328,8 @@ if ($menuActiveBgColor > ' '  ) { fwrite($tv_file, '$menuActiveBgColor: '  . $me
 };
 
 /* overgenomen uit asha-s werkt mogelijk (nog) niet */
-if ($showTitle > ' '  ) 	fwrite($tv_file, '$showTitle:         '  . $showTitle .  ";\n");
-if ($tagItemTitleDisplay > ' '  ) fwrite($tv_file, '$tagItemTitleDisplay: '  . $tagItemTitleDisplay .  ";\n");
+if (! empty($showTitle)) 	fwrite($tv_file, '$showTitle:         '  . $showTitle .  ";\n");
+if (! empty($tagItemTitleDisplay)) fwrite($tv_file, '$tagItemTitleDisplay: '  . $tagItemTitleDisplay .  ";\n");
 if ($marginLeftRight > ' '  ) 	{
 				fwrite($tv_file, '$asMarginStd:       '  . $marginLeftRight .  "%;\n");
 				fwrite($tv_file, '$marginArea:        '  . ($marginLeftRight / 2) .  "%;\n");
@@ -365,24 +353,25 @@ fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 
 // standaard bootstrap variables mixins etc.
-fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
-if($twbs_version == '3') {
-fwrite($st_file, '@import "variables.scss";' . "\n");
-fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
-fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
-fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
-fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
-} else { /* verion 4 */
-fwrite($st_file, '@import "variables.scss";' . " // nog even uit 3\n");  // nog even uit 3
-fwrite($st_file, '@import "mixins/reset-filter.scss";' . " // nog even uit 3\n"); // nog even uit 3
-fwrite($st_file, '@import "mixins/gradients.scss";' . " // nog even uit 3\n");    // nog even uit 3
+ fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
+// if($twbs_version == '3') {
+// fwrite($st_file, '@import "variables.scss";' . "\n");
+// fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
+// fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
+// fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
+// fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
+// } else 
+// { /* verion 4 + */
+//    fwrite($st_file, '@import bs"' .  $twbs_version . 'variables.scss";' . "\n");
+//fwrite($st_file, '@import "mixins/reset-filter.scss";' . " // nog even uit 3\n"); // nog even uit 3
+//fwrite($st_file, '@import "mixins/gradients.scss";' . " // nog even uit 3\n");    // nog even uit 3
 
 // Custom.scss
 // Option B: Include parts of Bootstrap
 // Required
-fwrite($st_file, '@import "node_modules/bootstrap/scss/functions";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/variables";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/mixins";' . "\n");
+fwrite($st_file, '@import bs"' .  $twbs_version . 'functions";' . "\n");
+fwrite($st_file, '@import bs"' .  $twbs_version . 'variables";' . "\n");
+fwrite($st_file, '@import bs"' .  $twbs_version . 'mixins";' . "\n");
 
 // Optional
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
@@ -457,9 +446,9 @@ fwrite($st_file,
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/grid";' . "\n");
+fwrite($st_file, '@import bs"' .  $twbs_version . '/grid";' . "\n");
 }
-}
+
 // standaard bootstrap variables mixins etc. einde
 //fwrite($st_file, '@import "system.scss";' . "\n");
 //fwrite($st_file, '@import "general.scss";' . "\n");
@@ -470,7 +459,7 @@ fwrite($st_file, '@import "template_variables.scss";' . "\n");
 //fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
 fwrite($st_file, "//\n// css\n//\n");
 
-if ($background > ' '  )
+if (! empty($background))
 { 	$pos1 = stripos($background, ".css");
 	if ($pos1 > 0)
 	{
@@ -510,7 +499,6 @@ fclose($st_file);
 /* scss files compileren naar .css */
 
 $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
-
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
