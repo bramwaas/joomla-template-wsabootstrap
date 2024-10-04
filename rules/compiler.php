@@ -23,13 +23,13 @@ v 11-2-2019 params as an object
 v 20-3-2019 border en active link colors nav-bar
 v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
-2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 as continuation of leafo/scssphp. remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2
-  of BS 5 and 4.
+2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
+    Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4.
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
 use ScssPhp\ScssPhp\Compiler;
-//use Leafo\ScssPhp\Server;
+use ScssPhp\Server\Server;
 
 use Joomla\CMS\Factory;   
 use Joomla\CMS\Form\FormRule;
@@ -87,6 +87,8 @@ if  (htmlspecialchars($value) == '1')
 // require_once "leafo/src/Server.php";
 // scss compiler van scssphp https://scssphp.github.io/scssphp/
     require_once "scssphp/scss.inc.php";
+    require_once "server/src/Server.php";
+    require_once "server/src/ServerException.php";
 
 
 $scss = new Compiler();
@@ -94,14 +96,14 @@ $scss = new Compiler();
 if ( htmlspecialchars($params->compress) == "1")
 {
 // $scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
-//    $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::COMPRESSED');
-    $scss->setOutputStyle ('compressed');
+    $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
+//    $scss->setOutputStyle ('compressed');
 }
 else
 {  // voor debug netter formatteren en commentaren behouden.
 //    $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
-//    $scss->setOutputStyle ('\ScssPhp\ScssPhp\OutputStyle::EXPANDED');
-    $scss->setOutputStyle ('expanded');
+    $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
+//    $scss->setOutputStyle ('expanded');
     // $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
