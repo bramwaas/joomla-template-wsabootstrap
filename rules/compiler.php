@@ -102,9 +102,7 @@ $server = new Server($currentpath. '/../scss', null, $scss);
 // get params
 
 $gplusProfile   = htmlspecialchars($params->gplusProfile);
-$twbs_version   = htmlspecialchars($params->get(twbs_version, '5'));
-
-
+$twbs_version   =  (empty($params->twbs_version)) ? '5' : htmlspecialchars($params->twbs_version);
 $itemVideoHeight= htmlspecialchars($params->itemVideoHeight);
 $itemLeadHeight = htmlspecialchars($params->itemLeadHeight);
 $itemLeadWidth  = htmlspecialchars($params->itemLeadWidth);
@@ -114,8 +112,7 @@ $itemWidth    	= htmlspecialchars($params->itemWidth);
 $itemMargin    	= htmlspecialchars($params->itemMargin);
 
 $hlMarginTop    = htmlspecialchars($params->hlMarginTop);
-$hlMarginLeft   = htmlspecialchars($params->hlMarginLeft);
-if ($hlMarginLeft > " " ) {} else { $hlMarginLeft = 0; }
+$hlMarginLeft   = (empty($hlMarginLeft)) ? 0 : htmlspecialchars($params->hlMarginLeft);
 $hlWidth    	= htmlspecialchars($params->hlWidth);
 $hlHeight    	= htmlspecialchars($params->hlHeight);
 $hlMarginBottom = htmlspecialchars($params->hlMarginBottom);
