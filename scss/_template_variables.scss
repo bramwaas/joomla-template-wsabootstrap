@@ -574,7 +574,15 @@ $span1 : $wsa12Col;
 
 
 .test01 {
-	width:$wsaVideoAutoItemWidth;
-	height:$screen-lg-desktop;
+	width:$screen-xs;
+	height: $screen-sm;
+	padding-top: $screen-md;
+	padding-right: $screen-lg;
+	padding-left: $screen-xl-min;
+	padding-bottom: $screen-xll-min    ;
+	
+	@debug "$screen-md-min: #{$screen-md-min}";
+
+	
 	
 }
