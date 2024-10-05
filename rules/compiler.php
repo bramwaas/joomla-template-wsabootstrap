@@ -366,9 +366,9 @@ fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 // Custom.scss
 // Option B: Include parts of Bootstrap
 // Required
-fwrite($st_file, '@import bs"' .  $twbs_version . 'functions";' . "\n");
-fwrite($st_file, '@import bs"' .  $twbs_version . 'variables";' . "\n");
-fwrite($st_file, '@import bs"' .  $twbs_version . 'mixins";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/functions.scss";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/variables.scss";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/mixins.scss";' . "\n");
 
 // Optional
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
@@ -443,7 +443,8 @@ fwrite($st_file,
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
 //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-fwrite($st_file, '@import bs"' .  $twbs_version . '/grid";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
+
 }
 
 // standaard bootstrap variables mixins etc. einde
