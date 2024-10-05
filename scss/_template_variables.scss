@@ -1,5 +1,5 @@
 /* template_variables.scss */
-// 20241005 use calc(@include media-breakpoint-up(lg)) in stead of $container-lg
+// 20241005 use breakpoint-min("lg")) in stead of $container-lg
 // standard variables for this template.
 // -------------------------20190202
 // colors
@@ -113,28 +113,28 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 //** Deprecated `$screen-xs` as of v3.0.1
 $screen-xs:                  map-get($grid-breakpoints, "sm"); // was  480px;
 //** Deprecated `$screen-xs-min` as of v3.2.0
-$screen-xs-min:              $screen-xs;
+$screen-xs-min:              breakpoint-min( "sm"); // was $screen-xs;
 //** Deprecated `$screen-phone` as of v3.0.1
 $screen-phone:               $screen-xs-min;
 
 // Small screen / tablet
 //** Deprecated `$screen-sm` as of v3.0.1
 $screen-sm:                  map-get($grid-breakpoints, "md"); // was  768px;
-$screen-sm-min:              $screen-sm;
+$screen-sm-min:              breakpoint-min( "md"); // was $screen-sm;
 //** Deprecated `$screen-tablet` as of v3.0.1
 $screen-tablet:              $screen-sm-min;
 
 // Medium screen / desktop
 //** Deprecated `$screen-md` as of v3.0.1
 $screen-md:                  map-get($grid-breakpoints, "lg"); // was  992px;
-$screen-md-min:              $screen-md;
+$screen-md-min:              breakpoint-min( "lg"); // was $screen-md;
 //** Deprecated `$screen-desktop` as of v3.0.1
 $screen-desktop:             $screen-md-min;
 
 // Large screen / wide desktop
 //** Deprecated `$screen-lg` as of v3.0.1
 $screen-lg:                  map-get($grid-breakpoints, "xl"); // was  1200px;
-$screen-lg-min:              $screen-lg;
+$screen-lg-min:              breakpoint-min( "xl"); // was $screen-lg;
 //** Deprecated `$screen-lg-desktop` as of v3.0.1
 $screen-lg-desktop:          $screen-lg-min;
 
@@ -149,22 +149,22 @@ $grid-gutter-width:           1.5rem !default; // from _bs5 variabels.
 
 $container-tablet:             calc(720px + $grid-gutter-width); 
 //** For `$screen-sm-min` and up.
-$container-sm:                 map-get($grid-breakpoints, "md"); // was  $container-tablet;
+$container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
 
 // Medium screen / desktop
 $container-desktop:            calc(940px + $grid-gutter-width);
 //** For `$screen-md-min` and up.
-$container-md:                 map-get($grid-breakpoints, "lg"); // was  $container-desktop;
+$container-md:                 breakpoint-min( "lg"); // was $container-desktop;
 
 // Large screen / wide desktop
 $container-large-desktop:      calc(1140px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
-$container-lg:                map-get($grid-breakpoints, "xl"); // was  $container-large-desktop;
+$container-lg:                breakpoint-min( "xl"); // was $container-large-desktop;
 //$container-lg:                @include media-breakpoint-up("lg"); // was  $container-large-desktop;
 
 // Large screen / wide desktop   tijdelijk bs3 type vaste breakpoints
-$screen-xl-min:              map-get($grid-breakpoints, "xl"); // was  1200px;
-$screen-xxl-min:             map-get($grid-breakpoints, "xxl"); // was  1440px;
+$screen-xl-min:              breakpoint-min( "xl"); // was 1200px;
+$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
 $screen-xxxl-min:            1600px;
 
 //** Deprecated `$screen-lg-desktop` as of v3.0.1
@@ -574,11 +574,11 @@ $span1 : $wsa12Col;
 
 
 .test01 {
-	width:$screen-xs;
-	height: $screen-sm;
-	padding-top: $screen-md;
-	padding-right: $screen-lg;
-	padding-left: $screen-xl-min;
+	width:$screen-xs-min;
+	height: $screen-sm-min;
+	padding-top: $screen-md-min;
+	padding-right: $screen-lg-min;
+	padding-left: $screen-xl-min-min;
 	padding-bottom: $screen-xxl-min    ;
 	
 	@debug "$screen-md-min: #{$screen-md-min}";
