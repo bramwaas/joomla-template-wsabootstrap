@@ -163,8 +163,8 @@ $container-lg:                map-get($grid-breakpoints, "xl"); // was  $contain
 //$container-lg:                @include media-breakpoint-up("lg"); // was  $container-large-desktop;
 
 // Large screen / wide desktop   tijdelijk bs3 type vaste breakpoints
-$screen-xl-min:              1200px;
-$screen-xxl-min:             1440px;
+$screen-xl-min:              map-get($grid-breakpoints, "xl"); // was  1200px;
+$screen-xxl-min:             map-get($grid-breakpoints, "xxl"); // was  1440px;
 $screen-xxxl-min:            1600px;
 
 //** Deprecated `$screen-lg-desktop` as of v3.0.1
