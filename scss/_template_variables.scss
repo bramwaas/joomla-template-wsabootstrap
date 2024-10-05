@@ -159,7 +159,8 @@ $container-md:                 $container-desktop;
 // Large screen / wide desktop
 $container-large-desktop:      calc(1140px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
-$container-lg:                calc(@include media-breakpoint-up(lg)); // was  $container-large-desktop;
+$container-lg:                map-get($grid-breakpoints, "xl"); // was  $container-large-desktop;
+//$container-lg:                @include media-breakpoint-up("lg"); // was  $container-large-desktop;
 
 // Large screen / wide desktop   tijdelijk bs3 type vaste breakpoints
 $screen-xl-min:              1200px;
