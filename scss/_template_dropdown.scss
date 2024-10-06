@@ -57,7 +57,7 @@ width: $brandWidth * 300 / 960; // < es = 375
 
   .navbar-toggler {
     color: $navbar-dark-color;
-    border-color: $navbar-dark-toggle-border-color;
+    border-color: $navbar-dark-toggler-border-color;
   }
 
   .navbar-toggler-icon {
@@ -71,7 +71,7 @@ width: $brandWidth * 300 / 960; // < es = 375
 
       &:hover,
   &:focus  {
-        color: $navbar-dark-active-color;
+        color: $navbar-dark-hover-color;
       }
     }
   }
