@@ -4,21 +4,21 @@
 // -------------------------20190202
 // colors
 // -------------------------
-$black:                 #000;
+//$black:                 #000;
 $grayDarker:            #222;
 $grayDark:              #333;
 $gray:                  #555;
 $grayLight:             #999;
 $grayLighter:           #F5F5F5;
-$white:                 #fff;
+//$white:                   #fff
 
-$graynavbarbg: 		#e5e5e5;
-$graynavbarfg: 		#555;
-$graynavbarlighter: 	#777;
-$graynavbardarker: 	#333;
-$activenavbarbg: 	#999;
-$activenavbarfg: 	#fff;
-$specialgreygradientstart: #ffffff;
+$graynavbarbg: 		$gray-200; // was #e5e5e5;
+$graynavbarfg: 	    $gray-700; // was #555;
+$graynavbarlighter: $gray-600; // was #777;
+$graynavbardarker:  $gray-800; // was	#333;
+$activenavbarbg:    $gray-500; // was	#999;
+$activenavbarfg:    $gray-600; // was 	#fff;
+$specialgreygradientstart: $white; // was #ffffff;
 $specialgreygradientend: #e6e6e6;
 // BS3 temporary variables
 //## temporary Define the maximum width of `.container` for different screen sizes with BS 3 variables
