@@ -9,7 +9,7 @@
 11-2-2019 brandwith relatief tov lg
 28-12-2021 .dropdown-menu > li > a replaced by .dropdown-menu > .nav-item > .nav-link to give it higher priority in BS4 and BS5
  and padding and line-height px value changed to rem value
-06-10-2024 2.2.0 remove bs3, use more bs4, bs5 variables, make bs5 the default 
+06-10-2024 2.2.0 remove bs3 and alternative old navbars, use more bs4, bs5 variables, make bs5 the default 
 
 -----------------------------------------*/
 #img_brandImage
@@ -21,73 +21,73 @@ width: $brandWidth * 300 / 960; // < es = 375
 // --------------------------------------------------
 
 
-@if $twbs_version == 4
-{// bs4 
-.navbar-dark {
-  .navbar-brand {
-    color: $navbar-dark-brand-color;
-
-   &:hover,
-   &:focus  {
-      color: $navbar-dark-brand-hover-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-dark-color;
-
-      &:hover,
-      &:focus  {
-        color: $navbar-dark-hover-color; // $navbar-light-link-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-dark-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-      color: $navbar-dark-active-color; // $navbar-light-link-active-color;
-    }
-  }
-
-  .navbar-toggler {
-    color: $navbar-dark-color;
-    border-color: $navbar-dark-toggler-border-color;
-  }
-
-  .navbar-toggler-icon {
-    background-image: $navbar-dark-toggler-icon-bg;
-  }
-
-  .navbar-text {
-    color: $navbar-dark-color;
-    a {
-      color: $navbar-dark-active-color;
-
-      &:hover,
-  &:focus  {
-        color: $navbar-dark-hover-color;
-      }
-    }
-  }
-// einde bs4 navbar-dark
-}
-// einde bs4
-} 
-@else // bs5
-{
-}
-
-
-.navbar-brand,
-.navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
-} 
+//@if $twbs_version == 4
+//{// bs4 
+//.navbar-dark {
+//  .navbar-brand {
+//    color: $navbar-dark-brand-color;
+//
+//   &:hover,
+//   &:focus  {
+//      color: $navbar-dark-brand-hover-color;
+//    }
+//  }
+//
+//  .navbar-nav {
+//    .nav-link {
+//      color: $navbar-dark-color;
+//
+//      &:hover,
+//      &:focus  {
+//        color: $navbar-dark-hover-color; // $navbar-light-link-hover-color;
+//      }
+//
+//      &.disabled {
+//        color: $navbar-dark-disabled-color;
+//      }
+//    }
+//
+//    .show > .nav-link,
+//    .active > .nav-link,
+//    .nav-link.show,
+//    .nav-link.active {
+//      color: $navbar-dark-active-color; // $navbar-light-link-active-color;
+//    }
+//  }
+//
+//  .navbar-toggler {
+//    color: $navbar-dark-color;
+//    border-color: $navbar-dark-toggler-border-color;
+//  }
+//
+//  .navbar-toggler-icon {
+//    background-image: $navbar-dark-toggler-icon-bg;
+//  }
+//
+//  .navbar-text {
+//    color: $navbar-dark-color;
+//    a {
+//      color: $navbar-dark-active-color;
+//
+//      &:hover,
+//  &:focus  {
+//        color: $navbar-dark-hover-color;
+//      }
+//    }
+//  }
+//// einde bs4 navbar-dark
+//}
+//// einde bs4
+//} 
+//@else // bs5
+//{
+//}
+//
+//
+//.navbar-brand,
+//.navbar-nav > li > a {
+//  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+//} 
 
 
 
