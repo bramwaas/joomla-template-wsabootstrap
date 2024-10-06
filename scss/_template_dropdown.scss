@@ -25,25 +25,25 @@ width: $brandWidth * 300 / 960; // < es = 375
 {// bs4 
 .navbar-dark {
   .navbar-brand {
-    color: $navbar-default-brand-color;
+    color: $navbar-light-brand-color;
 
    &:hover,
    &:focus  {
-      color: $navbar-default-brand-hover-color;
+      color: $navbar-light-brand-hover-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-default-color;
+      color: $navbar-light-color;
 
       &:hover,
       &:focus  {
-        color: $navbar-default-link-hover-color;
+        color: $navbar-light-link-hover-color;
       }
 
       &.disabled {
-        color: $navbar-default-link-disabled-color;
+        color: $navbar-light-link-disabled-color;
       }
     }
 
@@ -51,13 +51,13 @@ width: $brandWidth * 300 / 960; // < es = 375
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-default-link-active-color;
+      color: $navbar-light-link-active-color;
     }
   }
 
   .navbar-toggler {
-    color: $navbar-default-link-color;
-    border-color: $navbar-default-toggle-border-color;
+    color: $navbar-light-link-color;
+    border-color: $navbar-light-toggle-border-color;
   }
 
   .navbar-toggler-icon {
@@ -65,13 +65,13 @@ width: $brandWidth * 300 / 960; // < es = 375
   }
 
   .navbar-text {
-    color: $navbar-default-color;
+    color: $navbar-light-color;
     a {
-      color: $navbar-default-link-active-color;
+      color: $navbar-light-link-active-color;
 
       &:hover,
   &:focus  {
-        color: $navbar-default-link-active-color;
+        color: $navbar-light-link-active-color;
       }
     }
   }
