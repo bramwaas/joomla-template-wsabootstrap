@@ -27,7 +27,7 @@
 //     but an extra class in the page header,  ul may be used in stead of ol and Pias is stopped. So .newsfeed_rssfoto is approximately 
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
-
+//  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard 
 /* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -79,34 +79,6 @@
 }
 .visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
 } // einde bs4
-@if $twbs_version == 3 { // bs3
-#headerleft {
-  position: relative;
-  float:left;
-  width:$asHeadLeftWidth;
-  height: 0px;
-  margin-top: $hlMarginTop;
-  margin-left:$hlMarginLeft;
-  margin-bottom: $hlMarginBottom; 	
-  padding-top:0;
-  padding-bottom: $hlHeight;
-      div.inner {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	}
-}
-.header-inner .navbar
- {padding:0;}
-.span12
-{ //padding span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
-padding-right: 15px;
-padding-left: 15px;	
-}
-.visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
-} // einde bs3
 #navbar-right-mod
 {
 	display: inline-block;
@@ -241,7 +213,7 @@ order: -1;
 	display:block;  // bs 4 voorlopig
 }
 .navbar-toggle .icon-bar {
-    background-color: $navbar-default-toggle-icon-bar-bg;
+    background-color: $navbar-light-toggle-icon-bar-bg;
 }
 /* transparent navbar */
 .navbar.navbar-default.transparent,
