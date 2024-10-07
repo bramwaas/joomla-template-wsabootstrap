@@ -212,10 +212,7 @@ order: -1;
     overflow-y: visible;
 	display:block;  // bs 4 voorlopig
 }
-//.navbar-toggle .icon-bar {  probably not used in BS4 + 10/2024
-//    background-color: $navbar-light-toggle-icon-bar-bg;
-//}
-/* transparent navbar */
+// * transparent navbar * /
 .navbar.navbar-default.transparent,
 .navbar.navbar-inverse.transparent{ 
 

@@ -8,6 +8,7 @@
 $grayDarker:            #222;
 $grayDark:              #333;
 $gray:                  #555;
+// css gray == #808080
 $grayLight:             #999;
 $grayLighter:           #F5F5F5;
 //$white:                   #fff
@@ -26,7 +27,6 @@ $screen-xs-min:              breakpoint-min( "sm"); // was $screen-xs;
 $screen-sm-min:              breakpoint-min( "md"); // was $screen-sm;
 $screen-md-min:              breakpoint-min( "lg"); // was $screen-md;
 $screen-lg-min:              breakpoint-min( "xl"); // was $screen-lg;
-// Large screen / wide desktop   tijdelijk bs3 type vaste breakpoints
 $screen-xl-min:              breakpoint-min( "xxl"); // was 1200px;
 //$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
 //$screen-xxxl-min:            1600px;
@@ -39,7 +39,6 @@ $screen-lg-max:              breakpoint-max( "xxl"); // was($screen-xl-min - 1);
 //$screen-xl-max:              ($screen-xxl-min - 1);
 //$screen-xxl-max:             ($screen-xxxl-min - 1);
 
-
 // Small screen / tablet
 $grid-gutter-width:           1.5rem !default; // from _bs5 variabels.
 
@@ -48,44 +47,6 @@ $container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
 $container-md:                 breakpoint-min( "lg"); // was $container-desktop;
 //** For `$screen-lg-min` and up.
 $container-lg:                breakpoint-min( "xl"); // was $container-large-desktop;
-//$container-lg:                @include media-breakpoint-up("lg"); // was  $container-large-desktop;
-////== Navbar
-////
-////##
-//
-//// Basics of a navbar
-//// Navbar toggle
-//$navbar-default-toggle-hover-bg:           $component-active-bg; // #ddd;
-//$navbar-default-toggle-icon-bar-bg:        $navbar-light-toggler-icon-bg; // #888;
-//$navbar-default-toggle-border-color:       $navbar-light-toggler-border-color; // was #ddd;
-//
-////=== Shared nav styles
-//$nav-link-padding:                          10px 15px;
-// $nav-link-hover-bg:                         $gray-200; // $gray-lighter;
-//
-//$nav-disabled-link-color:                   $nav-link-disabled-color; // $gray-500; // $gray-light;
-//$nav-disabled-link-hover-color:             $nav-link-disabled-color; // $gray-500;  // $gray-light;
-//
-////== Tabs
-//$nav-tabs-border-color:                     #ddd;
-//
-//$nav-tabs-link-hover-border-color:          $gray-lighter;
-//
-//$nav-tabs-active-link-hover-bg:             $body-bg;
-//$nav-tabs-active-link-hover-color:          $gray;
-//$nav-tabs-active-link-hover-border-color:   #ddd;
-//
-//$nav-tabs-justified-link-border-color:            #ddd;
-//$nav-tabs-justified-active-link-border-color:     $body-bg;
-//
-////== Pills
-//$nav-pills-border-radius:                   $border-radius-base;
-//$nav-pills-active-link-hover-bg:            $component-active-bg;
-//$nav-pills-active-link-hover-color:         $component-active-color;
-//
-//// ** Disabled cursor for form controls and buttons.
-// $cursor-disabled:                not-allowed;
-//
 
 // end BS3 temporary variables
 
@@ -172,15 +133,12 @@ $wsa12Col : (100% - (13 * $wsaInnerMargin)) / 12 ;
 $span1 : $wsa12Col;
 
 
-.test01 {
-	width:$screen-xs-min;
-	height: $screen-sm-min;
-	padding-top: $screen-md-min;
-	padding-right: $screen-lg-min;
-	padding-left: $screen-xl-min;
+//.test01 {
+//	width:$screen-xs-min;
+//	height: $screen-sm-min;
+//	padding-top: $screen-md-min;
+//	padding-right: $screen-lg-min;
+//	padding-left: $screen-xl-min;
 //	padding-bottom: $screen-xxl-min    ;
-	
 
-	
-	
-}
+//}

@@ -17,80 +17,6 @@
 width: $brandWidth * 300 / 960; // < es = 375
 }
 
-// Alternate navbars uit navbar.less
-// --------------------------------------------------
-
-
-//@if $twbs_version == 4
-//{// bs4 
-//.navbar-dark {
-//  .navbar-brand {
-//    color: $navbar-dark-brand-color;
-//
-//   &:hover,
-//   &:focus  {
-//      color: $navbar-dark-brand-hover-color;
-//    }
-//  }
-//
-//  .navbar-nav {
-//    .nav-link {
-//      color: $navbar-dark-color;
-//
-//      &:hover,
-//      &:focus  {
-//        color: $navbar-dark-hover-color; // $navbar-light-link-hover-color;
-//      }
-//
-//      &.disabled {
-//        color: $navbar-dark-disabled-color;
-//      }
-//    }
-//
-//    .show > .nav-link,
-//    .active > .nav-link,
-//    .nav-link.show,
-//    .nav-link.active {
-//      color: $navbar-dark-active-color; // $navbar-light-link-active-color;
-//    }
-//  }
-//
-//  .navbar-toggler {
-//    color: $navbar-dark-color;
-//    border-color: $navbar-dark-toggler-border-color;
-//  }
-//
-//  .navbar-toggler-icon {
-//    background-image: $navbar-dark-toggler-icon-bg;
-//  }
-//
-//  .navbar-text {
-//    color: $navbar-dark-color;
-//    a {
-//      color: $navbar-dark-active-color;
-//
-//      &:hover,
-//  &:focus  {
-//        color: $navbar-dark-hover-color;
-//      }
-//    }
-//  }
-//// einde bs4 navbar-dark
-//}
-//// einde bs4
-//} 
-//@else // bs5
-//{
-//}
-//
-//
-//.navbar-brand,
-//.navbar-nav > li > a {
-//  text-shadow: 0 1px 0 rgba(255,255,255,.25);
-//} 
-
-
-
 /* ======================
 	GENERAL STYLES
 	===================== */
@@ -269,11 +195,6 @@ color: #333;
     > a { // keep 7/24
       margin-right: 2px;
       line-height: $line-height-base;
-//      border: 1px solid transparent;
-//      border-radius: $nav-tabs-border-radius $nav-tabs-border-radius 0 0; // was $border-radius-base $border-radius-base 0 0;
-//      &:hover {
-//        border-color: $nav-tabs-link-hover-border-color;
-//      }
     }
 
     // Active state, and its :hover to override normal :hover
@@ -281,7 +202,6 @@ color: #333;
       &,
       &:hover,
       &:focus {
-//        color: $nav-tabs-link-hover-color;
         background-color: $body-bg; // was $nav-tabs-active-link-hover-bg;
         border: 1px solid #ddd; // was $nav-tabs-active-link-hover-border-color;
         border-bottom-color: transparent;
@@ -293,31 +213,6 @@ color: #333;
 }
 
 
-// Pills
-// -------------------------
-//.nav-pills {
-//  > li {
-//    float: left;
-//
-//    // Links rendered as pills
-//    > a {
-//      border-radius: $nav-pills-border-radius;
-//    }
-//    + li {
-//      margin-left: 2px;
-//    }
-//
-//    // Active state
-//    &.active > a {
-//      &,
-//      &:hover,
-//      &:focus {
-//        color: $nav-pills-link-active-color; // was $nav-pills-active-link-hover-color;
-//        background-color: $nav-pills-link-active-bg; // was $nav-pills-active-link-hover-bg;
-//      }
-//    }
-//  }
-//}
 // uit nav.less einde 
 /* ===================================================================================
 	BOOTSTRAP MEDIA QUERIES OVERRIDES
