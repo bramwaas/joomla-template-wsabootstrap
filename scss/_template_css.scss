@@ -255,7 +255,7 @@ order: -1;
 		margin-bottom: 0px;
 		text-align: left;
 		}
-
+/* new test */
 	ol, ul, .com-newsfeeds-newsfeed__items, .com-newsfeeds-newsfeed__feed-image
 		{
 		@include make-row();
@@ -394,8 +394,6 @@ div.mod-languages {
 }
 
 
-
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans Condensed',sans-serif;
 	font-weight: 700;
@@ -408,7 +406,7 @@ h1 {
 
 h2 {
   font-size: 26px;
-  line-height: 30px;
+//  line-height: 30px;
 }
 
 h3 {
@@ -430,15 +428,6 @@ h6 {
   font-size: 12px;
   line-height: 20px;
 }
-
-/* overige aanpassingen pagination tbv bootstrap 3 */
-    ul.pagination-list li a [class*="icon-"] {
-    }
-     
-    ul.pagination-list li a:hover [class*="icon-"] {
-    }
-/* einde overige aanpassingen pagination tbv bootstrap 3 */
-
 
 [class^="icon-"], [class*=" icon-"] {
     display: inline-block;
