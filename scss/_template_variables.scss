@@ -31,21 +31,17 @@ $screen-xl-min:              breakpoint-min( "xxl"); // was 1200px;
 //$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
 //$screen-xxxl-min:            1600px;
 
-$screen-xs-max:              breakpoint-max( "md"); // was($screen-sm-min - 1);
-$screen-sm-max:              breakpoint-max( "lg"); // was($screen-md-min - 1);
-$screen-md-max:              breakpoint-max( "xl"); // was($screen-lg-min - 1);
-// So media queries don't overlap when required, provide a maximum
-$screen-lg-max:              breakpoint-max( "xxl"); // was($screen-xl-min - 1);
-//$screen-xl-max:              ($screen-xxl-min - 1);
+$screen-xs-max:              breakpoint-max( "sm"); // was($screen-sm-min - 1);
+$screen-sm-max:              breakpoint-max( "md"); // was($screen-md-min - 1);
+$screen-md-max:              breakpoint-max( "lg"); // was($screen-lg-min - 1);
+$screen-lg-max:              breakpoint-max( "xl"); // was($screen-xl-min - 1);
+$screen-xl-max:              breakpoint-max( "xxl"); // was($screen-xxl-min - 1);
 //$screen-xxl-max:             ($screen-xxxl-min - 1);
 
-// Small screen / tablet
-$grid-gutter-width:           1.5rem !default; // from _bs5 variabels.
+//$grid-gutter-width:           1.5rem !default; // from _bs5 variabels.
 
 $container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
-//** For `$screen-md-min` and up.
 $container-md:                 breakpoint-min( "lg"); // was $container-desktop;
-//** For `$screen-lg-min` and up.
 $container-lg:                breakpoint-min( "xl"); // was $container-large-desktop;
 
 // end BS3 temporary variables
