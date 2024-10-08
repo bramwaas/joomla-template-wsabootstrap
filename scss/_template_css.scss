@@ -231,6 +231,7 @@ order: -1;
 /* rss fotos of flickr  met suffix _rssfoto */
 /* rss flickr images (ul li p a img) */
 [class*="rssfoto"] .newsfeed {
+	@include make-container();
 	margin: 0;
 	padding: 0;
 	width: auto;
@@ -255,12 +256,22 @@ order: -1;
 		text-align: left;
 		}
 
-	ol, ul
+	ol, ul, .com-newsfeeds-newsfeed__items, .com-newsfeeds-newsfeed__feed-image
 		{
+		@include make-row();
 		padding:0;
 		}
 	li
 		{
+			@include make-col-ready();
+
+			@include media-breakpoint-up(sm) {
+			  @include make-col(6);
+			}
+			@include media-breakpoint-up(lg) {
+			  @include make-col(4);
+			}
+
 		list-style-type: none;
 		margin-left: 0;
 		margin-right: 10px;
