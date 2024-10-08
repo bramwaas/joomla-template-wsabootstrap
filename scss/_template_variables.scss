@@ -31,14 +31,12 @@ $screen-xl-min:              breakpoint-min( "xxl"); // was 1200px;
 //$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
 //$screen-xxxl-min:            1600px;
 
-$screen-xs-max:              breakpoint-max( "sm"); // was($screen-sm-min - 1);
-$screen-sm-max:              breakpoint-max( "md"); // was($screen-md-min - 1);
-$screen-md-max:              breakpoint-max( "lg"); // was($screen-lg-min - 1);
-$screen-lg-max:              breakpoint-max( "xl"); // was($screen-xl-min - 1);
-$screen-xl-max:              breakpoint-max( "xxl"); // was($screen-xxl-min - 1);
+$screen-xs-max:              breakpoint-min( "md") - 0.02; // was($screen-sm-min - 1);
+$screen-sm-max:              breakpoint-min( "lg") - 0.02; // was($screen-md-min - 1);
+$screen-md-max:              breakpoint-min( "xl") - 0.02; // was($screen-lg-min - 1);
+$screen-lg-max:              breakpoint-min( "xxl") - 0.02; // was($screen-xl-min - 1);
+$screen-xl-max:              1440px - 0.02; // was($screen-xxl-min - 1);
 //$screen-xxl-max:             ($screen-xxxl-min - 1);
-
-//$grid-gutter-width:           1.5rem !default; // from _bs5 variabels.
 
 $container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
 $container-md:                 breakpoint-min( "lg"); // was $container-desktop;

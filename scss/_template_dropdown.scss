@@ -211,8 +211,6 @@ color: #333;
   }
 
 }
-
-
 // uit nav.less einde 
 /* ===================================================================================
 	BOOTSTRAP MEDIA QUERIES OVERRIDES
@@ -227,7 +225,7 @@ When scaled down to less than 768px, the menu collapses and works just like the 
 I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
 (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
 */
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-up(md) { // min 768
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -247,9 +245,8 @@ I only made one small addition to the standard HTML â€“ I added a container
     padding-bottom: 12px;
   }
 }
-/* einde make sidebar nav vertical */ 
-
-@media (min-width: $screen-sm-min) { /* Activates hovering the main items to show the sub items */
+// * einde make sidebar nav vertical * / 
+@include media-breakpoint-up(md) { // min 768 Activates hovering the main items to show the sub items
        .nav-pills > li > a,
        .dropdown-menu {
           margin: 0;
@@ -328,7 +325,6 @@ I only made one small addition to the standard HTML â€“ I added a container
    }
 
 }
-
 
 @include media-breakpoint-up(sm)
 {  // min 576
