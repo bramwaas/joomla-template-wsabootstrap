@@ -101,6 +101,20 @@ body>div.container {
 .bg-transparent { // 
     background-color: transparent!important;
 }
+
+/* blog process colums-n across for n= 1 to 12 to BS row and classes */
+.blog-items {
+	@include make-row();
+
+	@for $i from 1 through $grid-columns {
+
+		&.columns-#{$i} {
+			@include make-col-ready();
+
+            @include row-cols($i);
+		          }
+		 }
+}
 .blog {
 /* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
    heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
