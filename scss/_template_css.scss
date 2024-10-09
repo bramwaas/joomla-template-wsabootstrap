@@ -103,6 +103,10 @@ body>div.container {
 }
 
 /* blog process joomla colums-n across for n= 1 to 12 to BS row and classes */
+[class^="com-content"][class$="blog"],
+.blog-featured {
+	@include make-container();
+}
 .blog-items {
 	@include make-row();
 	> * {
@@ -111,13 +115,21 @@ body>div.container {
 			height:auto;	 	
 				}
 			}
+	&[class*="columns"] {
+		@include row-cols(1);
+		}
 
-	@for $i from 1 through $grid-columns {
+}
+@include media-breakpoint-up(md) {
+.blog-items {
+	@for $i from 2 through $grid-columns {
 
 		&.columns-#{$i} {
-            @include row-cols($i);
+	        @include row-cols($i);
 		          }
 		 }
+	
+}
 }
 //.blog {
 /* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
