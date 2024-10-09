@@ -106,6 +106,9 @@ body>div.container {
 [class^="com-content"][class$="blog"],
 .blog-featured {
 	@include make-container();
+	margin: 0;
+	padding: 0;
+
 }
 .blog-items {
 	@include make-row();
@@ -266,7 +269,7 @@ order: -1;
 	padding: 0;
 	width: auto;
 
-	h2
+	h2, .com-newsfeeds-newsfeed__feed-image
 		{
 		margin: 0;
 		font-weight: bold;
@@ -286,7 +289,7 @@ order: -1;
 		text-align: left;
 		}
 /* new test */
-	ol, ul, .com-newsfeeds-newsfeed__items, .com-newsfeeds-newsfeed__feed-image
+	ol, ul, .com-newsfeeds-newsfeed__items
 		{
 		@include make-row();
 		padding:0;
