@@ -105,12 +105,13 @@ body>div.container {
 /* blog process joomla colums-n across for n= 1 to 12 to BS row and classes */
 .blog-items {
 	@include make-row();
+	> * {
+		@include make-col-ready();
+			}
 
 	@for $i from 1 through $grid-columns {
 
 		&.columns-#{$i} {
-			@include make-col-ready();
-
             @include row-cols($i);
 		          }
 		 }
