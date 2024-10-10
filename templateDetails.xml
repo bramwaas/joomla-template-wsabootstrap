@@ -2,14 +2,13 @@
 <extension version="3.8" type="template" client="site" method="upgrade">
   <compatibility>
     <include>
-      <versions from="3.8.0" to="3.99.99" />
       <versions from="4.0.0" to="4.99.99" />
       <versions from="5.0.0" to="5.99.99" />
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>2.1.3.dev</version>
-	<creationDate>30-09-2024</creationDate>
+	<version>2.2.0.dev</version>
+	<creationDate>10-10-2024</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -136,7 +135,7 @@
 				<field name="explanation3"  type="spacer" hr="false"
 					label="Other lay-out variables. &lt;br /&gt;"
 					 />
-				<field name="wsaBreakpointes"  class="validate-numeric" type="text" default=""
+<!-- 				<field name="wsaBreakpointes"  class="validate-numeric" type="text" default=""
 					label="WSA_BREAKPOINTES_LABEL"
 					description="WSA_BREAKPOINTES_DESCRIPTION"
 					hint="WSA_BREAKPOINTES_HINT"
@@ -161,6 +160,7 @@
 					description="WSA_BREAKPOINTXXXL_DESCRIPTION"
 					hint="WSA_BREAKPOINTXXXL_HINT"
 					 />
+ -->					 
 				<field name="wsaNavbarExpand" type="list" default="navbar-expand-md"
 					label="WSA_NAVBAREXPAND_LABEL"	
  				    description="WSA_NAVBAREXPAND_DESCRIPTION"

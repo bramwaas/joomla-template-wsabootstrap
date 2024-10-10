@@ -24,7 +24,7 @@ v 20-3-2019 border en active link colors nav-bar
 v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
 2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
-    Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4.
+    Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4. Remove extra breakpoints
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -170,14 +170,14 @@ $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
-$wsaContaineres = $wsaBreakpointes;
-$wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
-$wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
-if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-$wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
-$wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
-if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
+// $wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
+// $wsaContaineres = $wsaBreakpointes;
+// $wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
+// $wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
+// if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
+// $wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
+// $wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
+// if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
   
 if (strpos($menuType, 'navbar-dark') !== false)
 {$navbartheme = 'navbar-dark';}
@@ -351,17 +351,6 @@ fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 
 // standaard bootstrap variables mixins etc.
  fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
-// if($twbs_version == '3') {
-// fwrite($st_file, '@import "variables.scss";' . "\n");
-// fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
-// fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
-// fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
-// fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
-// } else 
-// { /* verion 4 + */
-//    fwrite($st_file, '@import bs"' .  $twbs_version . 'variables.scss";' . "\n");
-//fwrite($st_file, '@import "mixins/reset-filter.scss";' . " // nog even uit 3\n"); // nog even uit 3
-//fwrite($st_file, '@import "mixins/gradients.scss";' . " // nog even uit 3\n");    // nog even uit 3
 
 // Custom.scss
 // Option B: Include parts of Bootstrap
@@ -374,78 +363,78 @@ fwrite($st_file, '@import "bs' .  $twbs_version . '/mixins.scss";' . "\n");
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
 //fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
 
-if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
-{
-fwrite($st_file,
-'// Grid breakpoints
-$grid-breakpoints: (
-	xs: 0');	
-if ($wsaBreakpointes > 0 )
-{
-fwrite($st_file,
-',
-	es: ' . $wsaBreakpointes . 'px');	
-}	
-fwrite($st_file,
-',
-	sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px');
-if ($wsaBreakpointxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxl: ' . $wsaBreakpointxxl . 'px');	
-}
-if ($wsaBreakpointxxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxxl: ' . $wsaBreakpointxxxl . 'px');	
-}
-fwrite($st_file,
-' ) ;
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
-// Grid containers
-$container-max-widths: (
-');	
-if ($wsaBreakpointes > 0 )
-{
-fwrite($st_file,
-'	es: ' . $wsaContaineres . 'px,
-');	
-}
-fwrite($st_file,
-'    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1140px');
-if ($wsaBreakpointxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxl: ' . $wsaContainerxxl . 'px');	
-}
-if ($wsaBreakpointxxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxxl: ' . $wsaContainerxxxl . 'px');	
-}
-fwrite($st_file,
-' ) ;
-@include _assert-ascending($container-max-widths, "$container-max-widths");
-');		
+// if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
+// {
+// fwrite($st_file,
+// '// Grid breakpoints
+// $grid-breakpoints: (
+// 	xs: 0');	
+// if ($wsaBreakpointes > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	es: ' . $wsaBreakpointes . 'px');	
+// }	
+// fwrite($st_file,
+// ',
+// 	sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1200px');
+// if ($wsaBreakpointxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxl: ' . $wsaBreakpointxxl . 'px');	
+// }
+// if ($wsaBreakpointxxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxxl: ' . $wsaBreakpointxxxl . 'px');	
+// }
+// fwrite($st_file,
+// ' ) ;
+// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-starts-at-zero($grid-breakpoints);
+// // Grid containers
+// $container-max-widths: (
+// ');	
+// if ($wsaBreakpointes > 0 )
+// {
+// fwrite($st_file,
+// '	es: ' . $wsaContaineres . 'px,
+// ');	
+// }
+// fwrite($st_file,
+// '    sm: 540px,
+//     md: 720px,
+//     lg: 960px,
+//     xl: 1140px');
+// if ($wsaBreakpointxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxl: ' . $wsaContainerxxl . 'px');	
+// }
+// if ($wsaBreakpointxxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxxl: ' . $wsaContainerxxxl . 'px');	
+// }
+// fwrite($st_file,
+// ' ) ;
+// @include _assert-ascending($container-max-widths, "$container-max-widths");
+// ');		
 	
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
+// fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
 
-}
+// }
 
 // standaard bootstrap variables mixins etc. einde
 fwrite($st_file, "//\n// other variables\n//\n");
