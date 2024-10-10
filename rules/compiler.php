@@ -448,13 +448,10 @@ fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
 }
 
 // standaard bootstrap variables mixins etc. einde
-//fwrite($st_file, '@import "system.scss";' . "\n");
-//fwrite($st_file, '@import "general.scss";' . "\n");
 fwrite($st_file, "//\n// other variables\n//\n");
 fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
 fwrite($st_file, '@import "template_variables.scss";' . "\n");
-//fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
-//fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
+fwrite($st_file, '@import "_template_mixins_functions";' . "\n"); 
 fwrite($st_file, "//\n// css\n//\n");
 
 if (! empty($background))

@@ -1,0 +1,31 @@
+// mixins and functions for this template
+// v2.2.0 20241010
+//
+
+// skins
+
+@mixin photo-box-shadow($shadow... : 0 0 10px 5px rgba(0,0,0,0.2) ) {
+  @if $enable-shadows {
+    $result: ();
+
+    @each $value in $shadow {
+      @if $value != null {
+        $result: append($result, $value, "comma");
+      }
+      @if $value == none and length($shadow) > 1 {
+        @warn "The keyword 'none' must be used as a single argument.";
+      }
+    }
+
+		background-color: rgba(255,255,255,0.75);
+		padding:5px;
+		border: 1px solid rgba(0,0,0,0.3); 
+		border-radius: 5px;
+		margin: 5px;
+		max-width: 100%;
+		height: auto;
+		@if (length($result) > 0) {
+            box-shadow: $result;
+    }
+  }
+}
