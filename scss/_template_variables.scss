@@ -22,6 +22,10 @@ $activenavbarfg:    $gray-600; // was 	#fff;
 $specialgreygradientstart: $white; // was #ffffff;
 $specialgreygradientend: #e6e6e6;
 
+// skins 
+$photo-box-shadow : 0 0 10px 5px rgba(0,0,0,0.2) !default; 
+
+
 // BS3 temporary variables
 $screen-xs-min:              breakpoint-min( "sm"); // was $screen-xs;
 $screen-sm-min:              breakpoint-min( "md"); // was $screen-sm;

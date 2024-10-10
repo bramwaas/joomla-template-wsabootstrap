@@ -4,7 +4,7 @@
 
 // skins
 
-@mixin photo-box-shadow($shadow... : 0 0 10px 5px rgba(0,0,0,0.2) ) {
+@mixin photo-box-shadow($shadow...) {
   @if $enable-shadows {
     $result: ();
 
