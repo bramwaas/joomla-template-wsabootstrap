@@ -106,7 +106,8 @@ body>div.container {
 [class^="com-content"][class$="blog"],
 .blog-featured,
 .com-tags__items {
-	@include make-container();
+//	@include make-container(); only width 100% remains 
+    width: 100%;
 	margin: 0;
 	padding: 0;
 
