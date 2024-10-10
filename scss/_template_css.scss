@@ -104,7 +104,8 @@ body>div.container {
 
 /* blog process joomla colums-n across for n= 1 to 12 to BS row and classes */
 [class^="com-content"][class$="blog"],
-.blog-featured {
+.blog-featured,
+.com-tags__items {
 	@include make-container();
 	margin: 0;
 	padding: 0;
