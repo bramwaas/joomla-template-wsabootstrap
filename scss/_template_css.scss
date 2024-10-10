@@ -110,7 +110,8 @@ body>div.container {
 	padding: 0;
 
 }
-.photo-album .blog-items img {
+.photo-album img,
+.photo-in-album {
 	@include photo-box-shadow($photo-box-shadow);
 }
 
