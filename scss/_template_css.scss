@@ -110,6 +110,10 @@ body>div.container {
 	padding: 0;
 
 }
+.photo-album .blog-items img {
+	@include photo-box-shadow($photo-box-shadow);
+}
+
 .blog-items {
 	@include make-row();
 	> * {
@@ -134,42 +138,6 @@ body>div.container {
 	
 }
 }
-//.blog {
-/* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
-   heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
-   spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
-   (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
-   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog lead-cols-2 )
-   .blog ook voor kop ul.list-striped komt overeen met div.items-row (maar cols-1 etc kan hier niet gevuld worden
-   volgende nivo li.cat-list-row0 en li.cat-list-row1 komen overeen met div.span1 span2 enz
-   volgende nivo ontbreekt bij taglist   komt overeen met div.item
-   volgende nivo span.tag-body (en h3)   komt overeen met p	
-*/
-//	.items-leading,
-//	.items-row,
-//	.list-striped 	{ 
-//		word-spacing: -0.25em;
-//		width: 100%
-//	}
-		
-//	.items-leading > div,
-//	.items-row > div,
-//	.items-row > div > div,
-//	.list-striped > li	{ 
-//		display: inline-block;
-//		word-spacing: normal;
-//		vertical-align: top;
-//		float: none;
-//		max-width:100%;
-//	}
-
-//	.item, .span6, .span4, .span3, .span2, .span1,
-//	.cat-list-row0, .cat-list-row1  { 
-//		width: 100%;
-//		margin-right: 0px; 
-//	}
-	
-//}
 .header-inner
 {
 display: -ms-flexbox;
@@ -311,14 +279,6 @@ order: -1;
 		a img
 			{
 				@include photo-box-shadow($photo-box-shadow);
-//			background-color: rgba(255,255,255,0.75);
-//			padding:5px;
-//			border: 1px solid rgba(0,0,0,0.3); 
-//		    border-radius: 5px;
-//		    box-shadow:	0 0 10px 5px rgba(0,0,0,0.2);
-//		    margin: 5px;
-//			max-width: 100%;
-			height: auto;
 			}
 
 			div.feed-item-description p:first-child
