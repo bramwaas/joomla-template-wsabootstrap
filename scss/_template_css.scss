@@ -115,7 +115,8 @@ body>div.container {
 	@include photo-box-shadow($photo-box-shadow);
 }
 
-.blog-items {
+.blog-items,
+.com-tags__items .list-group {
 	@include make-row();
 	> * {
 		@include make-col-ready();
@@ -129,7 +130,8 @@ body>div.container {
 
 }
 @include media-breakpoint-up(md) {
-.blog-items {
+.blog-items, 
+.com-tags__items .list-group{
 	@for $i from 2 through $grid-columns {
 
 		&.columns-#{$i} {
