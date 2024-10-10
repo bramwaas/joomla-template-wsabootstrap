@@ -5,7 +5,7 @@
 // skins
 
 @mixin photo-box-shadow($shadow...) {
-  @if $enable-shadows {
+//  @if $enable-shadows {
     $result: ();
 
     @each $value in $shadow {
@@ -27,5 +27,5 @@
 		@if (length($result) > 0) {
             box-shadow: $result;
     }
-  }
+//  }
 }
