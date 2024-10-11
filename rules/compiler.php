@@ -120,6 +120,7 @@ $iconsWidth    	= htmlspecialchars($params->iconsWidth);
 $iconsPosLeft   = htmlspecialchars($params->iconsPosLeft);
 $iconsPosTop    = htmlspecialchars($params->iconsPosTop);
 $wsaIconsFlex   = htmlspecialchars($params->wsaIconsFlex);
+$wsaNavbarExpand = htmlspecialchars($params->wsaNavbarExpand); 
 $wsaNavbarRightWidth = htmlspecialchars($params->wsaNavbarRightWidth);
 $footerWidth    = htmlspecialchars($params->footericonsWidth);
 $footerPosLeft  = htmlspecialchars($params->footerPosLeft);
@@ -243,18 +244,13 @@ fwrite($tv_file, "//  "  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
 
 if ($twbs_version > ' '  ) 	fwrite($tv_file, '$twbs_version:              "'  . $twbs_version .  "\";\n");
-
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
-
+if ($wsaNavbarExpand > ' '  ) fwrite($tv_file, '$wsaBreakpointExpand:          '  . substr($wsaNavbarExpand,15) .  ";\n");
 if ($fgColor > ' '  ) fwrite($tv_file, '$fgColor:          '  . $fgColor .  ";\n");
-
 if ($brandImage > ' ' ) fwrite($tv_file, '$brandImage:        ' . $brandImage .  ";\n");
 if ($brandSize > ' '  ) fwrite($tv_file, '$brandSize:         ' . $brandSize . ";\n");
 if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . ";\n");
-
-
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
-
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
 if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
 if ($bg1Image_sm > ' ' ) fwrite($tv_file, '$bg1Image_sm:       ' . $bg1Image_sm .  ";\n");
@@ -280,6 +276,7 @@ if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosT
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
+
 
 
 fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");

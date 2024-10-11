@@ -89,9 +89,6 @@ $bg1Z-index:		  auto;
 $bg2Z-index:		  auto;
 /* uit asha-s */
 
-// $asBlogLeadingWidth:      75%;
-// $asBlogItemWidth:         23.5%;
-$tagListItemWidth:        75%;
 $tagItemTitleDisplay:     none;
 $tagItemSearchDisplay:    none;
 $asMinWidthItem:          256px;
@@ -102,12 +99,6 @@ $as2ColHalfWidth:	  $as2ColFullWidth / 2;
 $as3ColFullWidth:         360px;
 $as3ColHalfWidth:	  $as3ColFullWidth / 2;
 
-
-
-
-//$asBlogItemWidth:           12.5%;
-
-$tagListItemWidth:          30.0%;
 $wrapperBorderRadius:         10px;
 
 // variabelen voor .blog_inline       
@@ -129,14 +120,3 @@ $wsa10Col : (100% - (11 * $wsaInnerMargin)) / 10 ;
 $wsa11Col : (100% - (12 * $wsaInnerMargin)) / 11 ;
 $wsa12Col : (100% - (13 * $wsaInnerMargin)) / 12 ; 
 $span1 : $wsa12Col;
-
-
-//.test01 {
-//	width:$screen-xs-min;
-//	height: $screen-sm-min;
-//	padding-top: $screen-md-min;
-//	padding-right: $screen-lg-min;
-//	padding-left: $screen-xl-min;
-//	padding-bottom: $screen-xxl-min    ;
-
-//}
