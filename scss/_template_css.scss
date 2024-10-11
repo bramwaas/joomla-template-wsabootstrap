@@ -120,6 +120,7 @@ body>div.container {
 .blog-items,
 .com-tags__items .list-group {
 	@include make-row();
+	flex-direction:row;
 	> * {
 		@include make-col-ready();
 		img { max-width: 100%;
