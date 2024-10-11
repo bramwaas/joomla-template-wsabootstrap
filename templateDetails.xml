@@ -165,12 +165,12 @@
 					label="WSA_NAVBAREXPAND_LABEL"	
  				    description="WSA_NAVBAREXPAND_DESCRIPTION"
 				>
+					<option value="navbar-expand-xs">WSA_NAVBAREXPAND_XS</option>
 					<option value="navbar-expand-sm">WSA_NAVBAREXPAND_SM</option>
 					<option value="navbar-expand-md">WSA_NAVBAREXPAND_MD</option>
 					<option value="navbar-expand-lg">WSA_NAVBAREXPAND_LG</option>
 					<option value="navbar-expand-xl">WSA_NAVBAREXPAND_XL</option>
 					<option value="navbar-expand-xxl">WSA_NAVBAREXPAND_XXL</option>
-					<option value="navbar-expand-xxxl">WSA_NAVBAREXPAND_XXXL</option>
 				</field>
 					 
 				<field name="fgColor"  type="color" default=""
