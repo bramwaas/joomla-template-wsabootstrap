@@ -245,7 +245,7 @@ fwrite($tv_file, "//  "  . "\n//\n");
 
 if ($twbs_version > ' '  ) 	fwrite($tv_file, '$twbs_version:              "'  . $twbs_version .  "\";\n");
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
-if ($wsaNavbarExpand > ' '  ) fwrite($tv_file, '$wsaBreakpointExpand:          '  . substr($wsaNavbarExpand,15) .  ";\n");
+if ($wsaNavbarExpand > ' '  ) fwrite($tv_file, '$wsaBreakpointExpand:          '  . substr($wsaNavbarExpand,14) .  ";\n");
 if ($fgColor > ' '  ) fwrite($tv_file, '$fgColor:          '  . $fgColor .  ";\n");
 if ($brandImage > ' ' ) fwrite($tv_file, '$brandImage:        ' . $brandImage .  ";\n");
 if ($brandSize > ' '  ) fwrite($tv_file, '$brandSize:         ' . $brandSize . ";\n");
