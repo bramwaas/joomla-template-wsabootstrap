@@ -120,7 +120,7 @@ $iconsWidth    	= htmlspecialchars($params->iconsWidth);
 $iconsPosLeft   = htmlspecialchars($params->iconsPosLeft);
 $iconsPosTop    = htmlspecialchars($params->iconsPosTop);
 $wsaIconsFlex   = htmlspecialchars($params->wsaIconsFlex);
-$wsaNavbarExpand = htmlspecialchars($params->wsaNavbarExpand); 
+$wsaDesktopExpand = htmlspecialchars($params->wsaDesktopExpand); 
 $wsaNavbarRightWidth = htmlspecialchars($params->wsaNavbarRightWidth);
 $footerWidth    = htmlspecialchars($params->footericonsWidth);
 $footerPosLeft  = htmlspecialchars($params->footerPosLeft);
@@ -245,7 +245,7 @@ fwrite($tv_file, "//  "  . "\n//\n");
 
 if ($twbs_version > ' '  ) 	fwrite($tv_file, '$twbs_version:              "'  . $twbs_version .  "\";\n");
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
-if ($wsaNavbarExpand > ' '  ) fwrite($tv_file, '$wsaBreakpointExpand:          '  . substr($wsaNavbarExpand,14) .  ";\n");
+if ($wsaDesktopExpand > ' '  ) fwrite($tv_file, '$wsaDesktopExpand: '  . $wsaDesktopExpand .  ";\n");
 if ($fgColor > ' '  ) fwrite($tv_file, '$fgColor:          '  . $fgColor .  ";\n");
 if ($brandImage > ' ' ) fwrite($tv_file, '$brandImage:        ' . $brandImage .  ";\n");
 if ($brandSize > ' '  ) fwrite($tv_file, '$brandSize:         ' . $brandSize . ";\n");

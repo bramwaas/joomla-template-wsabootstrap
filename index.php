@@ -43,7 +43,8 @@
      and removed conditional inclusion BS stylesheet an javascript 
  01-10-2024 2.1.3 make content wider to display 3 columns in rssfoto newsfeed 
  02-10-2024 2.2.0 Remove support for BS (Bootstrap) 3, remove redundant span* classes inherited from grid Bootstrap 2 and used in Joomla 3,
-   which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.           
+   which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
+   navbarexpand => desktopexpand           
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -98,10 +99,10 @@ if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css'
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
+$twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
-$wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
+$wsaDesktopExpand = htmlspecialchars($this->params->get('wsaDesktopExpand', 'lg'));
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" prefix="og: http://ogp.me/ns#  fb: http://www.facebook.com/2008/fbml" >
@@ -195,8 +196,8 @@ type: \'image\'
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
 {
-	$spanc = "col-md-6" ;
-	$spans = "col-md-3";
+    $spanc = 'col-' . $wsaDesktopExpand . '-6' ;
+    $spans = 'col-' . $wsaDesktopExpand . '-3';
 }
 elseif (!$this->countModules('position-7') && !$this->countModules('position-8'))
     
@@ -205,8 +206,8 @@ elseif (!$this->countModules('position-7') && !$this->countModules('position-8')
 }
 else
 {
-	$spanc = "col-md-9";
-	$spans = "col-md-3";
+    $spanc = 'col-' . $wsaDesktopExpand . '-9';
+    $spans = 'col-' . $wsaDesktopExpand . '-3';
 }
 $hi_mods = ($this->countModules('position-0')? ' hipos0': '')
 . ($this->countModules('icons')? ' hiicons': '')
@@ -281,7 +282,7 @@ class="site-grid site <?php echo $option
 				</div><!--End Pos0-->
 				<?php endif; ?>
  				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?> row">
+				<div id="icons" class="iconssm navbar-expand-<?php  echo $wsaDesktopExpand;   ?> row">
 					<jdoc:include type="modules" name="icons" />
 				</div><!--End Icons-->   
 				<?php endif; ?>

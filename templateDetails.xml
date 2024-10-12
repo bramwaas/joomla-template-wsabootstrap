@@ -161,15 +161,15 @@
 					hint="WSA_BREAKPOINTXXXL_HINT"
 					 />
  -->					 
-				<field name="wsaNavbarExpand" type="list" default="navbar-expand-md"
-					label="WSA_NAVBAREXPAND_LABEL"	
- 				    description="WSA_NAVBAREXPAND_DESCRIPTION"
+				<field name="wsaDesktopExpand" type="list" default="lg"
+					label="WSA_DESKTOPEXPAND_LABEL"	
+ 				    description="WSA_DESKTOPEXPAND_DESCRIPTION"
 				>
-					<option value="navbar-expand-sm">WSA_NAVBAREXPAND_SM</option>
-					<option value="navbar-expand-md">WSA_NAVBAREXPAND_MD</option>
-					<option value="navbar-expand-lg">WSA_NAVBAREXPAND_LG</option>
-					<option value="navbar-expand-xl">WSA_NAVBAREXPAND_XL</option>
-					<option value="navbar-expand-xxl">WSA_NAVBAREXPAND_XXL</option>
+					<option value="sm">WSA_DESKTOPEXPAND_SM</option>
+					<option value="md">WSA_DESKTOPEXPAND_MD</option>
+					<option value="lg">WSA_DESKTOPEXPAND_LG</option>
+					<option value="xl">WSA_DESKTOPEXPAND_XL</option>
+					<option value="xxl">WSA_DESKTOPEXPAND_XXL</option>
 				</field>
 					 
 				<field name="fgColor"  type="color" default=""

@@ -97,8 +97,8 @@ body>div.container {
 	padding: 0;
 
 }
-.photo-album img,
-.photo-in-album {
+.photo-in-album,
+.com-tags__items .list-group img {
 	@include photo-box-shadow($photo-box-shadow);
 }
 
@@ -117,9 +117,9 @@ body>div.container {
 		}
 
 }
-@include media-breakpoint-up($wsaBreakpointExpand) {
+@include media-breakpoint-up($wsaDesktopExpand) {
 .blog-items, 
-.com-tags__items .list-group{
+.com-tags__items .list-group {
 	@for $i from 2 through $grid-columns {
 
 		&.columns-#{$i} {
@@ -128,6 +128,9 @@ body>div.container {
 		 }
 	
 }
+.com-tags__items .list-group {
+	@include row-cols(3);
+	}
 }
 .header-inner
 {
@@ -232,7 +235,6 @@ order: -1;
 		margin-bottom: 0px;
 		text-align: left;
 		}
-/* new test */
 	ol, ul, .com-newsfeeds-newsfeed__items
 		{
 		@include make-row();
@@ -245,7 +247,7 @@ order: -1;
 			@include media-breakpoint-up(sm) {
 			  @include make-col(6);
 			}
-			@include media-breakpoint-up(lg) {
+			@include media-breakpoint-up($wsaDesktopExpand) {
 			  @include make-col(4);
 			}
 
