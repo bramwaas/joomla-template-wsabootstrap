@@ -98,6 +98,8 @@ body>div.container {
 
 }
 .photo-in-album,
+.photo-album .blog-items img,
+.blog-items.photo-album img,
 .com-tags__items .list-group img {
 	@include photo-box-shadow($photo-box-shadow);
 }
