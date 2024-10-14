@@ -89,6 +89,7 @@ body>div.container {
 
 /* blog process joomla colums-n across for n= 1 to 12 to BS row and classes */
 [class^="com-content"][class$="blog"],
+[class*="rssfoto"] .newsfeed,
 .blog-featured,
 .com-tags__items {
 //	@include make-container(); only width 100% remains 
@@ -100,12 +101,14 @@ body>div.container {
 .photo-in-album,
 .photo-album .blog-items img,
 .blog-items.photo-album img,
-.com-tags__items .list-group img {
+.com-tags__items .list-group img,
+[class*="rssfoto"] .com-newsfeeds-newsfeed__items img {
 	@include photo-box-shadow($photo-box-shadow);
 }
 
 .blog-items,
-.com-tags__items .list-group {
+.com-tags__items .list-group,
+.com-newsfeeds-newsfeed__items {
 	@include make-row();
 	flex-direction:row;
 	> * {
@@ -121,9 +124,18 @@ body>div.container {
 		}
 
 }
+/* Desktop Layout menu expand, multi columns work */ 
 @include media-breakpoint-up($wsaDesktopExpand) {
+// default desktop layout columns	
+.com-tags__items ul {
+		@include row-cols(3);
+}
+
+// desktop lay-out with columns-n class 
 .blog-items, 
-.com-tags__items .list-group {
+.com-tags__items .list-group,
+.com-newsfeeds-newsfeed__items
+ {
 	@for $i from 2 through $grid-columns {
 
 		&.columns-#{$i} {
@@ -132,10 +144,7 @@ body>div.container {
 		 }
 	
 }
-.com-tags__items .list-group {
-	@include row-cols(3);
-	}
-}
+} // End  Desktop Layout
 .header-inner
 {
 display: flex;
@@ -145,7 +154,55 @@ flex-direction: column;
 	.navbar>.container, .navbar>.container-fluid {
     align-items: flex-start;
 	}
-}
+} 
+
+/* adaptations for newsfeeds */
+/* rss fotos of flickr suffix _rssfoto */
+/* rss fotos of flickr  met suffix _rssfoto */
+/* rss flickr images (ul li p a img) */
+[class*="rssfoto"] .newsfeed {
+
+	h2, .com-newsfeeds-newsfeed__feed-image
+		{
+		margin: 0;
+		font-weight: bold;
+		font-family: Helvetica,Arial,sans-serif;
+		font-size: 1.5em;
+		padding-left: 0px;
+		margin-bottom: 10px;
+		text-align: left;
+		}
+
+	h3
+		{
+		font-size: 1.3em;
+		line-height: 1.3em;
+		padding-left: 0px;
+		margin-bottom: 0px;
+		text-align: left;
+		}
+	li
+		{
+			@include make-col-ready();
+		list-style-type: none;
+		overflow: hidden;
+
+			div.feed-item-description p:first-child
+			{ /* make unwanted image header text from newsfeed invisible  */
+			font-size: 4%;
+			color: transparent;
+			    a
+				{
+				font-size: 2500%;
+				color: $link-color;
+				}
+			}
+		
+		}
+	
+} /* end rssfoto newsfeed  */
+
+
 
 .icon-cog,
 .icons .icon-cog
@@ -210,73 +267,6 @@ order: -1;
 }	
 /* einde tijdelijk toegvoegd voor bs 3 */
 
-/* adaptations for newsfeeds */
-/* rss fotos of flickr suffix _rssfoto */
-/* rss fotos of flickr  met suffix _rssfoto */
-/* rss flickr images (ul li p a img) */
-[class*="rssfoto"] .newsfeed {
-	@include make-container();
-	margin: 0;
-	padding: 0;
-	width: auto;
-
-	h2, .com-newsfeeds-newsfeed__feed-image
-		{
-		margin: 0;
-		font-weight: bold;
-		font-family: Helvetica,Arial,sans-serif;
-		font-size: 1.5em;
-		padding-left: 0px;
-		margin-bottom: 10px;
-		text-align: left;
-		}
-
-	h3
-		{
-		font-size: 1.3em;
-		line-height: 1.3em;
-		padding-left: 0px;
-		margin-bottom: 0px;
-		text-align: left;
-		}
-	ol, ul, .com-newsfeeds-newsfeed__items
-		{
-		@include make-row();
-		padding:0;
-		}
-	li
-		{
-			@include make-col-ready();
-
-			@include media-breakpoint-up(sm) {
-			  @include make-col(6);
-			}
-			@include media-breakpoint-up($wsaDesktopExpand) {
-			  @include make-col(4);
-			}
-
-		list-style-type: none;
-		overflow: hidden;
-		
-		a img
-			{
-				@include photo-box-shadow($photo-box-shadow);
-			}
-
-			div.feed-item-description p:first-child
-			{ /* make unwanted image header text from newsfeed invisible  */
-			font-size: 4%;
-			color: transparent;
-			    a
-				{
-				font-size: 2500%;
-				color: $link-color;
-				}
-			}
-		
-		}
-	
-} /* end rssfoto newsfeed  */
 
 .tag-category fieldset
 { /* tot joomla het zoekveld goed verbergt */
