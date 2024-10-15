@@ -27,7 +27,7 @@
 //     but an extra class in the page header,  ul may be used in stead of ol and Pias is stopped. So .newsfeed_rssfoto is approximately 
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
-//  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard 
+//  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard. rss combined with tag-item-list and blog-list. 
 /* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -96,7 +96,6 @@ body>div.container {
     width: 100%;
 	margin: 0;
 	padding: 0;
-
 }
 .photo-in-album,
 .photo-album .blog-items img,
@@ -115,6 +114,8 @@ body>div.container {
 		@include make-col-ready();
 		border: 0;
 		margin: 0;
+		list-style-type: none;
+		overflow:hidden;
 		img { max-width: 100%;
 			height:auto;	 	
 				}
@@ -122,27 +123,65 @@ body>div.container {
 	&[class*="columns"] {
 		@include row-cols(1);
 		}
-
 }
-/* Desktop Layout menu expand, multi columns work */ 
+/* adaptations for newsfeeds with photos (class rssfoto). */
+/* rss flickr images (ul li p a img) */
+[class*="rssfoto"] .newsfeed {
+	h2, .com-newsfeeds-newsfeed__feed-image
+		{
+		margin: 0;
+		font-weight: bold;
+		font-family: Helvetica,Arial,sans-serif;
+		font-size: 1.5em;
+		padding-left: 0px;
+		margin-bottom: 10px;
+		text-align: left;
+		}
+	h3
+		{
+		font-size: 1.3em;
+		line-height: 1.3em;
+		padding-left: 0px;
+		margin-bottom: 0px;
+		text-align: left;
+		}
+	li
+		{
+			div.feed-item-description p:first-child
+			{ /* make unwanted image header text from newsfeed invisible  */
+			font-size: 4%;
+			color: transparent;
+			    a
+				{
+				font-size: 2500%;
+				color: $link-color;
+				}
+			}
+		}
+} /* end rssfoto newsfeed  */
+
+/* Desktop Layout menu expand, multi columns  */ 
 @include media-breakpoint-up($wsaDesktopExpand) {
 // default desktop layout columns	
-.com-tags__items ul {
+.com-tags__items .list-group,
+.com-newsfeeds-newsfeed__items {
 		@include row-cols(3);
 }
-
 // desktop lay-out with columns-n class 
-.blog-items, 
-.com-tags__items .list-group,
-.com-newsfeeds-newsfeed__items
- {
-	@for $i from 2 through $grid-columns {
-
+@for $i from 2 through $grid-columns {
+	.columns-#{$i} {.blog-items, 
+					.com-tags__items .list-group,
+					.com-newsfeeds-newsfeed__items {
+        	@include row-cols($i);
+		}
+	}
+	.blog-items, 
+	.com-tags__items .list-group,
+	.com-newsfeeds-newsfeed__items  {
 		&.columns-#{$i} {
 	        @include row-cols($i);
-		          }
 		 }
-	
+	 }
 }
 } // End  Desktop Layout
 .header-inner
@@ -155,54 +194,6 @@ flex-direction: column;
     align-items: flex-start;
 	}
 } 
-
-/* adaptations for newsfeeds */
-/* rss fotos of flickr suffix _rssfoto */
-/* rss fotos of flickr  met suffix _rssfoto */
-/* rss flickr images (ul li p a img) */
-[class*="rssfoto"] .newsfeed {
-
-	h2, .com-newsfeeds-newsfeed__feed-image
-		{
-		margin: 0;
-		font-weight: bold;
-		font-family: Helvetica,Arial,sans-serif;
-		font-size: 1.5em;
-		padding-left: 0px;
-		margin-bottom: 10px;
-		text-align: left;
-		}
-
-	h3
-		{
-		font-size: 1.3em;
-		line-height: 1.3em;
-		padding-left: 0px;
-		margin-bottom: 0px;
-		text-align: left;
-		}
-	li
-		{
-			@include make-col-ready();
-		list-style-type: none;
-		overflow: hidden;
-
-			div.feed-item-description p:first-child
-			{ /* make unwanted image header text from newsfeed invisible  */
-			font-size: 4%;
-			color: transparent;
-			    a
-				{
-				font-size: 2500%;
-				color: $link-color;
-				}
-			}
-		
-		}
-	
-} /* end rssfoto newsfeed  */
-
-
 
 .icon-cog,
 .icons .icon-cog
@@ -273,32 +264,32 @@ order: -1;
 display: $tagItemSearchDisplay; 
 }
 
-.tag-category ul 
-{ /* tag-list inline maken in plaats van opsomming */
-    padding-left: 0;
-	
- li 
-	{
-    display: inline-block;
-    position: static;
-    vertical-align: top;
-	max-width: 100%;
-	margin-right: $marginArea;
-	margin-bottom: $marginArea;
-	}
-  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-	{
-	background-color: transparent;
-	max-width: 100%;
-    width: $asMinWidthItem;
-	
-	}	
-
- li h3 
-	{
-	display: $tagItemTitleDisplay;
-	}	
-}
+//.tag-category ul 
+//{ /* tag-list inline maken in plaats van opsomming */
+//    padding-left: 0;
+//	
+// li 
+//	{
+//    display: inline-block;
+//    position: static;
+//    vertical-align: top;
+//	max-width: 100%;
+//	margin-right: $marginArea;
+//	margin-bottom: $marginArea;
+//	}
+//  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+//	{
+//	background-color: transparent;
+//	max-width: 100%;
+//    width: $asMinWidthItem;
+//	
+//	}	
+//
+// li h3 
+//	{
+//	display: $tagItemTitleDisplay;
+//	}	
+//}
 	
 body { 
 	font-family: Verdana, Arial, sans-serif;
