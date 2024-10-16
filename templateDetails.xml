@@ -8,7 +8,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>2.2.0.dev</version>
-	<creationDate>10-10-2024</creationDate>
+	<creationDate>16-10-2024</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -135,32 +135,6 @@
 				<field name="explanation3"  type="spacer" hr="false"
 					label="Other lay-out variables. &lt;br /&gt;"
 					 />
-<!-- 				<field name="wsaBreakpointes"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTES_LABEL"
-					description="WSA_BREAKPOINTES_DESCRIPTION"
-					hint="WSA_BREAKPOINTES_HINT"
-					 />
-				<field name="wsaContainerxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_CONTAINERXXL_LABEL"
-					description="WSA_CONTAINERXXL_DESCRIPTION"
-					hint="WSA_CONTAINERXXL_HINT"
-					 />
-				<field name="wsaBreakpointxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTXXL_LABEL"
-					description="WSA_BREAKPOINTXXL_DESCRIPTION"
-					hint="WSA_BREAKPOINTXXL_HINT"
-					 />
-				<field name="wsaContainerxxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_CONTAINERXXXL_LABEL"
-					description="WSA_CONTAINERXXXL_DESCRIPTION"
-					hint="WSA_CONTAINERXXXL_HINT"
-					 />
-				<field name="wsaBreakpointxxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTXXXL_LABEL"
-					description="WSA_BREAKPOINTXXXL_DESCRIPTION"
-					hint="WSA_BREAKPOINTXXXL_HINT"
-					 />
- -->					 
 				<field name="wsaDesktopExpand" type="list" default="lg"
 					label="WSA_DESKTOPEXPAND_LABEL"	
  				    description="WSA_DESKTOPEXPAND_DESCRIPTION"
@@ -360,7 +334,7 @@
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
-				<field name="twbs_version" type="radio" class="switcher btn-group" default="5" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
+				<field name="twbs_version" type="radio" class="btn-group" default="5" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
 					<option value="4">4.6.2</option>
 					<option value="5">5.3.3</option>
 				</field>

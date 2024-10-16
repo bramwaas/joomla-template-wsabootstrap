@@ -14,4 +14,6 @@ This project is licensed under the [GNU GPL], version 3 or later.
     original scss files of BS4 and BS5 in folders scss bs4 and bs5.
     New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp   
     Remove options for extra/override breakpoints.   
+    Implement class .columns-n in component at page level and desktoplay-out for tagged-items, category-blog, newsfeed, and featured-articles.
+    For category-blog and featured-articles also in blog-layout ((leading) article class and #columns). 
 * 2.1.2 removed hard returns from documentation field because j4.4 + doesn't accept that.

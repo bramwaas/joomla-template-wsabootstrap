@@ -44,7 +44,7 @@
  01-10-2024 2.1.3 make content wider to display 3 columns in rssfoto newsfeed 
  02-10-2024 2.2.0 Remove support for BS (Bootstrap) 3, remove redundant span* classes inherited from grid Bootstrap 2 and used in Joomla 3,
    which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
-   navbarexpand => desktopexpand           
+   navbarexpand => desktopexpand. removed double loading jquery in BS4           
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -137,8 +137,8 @@ switch ($twbs_version) {
 //   break;
    case "4" :  {
        $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css', ['version'=>'4.6.2'], ['integrity' => 'sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N', 'crossorigin' => 'anonymous'],[])
-       ->registerScript('jquery.js', 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js', ['version'=>'3.5.1'], ['integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
-       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', ['version'=>'4.6.2'], ['integrity' => 'sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct', 'crossorigin' => 'anonymous', 'defer' => TRUE],['jquery.js'])
+//       ->registerScript('jquery', 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js', ['version'=>'3.5.1'], ['integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
+       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', ['version'=>'4.6.2'], ['integrity' => 'sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct', 'crossorigin' => 'anonymous', 'defer' => TRUE],['jquery'])
        ;
    }
 }
@@ -177,7 +177,7 @@ case "5" :  {
 break;
 case "4" : {
     $this->addScript('https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js', array('version'=>'3.5.1'),
-    array('id'=>'jquery.js', 'integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj',   'crossorigin' => 'anonymous'));
+    array('id'=>'jquery', 'integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj',   'crossorigin' => 'anonymous'));
     $this->addScript('https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', array('version'=>'4.6.2'),
     array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct',   'crossorigin' => 'anonymous'));
     }
