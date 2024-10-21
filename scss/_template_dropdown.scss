@@ -9,6 +9,7 @@
 11-2-2019 brandwith relatief tov lg
 28-12-2021 .dropdown-menu > li > a replaced by .dropdown-menu > .nav-item > .nav-link to give it higher priority in BS4 and BS5
  and padding and line-height px value changed to rem value
+06-10-2024 2.2.0 remove bs3 and alternative old navbars, use more bs4, bs5 variables, make bs5 the default 
 
 -----------------------------------------*/
 #img_brandImage
@@ -16,240 +17,12 @@
 width: $brandWidth * 300 / 960; // < es = 375
 }
 
-// Alternate navbars uit navbar.less
-// --------------------------------------------------
-
-
-@if $twbs_version == 3
-{
-// Default navbar 
-.navbar-default {
-  background-color: $navbar-default-bg;
-  border-color: $navbar-default-border;
-
-  .navbar-brand {
-    color: $navbar-default-brand-color;
-    &:hover,
-    &:focus {
-      color: $navbar-default-brand-hover-color;
-      background-color: $navbar-default-brand-hover-bg;
-    }
-  }
-
-  .navbar-text {
-    color: $navbar-default-color;
-  }
-
-  .navbar-nav {
-    > li > a {
-      color: $navbar-default-link-color;
-
-      &:hover,
-      &:focus {
-        color: $navbar-default-link-hover-color;
-        background-color: $navbar-default-link-hover-bg;
-      }
-    }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-default-link-active-color;
-        background-color: $navbar-default-link-active-bg;
-      }
-    }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-default-link-disabled-color;
-        background-color: $navbar-default-link-disabled-bg;
-      }
-    }
-  }
-
-  .navbar-toggle {
-    border-color: $navbar-default-toggle-border-color;
-    .icon-bar {
-      background-color: $navbar-default-link-color;
-    }
-    &:hover,
-    &:focus {
-      background-color: $navbar-default-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: $navbar-default-toggle-icon-bar-bg;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $navbar-default-border;
-  }
-
-  // Dropdown menu items
-  .navbar-nav {
-    // Remove background color from open dropdown
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: $navbar-default-link-active-bg;
-        color: $navbar-default-link-active-color;
-      }
-    }
-
-    @media (max-width: $grid-float-breakpoint-max) {
-      // Dropdowns get custom display when collapsed
-      .open .dropdown-menu {
-        > li > a {
-          color: $navbar-default-link-color;
-          &:hover,
-          &:focus {
-            color: $navbar-default-link-hover-color;
-            background-color: $navbar-default-link-hover-bg;
-          }
-        }
-        > .active > a {
-          &,
-          &:hover,
-          &:focus {
-            color: $navbar-default-link-active-color;
-            background-color: $navbar-default-link-active-bg;
-          }
-        }
-        > .disabled > a {
-          &,
-          &:hover,
-          &:focus {
-            color: $navbar-default-link-disabled-color;
-            background-color: $navbar-default-link-disabled-bg;
-          }
-        }
-      }
-    }
-  }
-
-
-  // Links in navbars
-  //
-  // Add a class to ensure links outside the navbar nav are colored correctly.
-
-  .navbar-link {
-    color: $navbar-default-link-color;
-    &:hover {
-      color: $navbar-default-link-hover-color;
-    }
-  }
-
-  .btn-link {
-    color: $navbar-default-link-color;
-    &:hover,
-    &:focus {
-      color: $navbar-default-link-hover-color;
-    }
-    &[disabled],
-    fieldset[disabled] & {
-      &:hover,
-      &:focus {
-        color: $navbar-default-link-disabled-color;
-      }
-    }
-  }
-
-  @include gradient-vertical($start-color: lighten($navbar-default-bg, 10%), $end-color: $navbar-default-bg);
-  @include reset-filter(); /* Remove gradient in IE<10 to fix bug where dropdowns don't get triggered  */
-  border-radius: $navbar-border-radius;
-  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-  @include box-shadow($shadow);  
-
-  .navbar-nav > .open > a,
-  .navbar-nav > .active > a {
-  @include gradient-vertical($start-color: darken($navbar-default-link-active-bg, 5%), $end-color: darken($navbar-default-link-active-bg, 2%));
-    @include box-shadow(inset 0 3px 9px rgba(0,0,0,.075)); 
-  }
-
-}
-// einde .twbs 3 navbar-default 
-
-}
-@else if 1 == 1 /* $navbar-theme == navbar-dark */
-{/* bs4 navbar-dark */
-.navbar-dark {
-  .navbar-brand {
-    color: $navbar-default-brand-color;
-
-   &:hover,
-   &:focus  {
-      color: $navbar-default-brand-hover-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-default-color;
-
-      &:hover,
-      &:focus  {
-        color: $navbar-default-link-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-default-link-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-      color: $navbar-default-link-active-color;
-    }
-  }
-
-  .navbar-toggler {
-    color: $navbar-default-link-color;
-    border-color: $navbar-default-toggle-border-color;
-  }
-
-  .navbar-toggler-icon {
-    background-image: $navbar-dark-toggler-icon-bg;
-  }
-
-  .navbar-text {
-    color: $navbar-default-color;
-    a {
-      color: $navbar-default-link-active-color;
-
-      &:hover,
-  &:focus  {
-        color: $navbar-default-link-active-color;
-      }
-    }
-  }
-}
-
-// einde bs4 navbar-dark
-}
-@else 
-{// bs4 navbar-light
-// einde bs4 navbar-light
-} 
-
-.navbar-brand,
-.navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
-} 
-
-
-
 /* ======================
 	GENERAL STYLES
 	===================== */
 .dropdown-menu {
   background-color: $dropdown-bg;
-  border: 1px solid $dropdown-fallback-border; // IE8 fallback
-  border: 1px solid $dropdown-border;
+  border: 1px solid $dropdown-border-color;
 
   > .nav-item > .nav-link {
     clear: both;
@@ -334,7 +107,7 @@ width: $brandWidth * 300 / 960; // < es = 375
    }
 
    &:hover>a:after {
-    border-left-color:$navbar-default-link-active-color;
+    border-left-color: $navbar-light-active-color;
    }
 
    &.pull-left { 
@@ -381,18 +154,18 @@ color: #333;
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: $nav-link-hover-bg;
+        background-color: $nav-tabs-link-active-bg; // was $nav-link-hover-bg;
       }
     }
     // Disabled state sets text to gray and nukes hover/tab effects
     &.disabled > a {
-      color: $nav-disabled-link-color;
+      color: $nav-link-disabled-color; // was $nav-disabled-link-color;
       &:hover,
       &:focus {
-        color: $nav-disabled-link-hover-color;
+        color: $nav-link-disabled-color; // was $nav-disabled-link-hover-color;
         text-decoration: none;
         background-color: transparent;
-        cursor: $cursor-disabled;
+        cursor: not-allowed; // was $cursor-disabled;
       }
     }
   }
@@ -402,8 +175,8 @@ color: #333;
     &,
     &:hover,
     &:focus {
-      background-color: $nav-link-hover-bg;
-      border-color: $link-color;
+      background-color: gray; // was $nav-link-hover-bg;
+      border-color: $nav-tabs-link-hover-border-color; // was $link-color;
     }
   }
  } 
@@ -413,63 +186,30 @@ color: #333;
 // Give the tabs something to sit on
 .nav-tabs {
   border-bottom: 1px solid $nav-tabs-border-color;
-  > li {
+  > li {    // keep 7/24
     float: left;
     // Make the list-items overlay the bottom border
     margin-bottom: -1px;
 
     // Actual tabs (as links)
-    > a {
+    > a { // keep 7/24
       margin-right: 2px;
       line-height: $line-height-base;
-      border: 1px solid transparent;
-      border-radius: $border-radius-base $border-radius-base 0 0;
-      &:hover {
-        border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
-      }
     }
 
     // Active state, and its :hover to override normal :hover
-    &.active > a {
+    &.active > a { // keep 7/24
       &,
       &:hover,
       &:focus {
-        color: $nav-tabs-active-link-hover-color;
-        background-color: $nav-tabs-active-link-hover-bg;
-        border: 1px solid $nav-tabs-active-link-hover-border-color;
+        background-color: $body-bg; // was $nav-tabs-active-link-hover-bg;
+        border: 1px solid #ddd; // was $nav-tabs-active-link-hover-border-color;
         border-bottom-color: transparent;
         cursor: default;
       }
     }
   }
 
-}
-
-
-// Pills
-// -------------------------
-.nav-pills {
-  > li {
-    float: left;
-
-    // Links rendered as pills
-    > a {
-      border-radius: $nav-pills-border-radius;
-    }
-    + li {
-      margin-left: 2px;
-    }
-
-    // Active state
-    &.active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $nav-pills-active-link-hover-color;
-        background-color: $nav-pills-active-link-hover-bg;
-      }
-    }
-  }
 }
 // uit nav.less einde 
 /* ===================================================================================
@@ -485,7 +225,7 @@ When scaled down to less than 768px, the menu collapses and works just like the 
 I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
 (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
 */
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-up(md) { // min 768
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -505,9 +245,8 @@ I only made one small addition to the standard HTML â€“ I added a container
     padding-bottom: 12px;
   }
 }
-/* einde make sidebar nav vertical */ 
-
-@media (min-width: $screen-sm-min) { /* Activates hovering the main items to show the sub items */
+// * einde make sidebar nav vertical * / 
+@include media-breakpoint-up(md) { // min 768 Activates hovering the main items to show the sub items
        .nav-pills > li > a,
        .dropdown-menu {
           margin: 0;
@@ -587,7 +326,6 @@ I only made one small addition to the standard HTML â€“ I added a container
 
 }
 
-@if $twbs_version == 4 {
 @include media-breakpoint-up(sm)
 {  // min 576
 #img_brandImage
@@ -609,23 +347,5 @@ width: $brandWidth * 720 / 960; // md cont = 720
 width: $brandWidth ; // lg 100%
 }
 }/* einde up(lg) */
-} // end twbs 4
-@else { // bs3
-// @include media-breakpoint-up(md) { bs4
-@media (min-width: $screen-sm-min){
-#img_brandImage
-{ 
-width: $brandWidth * 720 / 960; // md cont = 720
-}
-}
-// @include media-breakpoint-up(lg) { bs4
-@media (min-width: $screen-md-min )  { /* desktop (width >= 992px) */
-#img_brandImage
-{ 
-width: $brandWidth ; // lg 100%
-}
-}
-
-} // end twbs 3
 
 

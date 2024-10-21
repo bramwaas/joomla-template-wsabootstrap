@@ -18,6 +18,7 @@
  * 30-12-2021 overbodige container-fluid bij eerder verwijderde navbar-inner verwijderd vanwege onnodige padding. 
  * 31-1-2022 referentie naar 'default_'.$item->type verbeterd, zodat deze ook bij gebruik in ander template werkt 
  *  entries voor seperator en heading gekopieerd van mod_menu
+ * 17-10-22 2.2.0 wsaDesktopExpand replaces breakpoint of wsaNavbarExpand
  */
 
 \defined('_JEXEC') or die;
@@ -42,7 +43,7 @@ $twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_vers
 if ($twbs_version == 3) {
 	$menuType = str_replace(array("light", "dark", "bg-"), array("default", "inverse", ""), $menuType);	
 }
-$wsaNavbarExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaNavbarExpand', 'navbar-expand-md'));
+$wsaDesktopExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaDesktopExpand', 'xl'));
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
 
 $moduleTag     = $params->get('module_tag', 'div');
@@ -84,7 +85,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<<?php echo $moduleTag; ?> class="navbar <?php echo  $wsaNavbarExpand .  ' ' . $menuType; ?> " role="navigation">
+		    	<<?php echo $moduleTag; ?> class="navbar navbar-expand-<?php  echo $wsaDesktopExpand .  ' ' . $menuType; ?> " role="navigation">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
@@ -101,25 +102,11 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 					<a class="navbar-brand brand" href="#"><?php echo $sitename ?></a>
 					<?php endif; ?>
 					<?php echo '<!-- $twbs_version=' . $twbs_version . ". -->\n"; ?>
-					<?php if ($twbs_version == '3') : ?>
-					<div class="navbar-header">
-					  <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#navbar-<?php echo $moduleIdPos; ?>"  aria-controls="navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
- 						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					  </button> 
-					<?php else: // $twbs_version == '4' or '5' ?>
 				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"  data-target="#navbar-<?php echo $moduleIdPos; ?>" data-bs-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="#navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false" aria-label="Toggle navigation">
 					  <span class="navbar-toggler-icon"></span>
 				    </button>
 					<!-- navbar-header -->
-					<?php endif; ?>
-					<?php if ($twbs_version == '3') : ?>
-					</div> <!-- navbar-header -->
-					<?php endif; ?>
 				   <div id="navbar-<?php echo $moduleIdPos; ?>" class="collapse navbar-collapse">
-
 <!-- oude module -->
 
 <ul <?php echo $id; ?> class="mod-menu nav navbar-nav mr-auto menu<?php echo $class_sfx;?>">

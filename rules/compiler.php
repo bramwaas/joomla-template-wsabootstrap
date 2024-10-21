@@ -10,39 +10,26 @@
    de save  
 v 23-2-2016
 v 20-3-2016 bootstrap 3
-V 6-4-2016 magnific popup
-V 24-4-2016 dropdown menu in apart .less bestand
-V 16-5-2016 kleuren dropdownmenu variabel gemaakt.
-V 18-5-2016 compiler uit template.php gebruikt, deze werkt beter met mixins en functies
-V 19-5-2016 kleine aanpassing instellingen compiler
-V 22-5-2016 brandImage toegevoegd
-V 27-5-2016 kleuren navbar toggle button
-V 29-5-2016 breakpointmobile verwijderd.
-V juni 2016 overgang naar SASS (scss)
-v 12-6-2016 fout in bg1Pos (weer) opgelost
-v 15-7-2016 grid.scss toegevoegd
-v 28-12-2016 alle backgroundimages via html niet meer css, wel twee groottes
-v 2-1-2017 breakpoint voor sizes
-v 5-1-2017 ook breakpoint small
-v 27-4-2017 andere naam css mogelijk ook templatestyleid overal doorgevoerd.
 v 7-1-2018 J3.8 j4 namespace
 v 19-1-2019 custom scss
 v 20-1-2019 wsaNavbarRightWidth
 v 25-1-2019 bootstrap 4 .scss files toegevoegd ter voorbereiding op uitbreiding breakpoints
-v 30-1-2019 uitbreiding breakpoints voorwasardelijk in style<...>.scss schrijven ipv in apart .scss file.
+v 30-1-2019 uitbreiding breakpoints voorwaardelijk in style<...>.scss schrijven ipv in apart .scss file.
 V 2-2-2019 nieuwe versie van Leafo\ScssPhp\Compiler 0.7.6
 V 6-2-2019 navbar kleuren default bs4 ipv 3
 v 7-2 2019 nog maar 1 set achtergondafbeeldingen en 2 kleuren.
-v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat cluasule van compiler veld
+v 10-2-2019 naam veranderd en enkele aanpassingen voor v4 naam van het bestand moet compiler.php blijven, omdat deze gemoemd wordt in validat clausule van compiler veld
 v 11-2-2019 params as an object
 v 20-3-2019 border en active link colors nav-bar
 v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
+2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
+    Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4. Remove extra breakpoints
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
-use Leafo\ScssPhp\Compiler;
-use Leafo\ScssPhp\Server;
+use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\Server\Server;
 
 use Joomla\CMS\Factory;   
 use Joomla\CMS\Form\FormRule;
@@ -90,42 +77,32 @@ $templatestyleid = $input->get('id');
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
 
-
 if  (htmlspecialchars($value) == '1')
 
 { /* creeren en compileren */
-
-// scss compiler van leafo http://leafo.github.io/scssphp/
-require_once "leafo/scss.inc.php";
-require_once "leafo/src/Server.php";
-
+    // scss compiler and server by scssphp https://scssphp.github.io/scssphp/
+    require_once "scssphp/scss.inc.php";
+    require_once "server/server.inc.php";
 
 $scss = new Compiler();
 
 if ( htmlspecialchars($params->compress) == "1")
 {
-$scss->setFormatter('Leafo\ScssPhp\Formatter\Crunched');
+    $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
 }
 else
-{  // voor debug netter formatteren en commentaren behouden. 
- $scss->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
-// $scss->setLineNumberStyle(Compiler::LINE_COMMENTS);
+{  // voor debug netter formatteren en commentaren behouden.
+    $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
 $server = new Server($currentpath. '/../scss', null, $scss);
-//$server->serve();
-
-
 
 // einde initialisatie compiler
-
 
 // get params
 
 $gplusProfile   = htmlspecialchars($params->gplusProfile);
-$twbs_version   = htmlspecialchars($params->twbs_version);
-
-
+$twbs_version   =  (empty($params->twbs_version)) ? '5' : htmlspecialchars($params->twbs_version);
 $itemVideoHeight= htmlspecialchars($params->itemVideoHeight);
 $itemLeadHeight = htmlspecialchars($params->itemLeadHeight);
 $itemLeadWidth  = htmlspecialchars($params->itemLeadWidth);
@@ -135,8 +112,7 @@ $itemWidth    	= htmlspecialchars($params->itemWidth);
 $itemMargin    	= htmlspecialchars($params->itemMargin);
 
 $hlMarginTop    = htmlspecialchars($params->hlMarginTop);
-$hlMarginLeft   = htmlspecialchars($params->hlMarginLeft);
-if ($hlMarginLeft > " " ) {} else { $hlMarginLeft = 0; }
+$hlMarginLeft   = (empty($hlMarginLeft)) ? 0 : htmlspecialchars($params->hlMarginLeft);
 $hlWidth    	= htmlspecialchars($params->hlWidth);
 $hlHeight    	= htmlspecialchars($params->hlHeight);
 $hlMarginBottom = htmlspecialchars($params->hlMarginBottom);
@@ -144,6 +120,7 @@ $iconsWidth    	= htmlspecialchars($params->iconsWidth);
 $iconsPosLeft   = htmlspecialchars($params->iconsPosLeft);
 $iconsPosTop    = htmlspecialchars($params->iconsPosTop);
 $wsaIconsFlex   = htmlspecialchars($params->wsaIconsFlex);
+$wsaDesktopExpand = htmlspecialchars($params->wsaDesktopExpand); 
 $wsaNavbarRightWidth = htmlspecialchars($params->wsaNavbarRightWidth);
 $footerWidth    = htmlspecialchars($params->footericonsWidth);
 $footerPosLeft  = htmlspecialchars($params->footerPosLeft);
@@ -194,14 +171,14 @@ $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
-$wsaContaineres = $wsaBreakpointes;
-$wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
-$wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
-if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-$wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
-$wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
-if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
+// $wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
+// $wsaContaineres = $wsaBreakpointes;
+// $wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
+// $wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
+// if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
+// $wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
+// $wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
+// if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
   
 if (strpos($menuType, 'navbar-dark') !== false)
 {$navbartheme = 'navbar-dark';}
@@ -267,18 +244,13 @@ fwrite($tv_file, "//  "  . "\n//\n");
 fwrite($tv_file, "//  "  . "\n//\n");
 
 if ($twbs_version > ' '  ) 	fwrite($tv_file, '$twbs_version:              "'  . $twbs_version .  "\";\n");
-
 if ($gplusProfile > ' '  ) 	fwrite($tv_file, '$gplusProfile:              "'  . $gplusProfile .  "\";\n");
-
+if ($wsaDesktopExpand > ' '  ) fwrite($tv_file, '$wsaDesktopExpand: '  . $wsaDesktopExpand .  ";\n");
 if ($fgColor > ' '  ) fwrite($tv_file, '$fgColor:          '  . $fgColor .  ";\n");
-
 if ($brandImage > ' ' ) fwrite($tv_file, '$brandImage:        ' . $brandImage .  ";\n");
 if ($brandSize > ' '  ) fwrite($tv_file, '$brandSize:         ' . $brandSize . ";\n");
 if ($brandWidth > ' ' ) fwrite($tv_file, '$brandWidth:        ' . $brandWidth . ";\n");
-
-
 if ($bg0Color > ' ' ) fwrite($tv_file, '$bg0Color:          ' . $bg0Color . ";\n");
-
 if ($bg1Image > ' ' ) fwrite($tv_file, '$bg1Image:          ' . $bg1Image .  ";\n");
 if ($bg1Image_lg > ' ' ) fwrite($tv_file, '$bg1Image_lg:       ' . $bg1Image_lg .  ";\n");
 if ($bg1Image_sm > ' ' ) fwrite($tv_file, '$bg1Image_sm:       ' . $bg1Image_sm .  ";\n");
@@ -304,6 +276,7 @@ if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosT
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
+
 
 
 fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");
@@ -349,8 +322,8 @@ if ($menuActiveBgColor > ' '  ) { fwrite($tv_file, '$menuActiveBgColor: '  . $me
 };
 
 /* overgenomen uit asha-s werkt mogelijk (nog) niet */
-if ($showTitle > ' '  ) 	fwrite($tv_file, '$showTitle:         '  . $showTitle .  ";\n");
-if ($tagItemTitleDisplay > ' '  ) fwrite($tv_file, '$tagItemTitleDisplay: '  . $tagItemTitleDisplay .  ";\n");
+if (! empty($showTitle)) 	fwrite($tv_file, '$showTitle:         '  . $showTitle .  ";\n");
+if (! empty($tagItemTitleDisplay)) fwrite($tv_file, '$tagItemTitleDisplay: '  . $tagItemTitleDisplay .  ";\n");
 if ($marginLeftRight > ' '  ) 	{
 				fwrite($tv_file, '$asMarginStd:       '  . $marginLeftRight .  "%;\n");
 				fwrite($tv_file, '$marginArea:        '  . ($marginLeftRight / 2) .  "%;\n");
@@ -374,112 +347,100 @@ fwrite($st_file, "// generated " . date("c")  . "\n//\n");
 fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
 
 // standaard bootstrap variables mixins etc.
-fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
-if($twbs_version == '3') {
-fwrite($st_file, '@import "variables.scss";' . "\n");
-fwrite($st_file, '@import "mixins/reset-filter.scss";' . "\n"); 
-fwrite($st_file, '@import "mixins/vendor-prefixes.scss";' . "\n"); 
-fwrite($st_file, '@import "mixins/gradients.scss";' . "\n");  
-fwrite($st_file, '@import "mixins/grid.scss";' . "\n");  
-} else { /* verion 4 */
-fwrite($st_file, '@import "variables.scss";' . " // nog even uit 3\n");  // nog even uit 3
-fwrite($st_file, '@import "mixins/reset-filter.scss";' . " // nog even uit 3\n"); // nog even uit 3
-fwrite($st_file, '@import "mixins/gradients.scss";' . " // nog even uit 3\n");    // nog even uit 3
+ fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
 
 // Custom.scss
 // Option B: Include parts of Bootstrap
 // Required
-fwrite($st_file, '@import "node_modules/bootstrap/scss/functions";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/variables";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/mixins";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/functions.scss";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/variables.scss";' . "\n");
+fwrite($st_file, '@import "bs' .  $twbs_version . '/mixins.scss";' . "\n");
 
 // Optional
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
 //fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
 
-if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
-{
-fwrite($st_file,
-'// Grid breakpoints
-$grid-breakpoints: (
-	xs: 0');	
-if ($wsaBreakpointes > 0 )
-{
-fwrite($st_file,
-',
-	es: ' . $wsaBreakpointes . 'px');	
-}	
-fwrite($st_file,
-',
-	sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px');
-if ($wsaBreakpointxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxl: ' . $wsaBreakpointxxl . 'px');	
-}
-if ($wsaBreakpointxxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxxl: ' . $wsaBreakpointxxxl . 'px');	
-}
-fwrite($st_file,
-' ) ;
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
-// Grid containers
-$container-max-widths: (
-');	
-if ($wsaBreakpointes > 0 )
-{
-fwrite($st_file,
-'	es: ' . $wsaContaineres . 'px,
-');	
-}
-fwrite($st_file,
-'    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1140px');
-if ($wsaBreakpointxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxl: ' . $wsaContainerxxl . 'px');	
-}
-if ($wsaBreakpointxxxl > 0 )
-{
-fwrite($st_file,
-',
-	xxxl: ' . $wsaContainerxxxl . 'px');	
-}
-fwrite($st_file,
-' ) ;
-@include _assert-ascending($container-max-widths, "$container-max-widths");
-');		
+// if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
+// {
+// fwrite($st_file,
+// '// Grid breakpoints
+// $grid-breakpoints: (
+// 	xs: 0');	
+// if ($wsaBreakpointes > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	es: ' . $wsaBreakpointes . 'px');	
+// }	
+// fwrite($st_file,
+// ',
+// 	sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1200px');
+// if ($wsaBreakpointxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxl: ' . $wsaBreakpointxxl . 'px');	
+// }
+// if ($wsaBreakpointxxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxxl: ' . $wsaBreakpointxxxl . 'px');	
+// }
+// fwrite($st_file,
+// ' ) ;
+// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-starts-at-zero($grid-breakpoints);
+// // Grid containers
+// $container-max-widths: (
+// ');	
+// if ($wsaBreakpointes > 0 )
+// {
+// fwrite($st_file,
+// '	es: ' . $wsaContaineres . 'px,
+// ');	
+// }
+// fwrite($st_file,
+// '    sm: 540px,
+//     md: 720px,
+//     lg: 960px,
+//     xl: 1140px');
+// if ($wsaBreakpointxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxl: ' . $wsaContainerxxl . 'px');	
+// }
+// if ($wsaBreakpointxxxl > 0 )
+// {
+// fwrite($st_file,
+// ',
+// 	xxxl: ' . $wsaContainerxxxl . 'px');	
+// }
+// fwrite($st_file,
+// ' ) ;
+// @include _assert-ascending($container-max-widths, "$container-max-widths");
+// ');		
 	
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
-//fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-fwrite($st_file, '@import "node_modules/bootstrap/scss/grid";' . "\n");
-}
-}
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
+// //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
+// fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
+
+// }
+
 // standaard bootstrap variables mixins etc. einde
-//fwrite($st_file, '@import "system.scss";' . "\n");
-//fwrite($st_file, '@import "general.scss";' . "\n");
 fwrite($st_file, "//\n// other variables\n//\n");
 fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
 fwrite($st_file, '@import "template_variables.scss";' . "\n");
-//fwrite($st_file, '@import "flickr_badge.scss";' . "\n");
-//fwrite($st_file, '@import "joomla_update_icons.scss";' . "\n");
+fwrite($st_file, '@import "_template_mixins_functions";' . "\n"); 
 fwrite($st_file, "//\n// css\n//\n");
 
-if ($background > ' '  )
+if (! empty($background))
 { 	$pos1 = stripos($background, ".css");
 	if ($pos1 > 0)
 	{
@@ -519,7 +480,6 @@ fclose($st_file);
 /* scss files compileren naar .css */
 
 $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
-
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 

@@ -2,14 +2,13 @@
 <extension version="3.8" type="template" client="site" method="upgrade">
   <compatibility>
     <include>
-      <versions from="3.8.0" to="3.99.99" />
       <versions from="4.0.0" to="4.99.99" />
       <versions from="5.0.0" to="5.99.99" />
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>2.1.2</version>
-	<creationDate>12-07-2023</creationDate>
+	<version>2.2.0</version>
+	<creationDate>21-10-2024</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -136,41 +135,15 @@
 				<field name="explanation3"  type="spacer" hr="false"
 					label="Other lay-out variables. &lt;br /&gt;"
 					 />
-				<field name="wsaBreakpointes"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTES_LABEL"
-					description="WSA_BREAKPOINTES_DESCRIPTION"
-					hint="WSA_BREAKPOINTES_HINT"
-					 />
-				<field name="wsaContainerxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_CONTAINERXXL_LABEL"
-					description="WSA_CONTAINERXXL_DESCRIPTION"
-					hint="WSA_CONTAINERXXL_HINT"
-					 />
-				<field name="wsaBreakpointxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTXXL_LABEL"
-					description="WSA_BREAKPOINTXXL_DESCRIPTION"
-					hint="WSA_BREAKPOINTXXL_HINT"
-					 />
-				<field name="wsaContainerxxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_CONTAINERXXXL_LABEL"
-					description="WSA_CONTAINERXXXL_DESCRIPTION"
-					hint="WSA_CONTAINERXXXL_HINT"
-					 />
-				<field name="wsaBreakpointxxxl"  class="validate-numeric" type="text" default=""
-					label="WSA_BREAKPOINTXXXL_LABEL"
-					description="WSA_BREAKPOINTXXXL_DESCRIPTION"
-					hint="WSA_BREAKPOINTXXXL_HINT"
-					 />
-				<field name="wsaNavbarExpand" type="list" default="navbar-expand-md"
-					label="WSA_NAVBAREXPAND_LABEL"	
- 				    description="WSA_NAVBAREXPAND_DESCRIPTION"
+				<field name="wsaDesktopExpand" type="list" default="lg"
+					label="WSA_DESKTOPEXPAND_LABEL"	
+ 				    description="WSA_DESKTOPEXPAND_DESCRIPTION"
 				>
-					<option value="navbar-expand-sm">WSA_NAVBAREXPAND_SM</option>
-					<option value="navbar-expand-md">WSA_NAVBAREXPAND_MD</option>
-					<option value="navbar-expand-lg">WSA_NAVBAREXPAND_LG</option>
-					<option value="navbar-expand-xl">WSA_NAVBAREXPAND_XL</option>
-					<option value="navbar-expand-xxl">WSA_NAVBAREXPAND_XXL</option>
-					<option value="navbar-expand-xxxl">WSA_NAVBAREXPAND_XXXL</option>
+					<option value="sm">WSA_DESKTOPEXPAND_SM</option>
+					<option value="md">WSA_DESKTOPEXPAND_MD</option>
+					<option value="lg">WSA_DESKTOPEXPAND_LG</option>
+					<option value="xl">WSA_DESKTOPEXPAND_XL</option>
+					<option value="xxl">WSA_DESKTOPEXPAND_XXL</option>
 				</field>
 					 
 				<field name="fgColor"  type="color" default=""
@@ -361,10 +334,9 @@
 					label="WSA_CSS_FILENAME_LABEL"
 					description="WSA_CSS_FILENAME_DESCRIPTION"
                    	/>
-				<field name="twbs_version" type="radio" class="switcher btn-group" default="5" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
-					<option value="3">3.3.7</option>
-					<option value="4">4.3.1</option>
-					<option value="5">5.1.3</option>
+				<field name="twbs_version" type="radio" class="btn-group" default="5" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
+					<option value="4">4.6.2</option>
+					<option value="5">5.3.3</option>
 				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"

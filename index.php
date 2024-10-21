@@ -40,7 +40,11 @@
      Joomla ge 4  stylesheets and javascript via webassets
      Joomla 3 addStylesheet, addScript 
  28-12-2021 default BS5 style and javascript in joomla.asset.json and overrides in code for lower BS versions and styleid specific template style
-     and removed conditional inclusion BS stylesheet an javascript       
+     and removed conditional inclusion BS stylesheet an javascript 
+ 01-10-2024 2.1.3 make content wider to display 3 columns in rssfoto newsfeed 
+ 02-10-2024 2.2.0 Remove support for BS (Bootstrap) 3, remove redundant span* classes inherited from grid Bootstrap 2 and used in Joomla 3,
+   which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
+   navbarexpand => desktopexpand. removed double loading jquery in BS4           
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -95,10 +99,10 @@ if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css'
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
 
-$twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '4'));
+$twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
-$wsaNavbarExpand = htmlspecialchars($this->params->get('wsaNavbarExpand', 'navbar-expand-md'));
+$wsaDesktopExpand = htmlspecialchars($this->params->get('wsaDesktopExpand', 'lg'));
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" prefix="og: http://ogp.me/ns#  fb: http://www.facebook.com/2008/fbml" >
@@ -126,22 +130,15 @@ type: \'image\'
 // register overrides for older BS versions
 switch ($twbs_version) {
 //   case "5" : {
-//       $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', ['version'=>'5.1.3'], ['integrity' => 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3', 'crossorigin' => 'anonymous'],[])
-//       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', ['version'=>'5.1.3'], ['integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
+//       $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', ['version'=>'5.3.3'], ['integrity' => 'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH', 'crossorigin' => 'anonymous'],[])
+//       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', ['version'=>'5.3.3'], ['integrity' => 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
 //       ;
 //   }
 //   break;
    case "4" :  {
-       $wa->registerStyle('bootstrap.css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', ['version'=>'4.3.1'], ['integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous'],[])
-       ->registerScript('popper.js', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', ['version'=>'1.14.7'], ['integrity' => 'sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
-       ->registerScript('bootstrap.js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', ['version'=>'4.3.1'], ['integrity' => 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', 'crossorigin' => 'anonymous', 'defer' => TRUE],['popper.js'])
-       ;
-   }
-   break;
-   case "3" : {
-       $wa->registerStyle('bootstrap.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous'],[])
-       ->registerAndUseStyle('bootstrap.theme.css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', ['version'=>'3.3.7'], ['integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous'],['bootstrap.css'])
-       ->registerScript('bootstrap.js', 'jui/bootstrap.min.js', ['version'=>'3.3.7'], ['defer' => TRUE],['jquery'])
+       $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css', ['version'=>'4.6.2'], ['integrity' => 'sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N', 'crossorigin' => 'anonymous'],[])
+//       ->registerScript('jquery', 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js', ['version'=>'3.5.1'], ['integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
+       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', ['version'=>'4.6.2'], ['integrity' => 'sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct', 'crossorigin' => 'anonymous', 'defer' => TRUE],['jquery'])
        ;
    }
 }
@@ -155,20 +152,13 @@ $this->addStyleSheet('https://fonts.googleapis.com/css?family=Open+Sans+Condense
 // bootstrap stylesheets van cdn
 switch ($twbs_version) { 
 case "5" :  {
-    $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3', 'crossorigin' => 'anonymous');
-    $this->addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css', array('version'=>'5.1.3'),  $attribs);
+    $this->addStyleSheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array('version'=>'5.3.3'),
+    array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH', 'crossorigin' => 'anonymous'));
     }
 break;
 case "4" :  {
-    $attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', 'crossorigin' => 'anonymous');
-    $this->addStyleSheet('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array('version'=>'4.3.1'),  $attribs);
-    }
-break;
-case "3" : {
-$attribs = array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', 'crossorigin' => 'anonymous');
-$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('version'=>'3.3.7'),  $attribs);
-$attribs = array('id'=>'bootstrap-theme.min.css', 'integrity' => 'sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', 'crossorigin' => 'anonymous');
-$this->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css' , array('version'=>'3.3.7'), $attribs);
+    $this->addStyleSheet('href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css', array('version'=>'4.6.2'),
+    array('id'=>'bootstrap.min.css', 'integrity' => 'sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N', 'crossorigin' => 'anonymous'));
     }
 }
 // template stijl
@@ -181,20 +171,15 @@ $this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename 
 
 switch ($twbs_version) {
 case "5" :  {
-    $this->addScript('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', array('version'=>'5.1.3'),
-    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p',   'crossorigin' => 'anonymous'));
+    $this->addScript('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array('version'=>'5.3.3'),
+    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz',   'crossorigin' => 'anonymous'));
     }
 break;
 case "4" : {
-    $this->addScript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', array('version'=>'1.14.7'),
-    array('id'=>'popper.js', 'integrity' => 'sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1',   'crossorigin' => 'anonymous'));
-    $this->addScript('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('version'=>'4.3.1'),
-    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM',   'crossorigin' => 'anonymous'));
-    }
-break;
-case "3" :{
-    $this->addScript('templates/' . $this->template . '/js/jui/bootstrap.min.js', array('version'=>'3.3.7'), 
-	array('id'=>'bootstrap.min.js', 'defer'=>'defer'));
+    $this->addScript('https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js', array('version'=>'3.5.1'),
+    array('id'=>'jquery', 'integrity' => 'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj',   'crossorigin' => 'anonymous'));
+    $this->addScript('https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js', array('version'=>'4.6.2'),
+    array('id'=>'bootstrap.min.js', 'integrity' => 'sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct',   'crossorigin' => 'anonymous'));
     }
 }
 
@@ -211,18 +196,18 @@ type: \'image\'
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
 {
-	$spanc = "span6  col-md-6" ;
-	$spans = "span3  col-md-3";
+    $spanc = 'col-' . $wsaDesktopExpand . '-6' ;
+    $spans = 'col-' . $wsaDesktopExpand . '-3';
 }
 elseif (!$this->countModules('position-7') && !$this->countModules('position-8'))
     
 {
-    $spanc = "span12  col-12";
+    $spanc = "col-12";
 }
 else
 {
-	$spanc = "span8  col-md-8";
-	$spans = "span4  col-md-4";
+    $spanc = 'col-' . $wsaDesktopExpand . '-9';
+    $spans = 'col-' . $wsaDesktopExpand . '-3';
 }
 $hi_mods = ($this->countModules('position-0')? ' hipos0': '')
 . ($this->countModules('icons')? ' hiicons': '')
@@ -297,7 +282,7 @@ class="site-grid site <?php echo $option
 				</div><!--End Pos0-->
 				<?php endif; ?>
  				<?php if(  $this->countModules('icons'))    : ?>
-				<div id="icons" class="iconssm <?php  echo $wsaNavbarExpand;   ?> row">
+				<div id="icons" class="iconssm navbar-expand-<?php  echo $wsaDesktopExpand;   ?> row">
 					<jdoc:include type="modules" name="icons" />
 				</div><!--End Icons-->   
 				<?php endif; ?>

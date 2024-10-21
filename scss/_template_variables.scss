@@ -1,26 +1,52 @@
 /* template_variables.scss */
+// 20241005 use breakpoint-min("lg")) in stead of $container-lg
 // standard variables for this template.
 // -------------------------20190202
 // colors
 // -------------------------
-$black:                 #000;
+//$black:                 #000;
 $grayDarker:            #222;
 $grayDark:              #333;
 $gray:                  #555;
+// css gray == #808080
 $grayLight:             #999;
 $grayLighter:           #F5F5F5;
-$white:                 #fff;
+//$white:                   #fff
 
-$graynavbarbg: 		#e5e5e5;
-$graynavbarfg: 		#555;
-$graynavbarlighter: 	#777;
-$graynavbardarker: 	#333;
-$activenavbarbg: 	#999;
-$activenavbarfg: 	#fff;
-$specialgreygradientstart: #ffffff;
+$graynavbarbg: 		$gray-200; // was #e5e5e5;
+$graynavbarfg: 	    $gray-700; // was #555;
+$graynavbarlighter: $gray-600; // was #777;
+$graynavbardarker:  $gray-800; // was	#333;
+$activenavbarbg:    $gray-500; // was	#999;
+$activenavbarfg:    $gray-600; // was 	#fff;
+$specialgreygradientstart: $white; // was #ffffff;
 $specialgreygradientend: #e6e6e6;
 
+// skins 
+$photo-box-shadow : 0 0 10px 5px rgba(0,0,0,0.2) !default; 
 
+
+// BS3 temporary variables
+$screen-xs-min:              breakpoint-min( "sm"); // was $screen-xs;
+$screen-sm-min:              breakpoint-min( "md"); // was $screen-sm;
+$screen-md-min:              breakpoint-min( "lg"); // was $screen-md;
+$screen-lg-min:              breakpoint-min( "xl"); // was $screen-lg;
+$screen-xl-min:              breakpoint-min( "xxl"); // was 1200px;
+//$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
+//$screen-xxxl-min:            1600px;
+
+$screen-xs-max:              breakpoint-min( "md") - 0.02; // was($screen-sm-min - 1);
+$screen-sm-max:              breakpoint-min( "lg") - 0.02; // was($screen-md-min - 1);
+$screen-md-max:              breakpoint-min( "xl") - 0.02; // was($screen-lg-min - 1);
+$screen-lg-max:              breakpoint-min( "xxl") - 0.02; // was($screen-xl-min - 1);
+$screen-xl-max:              1440px - 0.02; // was($screen-xxl-min - 1);
+//$screen-xxl-max:             ($screen-xxxl-min - 1);
+
+$container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
+$container-md:                 breakpoint-min( "lg"); // was $container-desktop;
+$container-lg:                breakpoint-min( "xl"); // was $container-large-desktop;
+
+// end BS3 temporary variables
 
 // Typography
 // -------------------------
@@ -55,7 +81,7 @@ $wsaNavbarRightWidth: auto;
 $wsaVideoHeight:           80%;  // iets hoger dan 4x3 100 * 3 / 4% ;  100 * 9 / 16%; // 56.25%
 $wsaVideoHeightExtra:      25px;
 $wsaVideoItemWidth:        100%;
-$wsaVideoAutoItemWidth:   $container-lg;
+$wsaVideoAutoItemWidth:    $container-lg;
 
 $asModLangFloat:          right;
 $bg0Z-index:		  auto;
@@ -63,12 +89,6 @@ $bg1Z-index:		  auto;
 $bg2Z-index:		  auto;
 /* uit asha-s */
 
-
-
-
-// $asBlogLeadingWidth:      75%;
-// $asBlogItemWidth:         23.5%;
-$tagListItemWidth:        75%;
 $tagItemTitleDisplay:     none;
 $tagItemSearchDisplay:    none;
 $asMinWidthItem:          256px;
@@ -79,12 +99,6 @@ $as2ColHalfWidth:	  $as2ColFullWidth / 2;
 $as3ColFullWidth:         360px;
 $as3ColHalfWidth:	  $as3ColFullWidth / 2;
 
-
-
-
-//$asBlogItemWidth:           12.5%;
-
-$tagListItemWidth:          30.0%;
 $wrapperBorderRadius:         10px;
 
 // variabelen voor .blog_inline       
@@ -106,17 +120,3 @@ $wsa10Col : (100% - (11 * $wsaInnerMargin)) / 10 ;
 $wsa11Col : (100% - (12 * $wsaInnerMargin)) / 11 ;
 $wsa12Col : (100% - (13 * $wsaInnerMargin)) / 12 ; 
 $span1 : $wsa12Col;
-
-
-// Large screen / wide desktop   tijdelijk bs3 type vaste breakpoints
-$screen-xl-min:              1200px;
-$screen-xxl-min:             1440px;
-$screen-xxxl-min:            1600px;
-
-//** Deprecated `$screen-lg-desktop` as of v3.0.1
-$screen-lg-desktop:          $screen-lg-min;
-
-// So media queries don't overlap when required, provide a maximum
-$screen-lg-max:              ($screen-xl-min - 1);
-$screen-xl-max:              ($screen-xxl-min - 1);
-$screen-xxl-max:             ($screen-xxxl-min - 1);
