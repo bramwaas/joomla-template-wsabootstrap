@@ -1,0 +1,1164 @@
+/* variables.scss */
+/* mixins/reset-filter.scss */
+/* mixins/Gradients.scss */
+/* magnificpopup.variables.scss */
+/* template_variables.scss */
+/* uit asha-s */
+/* magnificpopup.scss */
+.mfp-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1042;
+  overflow: hidden;
+  position: fixed;
+  background: #0b0b0b;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.mfp-wrap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1043;
+  position: fixed;
+  outline: none !important;
+  -webkit-backface-visibility: hidden;
+}
+.mfp-container {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.mfp-container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.mfp-align-top .mfp-container:before {
+  display: none;
+}
+.mfp-content {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: left;
+  z-index: 1045;
+}
+.mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
+  width: 100%;
+  cursor: auto;
+}
+.mfp-ajax-cur {
+  cursor: progress;
+}
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+  cursor: -moz-zoom-out;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+.mfp-zoom {
+  cursor: pointer;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.mfp-auto-cursor .mfp-content {
+  cursor: auto;
+}
+.mfp-close, .mfp-arrow, .mfp-preloader, .mfp-counter {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.mfp-loading.mfp-figure {
+  display: none;
+}
+.mfp-hide {
+  display: none !important;
+}
+.mfp-preloader {
+  color: #ccc;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  text-align: center;
+  margin-top: -0.8em;
+  left: 8px;
+  right: 8px;
+  z-index: 1044;
+}
+.mfp-preloader a {
+  color: #ccc;
+}
+.mfp-preloader a:hover {
+  color: #fff;
+}
+.mfp-s-ready .mfp-preloader {
+  display: none;
+}
+.mfp-s-error .mfp-content {
+  display: none;
+}
+button.mfp-close, button.mfp-arrow {
+  overflow: visible;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  display: block;
+  outline: none;
+  padding: 0;
+  z-index: 1046;
+  box-shadow: none;
+  touch-action: manipulation;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+.mfp-close {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+  text-align: center;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  padding: 0 0 18px 10px;
+  font-style: normal;
+  font-size: 28px;
+  font-family: Arial, Baskerville, monospace;
+}
+.mfp-close:hover, .mfp-close:focus {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.mfp-close:active {
+  top: 1px;
+}
+.mfp-close-btn-in .mfp-close {
+  color: #333;
+}
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+  color: #fff;
+  right: -6px;
+  text-align: right;
+  padding-right: 6px;
+  width: 100%;
+}
+.mfp-counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ccc;
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.mfp-arrow {
+  position: absolute;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  margin: 0;
+  top: 50%;
+  margin-top: -55px;
+  padding: 0;
+  width: 90px;
+  height: 110px;
+  -webkit-tap-highlight-color: transparent;
+}
+.mfp-arrow:active {
+  margin-top: -54px;
+}
+.mfp-arrow:hover, .mfp-arrow:focus {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.mfp-arrow:before, .mfp-arrow:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 35px;
+  margin-left: 35px;
+  border: medium inset transparent;
+}
+.mfp-arrow:after {
+  border-top-width: 13px;
+  border-bottom-width: 13px;
+  top: 8px;
+}
+.mfp-arrow:before {
+  border-top-width: 21px;
+  border-bottom-width: 21px;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.mfp-arrow-left {
+  left: 0;
+}
+.mfp-arrow-left:after {
+  border-right: 17px solid #fff;
+  margin-left: 31px;
+}
+.mfp-arrow-left:before {
+  margin-left: 25px;
+  border-right: 27px solid #3f3f3f;
+}
+.mfp-arrow-right {
+  right: 0;
+}
+.mfp-arrow-right:after {
+  border-left: 17px solid #fff;
+  margin-left: 39px;
+}
+.mfp-arrow-right:before {
+  border-left: 27px solid #3f3f3f;
+}
+.mfp-iframe-holder {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.mfp-iframe-holder .mfp-content {
+  line-height: 0;
+  width: 100%;
+  max-width: 900px;
+}
+.mfp-iframe-holder .mfp-close {
+  top: -40px;
+}
+.mfp-iframe-scaler {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+.mfp-iframe-scaler iframe {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background: #000;
+}
+/* Main image in popup */
+img.mfp-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  line-height: 0;
+  box-sizing: border-box;
+  padding: 40px 0 40px;
+  margin: 0 auto;
+}
+/* The shadow behind the image */
+.mfp-figure {
+  line-height: 0;
+}
+.mfp-figure:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 40px;
+  bottom: 40px;
+  display: block;
+  right: 0;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background: #444;
+}
+.mfp-figure small {
+  color: #bdbdbd;
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+}
+.mfp-figure figure {
+  margin: 0;
+}
+.mfp-bottom-bar {
+  margin-top: -36px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  cursor: auto;
+}
+.mfp-title {
+  text-align: left;
+  line-height: 18px;
+  color: #f3f3f3;
+  word-wrap: break-word;
+  padding-right: 36px;
+}
+.mfp-image-holder .mfp-content {
+  max-width: 100%;
+}
+.mfp-gallery .mfp-image-holder .mfp-figure {
+  cursor: pointer;
+}
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
+  /**
+   * Remove all paddings around the image on small screen
+   */
+  .mfp-img-mobile .mfp-image-holder {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .mfp-img-mobile img.mfp-img {
+    padding: 0;
+  }
+  .mfp-img-mobile .mfp-figure:after {
+    top: 0;
+    bottom: 0;
+  }
+  .mfp-img-mobile .mfp-figure small {
+    display: inline;
+    margin-left: 5px;
+  }
+  .mfp-img-mobile .mfp-bottom-bar {
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    margin: 0;
+    top: auto;
+    padding: 3px 5px;
+    position: fixed;
+    box-sizing: border-box;
+  }
+  .mfp-img-mobile .mfp-bottom-bar:empty {
+    padding: 0;
+  }
+  .mfp-img-mobile .mfp-counter {
+    right: 5px;
+    top: 3px;
+  }
+  .mfp-img-mobile .mfp-close {
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    text-align: center;
+    padding: 0;
+  }
+}
+@media all and (max-width: 900px) {
+  .mfp-arrow {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+  .mfp-arrow-left {
+    -webkit-transform-origin: 0;
+    transform-origin: 0;
+  }
+  .mfp-arrow-right {
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+  }
+  .mfp-container {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+/* added bram waasdorp 2060403 */
+.mfp-bg {
+  background: #000;
+  opacity: 0.6;
+}
+.mfp-iframe-scaler button.mfp-close, .mfp-image-holder button.mfp-close, .mfp-container button.mfp-close {
+  background: url(../images/magnificpopup/closebox.png) no-repeat right;
+  height: 32px;
+  width: 32px;
+  line-height: 10px;
+  top: 9px;
+  /* must be the same as margin top of image - 15 */
+  right: 5px;
+  /* must be the same as margin right of figure - 15 */
+  padding-right: 5px;
+  color: transparent;
+}
+.mfp-image-holder figure {
+  margin: 0 20px;
+}
+div.mfp-figure:after {
+  display: none;
+}
+.mfp-iframe-scaler iframe, .mfp-image-holder img.mfp-img {
+  margin: 24px auto;
+  padding: 10px 10px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  max-height: calc(100vh -  48px);
+  /* work-around voor niet (goed) werken verticalFit in gallery */
+}
+div.mfp-iframe-scaler button.mfp-close {
+  right: -15px;
+}
+.mfp-title {
+  margin-left: 20px;
+}
+.mfp-bottom-bar {
+  /* must be the same as margin bottom of image (36px title max 2 lines then slider can come in) */
+  margin-top: -24px;
+}
+/* modal weer zichtbaar maken in iframe popup
+ voorbeeld
+ <a class="mfp-iframe" title="DSC09064 by waasdorpsoekhan, on Flickr" href="http://www.waasdorpsoekhan.nl/index.php?option=com_content&amp;view=article&amp;id=143&amp;tmpl=component" 
+ of href="http://www.waasdorpsoekhan.nl/rozen-juni-2015?tmpl=component"
+ rel="lightbox"  >
+ */
+body.modal {
+  display: block;
+  position: static;
+  overflow: auto;
+}
+/* template_dropdown.scss */
+/* ------------------------------------
+ CSS uit template_css.less gehaald om dropdown-menu in joomla goed te laten werken in bootstrap 3
+ oa extra CSS voor dropdown-submenu, dat in B2 bestand bestond, maar in B3 vervallen is
+ 01-5-2016
+ 23-5-2016
+ 9-6-2016
+ 10-2-2019 bs 4 ipv alleen navbar-defualt (bs3) zelfdekleueren voo
+ 11-2-2019 brandwith relatief tov lg
+ 28-12-2021 .dropdown-menu > li > a replaced by .dropdown-menu > .nav-item > .nav-link to give it higher priority in BS4 and BS5
+ and padding and line-height px value changed to rem value
+ -----------------------------------------*/
+#img_brandImage {
+  width: auto * 300 / 960;
+}
+/* $navbar-theme == navbar-dark */
+/* bs4 navbar-dark */
+.navbar-dark .navbar-brand {
+  color: #777;
+}
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
+  color: #5e5e5e;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #777;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+  color: #333;
+}
+.navbar-dark .navbar-nav .nav-link.disabled {
+  color: #ccc;
+}
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+  color: #555;
+}
+.navbar-dark .navbar-toggler {
+  color: #777;
+  border-color: #ddd;
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-dark .navbar-text {
+  color: #777;
+}
+.navbar-dark .navbar-text a {
+  color: #555;
+}
+.navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
+  color: #555;
+}
+.navbar-brand, .navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+/* ======================
+ GENERAL STYLES
+ ===================== */
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.dropdown-menu > .nav-item > .nav-link {
+  clear: both;
+  color: #333;
+  display: block;
+  font-weight: normal;
+  line-height: 1.1rem;
+  padding: 0.15rem 1rem;
+  white-space: nowrap;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+  background-color: #e5e5e5;
+  background-image: none;
+  background-repeat: repeat-x;
+  color: #555;
+  outline: 0 none;
+  text-decoration: none;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+  background-color: #e5e5e5;
+  background-image: none;
+  background-repeat: repeat-x;
+  color: #555;
+  text-decoration: none;
+}
+.nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
+  border-radius: 3px;
+  color: #777;
+  font-weight: bold;
+  padding: 9px 15px;
+}
+.nav-collapse .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover, .nav-collapse .nav > li > a:focus, .nav-collapse .dropdown-menu a:focus {
+  background-color: #e5e5e5;
+}
+/* einde gekopieerd uit fire bug to override bootstrap.min.css */
+/* dropdown-submenu werkt standaard niet meer in bootstrap 3 */
+.dropdown-submenu {
+  position: relative;
+  /* dropdown-submenu einde */
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #555;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color: #555;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+  color: #333;
+}
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  border-color: #e9ecef #e9ecef #dee2e6;
+}
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.nav > li.disabled > a {
+  color: #777;
+}
+.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+  color: #777;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #eee;
+  border-color: #337ab7;
+}
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.428571429;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li > a:hover {
+  border-color: #eee #eee #ddd;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+.nav-pills > li {
+  float: left;
+}
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #337ab7;
+}
+/* ===================================================================================
+ BOOTSTRAP MEDIA QUERIES OVERRIDES
+ NOTE: The order of the media queries is important when styles overwrite each other
+ ================================================================================== 
+ */
+/* make sidebar nav vertical */
+/* from http://www.jonathanbriehl.com/2014/01/17/vertical-menu-for-bootstrap-3/ 
+ At a resolution of 768px or greater you see vertical menu in one of my two main columns.
+ When scaled down to less than 768px, the menu collapses and works just like the normal theme menu.
+ I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
+ (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
+ */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+/* einde make sidebar nav vertical */
+@media (min-width: 768px) {
+  /* Activates hovering the main items to show the sub items */
+  .nav-pills > li > a, .dropdown-menu {
+    margin: 0;
+  }
+  .nav-pills > li.dropdown:hover ul.dropdown-menu, .nav-tabs > li.dropdown:hover ul.dropdown-menu {
+    display: block;
+  }
+  .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu, .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
+    display: none;
+  }
+  .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu, .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  /* minimale breedte voor horizontaal tabs menu */
+  /* Submenu's onder elkaar plaatsen (tbv mobiele apparaten)*/
+  /* Groote van de subitems gelijk maken */
+  /* Achtergrond kleur van de actieve hoofdmenu items, caret en border correctie */
+  .nav-tabs > li {
+    float: none;
+  }
+  .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+    border: none;
+  }
+  .dropdown, .dropdown-submenu {
+    display: block;
+    position: static;
+    float: none;
+  }
+  .dropdown-menu {
+    position: static;
+    float: none;
+  }
+  .open .nav-child.dropdown-menu {
+    display: block;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .nav-child.dropdown-menu {
+    padding: 0;
+  }
+  .nav-child.small {
+    font-size: 13px;
+  }
+  .dropdown-menu > li > a {
+    padding: 8px 12px 8px 20px;
+  }
+  .nav > li.active > a, .nav > li.active > a:hover, .nav > li.active > a:focus {
+    background-color: #999;
+    color: #fff;
+  }
+  .nav li.dropdown.active .caret, .nav li.dropdown.active a:hover .caret, .nav li.dropdown.active a:focus .caret {
+    border-bottom-color: #fff;
+    border-top-color: #fff;
+  }
+  .nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover, .nav > li.dropdown.open.active > a:focus {
+    border: none;
+  }
+}
+@media (min-width: 576px) {
+  #img_brandImage {
+    width: auto * 540 / 960;
+  }
+}
+/* einde up(sm) */
+@media (min-width: 768px) {
+  #img_brandImage {
+    width: auto * 720 / 960;
+  }
+}
+/* einde up(md) */
+@media (min-width: 992px) {
+  #img_brandImage {
+    width: auto;
+  }
+}
+/* einde up(lg) */
+/* template_css.scss */
+/* ===========================
+ alle schermbreedtes
+ Write your general styles eerst voor alle schermbreedtes, 
+ daarna uitzonderingen voor steeds bredere schermen (mobile first)
+ ========================== */
+/* background images via absoluut geplaatste html */
+/* content background */
+#img_bg1Image {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  left: auto;
+  padding-top: auto;
+  /*  margin-top:$bg1Top; ivm fout in safari */
+}
+/*  z-index: $bg1Z-index; */
+#headerleft {
+  position: relative;
+  float: left;
+  width: 25%;
+  margin-top: 1%;
+  margin-left: 0%;
+  margin-bottom: 0%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#headerleft div.inner {
+  position: relative;
+  width: 100%;
+}
+.visually-hidden {
+  display: none;
+}
+#navbar-right-mod {
+  display: inline-block;
+  width: 340px;
+  max-width: 100%;
+}
+#wrapper, body > div.container {
+  position: relative;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+#wrapper1 {
+  /* voor achtergrondafbeeldingen van #wrapper geen extra margin ed toevoegen, anders klopt lay-out niet meer */
+  position: relative;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.blog {
+  /* .blog_inline algemene definities (gestuurd door blog tabblad paginaweergave paginaclass:  niets blog is standaard)
+   heeft definities op alle breedtes, naarmate het scherm breder wordt krijgen meer 
+   spans hun eigenlijke breedte (99% / 12 * <spannr>) -1% en margin-right 1%.
+   (spannr wordt aangestuurd door blog tabblad blogweergave 12 / # kolommen tevens komt er dan een cols-nr in de div eronder )	
+   en komen meer breedtes voor items-leading beschikbaar (gestuurd door paginaweergave paginaclass: blog lead-cols-2 )
+   .blog ook voor kop ul.list-striped komt overeen met div.items-row (maar cols-1 etc kan hier niet gevuld worden
+   volgende nivo li.cat-list-row0 en li.cat-list-row1 komen overeen met div.span1 span2 enz
+   volgende nivo ontbreekt bij taglist   komt overeen met div.item
+   volgende nivo span.tag-body (en h3)   komt overeen met p	
+   */
+}
+.blog .items-leading, .blog .items-row, .blog .list-striped {
+  word-spacing: -0.25em;
+  width: 100%;
+}
+.blog .items-leading > div, .blog .items-row > div, .blog .items-row > div > div, .blog .list-striped > li {
+  display: inline-block;
+  word-spacing: normal;
+  vertical-align: top;
+  float: none;
+  max-width: 100%;
+}
+.blog .item, .blog .span6, .blog .span4, .blog .span3, .blog .span2, .blog .span1, .blog .cat-list-row0, .blog .cat-list-row1 {
+  width: 100%;
+  margin-right: 0px;
+}
+.header-inner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.header-inner .navbar {
+  width: 100%;
+}
+.header-inner .navbar > .container, .header-inner .navbar > .container-fluid {
+  align-items: flex-start;
+}
+.icon-cog, .icons .icon-cog {
+  background-position: -432px 0;
+}
+.iconssm {
+  /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: relative;
+  display: block;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -ms-flex-order: -1;
+  order: -1;
+}
+.img-fluid, .img-fluid-w33, .img-fluid-w50 {
+  /* vooruitlopend op bs4 in 3 is dit img-responsive  */
+  max-width: 100%;
+  height: auto;
+}
+.items-leading div .videoWrapper, .videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  max-width: 100%;
+  width: 1170px;
+  height: 0;
+}
+.items-leading div .videoWrapper object, .videoWrapper object, .items-leading div .videoWrapper embed, .videoWrapper embed, .items-leading div .videoWrapper iframe, .videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.list-striped, .row-striped {
+  border-top: none;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+  border-bottom: none;
+  padding: 0;
+}
+.mod-languages {
+  float: right;
+}
+/* tijdelijk toegvoegd voor bs 3 en bs4  */
+.navbar-collapse.in {
+  overflow-y: visible;
+  display: block;
+}
+.navbar-toggle .icon-bar {
+  background-color: #888;
+}
+/* transparent navbar */
+.navbar.navbar-default.transparent, .navbar.navbar-inverse.transparent {
+  border-width: 0px;
+  -webkit-box-shadow: 0px 0px;
+  box-shadow: 0px 0px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+}
+/* einde tijdelijk toegvoegd voor bs 3 */
+/* adaptations for newsfeeds */
+/* rss fotos of flickr suffix _rssfoto */
+/* rss fotos of flickr  met suffix _rssfoto */
+/* rss flickr images (ul li p a img) */
+[class*="rssfoto"] .newsfeed {
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+[class*="rssfoto"] .newsfeed h2 {
+  margin: 0;
+  font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  padding-left: 0px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+[class*="rssfoto"] .newsfeed h3 {
+  font-size: 1.3em;
+  line-height: 1.3em;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+[class*="rssfoto"] .newsfeed ol, [class*="rssfoto"] .newsfeed ul {
+  padding: 0;
+}
+[class*="rssfoto"] .newsfeed li {
+  list-style-type: none;
+  margin-left: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  height: 320px;
+  /* vaste hoogte (en breedte) voor mooier ordenen */
+  width: 250px;
+  overflow: hidden;
+}
+[class*="rssfoto"] .newsfeed li a img {
+	background-color: rgba(255,255,255,0.75);
+	padding:4px;
+	border: 1px solid rgba(0,0,0,0.3); 
+	border-radius: 5px;
+	box-shadow:	0 0 8px 4px rgba(0,0,0,0.2);
+	margin: 5px;
+}
+[class*="rssfoto"] .newsfeed li div.feed-item-description p:first-child {
+  /* make unwanted image header text from newsfeed invisible  */
+  font-size: 4%;
+  color: transparent;
+}
+[class*="rssfoto"] .newsfeed li div.feed-item-description p:first-child a {
+  font-size: 2500%;
+  color: #337ab7;
+}
+/* end rssfoto newsfeed  */
+/* exceptions for rssfoto01 */
+[class*="rssfoto01"] div.newsfeed li {
+  background-color: lightgray;
+}
+[class*="rssfoto01"] div.newsfeed li a img {
+  padding: 5px;
+}
+/* end exceptions for rssfoto01 */
+.tag-category fieldset {
+  /* tot joomla het zoekveld goed verbergt */
+  display: none;
+}
+.tag-category ul {
+  /* tag-list inline maken in plaats van opsomming */
+  padding-left: 0;
+}
+.tag-category ul li {
+  display: inline-block;
+  position: static;
+  vertical-align: top;
+  max-width: 100%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+}
+.tag-category ul.category.list-striped li {
+  /* element rij alleen in tag-lijst, vaste breedte */
+  background-color: transparent;
+  max-width: 100%;
+  width: 256px;
+}
+.tag-category ul li h3 {
+  display: none;
+}
+body {
+  font-family: Verdana, Arial, sans-serif;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  overflow: auto;
+}
+/* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
+div.pagination {
+  /* normale bootstrap class is ul.pagination */
+  margin-top: 0px;
+  width: 100%;
+}
+div.pagination p {
+  margin-top: 20px;
+}
+div div.pagination ul {
+  /* tag-list inline maken in plaats van opsomming */
+  padding-left: 0px;
+}
+div div.pagination ul li {
+  /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+  display: inline-block;
+  position: static;
+  vertical-align: top;
+  max-width: 100%;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+/* einde aanpassing alleen voor pagination */
+div.mod-languages a {
+  padding: 0;
+}
+div.mod-languages ul li {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+div.mod-languages ul li.lang-active {
+  background-color: transparent;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+h1 {
+  font-size: 30px;
+  line-height: 34px;
+}
+h2 {
+  font-size: 26px;
+  line-height: 30px;
+}
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+/* overige aanpassingen pagination tbv bootstrap 3 */
+/* einde overige aanpassingen pagination tbv bootstrap 3 */
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+/* einde tijdelijk overgenomen uit bootstrap css v2 */
+/* Special general */
+[class*="special"] .module-content ul {
+  margin: 0 0 10px 17px;
+}
+[class*="special"] .module-content ul.unstyled {
+  margin: 0 0 10px 0;
+}
+/* ===========================
+ einde alle schermbreedtes
+ ========================== */
+/* einde (max-width: $screen-xs-max) */
+@media (min-width: 576px) {
+  .blog .span6, .blog .span4, .blog .span3, .blog .span2, .blog .span1, .blog.cols-2 .cat-list-row0, .blog.cols-3 .cat-list-row0, .blog.cols-4 .cat-list-row0, .blog.cols-5 .cat-list-row0, .blog.cols-6 .cat-list-row0, .blog.cols-2 .cat-list-row1, .blog.cols-3 .cat-list-row1, .blog.cols-4 .cat-list-row1, .blog.cols-5 .cat-list-row1, .blog.cols-6 .cat-list-row1 {
+    width: 49.25%;
+    margin-left: auto;
+  }
+  .blog.lead-cols-2 .items-leading > div {
+    width: 49.25%;
+    margin-left: auto;
+  }
+  .img-fluid-w33 {
+    max-width: 33%;
+  }
+  .img-fluid-w50 {
+    max-width: 50%;
+  }
+  .tag-category ul li {
+    max-width: 30%;
+    width: auto;
+  }
+  .tag-category ul.category.list-striped li {
+    max-width: 30%;
+    width: auto;
+  }
+}
+/* einde up(sm) */
+@media (min-width: 768px) {
+  #navbar-right-mod {
+    float: right;
+    margin-right: -15px;
+  }
+  .blog .span4, .blog.cols-3 .cat-list-row0, .blog.cols-3 .cat-list-row1 {
+    width: 32.6666666667%;
+  }
+  .blog .span3, .blog .span2, .blog .span1, .blog.cols-4 .cat-list-row0, .blog.cols-5 .cat-list-row0, .blog.cols-6 .cat-list-row0, .blog.cols-4 .cat-list-row1, .blog.cols-5 .cat-list-row1, .blog.cols-6 .cat-list-row1 {
+    width: 24.375%;
+  }
+  .blog.lead-cols-3 .items-leading > div {
+    width: 32.6666666667%;
+    margin-left: auto;
+  }
+  .form-horizontal .control-group .control-label {
+    text-align: left;
+  }
+  .hiicons .navbar.navbar-expand-md #img_brandImage {
+    margin-top: -40px;
+  }
+}
+/* einde up(md) */
+@media (min-width: 992px) {
+  .blog .cols-5 .span2, .blog.cols-5 .cat-list-row0, .blog.cols-5 .cat-list-row1 {
+    width: 19.4%;
+  }
+  .blog .span2, .blog.cols-6 .cat-list-row0, .blog.cols-6 .cat-list-row1 {
+    width: 16.0833333333%;
+  }
+  .blog .cols-8 .span1 {
+    width: 11.9375%;
+  }
+  .blog .span1 {
+    width: 7.7916666667%;
+  }
+  .hiicons .navbar.navbar-expand-lg #img_brandImage {
+    margin-top: -40px;
+  }
+}
+/* einde up(lg) */
+@media (min-width: 1200px) {
+  .hiicons .navbar.navbar-expand-xl #img_brandImage {
+    margin-top: -40px;
+  }
+}
+/* einde up(xl) */
+/*# sourceMappingURL=data:application/json,%7B%22version%22%3A3%2C%22sources%22%3A%5B%22home%5C%2Fdeb120151%5C%2Fdomains%5C%2Fwaasdorp.soekhan.nl%5C%2Fpublic_html%5C%2Ftemplates%5C%2Fwsa_bootstrap%5C%2Frules%5C%2F..%5C%2Fscss%5C%2Fstyle13.scss%22%2C%22home%5C%2Fdeb120151%5C%2Fdomains%5C%2Fwaasdorp.soekhan.nl%5C%2Fpublic_html%5C%2Ftemplates%5C%2Fwsa_bootstrap%5C%2Frules%5C%2F..%5C%2Fscss%5C%2F_magnificpopup.scss%22%2C%22home%5C%2Fdeb120151%5C%2Fdomains%5C%2Fwaasdorp.soekhan.nl%5C%2Fpublic_html%5C%2Ftemplates%5C%2Fwsa_bootstrap%5C%2Frules%5C%2F..%5C%2Fscss%5C%2F_template_dropdown.scss%22%2C%22home%5C%2Fdeb120151%5C%2Fdomains%5C%2Fwaasdorp.soekhan.nl%5C%2Fpublic_html%5C%2Ftemplates%5C%2Fwsa_bootstrap%5C%2Frules%5C%2F..%5C%2Fscss%5C%2Fnode_modules%5C%2Fbootstrap%5C%2Fscss%5C%2Fmixins%5C%2F_breakpoints.scss%22%2C%22home%5C%2Fdeb120151%5C%2Fdomains%5C%2Fwaasdorp.soekhan.nl%5C%2Fpublic_html%5C%2Ftemplates%5C%2Fwsa_bootstrap%5C%2Frules%5C%2F..%5C%2Fscss%5C%2F_template_css.scss%22%5D%2C%22names%22%3A%5B%5D%2C%22mappings%22%3A%22AAAD%2CoBAAA%3BAAAA%2C8BAAA%3BAAAA%2C2BAAA%3BAAAA%2CkCAAA%3BAAAA%2C6BAAA%3BAAAA%2CgBAAA%3BAAAA%2CwBAAA%3BACIC%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B4BAAA%3BAAAA%3BAAYA%3BAAAA%3B%3B%3B%3B%3B%3B%3BsCAAA%3BAAAA%3BAAUA%3BAAAA%3B%3B%3B%3B%3B%3B%3ByBAAA%3BAAAA%3BAAUA%3BAAAA%3B%3B%3ByBAAA%3BAAAA%3BAAMA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3BgBAAA%3BAAAA%3BAAQA%3BAAAA%3BeAAA%3BAAAA%3BAAKA%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3BmBAAA%3BAAAA%3BAAKA%3BAAAA%3B%3B%3BkBAAA%3BAAAA%3BAAMA%3BAAAA%2CeAAA%3BAAAA%3BAAGA%3BAAAA%3B%3BoBAAA%3BAAAA%3BAAQA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%2C2BAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3BgBAAA%3BAAAA%3BAAUE%3BAAAA%2CcAAA%3BAAAA%3BAAEE%3BAAAA%2CcAAA%3BAAAA%3BAAGJ%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B6BAAA%3BAAAA%3BAAiBA%3BAAAA%3BYAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B6CAAA%3BAAAA%3BAAmBE%3BAAAA%3B6BAAA%3BAAAA%3BAAIA%3BAAAA%2CWAAA%3BAAAA%3BAAGF%3BAAAA%2CcAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3BcAAA%3BAAAA%3BAAQA%3BAAAA%3B%3B%3B%3B%3B%3BsBAAA%3BAAAA%3BAASA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B2CAAA%3BAAAA%3BAAWE%3BAAAA%2CoBAAA%3BAAAA%3BAAEA%3BAAAA%3B6BAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3BmCAAA%3BAAAA%3BAAYA%3BAAAA%3B%3BWAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B4BAAA%3BAAAA%3BAAMF%3BAAAA%2CUAAA%3BAAAA%3BAAEE%3BAAAA%3BoBAAA%3BAAAA%3BAAGA%3BAAAA%3BmCAAA%3BAAAA%3BAAIF%3BAAAA%2CWAAA%3BAAAA%3BAAEE%3BAAAA%3BoBAAA%3BAAAA%3BAAGA%3BAAAA%2CkCAAA%3BAAAA%3BAAGF%3BAAAA%3BuBAAA%3BAAAA%3BAAGE%3BAAAA%3B%3BmBAAA%3BAAAA%3BAAIA%3BAAAA%2CaAAA%3BAAAA%3BAAGF%3BAAAA%3B%3B%3BsBAAA%3BAAAA%3BAAKE%3BAAAA%3B%3B%3B%3B%3B%3B%3BmBAAA%3BAAAA%3BADxPH%2CyBAAA%3BACmQC%3BAAAA%3B%3B%3B%3B%3B%3B%3BiBAAA%3BAAAA%3BADnQD%2CiCAAA%3BAC8QC%3BAAAA%2CiBAAA%3BAAAA%3BAAEA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3BmBAAA%3BAAAA%3BAAaE%3BAAAA%3B%3B%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%2CYAAA%3BAAAA%3BAAGF%3BAAAA%3B%3B%3B%3B%3BeAAA%3BAAAA%3BAAQA%3BAAAA%3B%3B%3B%3BsBAAA%3BAAAA%3BAAOA%3BAAAA%2CkBAAA%3BAAAA%3BAAGA%3BAAAA%2CkBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3BKAAA%3BAAIE%3BAAAA%3BqBAAA%3BAAAA%3BAAGA%3BAAAA%2CeAAA%3BAAAA%3BAAEA%3BAAAA%3BcAAA%3BAAAA%3BAAGA%3BAAAA%3BqBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3B2BAAA%3BAAAA%3BAAQE%3BAAAA%2CeAAA%3BAAAA%3BAAEF%3BAAAA%3BaAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3BeAAA%3BAAAA%3BAAAA%3BAAWF%3BAACE%3BAAAA%3B2BAAA%3BAAAA%3BAAGA%3BAAAA%3BwBAAA%3BAAAA%3BAAGA%3BAAAA%3B2BAAA%3BAAAA%3BAAGA%3BAAAA%3BuBAAA%3BAAAA%3BAAAA%3BAD3WH%2CiCAAA%3BAC%2BWC%3BAAAA%3BeAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3BqBAAA%3BAAAA%3BAAcA%3BAAAA%2CiBAAA%3BAAAA%3BAAIA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3BkEAAA%3BAAAA%3BAAWA%3BAAAA%2CeAAA%3BAAAA%3BAAKA%3BAAAA%2CoBAAA%3BAAAA%3BAAGA%3BAAAA%3BoBAAA%3BAAAA%3BAD3ZD%3B%3B%3B%3B%3BGAAA%3BACsaC%3BAAAA%3B%3BiBAAA%3BAAAA%3BADtaD%2C4BAAA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B4CAAA%3BAEaC%3BAAAA%2C0BAAA%3BAAAA%3BAFbD%2CkCAAA%3BAAAA%2CqBAAA%3BAEkLG%3BAAAA%2CcAAA%3BAAAA%3BAAGC%3BAAAA%2CiBAAA%3BAAAA%3BAAOC%3BAAAA%2CcAAA%3BAAAA%3BAAGE%3BAAAA%2CcAAA%3BAAAA%3BAAKA%3BAAAA%2CcAAA%3BAAAA%3BAAKF%3BAAAA%2CcAAA%3BAAAA%3BAAQF%3BAAAA%3BqBAAA%3BAAAA%3BAAKA%3BAAAA%2CiQAAA%3BAAAA%3BAAIA%3BAAAA%2CcAAA%3BAAAA%3BAAEE%3BAAAA%2CcAAA%3BAAAA%3BAAGE%3BAAAA%2CcAAA%3BAAAA%3BAAeN%3BAAAA%2CiDAAA%3BAAAA%3BAF9OD%3B%3ByBAAA%3BAEwPC%3BAAAA%3B%3BwCAAA%3BAAAA%3BAAKE%3BAAAA%3B%3B%3B%3B%3B%3BsBAAA%3BAAAA%3BAAUA%3BAAAA%3B%3B%3B%3B%3BwBAAA%3BAAAA%3BAAYF%3BAAAA%3B%3B%3B%3BwBAAA%3BAAAA%3BAAaA%3BAAAA%3B%3B%3BoBAAA%3BAAAA%3BAAOG%3BAAAA%2C4BAAA%3BAAAA%3BAFvSJ%2CiEAAA%3BAAAA%2C%2BDAAA%3BAEgTC%3BAAAA%3B8BAAA%3BAAAA%3BAAGG%3BAAAA%3B%3B%3B%3B%3B%3B%2BBAAA%3BAAAA%3BAAUA%3BAAAA%2CiBAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3BsBAAA%3BAAAA%3BAAcA%3BAAAA%2C0BAAA%3BAAAA%3BAAIA%3BAAAA%2CcAAA%3BAAAA%3BAAEG%3BAAAA%3B%3B%3B%3B%2BBAAA%3BAAAA%3BAAgBN%3BAAAA%2CcAAA%3BAAAA%3BAAMA%3BAAAA%2CwCAAA%3BAAAA%3BAAKA%3BAAAA%3B%3BmCAAA%3BAAAA%3BAAYM%3BAAAA%3ByBAAA%3BAAAA%3BAAOF%3BAAAA%2CcAAA%3BAAAA%3BAAEE%3BAAAA%3B%3B%3BsBAAA%3BAAAA%3BAAYF%3BAAAA%3BwBAAA%3BAAAA%3BAAYJ%3BAAAA%2CgCAAA%3BAAAA%3BAAEE%3BAAAA%3BsBAAA%3BAAAA%3BAAME%3BAAAA%3B%3B%3B6BAAA%3BAAAA%3BAAKE%3BAAAA%2C%2BBAAA%3BAAAA%3BAAOA%3BAAAA%3B%3B%3B%3BkBAAA%3BAAAA%3BAAkBJ%3BAAAA%2CcAAA%3BAAAA%3BAAIE%3BAAAA%2CqBAAA%3BAAAA%3BAAGA%3BAAAA%2CmBAAA%3BAAAA%3BAAME%3BAAAA%3B4BAAA%3BAAAA%3BAFhdP%3B%3B%3B%3BGAAA%3BAAAA%2C%2BBAAA%3BAAAA%3B%3B%3B%3B%3BGAAA%3BAEueC%3BAACE%3BAAAA%3BqBAAA%3BAAAA%3BAAIA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%3BmBAAA%3BAAAA%3BAAIA%3BAAAA%3ByBAAA%3BAAAA%3BAAAA%3BAFtfH%2CqCAAA%3BAE6fC%3BAAAA%2C%2BDAAA%3BAACO%3BAAAA%2CcAAA%3BAAAA%3BAAKA%3BAAAA%2CmBAAA%3BAAAA%3BAAKA%3BAAAA%2CkBAAA%3BAAAA%3BAAKA%3BAAAA%2CmBAAA%3BAAAA%3BAAAA%3BAAMP%3BAAAA%3B%3B%3BmFAAA%3BAACA%3BAAAA%2CgBAAA%3BAAAA%3BAAGA%3BAAAA%2CiBAAA%3BAAAA%3BAAKA%3BAAAA%3B%3BgBAAA%3BAAAA%3BAAMA%3BAAAA%3BgBAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3BqBAAA%3BAAAA%3BAAQA%3BAAAA%2CeAAA%3BAAAA%3BAAGA%3BAAAA%2CoBAAA%3BAAAA%3BAAGA%3BAAAA%2C%2BBAAA%3BAAAA%3BAAIA%3BAAAA%3BgBAAA%3BAAAA%3BAAMA%3BAAAA%3B2BAAA%3BAAAA%3BAAMA%3BAAAA%2CiBAAA%3BAAAA%3BAAAA%3BACxgBI%3BADohBJ%3BAAAA%2C4BAAA%3BAAAA%3BAAAA%3BAFhlBD%2CkBAAA%3BAG4DK%3BAD2hBJ%3BAAAA%2C4BAAA%3BAAAA%3BAAAA%3BAFvlBD%2CkBAAA%3BAG4DK%3BADkiBJ%3BAAAA%2CgBAAA%3BAAAA%3BAAAA%3BAF9lBD%2CkBAAA%3BAAAA%2CuBAAA%3BAAAA%3B%3B%3B%3B8BAAA%3BAAAA%2CoDAAA%3BAAAA%2CwBAAA%3BAIkCC%3BAAAA%3B%3B%3B%3B%3B%2BCAAA%3BAAAA%3BAJlCD%2C4BAAA%3BAI6DC%3BAAAA%3B%3B%3B%3B%3B%3B%3BoBAAA%3BAAAA%3BAASM%3BAAAA%3BcAAA%3BAAAA%3BAAKN%3BAAAA%2CgBAAA%3BAAAA%3BAA8BA%3BAAAA%3B%3BkBAAA%3BAAAA%3BAAOA%3BAAAA%3B%3BsBAAA%3BAAAA%3BAAMA%3BAAAA%3BqBAAA%3BAAAA%3BAAMA%3BAAAA%2C2CAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3BKAAA%3BAAAA%3BAAWC%3BAAAA%3BcAAA%3BAAAA%3BAAOA%3BAAAA%3B%3B%3B%3BkBAAA%3BAAAA%3BAAWA%3BAAAA%3BoBAAA%3BAAAA%3BAAOD%3BAAAA%3B%3B%3ByBAAA%3BAAAA%3BAAMC%3BAAAA%2CcAAA%3BAAAA%3BAAEA%3BAAAA%2C0BAAA%3BAAAA%3BAAKD%3BAAAA%2CgCAAA%3BAAAA%3BAAKA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3BYAAA%3BAAAA%3BAAgBA%3BAAAA%3B%3BeAAA%3BAAAA%3BAAQA%3BAAAA%3B%3B%3B%3B%3BYAAA%3BAAAA%3BAAQE%3BAAAA%3B%3B%3B%3BeAAA%3BAAAA%3BAASF%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%3BaAAA%3BAAAA%3BAAKA%3BAAAA%2CeAAA%3BAAAA%3BAJtOD%2C2CAAA%3BAI0OC%3BAAAA%3BiBAAA%3BAAAA%3BAAIA%3BAAAA%2CyBAAA%3BAAAA%3BAJ9OD%2CwBAAA%3BAIkPC%3BAAAA%3B%3B%3B%3B%3B%3BwFAAA%3BAAAA%3BAJlPD%2CyCAAA%3BAAAA%2C%2BBAAA%3BAAAA%2CyCAAA%3BAAAA%2C8CAAA%3BAAAA%2CuCAAA%3BAImQC%3BAAAA%3B%3BcAAA%3BAAAA%3BAAKC%3BAAAA%3B%3B%3B%3B%3B%3BmBAAA%3BAAAA%3BAAWA%3BAAAA%3B%3B%3B%3BmBAAA%3BAAAA%3BAASA%3BAAAA%2CaAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3BmBAAA%3BAAAA%3BAAWC%3BAAAA%3B%3B%3B%3B%3BcAAA%3BAAAA%3BAAUC%3BAAAA%3B%3BqBAAA%3BAAAA%3BAAII%3BAAAA%3BiBAAA%3BAAAA%3BAJzTR%2C2BAAA%3BAAAA%2C8BAAA%3BAIoUC%3BAAAA%2C8BAAA%3BAAAA%3BAAGC%3BAAAA%2CeAAA%3BAAAA%3BAJvUF%2CkCAAA%3BAI6UC%3BAAAA%3BgBAAA%3BAAAA%3BAAKA%3BAAAA%3BkBAAA%3BAAAA%3BAAIC%3BAAAA%3B%3B%3B%3B%3BoBAAA%3BAAAA%3BAASC%3BAAAA%3B%3B%3BeAAA%3BAAAA%3BAAQD%3BAAAA%2CgBAAA%3BAAAA%3BAAMD%3BAAAA%3B%3B%3BiBAAA%3BAAAA%3BAJ7WD%2C6FAAA%3BAIqXC%3BAAAA%3B%3BcAAA%3BAAAA%3BAAIA%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%3BoBAAA%3BAAAA%3BAAMA%3BAAAA%3B%3B%3B%3B%3B%3BqBAAA%3BAAAA%3BAJlYD%2C6CAAA%3BAI6YE%3BAAAA%2CaAAA%3BAAAA%3BAAIC%3BAAAA%3BoBAAA%3BAAAA%3BAAIA%3BAAAA%2CgCAAA%3BAAAA%3BAASF%3BAAAA%3BmBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAAKA%3BAAAA%3BoBAAA%3BAAAA%3BAJ5bD%2CqDAAA%3BAAAA%2C2DAAA%3BAI0cC%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%2BBAAA%3BAAAA%3BAJ1cD%2CsDAAA%3BAAAA%2CqBAAA%3BAIwdC%3BAAAA%2CwBAAA%3BAAAA%3BAAIA%3BAAAA%2CqBAAA%3BAAAA%3BAJ5dD%3B%3B8BAAA%3BAAAA%2CuCAAA%3BAG4DK%3BACibH%3BAAAA%3BsBAAA%3BAAAA%3BAAWA%3BAAAA%3BsBAAA%3BAAAA%3BAASD%3BAAAA%2CmBAAA%3BAAAA%3BAAIC%3BAAAA%2CmBAAA%3BAAAA%3BAAMA%3BAAAA%3BgBAAA%3BAAAA%3BAAKC%3BAAAA%3BgBAAA%3BAAAA%3BAAAA%3BAJhhBH%2CkBAAA%3BAG4DK%3BAC8dJ%3BAAAA%3BwBAAA%3BAAAA%3BAAMC%3BAAAA%2C0BAAA%3BAAAA%3BAAKA%3BAAAA%2CmBAAA%3BAAAA%3BAAQA%3BAAAA%3BsBAAA%3BAAAA%3BAAYC%3BAAAA%2CqBAAA%3BAAAA%3BAAkBF%3BAAAA%2CsBAAA%3BAAAA%3BAAAA%3BAJ3kBD%2CkBAAA%3BAG4DK%3BAC2hBH%3BAAAA%2CiBAAA%3BAAAA%3BAAMA%3BAAAA%2C0BAAA%3BAAAA%3BAAKA%3BAAAA%2CoBAAA%3BAAAA%3BAAGC%3BAAAA%2CyBAAA%3BAAAA%3BAAiBF%3BAAAA%2CsBAAA%3BAAAA%3BAAAA%3BAJtnBD%2CkBAAA%3BAG4DK%3BAC8kBJ%3BAAAA%2CsBAAA%3BAAAA%3BAAAA%3BAJ1oBD%2CkBAAA%22%7D */

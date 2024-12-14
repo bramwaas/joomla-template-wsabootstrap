@@ -1,0 +1,122 @@
+/* template_variables.scss */
+// 20241005 use breakpoint-min("lg")) in stead of $container-lg
+// standard variables for this template.
+// -------------------------20190202
+// colors
+// -------------------------
+//$black:                 #000;
+$grayDarker:            #222;
+$grayDark:              #333;
+$gray:                  #555;
+// css gray == #808080
+$grayLight:             #999;
+$grayLighter:           #F5F5F5;
+//$white:                   #fff
+
+$graynavbarbg: 		$gray-200; // was #e5e5e5;
+$graynavbarfg: 	    $gray-700; // was #555;
+$graynavbarlighter: $gray-600; // was #777;
+$graynavbardarker:  $gray-800; // was	#333;
+$activenavbarbg:    $gray-500; // was	#999;
+$activenavbarfg:    $gray-600; // was 	#fff;
+$specialgreygradientstart: $white; // was #ffffff;
+$specialgreygradientend: #e6e6e6;
+
+// skins 
+$photo-box-shadow : 0 0 10px 5px rgba(0,0,0,0.2) !default; 
+
+
+// BS3 temporary variables
+$screen-xs-min:              breakpoint-min( "sm"); // was $screen-xs;
+$screen-sm-min:              breakpoint-min( "md"); // was $screen-sm;
+$screen-md-min:              breakpoint-min( "lg"); // was $screen-md;
+$screen-lg-min:              breakpoint-min( "xl"); // was $screen-lg;
+$screen-xl-min:              breakpoint-min( "xxl"); // was 1200px;
+//$screen-xxl-min:             breakpoint-min( "xxl"); // was 1440px;
+//$screen-xxxl-min:            1600px;
+
+$screen-xs-max:              breakpoint-min( "md") - 0.02; // was($screen-sm-min - 1);
+$screen-sm-max:              breakpoint-min( "lg") - 0.02; // was($screen-md-min - 1);
+$screen-md-max:              breakpoint-min( "xl") - 0.02; // was($screen-lg-min - 1);
+$screen-lg-max:              breakpoint-min( "xxl") - 0.02; // was($screen-xl-min - 1);
+$screen-xl-max:              1440px - 0.02; // was($screen-xxl-min - 1);
+//$screen-xxl-max:             ($screen-xxxl-min - 1);
+
+$container-sm:                 breakpoint-min( "md"); // was  $container-tablet;
+$container-md:                 breakpoint-min( "lg"); // was $container-desktop;
+$container-lg:                breakpoint-min( "xl"); // was $container-large-desktop;
+
+// end BS3 temporary variables
+
+// Typography
+// -------------------------
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$asBaseFontSize:          12px;
+$asBiggerFontSize:        $asBaseFontSize * 1.25;
+$asBigFontSize:        	  $asBiggerFontSize * 1.5;
+$asH1FontSize:		  $asBaseFontSize * 2;
+$asBaseFontFamily:        $sansFontFamily;
+$asBaseLineHeight:        $asBaseFontSize * 1.3;
+$asBiggerLineHeight:      $asBiggerFontSize * 1.3;
+$asBigLineHeight:	  28.5px;
+
+$altFontFamily:           $monoFontFamily;
+
+$headingsFontFamily:    'Telex', sans-serif; // empty to use BS default, $asBaseFontFamily
+$headingsFontWeight:    bold;    // instead of browser default, bold
+$headingsColor:         #317EAC; // empty to use BS default, $textColor
+
+// Dimensions and position
+// ----------------------------
+$iconsMobileLeft:         0%;
+$iconsMobileWidth:         100%;
+$asMarginStd:		  auto;
+$asMarginHalf:		  auto;
+$marginArea:                1%;
+
+$wsaNavbarRightWidth: auto;
+$wsaVideoHeight:           80%;  // iets hoger dan 4x3 100 * 3 / 4% ;  100 * 9 / 16%; // 56.25%
+$wsaVideoHeightExtra:      25px;
+$wsaVideoItemWidth:        100%;
+$wsaVideoAutoItemWidth:    $container-lg;
+
+$asModLangFloat:          right;
+$bg0Z-index:		  auto;
+$bg1Z-index:		  auto;
+$bg2Z-index:		  auto;
+/* uit asha-s */
+
+$tagItemTitleDisplay:     none;
+$tagItemSearchDisplay:    none;
+$asMinWidthItem:          256px;
+$asFullWidth:             720px;
+$asHalfWidth:		  $asFullWidth / 2;
+$as2ColFullWidth:   	  512px;
+$as2ColHalfWidth:	  $as2ColFullWidth / 2;
+$as3ColFullWidth:         360px;
+$as3ColHalfWidth:	  $as3ColFullWidth / 2;
+
+$wrapperBorderRadius:         10px;
+
+// variabelen voor .blog_inline       
+$wsaInnerMargin : $marginArea / 2;
+// aantal margins is aantal kolommen plus 1 van 100% aftrekken :> ruimte voor inhoud, deze delen door aantal kolommen.
+$wsa02Col : (100% - (3 * $wsaInnerMargin)) / 2 ;
+$span6 : $wsa02Col;
+$wsa03Col : (100% - (4 * $wsaInnerMargin)) / 3 ;
+$span4 : $wsa03Col;
+$wsa04Col : (100% - (5 * $wsaInnerMargin)) / 4 ;
+$span3 : $wsa04Col;
+$wsa05Col : (100% - (6 * $wsaInnerMargin)) / 5 ;
+$wsa06Col : (100% - (7 * $wsaInnerMargin)) / 6 ; 
+$span2 : $wsa06Col;
+$wsa07Col : (100% - (8 * $wsaInnerMargin)) / 7 ; 
+$wsa08Col : (100% - (9 * $wsaInnerMargin)) / 8 ;
+$wsa09Col : (100% - (10 * $wsaInnerMargin)) / 9 ; 
+$wsa10Col : (100% - (11 * $wsaInnerMargin)) / 10 ;
+$wsa11Col : (100% - (12 * $wsaInnerMargin)) / 11 ;
+$wsa12Col : (100% - (13 * $wsaInnerMargin)) / 12 ; 
+$span1 : $wsa12Col;

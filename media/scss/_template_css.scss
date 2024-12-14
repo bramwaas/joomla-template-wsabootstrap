@@ -1,0 +1,490 @@
+/* template_css.scss */
+// template standaard less afgeleid van template css voor standaard style van dit template
+// in eerste instatie door kleuren in variabele te zetten.
+// BW 15-7-2016
+// CSS Document for Joomla 3 styles 21-9-2015 
+// 20161128 paginaweergave class blog_inline gedefinieerd 
+// om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
+// items in twee kolommen weer te geven. 
+// tevens breedte voor items.cols-2 cols-3 en cols-4 vastgelegd (in # kolommen blogweergave) 
+// 20161210 word-space klein gemaakt om te voorkomen dat spaties tussen kolom-html de lay-out verknooeien
+// 20161214 blog_inline veranderd in blog, deze claas is standaard voor blog lay-out, geen speciale pagina claas blog_inline meer nodig
+// voor tags moet class blog worden toegevoegd in plaats van blog_inline.
+// 20170123 width 100% itemsleading div
+// 20180107 enkele variabele namen met @ beginnend vervangen door $
+// 20190119 navbar transparent style toegevoegd. 1.4.3
+// 20190126 navbar-inner was al afgesterd nu helemaal verwijderd
+// 20190212 iconssm via flexbox order -1 naar top.
+// 20190303 header inner navbar padding 0.
+//  iconssm geen absolute positie meer als margin-top 0 is, om overlap met menu te voorkomen. 
+// 20190306 display flex voor headerleft.
+// 20200815 for the onepage template rssfoto elements inline-block instead of float left, to keep space for the containing block
+// 20211225 .visually-hidden. activated this is perhaps default in bs5 but we don't use that alle the times.'
+// 20211229 header-inner navbar width 100% toegevoegd om toggler rechts te kunnen plaatsen, buiten header inner gaat dit al goed.
+// 20211230 padding .span12 extra voor BS3 in BS4/5 wordt col12 gebruikt en staan deze paddings al voor alle col-deimensies.
+//            padding header-inner .navbar alleen nog 0 voor BS3
+//  20240930 2.1.3 Redesigned block for RSS (Flickr) fotos newsfeed component, because J4, J5 module class is not a suffix after the component class,
+//     but an extra class in the page header,  ul may be used in stead of ol and Pias is stopped. So .newsfeed_rssfoto is approximately 
+//     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
+//     remove unnecessary selectors.
+//  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard. rss combined with tag-item-list and blog-list. 
+/* ===========================
+	alle schermbreedtes
+	Write your general styles eerst voor alle schermbreedtes, 
+	daarna uitzonderingen voor steeds bredere schermen (mobile first)
+	========================== */
+
+/* background images via absoluut geplaatste html */
+/* content background */
+#img_bg1Image 
+{
+  position:absolute;
+  width:$bg1Width;
+  height: auto;
+  left:$bg1Left;
+/*  margin-top:$bg1Top; ivm fout in safari */
+  padding-top:$bg1Top;
+/*  z-index: $bg1Z-index; */
+}
+#headerleft {
+  position: relative;
+  float:left;
+  width:$asHeadLeftWidth;
+  margin-top: $hlMarginTop;
+  margin-left:$hlMarginLeft;
+  margin-bottom: $hlMarginBottom; 	
+  padding-top:0;
+  padding-bottom: 0; // $hlHeight;
+      div.inner {
+	position: relative;
+	width: 100%;
+	}
+}
+
+@if $twbs_version == 4 {
+.visually-hidden {display:none;} // header language selector joomla 4 use this bs5 selector
+} // einde bs4
+#navbar-right-mod
+{
+	display: inline-block;
+	width: $wsaNavbarRightWidth;
+	max-width: 100%;
+}
+
+#wrapper, 
+body>div.container {
+	position: relative;
+	overflow-x: hidden;
+    border-radius: $wrapperBorderRadius;
+}
+#wrapper1
+{
+/* voor achtergrondafbeeldingen van #wrapper geen extra margin ed toevoegen, anders klopt lay-out niet meer */
+   position: relative;
+}
+
+.bg-transparent { // 
+    background-color: transparent!important;
+}
+
+/* blog process joomla colums-n across for n= 1 to 12 to BS row and classes */
+[class^="com-content"][class$="blog"],
+[class*="rssfoto"] .newsfeed,
+.blog-featured,
+.com-tags__items {
+//	@include make-container(); only width 100% remains 
+    width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.photo-in-album,
+.photo-album .blog-items img,
+.blog-items.photo-album img,
+.com-tags__items .list-group img,
+[class*="rssfoto"] .com-newsfeeds-newsfeed__items img {
+	@include photo-box-shadow($photo-box-shadow);
+}
+
+.blog-items,
+.com-tags__items .list-group,
+.com-newsfeeds-newsfeed__items {
+	@include make-row();
+	flex-direction:row;
+	> * {
+		@include make-col-ready();
+		border: 0;
+		margin: 0;
+		list-style-type: none;
+		overflow:hidden;
+		img { max-width: 100%;
+			height:auto;	 	
+				}
+			}
+	&[class*="columns"] {
+		@include row-cols(1);
+		}
+}
+/* adaptations for newsfeeds with photos (class rssfoto). */
+/* rss flickr images (ul li p a img) */
+[class*="rssfoto"] .newsfeed {
+	h2, .com-newsfeeds-newsfeed__feed-image
+		{
+		margin: 0;
+		font-weight: bold;
+		font-family: Helvetica,Arial,sans-serif;
+		font-size: 1.5em;
+		padding-left: 0px;
+		margin-bottom: 10px;
+		text-align: left;
+		}
+	h3
+		{
+		font-size: 1.3em;
+		line-height: 1.3em;
+		padding-left: 0px;
+		margin-bottom: 0px;
+		text-align: left;
+		}
+	li
+		{
+			div.feed-item-description p:first-child
+			{ /* make unwanted image header text from newsfeed invisible  */
+			font-size: 4%;
+			color: transparent;
+			    a
+				{
+				font-size: 2500%;
+				color: $link-color;
+				}
+			}
+		}
+} /* end rssfoto newsfeed  */
+
+/* Desktop Layout menu expand, multi columns  */ 
+@include media-breakpoint-up($wsaDesktopExpand) {
+// default desktop layout columns	
+.com-tags__items .list-group,
+.com-newsfeeds-newsfeed__items {
+		@include row-cols(3);
+}
+// desktop lay-out with columns-n class 
+@for $i from 2 through $grid-columns {
+	.columns-#{$i} {.blog-items, 
+					.com-tags__items .list-group,
+					.com-newsfeeds-newsfeed__items {
+        	@include row-cols($i);
+		}
+	}
+	.blog-items, 
+	.com-tags__items .list-group,
+	.com-newsfeeds-newsfeed__items  {
+		&.columns-#{$i} {
+	        @include row-cols($i);
+		 }
+	 }
+}
+} // End  Desktop Layout
+.header-inner
+{
+display: flex;
+flex-direction: column;
+	.navbar{width: 100%;
+	}
+	.navbar>.container, .navbar>.container-fluid {
+    align-items: flex-start;
+	}
+} 
+
+.icon-cog,
+.icons .icon-cog
+ {
+    background-position: -432px 0;
+}
+.iconssm 
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+
+position: relative;
+display: block;
+display: flex;
+flex-direction: $wsaIconsFlex;  
+width: 100%;
+order: -1;
+}
+
+.items-leading  div .videoWrapper,
+.videoWrapper {
+  position:relative;
+  padding-bottom: $wsaVideoHeight;
+  padding-top: $wsaVideoHeightExtra;
+  max-width: $wsaVideoItemWidth;
+  width: $wsaVideoAutoItemWidth;
+  height:0;
+  object, embed, iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;  // breedte video binnen blok, onnodig om aan te passen.
+    height:100%;
+  }
+}
+
+.list-striped, .row-striped {
+    border-top: none;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+    border-bottom: none;
+    padding: 0;
+}
+
+.mod-languages {
+    float: $asModLangFloat;
+}
+/* tijdelijk toegvoegd voor bs 3 en bs4  */
+.navbar-collapse.in {
+    overflow-y: visible;
+	display:block;  // bs 4 voorlopig
+}
+// * transparent navbar * /
+.navbar.navbar-default.transparent,
+.navbar.navbar-inverse.transparent{ 
+
+		border-width: 0px;
+		-webkit-box-shadow: 0px 0px;
+		box-shadow: 0px 0px;
+		background-color: rgba(0,0,0,0.0);
+		background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+		background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+		background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+}	
+/* einde tijdelijk toegvoegd voor bs 3 */
+
+
+.tag-category fieldset
+{ /* tot joomla het zoekveld goed verbergt */
+display: $tagItemSearchDisplay; 
+}
+
+//.tag-category ul 
+//{ /* tag-list inline maken in plaats van opsomming */
+//    padding-left: 0;
+//	
+// li 
+//	{
+//    display: inline-block;
+//    position: static;
+//    vertical-align: top;
+//	max-width: 100%;
+//	margin-right: $marginArea;
+//	margin-bottom: $marginArea;
+//	}
+//  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
+//	{
+//	background-color: transparent;
+//	max-width: 100%;
+//    width: $asMinWidthItem;
+//	
+//	}	
+//
+// li h3 
+//	{
+//	display: $tagItemTitleDisplay;
+//	}	
+//}
+	
+body { 
+	font-family: Verdana, Arial, sans-serif;
+	padding-top: 10px;
+	padding-bottom: 40px;
+	overflow: auto;
+}
+
+/* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
+div.pagination   /* normale bootstrap class is ul.pagination */
+{
+margin-top: 0px;
+width: 100%;
+p {margin-top: 20px;}
+}
+
+div div.pagination ul /* tag-list inline maken in plaats van opsomming */
+{
+    padding-left: 0px;
+ //   list-style-type: circle;
+}
+
+div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list inline maken in plaats van opsomming */
+{
+    display: inline-block;
+    position: static;
+    vertical-align: top;
+   max-width: 100%;
+   margin-right: 0px; // $marginArea;
+   margin-bottom: 0px; //$marginArea;
+}
+/* einde aanpassing alleen voor pagination */
+div.mod-languages {
+	a {
+		padding: 0;
+	}
+	ul {
+		li {
+    		margin-left: 5px;
+    		margin-right: 5px;
+		}
+		li.lang-active {
+    		background-color:transparent;
+		}
+	}
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans Condensed',sans-serif;
+	font-weight: 700;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 26px;
+//  line-height: 30px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+/* einde tijdelijk overgenomen uit bootstrap css v2 */
+
+/* Special general */
+[class*="special"] .module-content ul {
+	margin: 0 0 10px 17px;
+}
+
+[class*="special"] .module-content ul.unstyled {
+	margin: 0 0 10px 0;
+}
+
+
+
+/* ===========================
+	einde alle schermbreedtes
+	========================== */
+@media (max-width: $screen-xs-max) { // max 767 
+
+
+}/* einde (max-width: $screen-xs-max) */
+
+@include media-breakpoint-up(sm)
+{  // min 576
+
+.img-fluid-w33
+{ 
+ max-width:33%;
+}
+	.img-fluid-w50
+{ 
+  max-width:50%;
+}
+}/* einde up(sm) */
+
+@include media-breakpoint-up(md) { // min 768
+#navbar-right-mod {
+    float: right;
+    margin-right: -15px;
+}
+	
+.form-horizontal .control-group {
+		.control-label {
+		text-align: left;
+		}
+}
+@if $iconsPosTop > 0px
+{
+.iconssm.navbar-expand-md
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;  
+ }   
+}	
+.hiicons .navbar.navbar-expand-md
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
+}
+
+	
+}/* einde up(md) */
+
+@include media-breakpoint-up(lg) { // min 992
+
+@if $iconsPosTop > 0px
+{
+.iconssm.navbar-expand-lg
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;  
+ }   
+}
+.hiicons .navbar.navbar-expand-lg
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
+}
+
+} /* einde up(lg) */
+
+@include media-breakpoint-up(xl) { // min 1200 px
+
+@if $iconsPosTop > 0px
+{
+.iconssm.navbar-expand-xl
+{    /* icons social media boven logo absolute vanaf 'navbar-expand-..' */
+  position: absolute;
+  top: $iconsPosTop;  
+ }   
+}
+.hiicons .navbar.navbar-expand-xl
+{
+#img_brandImage
+{ 
+margin-top: -40px;
+}	
+}
+
+}
+
