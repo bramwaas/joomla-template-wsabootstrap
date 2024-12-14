@@ -1,8 +1,8 @@
 {
 	"$schema" : "https://developer.joomla.org/schemas/json-schema/web_assets.json",
 	"name" : "wsa_bootstrap",
-	"version" : "2.2.0",
-	"description" : "This file contains details of the default assets used by wsa_bootstrap template, a Joomla 3 and 4 site template.",
+	"version" : "2.3.0",
+	"description" : "This file contains details of the default assets used by wsa_bootstrap template, a Joomla 5 and 4 site template.",
 	"license" : "GPL-2.0-or-later",
 	"assets" : [{
 			"name" : "template.wsa_bootstrap",

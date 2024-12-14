@@ -44,7 +44,9 @@
  01-10-2024 2.1.3 make content wider to display 3 columns in rssfoto newsfeed 
  02-10-2024 2.2.0 Remove support for BS (Bootstrap) 3, remove redundant span* classes inherited from grid Bootstrap 2 and used in Joomla 3,
    which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
-   navbarexpand => desktopexpand. removed double loading jquery in BS4           
+   navbarexpand => desktopexpand. removed double loading jquery in BS4  
+ 14-12-2024 2.3.0 new structure in connection with inherit/child templates
+           
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -56,8 +58,13 @@ use Joomla\CMS\Version;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 $joomlaverge4 = (new Version)->isCompatible('4.0.0');
 $app  = Factory::getApplication();
-$lang = Factory::getLanguage();
+$lang = $app->getLanguage();
 if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
+// Browsers support SVG favicons
+//$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
+$this->addHeadLink(HTMLHelper::_('image', 'favicon_ws.ico', '', [], true, 1), 'icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
+//$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon-pinned.svg', '', [], true, 1), 'mask-icon', 'rel', ['color' => '#000']);
+
 
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
@@ -94,7 +101,7 @@ $bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 $wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
 if ($wsaCssFilename > " ")
 {$path_parts = pathinfo($wsaCssFilename);
-if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
 }
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
