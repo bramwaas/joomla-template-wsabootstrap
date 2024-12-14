@@ -62,6 +62,7 @@ $lang = $app->getLanguage();
 if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
 // Browsers support SVG favicons
 //$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
+echo '<!-- header:' . HTMLHelper::_('image', 'header.jpg', '', [], true, 1) . ' -->' . PHP_EOL;
 echo '<!-- favicon:' . HTMLHelper::_('image', 'favicon_ws.ico', '', [], true, 1) . ' -->' . PHP_EOL;
 $this->addHeadLink(HTMLHelper::_('image', 'favicon_ws.ico', '', [], true, 1), 'icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
 //$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon-pinned.svg', '', [], true, 1), 'mask-icon', 'rel', ['color' => '#000']);
