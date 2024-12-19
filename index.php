@@ -103,10 +103,7 @@ if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css
 }
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
-
-echo '<!-- css style:' . HTMLHelper::_('css', '$wsaCssFilename', '', [], true, 1) . ' -->' . PHP_EOL;
-echo '<!-- css dflt:' . HTMLHelper::_('css', 'template.css', '', [], true, 1) . ' -->' . PHP_EOL;
-
+if (empty(HTMLHelper::_('stylesheet', $wsaCssFilename, ['relative' => true,'pathOnly' => true ], [])))  $wsaCssFilename = 'template.css';
 
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
