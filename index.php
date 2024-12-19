@@ -61,10 +61,7 @@ $app  = Factory::getApplication();
 $lang = $app->getLanguage();
 if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
 // Browsers support SVG favicons
-//$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
-echo '<!-- favicon:' . HTMLHelper::_('image', 'faviconws.ico', '', [], true, 1) . ' -->' . PHP_EOL;
 $this->addHeadLink(HTMLHelper::_('image', 'faviconws.ico', '', [], true, 1), 'icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
-//$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon-pinned.svg', '', [], true, 1), 'mask-icon', 'rel', ['color' => '#000']);
 
 
 // Detecting Active Variables
@@ -106,6 +103,10 @@ if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css
 }
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
+
+echo '<!-- css style:' . HTMLHelper::_('css', '$wsaCssFilename', '', [], true, 1) . ' -->' . PHP_EOL;
+echo '<!-- css dflt:' . HTMLHelper::_('css', 'template.css', '', [], true, 1) . ' -->' . PHP_EOL;
+
 
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
