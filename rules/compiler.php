@@ -73,14 +73,15 @@ class WsaFormRuleCompiler extends FormRule
 // $joomlaverge4 = (version_compare(JVERSION, '4.0', '>='));
         
 $app = Factory::getApplication();
-$template   = $app->getTemplate(true);
-$assetPath = (($template->inheritable || !empty($template->parent)) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES) . $template->template;
-
-echo  '<!-- $assetPath:' .  $assetPath . PHP_EOL , 'realpath dir:' . realpath(__DIR__ ) . PHP_EOL ,  '-->' . PHP_EOL ;
-
-
-
+$currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
+$templatename = explode(' ', $input->get('title'), 2)[0];
+ 
+//($template->inheritable || !empty($template->parent)
+$assetPath = ((true) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES) . $templatename;
+
+
+
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
 
@@ -238,7 +239,7 @@ try
 /* opslaan style parameters in style.scss bestanden */
 
 /* variabelen */
-$tv_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.var.scss', "w+");
+$tv_file =fopen($assetPath .'/scss/style' . $templatestyleid . '.var.scss', "w+");
 
 
 /* scss files creeeren en compileren naar .css */
@@ -347,7 +348,7 @@ fclose($tv_file);
 //
 // ============================================================================
 //
-$st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+");
+$st_file =fopen($assetPath .'/scss/style' . $templatestyleid . '.scss', "w+");
 /* .scss file dat variabelen gebruikt */
 fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
 fwrite($st_file, "// generated " . date("c")  . "\n//\n");
@@ -486,13 +487,13 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
-$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
+$server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+  $server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
   /* ivm &tmpl=component */
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
+  $server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
 }
 
 /* einde les files compileren naar .css */
