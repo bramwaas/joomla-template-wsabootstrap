@@ -74,12 +74,8 @@ class WsaFormRuleCompiler extends FormRule
         
 $app = Factory::getApplication();
 $templatestyleid = $input->get('id');
-$templatename = explode(' ', $input->get('title'), 2)[0];
 $prr = print_r($input, true); 
-//($template->inheritable || !empty($template->parent)
-$assetPath = ((true) ? JPATH_PUBLIC . '/media/templates/site/' : JPATH_THEMES . '/') . $templatename;
-
-
+$assetPath = (($input->get('inheritable') || !empty($input->get('inheritable'))) ? JPATH_PUBLIC . '/media/templates/site/' : JPATH_THEMES . '/') . $input->get('template');
 
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
@@ -354,7 +350,7 @@ fwrite($st_file, "// template style " . $input->get('title') .  ".scss \n");
 fwrite($st_file, "// generated      " . date("c")  . "\n//\n");
 fwrite($st_file, "// css            " . $wsaCssFilename  . "\n//\n");
 
-if (!empty($prr)) fwrite($st_file, "\n//\n// debug prr" . $prr  . "\n//\n");
+if (!empty($prr)) fwrite($st_file, "\n/* /\n// debug prr" . $prr  . "\n */\n");
 
 // standaard bootstrap variables mixins etc.
  fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
