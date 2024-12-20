@@ -25,6 +25,7 @@ v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
 2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
     Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4. Remove extra breakpoints
+2024-12-20 v2.3.0 inheritable    
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -72,7 +73,14 @@ class WsaFormRuleCompiler extends FormRule
 // $joomlaverge4 = (version_compare(JVERSION, '4.0', '>='));
         
 $app = Factory::getApplication();
+$template   = $app->getTemplate(true);
+$templaPath = ($template->inheritable || !empty($template->parent)) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES;
+
 $currentpath = realpath(__DIR__ ) ;
+echo  '<!-- templaPath:' .  $templaPath . PHP_EOL , 'realpath dir:' . realpath(__DIR__ ) . PHP_EOL ,  '-->' . PHP_EOL ;
+
+
+
 $templatestyleid = $input->get('id');
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
