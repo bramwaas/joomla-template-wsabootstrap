@@ -76,7 +76,7 @@ $app = Factory::getApplication();
 $currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
 $prr = print_r($input, true); 
-$assetPath = (($input->get('inheritable') || !empty($input->get('inheritable'))) ? JPATH_PUBLIC . '/media/templates/site/' : realpath(__DIR__ ) . '/../') . $input->get('template');
+$assetPath = (($input->get('inheritable') || !empty($input->get('inheritable'))) ? JPATH_PUBLIC . '/media/templates/site/' . $input->get('template') : realpath(__DIR__ ) . '/../') ;
 
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
