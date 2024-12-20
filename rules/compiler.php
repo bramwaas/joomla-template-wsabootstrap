@@ -347,7 +347,7 @@ fclose($tv_file);
 $st_file =fopen($assetPath .'/scss/style' . $templatestyleid . '.scss', "w+");
 /* .scss file dat variabelen gebruikt */
 fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
-fwrite($st_file, "// template style " . $input->get('title') .  ".scss \n");
+fwrite($st_file, "// template style " . $input->get('title') .  " \n");
 fwrite($st_file, "// generated      " . date("c")  . "\n//\n");
 fwrite($st_file, "// css            " . $wsaCssFilename  . "\n//\n");
 
