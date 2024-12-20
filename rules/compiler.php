@@ -78,7 +78,7 @@ $templatestyleid = $input->get('id');
 $templatename = explode(' ', $input->get('title'), 2)[0];
  
 //($template->inheritable || !empty($template->parent)
-$assetPath = ((true) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES) . $templatename;
+$assetPath = ((true) ? JPATH_PUBLIC . '/media/templates/site/' : JPATH_THEMES . '/') . $templatename;
 
 
 
