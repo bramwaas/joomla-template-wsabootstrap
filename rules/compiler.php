@@ -73,9 +73,10 @@ class WsaFormRuleCompiler extends FormRule
 // $joomlaverge4 = (version_compare(JVERSION, '4.0', '>='));
         
 $app = Factory::getApplication();
+$currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
 $prr = print_r($input, true); 
-$assetPath = (($input->get('inheritable') || !empty($input->get('inheritable'))) ? JPATH_PUBLIC . '/media/templates/site/' : JPATH_THEMES . '/') . $input->get('template');
+$assetPath = (($input->get('inheritable') || !empty($input->get('inheritable'))) ? JPATH_PUBLIC . '/media/templates/site/' : realpath(__DIR__ ) . '../') . $input->get('template');
 
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
