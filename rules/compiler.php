@@ -366,6 +366,13 @@ fwrite($st_file, '@import "bs' .  $twbs_version . '/mixins.scss";' . "\n");
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
 //fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
 
+// standaard bootstrap variables mixins etc. einde
+fwrite($st_file, "//\n// other variables\n//\n");
+fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
+fwrite($st_file, '@import "template_variables.scss";' . "\n");
+fwrite($st_file, '@import "_template_mixins_functions";' . "\n");
+fwrite($st_file, "//\n// css\n//\n");
+
 
 if (! empty($background))
 { 	$pos1 = stripos($background, ".css");
