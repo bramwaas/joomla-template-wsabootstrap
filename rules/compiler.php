@@ -74,10 +74,9 @@ class WsaFormRuleCompiler extends FormRule
         
 $app = Factory::getApplication();
 $template   = $app->getTemplate(true);
-$templaPath = ($template->inheritable || !empty($template->parent)) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES;
+$assetPath = (($template->inheritable || !empty($template->parent)) ? JPATH_PUBLIC . "/media/templates/site" : JPATH_THEMES) . $template->template;
 
-$currentpath = realpath(__DIR__ ) ;
-echo  '<!-- templaPath:' .  $templaPath . PHP_EOL , 'realpath dir:' . realpath(__DIR__ ) . PHP_EOL ,  '-->' . PHP_EOL ;
+echo  '<!-- $assetPath:' .  $assetPath . PHP_EOL , 'realpath dir:' . realpath(__DIR__ ) . PHP_EOL ,  '-->' . PHP_EOL ;
 
 
 
@@ -103,7 +102,7 @@ else
     $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
-$server = new Server($currentpath. '/../scss', null, $scss);
+$server = new Server($assetPath. '/scss', null, $scss);
 
 // einde initialisatie compiler
 
