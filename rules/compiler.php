@@ -75,11 +75,10 @@ class WsaFormRuleCompiler extends FormRule
 $app = Factory::getApplication();
 $currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
-$prr = print_r($input, true); 
+//$prr = print_r($input, true); 
 $assetPath = (($input->get('inheritable') || !empty($input->get('parent')))
     ? JPATH_PUBLIC . '/media/templates/site/' . (empty($input->get('parent'))? $input->get('template'):$input->get('parent'))  
     : realpath(__DIR__ ) . '/../') ;
-
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
 
@@ -158,8 +157,6 @@ $brandImage    	= htmlspecialchars($params->brandImage); // url
 $brandSize    	= htmlspecialchars($params->brandSize); // auto  <width> % or px 
 $brandWidth    	= htmlspecialchars($params->brandWidth); // number
 $brandDim       = 'px';
-//if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
-// {$brandImage = '/' . $brandImage;}; 
 if ($brandImage > ' ') $brandImage = 'url("' . $brandImage . '")';
 if ($brandImage == '%')  {$brandDim = '%';};
 if ($brandWidth > ' ') {$brandWidth = $brandWidth.$brandDim;} else {$brandWidth = 'auto';};
@@ -176,16 +173,6 @@ $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  }
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
-
-// $wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
-// $wsaContaineres = $wsaBreakpointes;
-// $wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
-// $wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
-// if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-// $wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
-// $wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
-// if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
-  
 if (strpos($menuType, 'navbar-dark') !== false)
 {$navbartheme = 'navbar-dark';}
 else
@@ -195,11 +182,7 @@ if (strpos($menuType, 'bg-dark') !== false)
 else
 {$navbarbg = 'bg-light';}
 
-
-
-
 $bg0Color    	= htmlspecialchars($params->bg0Color); // name or hex
-
 $bg1Image    	= htmlspecialchars($params->bg1Image); 
 //if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
@@ -353,7 +336,7 @@ fwrite($st_file, "// template style " . $input->get('title') .  " \n");
 fwrite($st_file, "// generated      " . date("c")  . "\n//\n");
 fwrite($st_file, "// css            " . $wsaCssFilename  . "\n//\n");
 
-if (!empty($prr)) fwrite($st_file, "\n/* /\n// debug prr" . $prr  . "\n */\n");
+if (!empty($prr)) fwrite($st_file, "\n/* /\n// debug prr\n" . $prr  . "\n */\n");
 
 // standaard bootstrap variables mixins etc.
  fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
