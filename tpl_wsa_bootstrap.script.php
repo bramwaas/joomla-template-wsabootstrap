@@ -82,9 +82,12 @@ return new class () implements InstallerScriptInterface
             
 //         }
         
-        if(version_compare($this->getParam('version'), '0.0.1', 'lt')) {
-            
             $db = Factory::getDBO();
+            $db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
+            $cnt = $db->loadResult();
+            
+            
+            if ( 0 < $cnt) {
             $db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
             
 //            echo '<p>' .  $db->loadResult() . '</p>';
@@ -93,11 +96,8 @@ return new class () implements InstallerScriptInterface
                 $first_message = false;
             }
             echo '<p>' .  $db->query() . '</p>';
-            
             }
-        }
-        
-        
+            
         return true;
     }
     
