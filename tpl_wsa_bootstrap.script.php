@@ -95,7 +95,7 @@ return new class () implements InstallerScriptInterface
                 echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                 $first_message = false;
             }
-            echo '<p>' .  $db->query() . '</p>';
+            echo '<p>' .  $db->execute() . '</p>';
             }
             
         return true;
