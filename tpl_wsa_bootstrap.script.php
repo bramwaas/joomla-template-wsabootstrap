@@ -100,8 +100,8 @@ return new class () implements InstallerScriptInterface
      *
      * @return  boolean  True on success
      */
-    public function install(InstallerAdapter $adapter)
-    {
+    public function install(InstallerAdapter $adapter): bool
+        {
         return true;
     }
     
