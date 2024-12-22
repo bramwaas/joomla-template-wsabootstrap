@@ -23,8 +23,6 @@ return new class () implements InstallerScriptInterface
 {
     private string $minimumJoomla = '4.1.0';
     private string $minimumPhp    = '7.4.0';
-    const TPL_PATH = "/templates/wsa_bootstrap/";
-    const TPL_MEDIA = "/media/templates/site/wsa_bootstrap/";
     
     
     
@@ -47,26 +45,28 @@ return new class () implements InstallerScriptInterface
      */
     public function preflight($route, InstallerAdapter $adapter): bool
     {
+        $TPL_PATH = "/templates/wsa_bootstrap/";
+        $TPL_MEDIA = "/media/templates/site/wsa_bootstrap/";
         $first_message = true;
         $paths = ['css', 'images', 'js', 'scss'];
         foreach($paths as $path) {
 
-            if (Folder::exists(JPATH_ROOT . TPL_PATH . $path) && Folder::copy(TPL_PATH . $path, TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
+            if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::copy($TPL_PATH . $path, $TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
                 if ($first_message) {
                     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                     $first_message = false;
                 }
-                echo '<p>', TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . TPL_MEDIA . '</p>';
+                echo '<p>', $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA . '</p>';
             }
          }  
          foreach($paths as $path) {
              
-             if (Folder::exists(JPATH_ROOT . TPL_PATH . $path) && Folder::delete(JPATH_ROOT . TPL_PATH . $path)) {
+             if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
                  if ($first_message) {
                      echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                      $first_message = false;
                  }
-                 echo '<p>', TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
+                 echo '<p>', $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
              }
              
         }
