@@ -46,35 +46,36 @@ return new class () implements InstallerScriptInterface
         $paths = ['css', 'images', 'js', 'scss'];
         foreach($paths as $path) {
 
-            if (Folder::exists(JPATH_ROOT . $path) && Folder::copy(JPATH_ROOT . '/templates/wsa_bootstrap/' . $path, JPATH_ROOT . '/media/templates/site/wsa_bootstrap' . $path)) {
+            if (Folder::exists(JPATH_ROOT . '/templates/wsa_bootstrap/' . $path) && Folder::copy('/templates/wsa_bootstrap/' . $path, '/media/templates/site/wsa_bootstrap' . $path, JPATH_ROOT, true, true)) {
                 if ($first_message) {
-                    echo '<p>' . Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_PREFLIGHT_TEXT') . '</p>';
+                    echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                     $first_message = false;
                 }
-                echo '<p>', $path, Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_MOVED_TEXT') . '</p>';
+                echo '<p>', $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . '</p>';
+            }
          }  
          foreach($paths as $path) {
              
-             if (Folder::exists(JPATH_ROOT . $path) && Folder::delete(JPATH_ROOT . $path)) {
+             if (Folder::exists(JPATH_ROOT . '/templates/wsa_bootstrap/' . $path) && Folder::delete(JPATH_ROOT . '/templates/wsa_bootstrap/' . $path)) {
                  if ($first_message) {
-                     echo '<p>' . Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_PREFLIGHT_TEXT') . '</p>';
+                     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                      $first_message = false;
                  }
-                 echo '<p>', $path, Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_REMOVED_TEXT') . '</p>';
+                 echo '<p>', $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
              }
              
         }
-        $paths = ['/modules/mod_simple_ical_block/mod_simple_ical_block.php'];
-        foreach($paths as $path) {
-            if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
-                if ($first_message) {
-                    echo '<p>' . Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_PREFLIGHT_TEXT') . '</p>';
-                    $first_message = false;
-                }
-                echo '<p>', $path, Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_REMOVED_TEXT') . '</p>';
-            } 
+//         $paths = ['/templates/wsa_bootstrap/template_preview.png','/templates/wsa_bootstrap/template_thumbnail.png'];
+//         foreach($paths as $path) {
+//             if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
+//                 if ($first_message) {
+//                     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+//                     $first_message = false;
+//                 }
+//                 echo '<p>', $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
+//             } 
             
-        }
+//         }
         
         return true;
     }
@@ -114,7 +115,7 @@ return new class () implements InstallerScriptInterface
     public function update(InstallerAdapter $adapter)
     {
         
-        //     echo '<p>' . Text::sprintf('MOD_SIMPLE_ICAL_BLOCK_UPDATE_TEXT') . '</p>';
+        //     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_UPDATE_TEXT') . '</p>';
         
         
         
