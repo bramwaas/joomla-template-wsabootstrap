@@ -82,6 +82,22 @@ return new class () implements InstallerScriptInterface
             
 //         }
         
+        if(version_compare($this->getParam('version'), '0.0.1', 'lt')) {
+            
+            $db = Factory::getDBO();
+            $db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
+            
+//            echo '<p>' .  $db->loadResult() . '</p>';
+            if ($first_message) {
+                echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+                $first_message = false;
+            }
+            echo '<p>' .  $db->query() . '</p>';
+            
+            }
+        }
+        
+        
         return true;
     }
     
