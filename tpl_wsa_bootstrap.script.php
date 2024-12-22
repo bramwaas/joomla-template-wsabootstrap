@@ -83,20 +83,17 @@ return new class () implements InstallerScriptInterface
 //         }
         
             $db = Factory::getDBO();
-            $db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
-            $cnt = $db->loadResult();
-            
-            
-            if ( 0 < $cnt) {
+        $db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
+        $cnt = $db->loadResult();
+
+        if (0 < $cnt) {
             $db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
-            
-//            echo '<p>' .  $db->loadResult() . '</p>';
             if ($first_message) {
                 echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
                 $first_message = false;
             }
             echo '<p>' .  $db->execute() . '</p>';
-            }
+        }
             
         return true;
     }
