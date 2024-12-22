@@ -23,14 +23,14 @@ return new class () implements InstallerScriptInterface
 {
     private string $minimumJoomla = '4.1.0';
     private string $minimumPhp    = '7.4.0';
-    /**
-     * Constructor
-     *
-     * @param   InstallerAdapter  $adapter  The object responsible for running this script
-     */
-    public function __construct(InstallerAdapter $adapter)
-    {
-    }
+//     /**
+//      * Constructor
+//      *
+//      * @param   InstallerAdapter  $adapter  The object responsible for running this script
+//      */
+//     public function __construct(InstallerAdapter $adapter)
+//     {
+//     }
     
     /**
      * Called before any type of action
@@ -40,7 +40,7 @@ return new class () implements InstallerScriptInterface
      *
      * @return  boolean  True on success
      */
-    public function preflight($route, InstallerAdapter $adapter)
+    public function preflight($route, InstallerAdapter $adapter): bool
     {
         $first_message = true;
         $paths = ['css', 'images', 'js', 'scss'];
@@ -88,7 +88,7 @@ return new class () implements InstallerScriptInterface
      *
      * @return  boolean  True on success
      */
-    public function postflight($route, $adapter)
+    public function postflight($route, $adapter): bool
     {
         return true;
     }
@@ -112,7 +112,7 @@ return new class () implements InstallerScriptInterface
      *
      * @return  boolean  True on success
      */
-    public function update(InstallerAdapter $adapter)
+    public function update(InstallerAdapter $adapter): bool
     {
         
         //     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_UPDATE_TEXT') . '</p>';
@@ -127,7 +127,7 @@ return new class () implements InstallerScriptInterface
      *
      * @param   InstallerAdapter  $adapter  The object responsible for running this script
      */
-    public function uninstall(InstallerAdapter $adapter)
+    public function uninstall(InstallerAdapter $adapter): bool
     {
         return true;
     }
