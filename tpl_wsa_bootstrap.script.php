@@ -79,20 +79,20 @@ return new class () implements ServiceProviderInterface {
 
             if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::copy($TPL_PATH . $path, $TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
                 if ($first_message) {
-                    echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                     $first_message = false;
                 }
-                echo '<p>', $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA . '</p>';
+                $this->app->enqueueMessage( $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA);
             }
          }  
          foreach($paths as $path) {
              
              if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
                  if ($first_message) {
-                     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                      $first_message = false;
                  }
-                 echo '<p>', $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
+                 $this->app->enqueueMessage($TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'));
              }
              
         }
@@ -100,7 +100,7 @@ return new class () implements ServiceProviderInterface {
 //         foreach($paths as $path) {
 //             if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
 //                 if ($first_message) {
-//                     echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+//                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
 //                     $first_message = false;
 //                 }
 //                 echo '<p>', $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
@@ -108,17 +108,17 @@ return new class () implements ServiceProviderInterface {
             
 //         }
         
-            $db = Factory::getDBO();
-        $db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
+//            $db = Factory::getDBO();
+        $this->$db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
         $cnt = $db->loadResult();
 
         if (0 < $cnt) {
-            $db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
+            $this->$db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
             if ($first_message) {
-                echo '<p>' . Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') . '</p>';
+                $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                 $first_message = false;
             }
-            echo '<p>' .  $db->execute() . '</p>';
+            $this->app->enqueueMessage( (($this->$db->execute())? '' . $cnt . ' updated': 'update failed'));
         }
             
         return true;
