@@ -11,6 +11,8 @@
  */
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\AdministratorApplication;
+
 use Joomla\CMS\Factory;
 use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Folder;
@@ -19,21 +21,45 @@ use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Installer\InstallerScriptInterface;
 use Joomla\CMS\Language\Text;
 
-return new class () implements InstallerScriptInterface 
-{
+use Joomla\Database\DatabaseInterface;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+
+
+//return new class () implements InstallerScriptInterface 
+//{
+return new class () implements ServiceProviderInterface {
+    public function register(Container $container)
+    {
+        $container->set(
+            InstallerScriptInterface::class,
+            new class (
+                $container->get(AdministratorApplication::class),
+                $container->get(DatabaseInterface::class)
+                ) implements InstallerScriptInterface {
+                    private AdministratorApplication $app;
+                    private DatabaseInterface $db;
+                    
+                    
+
+
+
     private string $minimumJoomla = '4.1.0';
     private string $minimumPhp    = '7.4.0';
     
     
     
-//     /**
-//      * Constructor
-//      *
-//      * @param   InstallerAdapter  $adapter  The object responsible for running this script
-//      */
-//     public function __construct(InstallerAdapter $adapter)
-//     {
-//     }
+    /**
+     * Constructor
+     *
+     * @param   InstallerAdapter  $adapter  The object responsible for running this script
+     * @param   DatabaseInterface $db
+     */
+    public function __construct(AdministratorApplication $app, DatabaseInterface $db)
+    {
+        $this->app = $app;
+        $this->db  = $db;
+    }
     
     /**
      * Called before any type of action
@@ -149,6 +175,8 @@ return new class () implements InstallerScriptInterface
     {
         return true;
     }
+    
 }
-
-?>
+);
+}
+};
