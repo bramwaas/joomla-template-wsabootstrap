@@ -109,11 +109,11 @@ return new class () implements ServiceProviderInterface {
 //         }
         
 //            $db = Factory::getDBO();
-        $this->db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
+        $this->db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable != 1');
         $cnt = $this->db->loadResult();
 
         if (0 < $cnt) {
-            $this->db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
+            $this->db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable != 1');
             if ($first_message) {
                 $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'),'message');
                 $first_message = false;
