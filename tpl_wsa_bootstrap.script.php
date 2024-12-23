@@ -82,7 +82,7 @@ return new class () implements ServiceProviderInterface {
                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                     $first_message = false;
                 }
-                $this->app->enqueueMessage( $TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA);
+                $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA);
             }
          }  
          foreach($paths as $path) {
@@ -92,7 +92,7 @@ return new class () implements ServiceProviderInterface {
                      $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                      $first_message = false;
                  }
-                 $this->app->enqueueMessage($TPL_PATH . $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'));
+                 $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'));
              }
              
         }
@@ -103,22 +103,22 @@ return new class () implements ServiceProviderInterface {
 //                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
 //                     $first_message = false;
 //                 }
-//                 echo '<p>', $path, Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
+//                 echo '<p>', $path. Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
 //             } 
             
 //         }
         
 //            $db = Factory::getDBO();
-        $this->$db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
-        $cnt = $db->loadResult();
+        $this->db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable = 0');
+        $cnt = $this->db->loadResult();
 
         if (0 < $cnt) {
-            $this->$db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
+            $this->db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
             if ($first_message) {
                 $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                 $first_message = false;
             }
-            $this->app->enqueueMessage( (($this->$db->execute())? '' . $cnt . ' updated': 'update failed'));
+            $this->app->enqueueMessage( (($this->db->execute())? '' . $cnt . ' updated': 'update failed'));
         }
             
         return true;
