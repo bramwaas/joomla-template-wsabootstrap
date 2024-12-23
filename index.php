@@ -64,9 +64,9 @@ if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
 $this->addHeadLink(HTMLHelper::_('image', 'faviconws.ico', '', [], true, 1), 'icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
 
 $template   = $app->getTemplate(true);
-echo '<!-- template:'. PHP_EOL;
-print_r($template);
-echo PHP_EOL . '-->' . PHP_EOL;
+// echo '<!-- template:'. PHP_EOL;
+// print_r($template);
+// echo PHP_EOL . '-->' . PHP_EOL;
 
 
 // Detecting Active Variables
