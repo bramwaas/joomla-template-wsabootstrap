@@ -79,20 +79,20 @@ return new class () implements ServiceProviderInterface {
 
             if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::copy($TPL_PATH . $path, $TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
                 if ($first_message) {
-                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT', 'message'));
+                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') ,'message');
                     $first_message = false;
                 }
-                $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT', 'warning') . $TPL_MEDIA);
+                $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA, 'warning');
             }
          }  
          foreach($paths as $path) {
              
              if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
                  if ($first_message) {
-                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT', 'message'));
+                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'), 'message');
                      $first_message = false;
                  }
-                 $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT', 'error'));
+                 $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'), 'error');
              }
              
         }
@@ -115,11 +115,11 @@ return new class () implements ServiceProviderInterface {
         if (0 < $cnt) {
             $this->db->setQuery('UPDATE #__template_styles SET inheritable = 1 WHERE template = "wsa_bootstrap" AND inheritable = 0');
             if ($first_message) {
-                $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT','message'));
+                $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'),'message');
                 $first_message = false;
             }
             if ($this->db->execute()) {
-                $this->app->enqueueMessage('' . $cnt . Text::sprintf('TPL_WSA_BOOTSTRAP_UPD_STYLES', 'notice')); 
+                $this->app->enqueueMessage('' . $cnt . Text::sprintf('TPL_WSA_BOOTSTRAP_UPD_STYLES'), 'notice'); 
             } else {
                 $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_UPD_FAILED'),'warning');
             }
