@@ -118,7 +118,7 @@ return new class () implements ServiceProviderInterface {
                 $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
                 $first_message = false;
             }
-            $this->app->enqueueMessage( (($this->db->execute())? '' . $cnt . ' updated': 'update failed'));
+            $this->app->enqueueMessage( (($this->db->execute())? '' . $cnt . Text::sprintf('TPL_WSA_BOOTSTRAP_UPD_STYLES': Text::sprintf('TPL_WSA_BOOTSTRAP_UPD_FAILED'));
         }
             
         return true;
