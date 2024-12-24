@@ -19,7 +19,7 @@ use Joomla\Database\DatabaseInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 //use Joomla\Filesystem\Exception\FilesystemException;
-//use Joomla\Filesystem\File;
+use Joomla\Filesystem\File;
 use Joomla\Filesystem\Folder;
 
 return new class () implements ServiceProviderInterface {
@@ -81,16 +81,16 @@ return new class () implements ServiceProviderInterface {
                  $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'), 'message');
              }
         }
-//         $paths = ['/templates/wsa_bootstrap/template_preview.png','/templates/wsa_bootstrap/template_thumbnail.png'];
-//         foreach($paths as $path) {
-//             if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
-//                 if ($first_message) {
-//                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'));
-//                     $first_message = false;
-//                 }
-//                 echo '<p>', $path. Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
-//             } 
-//         }
+        $paths = ['/templates/wsa_bootstrap/template_preview.png','/templates/wsa_bootstrap/template_thumbnail.png'];
+        foreach($paths as $path) {
+            if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
+                if ($first_message) {
+                    $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'), 'message');
+                    $first_message = false;
+                }
+                $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'), 'message');
+            } 
+        }
         $this->db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable != 1');
         $cnt = $this->db->loadResult();
         if (0 < $cnt) {
