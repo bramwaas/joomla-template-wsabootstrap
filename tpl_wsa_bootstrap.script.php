@@ -21,6 +21,7 @@ use Joomla\DI\ServiceProviderInterface;
 //use Joomla\Filesystem\Exception\FilesystemException;
 use Joomla\Filesystem\File;
 use Joomla\Filesystem\Folder;
+use Joomla\Filesystem\Path;
 
 return new class () implements ServiceProviderInterface {
     public function register(Container $container)
@@ -62,7 +63,7 @@ return new class () implements ServiceProviderInterface {
         $first_message = true;
         $paths = ['css', 'images', 'js', 'scss'];
         foreach($paths as $path) {
-            if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::copy($TPL_PATH . $path, $TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
+            if (is_dir(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && Folder::copy($TPL_PATH . $path, $TPL_MEDIA . $path, JPATH_ROOT, true, true)) {
                 if ($first_message) {
                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') ,'message');
                     $first_message = false;
@@ -73,7 +74,7 @@ return new class () implements ServiceProviderInterface {
          $path[] = 'less';
          foreach($paths as $path) {
              
-             if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
+             if (is_dir(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
                  if ($first_message) {
                      $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'), 'message');
                      $first_message = false;
@@ -81,9 +82,9 @@ return new class () implements ServiceProviderInterface {
                  $this->app->enqueueMessage($TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT'), 'message');
              }
         }
-        $paths = ['/templates/wsa_bootstrap/template_preview.png','/templates/wsa_bootstrap/template_thumbnail.png'];
+        $paths = ['template_preview.png','template_thumbnail.png'];
         foreach($paths as $path) {
-            if (File::exists(JPATH_ROOT . $path) && File::delete(JPATH_ROOT . $path)) {
+            if (is_file(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && File::delete(JPATH_ROOT . $path)) {
                 if ($first_message) {
                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'), 'message');
                     $first_message = false;
