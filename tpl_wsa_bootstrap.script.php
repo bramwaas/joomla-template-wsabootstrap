@@ -71,7 +71,7 @@ return new class () implements ServiceProviderInterface {
                 $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA, 'message');
             }
          }  
-         $path[] = 'less';
+         $paths[] = 'less';
          foreach($paths as $path) {
              
              if (is_dir(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
