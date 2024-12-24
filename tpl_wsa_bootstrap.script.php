@@ -84,7 +84,7 @@ return new class () implements ServiceProviderInterface {
         }
         $paths = ['template_preview.png','template_thumbnail.png'];
         foreach($paths as $path) {
-            if (is_file(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && File::delete(JPATH_ROOT . $path)) {
+            if (is_file(Path::clean(JPATH_ROOT . $TPL_PATH . $path)) && File::delete(JPATH_ROOT . $TPL_PATH . $path)) {
                 if ($first_message) {
                     $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT'), 'message');
                     $first_message = false;
