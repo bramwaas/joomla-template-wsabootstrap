@@ -7,19 +7,20 @@
  * @author url: https://www.waasdorpsoekhan.nl
  * @author email contact@waasdorpsoekhan.nl
  * @developer AHC Waasdorp
- * 2.3.0 2024-12-22 move assets from template to media remove unused file(s) and maps update inheritable in styles.
+ * 2.3.0 2024-12-24 move assets from template to media remove unused file(s) and maps update inheritable in styles.
  */
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Application\AdministratorApplication;
-//use Joomla\CMS\Filesystem\File;
-use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Installer\InstallerScriptInterface;
 use Joomla\CMS\Language\Text;
 use Joomla\Database\DatabaseInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
+//use Joomla\Filesystem\Exception\FilesystemException;
+//use Joomla\Filesystem\File;
+use Joomla\Filesystem\Folder;
 
 return new class () implements ServiceProviderInterface {
     public function register(Container $container)
@@ -32,7 +33,7 @@ return new class () implements ServiceProviderInterface {
                 ) implements InstallerScriptInterface {
     private AdministratorApplication $app;
     private DatabaseInterface $db;
-    private string $minimumJoomla = '6.1.0';
+    private string $minimumJoomla = '4.1.0';
     private string $minimumPhp    = '7.4.0';
     
     /**
@@ -69,6 +70,7 @@ return new class () implements ServiceProviderInterface {
                 $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA, 'message');
             }
          }  
+         $path[] = 'less';
          foreach($paths as $path) {
              
              if (Folder::exists(JPATH_ROOT . $TPL_PATH . $path) && Folder::delete(JPATH_ROOT . $TPL_PATH . $path)) {
@@ -88,7 +90,6 @@ return new class () implements ServiceProviderInterface {
 //                 }
 //                 echo '<p>', $path. Text::sprintf('TPL_WSA_BOOTSTRAP_REMOVED_TEXT') . '</p>';
 //             } 
-            
 //         }
         $this->db->setQuery('SELECT count(*) FROM #__template_styles WHERE template = "wsa_bootstrap" AND inheritable != 1');
         $cnt = $this->db->loadResult();
