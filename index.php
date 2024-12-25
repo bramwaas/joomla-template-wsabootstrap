@@ -44,7 +44,9 @@
  01-10-2024 2.1.3 make content wider to display 3 columns in rssfoto newsfeed 
  02-10-2024 2.2.0 Remove support for BS (Bootstrap) 3, remove redundant span* classes inherited from grid Bootstrap 2 and used in Joomla 3,
    which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
-   navbarexpand => desktopexpand. removed double loading jquery in BS4           
+   navbarexpand => desktopexpand. removed double loading jquery in BS4  
+ 24-12-2024 2.3.0 new structure in connection with inherit/child templates
+           
  */
 // copied from cassiopeia
 use Joomla\CMS\Factory;
@@ -56,8 +58,12 @@ use Joomla\CMS\Version;
 /** @var Joomla\CMS\Document\HtmlDocument $this */
 $joomlaverge4 = (new Version)->isCompatible('4.0.0');
 $app  = Factory::getApplication();
-$lang = Factory::getLanguage();
+$lang = $app->getLanguage();
 if ($joomlaverge4) {$wa  = $this->getWebAssetManager();}
+// Browsers support SVG favicons
+//$this->addHeadLink(HTMLHelper::_('image', 'faviconws.ico', '', [], true, 1), 'icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
+
+$template   = $app->getTemplate(true);
 
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
@@ -76,28 +82,25 @@ $template = $app->getTemplate(true);
 $templateparams  = $template->params;
 $templatestyleid =  $template->id;
 
-$bg0Color    	= htmlspecialchars($this->params->get('bg0Color'));
-
 $bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
 $bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
 $bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
 $bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
 $bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
 
-$bg1Color    	= htmlspecialchars($this->params->get('bg1Color'));
 $bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
 $bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
 $bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
 $bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
 
-
 $wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
 if ($wsaCssFilename > " ")
 {$path_parts = pathinfo($wsaCssFilename);
-if (path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
+if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};
 }
 else
 { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
+if (empty(HTMLHelper::_('stylesheet', $wsaCssFilename, ['relative' => true,'pathOnly' => true ], [])))  $wsaCssFilename = 'template.css';
 
 $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
@@ -166,8 +169,6 @@ $attribs = array('id'=>'template.css');
 $this->addStyleSheet('templates/' . $this->template . '/css/' . $wsaCssFilename , array('version'=>$wsaTime), $attribs);
 
 // Add JavaScript 
-
-//HTMLHelper::_('jquery.framework');  // to be sure that jquery is loaded before dependent javascripts
 
 switch ($twbs_version) {
 case "5" :  {

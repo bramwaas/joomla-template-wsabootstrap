@@ -25,6 +25,7 @@ v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
 2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
     Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4. Remove extra breakpoints
+2024-12-20 v2.3.0 inheritable    
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -74,6 +75,10 @@ class WsaFormRuleCompiler extends FormRule
 $app = Factory::getApplication();
 $currentpath = realpath(__DIR__ ) ;
 $templatestyleid = $input->get('id');
+//$prr = print_r($input, true); 
+$assetPath = (($input->get('inheritable') || !empty($input->get('parent')))
+    ? JPATH_PUBLIC . '/media/templates/site/' . (empty($input->get('parent'))? $input->get('template'):$input->get('parent'))  
+    : realpath(__DIR__ ) . '/../') ;
 $home = $input->get('home');
 $params = $input->get('params'); // stdobject params are properties.
 
@@ -95,7 +100,7 @@ else
     $scss->setOutputStyle (\ScssPhp\ScssPhp\OutputStyle::EXPANDED);
 $scss->setSourceMap(Compiler::SOURCE_MAP_INLINE);
 }
-$server = new Server($currentpath. '/../scss', null, $scss);
+$server = new Server($assetPath. '/scss', null, $scss);
 
 // einde initialisatie compiler
 
@@ -152,8 +157,6 @@ $brandImage    	= htmlspecialchars($params->brandImage); // url
 $brandSize    	= htmlspecialchars($params->brandSize); // auto  <width> % or px 
 $brandWidth    	= htmlspecialchars($params->brandWidth); // number
 $brandDim       = 'px';
-//if ($brandImage > ' ' and strtolower(substr ( $brandImage , 0 , 7 )) == 'images/' ) 
-// {$brandImage = '/' . $brandImage;}; 
 if ($brandImage > ' ') $brandImage = 'url("' . $brandImage . '")';
 if ($brandImage == '%')  {$brandDim = '%';};
 if ($brandWidth > ' ') {$brandWidth = $brandWidth.$brandDim;} else {$brandWidth = 'auto';};
@@ -170,16 +173,6 @@ $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  }
  else
  { $wsaCssFilename = 'template.min.' . $templatestyleid . '.css';}
-
-// $wsaBreakpointes =  htmlspecialchars($params->wsaBreakpointes);
-// $wsaContaineres = $wsaBreakpointes;
-// $wsaBreakpointxxl = htmlspecialchars($params->wsaBreakpointxxl);
-// $wsaContainerxxl = htmlspecialchars($params->wsaContainerxxl);
-// if (! $wsaContainerxxl) {$wsaContainerxxl = $wsaBreakpointxxl; }
-// $wsaBreakpointxxxl = htmlspecialchars($params->wsaBreakpointxxxl);
-// $wsaContainerxxxl = htmlspecialchars($params->wsaContainerxxxl);
-// if (! $wsaContainerxxxl) {$wsaContainerxxxl = $wsaBreakpointxxxl; }
-  
 if (strpos($menuType, 'navbar-dark') !== false)
 {$navbartheme = 'navbar-dark';}
 else
@@ -189,11 +182,7 @@ if (strpos($menuType, 'bg-dark') !== false)
 else
 {$navbarbg = 'bg-light';}
 
-
-
-
 $bg0Color    	= htmlspecialchars($params->bg0Color); // name or hex
-
 $bg1Image    	= htmlspecialchars($params->bg1Image); 
 //if ($bg1Image > ' ' and strtolower(substr ( $bg1Image , 0 , 7 )) == 'images/' )  {$bg1Image = '/' . $bg1Image;};
 if ($bg1Image > ' ') $bg1Image = 'url("' . $bg1Image . '")'; else $bg1Image = 'none';
@@ -231,7 +220,7 @@ try
 /* opslaan style parameters in style.scss bestanden */
 
 /* variabelen */
-$tv_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.var.scss', "w+");
+$tv_file =fopen($assetPath .'/scss/style' . $templatestyleid . '.var.scss', "w+");
 
 
 /* scss files creeeren en compileren naar .css */
@@ -340,11 +329,14 @@ fclose($tv_file);
 //
 // ============================================================================
 //
-$st_file =fopen($currentpath. '/../scss/style' . $templatestyleid . '.scss', "w+");
+$st_file =fopen($assetPath .'/scss/style' . $templatestyleid . '.scss', "w+");
 /* .scss file dat variabelen gebruikt */
 fwrite($st_file, "// style" . $templatestyleid .  ".scss \n");
-fwrite($st_file, "// generated " . date("c")  . "\n//\n");
-fwrite($st_file, "// css        " . $wsaCssFilename  . "\n//\n");
+fwrite($st_file, "// template style " . $input->get('title') .  " \n");
+fwrite($st_file, "// generated      " . date("c")  . "\n//\n");
+fwrite($st_file, "// css            " . $wsaCssFilename  . "\n//\n");
+
+if (!empty($prr)) fwrite($st_file, "\n/* /\n// debug prr\n" . $prr  . "\n */\n");
 
 // standaard bootstrap variables mixins etc.
  fwrite($st_file, "//\n// standard bootstrap includes v" . $twbs_version . "\n//\n");
@@ -360,85 +352,13 @@ fwrite($st_file, '@import "bs' .  $twbs_version . '/mixins.scss";' . "\n");
 fwrite($st_file, "//\n// optional bootstrap includes and override v" . $twbs_version . "\n//\n");
 //fwrite($st_file, '@import "wsabs4extra.variables.scss";' . "\n");
 
-// if ($wsaBreakpointes > 0 or $wsaBreakpointxxl > 0 or $wsaBreakpointxxxl > 0)
-// {
-// fwrite($st_file,
-// '// Grid breakpoints
-// $grid-breakpoints: (
-// 	xs: 0');	
-// if ($wsaBreakpointes > 0 )
-// {
-// fwrite($st_file,
-// ',
-// 	es: ' . $wsaBreakpointes . 'px');	
-// }	
-// fwrite($st_file,
-// ',
-// 	sm: 576px,
-//     md: 768px,
-//     lg: 992px,
-//     xl: 1200px');
-// if ($wsaBreakpointxxl > 0 )
-// {
-// fwrite($st_file,
-// ',
-// 	xxl: ' . $wsaBreakpointxxl . 'px');	
-// }
-// if ($wsaBreakpointxxxl > 0 )
-// {
-// fwrite($st_file,
-// ',
-// 	xxxl: ' . $wsaBreakpointxxxl . 'px');	
-// }
-// fwrite($st_file,
-// ' ) ;
-// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-// @include _assert-starts-at-zero($grid-breakpoints);
-// // Grid containers
-// $container-max-widths: (
-// ');	
-// if ($wsaBreakpointes > 0 )
-// {
-// fwrite($st_file,
-// '	es: ' . $wsaContaineres . 'px,
-// ');	
-// }
-// fwrite($st_file,
-// '    sm: 540px,
-//     md: 720px,
-//     lg: 960px,
-//     xl: 1140px');
-// if ($wsaBreakpointxxl > 0 )
-// {
-// fwrite($st_file,
-// ',
-// 	xxl: ' . $wsaContainerxxl . 'px');	
-// }
-// if ($wsaBreakpointxxxl > 0 )
-// {
-// fwrite($st_file,
-// ',
-// 	xxxl: ' . $wsaContainerxxxl . 'px');	
-// }
-// fwrite($st_file,
-// ' ) ;
-// @include _assert-ascending($container-max-widths, "$container-max-widths");
-// ');		
-	
-// //fwrite($st_file, '@import "node_modules/bootstrap/scss/reboot";' . "\n");
-// //fwrite($st_file, '@import "node_modules/bootstrap/scss/type";' . "\n");
-// //fwrite($st_file, '@import "node_modules/bootstrap/scss/images";' . "\n");
-// //fwrite($st_file, '@import "node_modules/bootstrap/scss/code";' . "\n");
-// fwrite($st_file, '@import "bs' .  $twbs_version . '/grid.scss";' . "\n");
-
-// }
-
 // standaard bootstrap variables mixins etc. einde
 fwrite($st_file, "//\n// other variables\n//\n");
 fwrite($st_file, '@import "magnificpopup.variables.scss";' . "\n");
 fwrite($st_file, '@import "template_variables.scss";' . "\n");
-fwrite($st_file, '@import "_template_mixins_functions";' . "\n"); 
+fwrite($st_file, '@import "_template_mixins_functions";' . "\n");
 fwrite($st_file, "//\n// css\n//\n");
+
 
 if (! empty($background))
 { 	$pos1 = stripos($background, ".css");
@@ -479,13 +399,13 @@ fclose($st_file);
 /* einde opslaam style parameters in style.scss bestanden */
 /* scss files compileren naar .css */
 
-$server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/' . $wsaCssFilename);
+$server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $assetPath.'/css/' . $wsaCssFilename);
 
 if ($home == 1 ) 
  {/* niet kunnen vinden van templatestyleid bij root (lijkt inmiddels opgelost te zijn)*/ 
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template.min.'  . '.css');
+     $server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $assetPath.'/css/template.min.'  . '.css');
   /* ivm &tmpl=component */
-  $server->compileFile($currentpath. '/../scss/style' . $templatestyleid . '.scss', $currentpath.'/../css/template'  . '.css');
+     $server->compileFile($assetPath .'/scss/style' . $templatestyleid . '.scss', $assetPath.'/css/template'  . '.css');
 }
 
 /* einde les files compileren naar .css */
