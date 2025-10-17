@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die;
 /*
- * @copyright  Copyright (C) 2015 - 2022 AHC Waasdorp. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2025 AHC Waasdorp. All rights reserved.
  * @license    GNU/GPL, see LICENSE
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -46,6 +46,7 @@
    which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
    navbarexpand => desktopexpand. removed double loading jquery in BS4  
  24-12-2024 2.3.0 new structure in connection with inherit/child templates
+ 17-10-2025 2.3.1 solve "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..." messages. 
            
  */
 // copied from cassiopeia
@@ -82,18 +83,18 @@ $template = $app->getTemplate(true);
 $templateparams  = $template->params;
 $templatestyleid =  $template->id;
 
-$bg1Image    	= htmlspecialchars($this->params->get('bg1Image'));
-$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg'));
-$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg'));
-$bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm'));
-$bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm'));
+$bg1Image    	= htmlspecialchars($this->params->get('bg1Image',''));
+$bg1Image_lg    	= htmlspecialchars($this->params->get('bg1Image_lg',''));
+$bg1Breakpoint_lg    	= htmlspecialchars($this->params->get('bg1Breakpoint_lg',''));
+$bg1Image_sm    	= htmlspecialchars($this->params->get('bg1Image_sm',''));
+$bg1Breakpoint_sm    	= htmlspecialchars($this->params->get('bg1Breakpoint_sm',''));
 
-$bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW'));
-$bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH'));
-$bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW'));
-$bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW'));
+$bg1ImageW    	= htmlspecialchars($this->params->get('bg1ImageW',''));
+$bg1ImageH    	= htmlspecialchars($this->params->get('bg1ImageH',''));
+$bg1Image_lgW  	= htmlspecialchars($this->params->get('bg1Image_lgW',''));
+$bg1Image_smW  	= htmlspecialchars($this->params->get('bg1Image_smW',''));
 
-$wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename')));
+$wsaCssFilename = strtolower(htmlspecialchars($this->params->get('wsaCssFilename','')));
 if ($wsaCssFilename > " ")
 {$path_parts = pathinfo($wsaCssFilename);
 if ($path_parts['extension'] <> 'css'){$wsaCssFilename = $wsaCssFilename . '.css';};

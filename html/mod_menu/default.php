@@ -19,6 +19,7 @@
  * 31-1-2022 referentie naar 'default_'.$item->type verbeterd, zodat deze ook bij gebruik in ander template werkt 
  *  entries voor seperator en heading gekopieerd van mod_menu
  * 17-10-22 2.2.0 wsaDesktopExpand replaces breakpoint of wsaNavbarExpand
+ * 17-10-25 2.3.1 solve deprecated messages  "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..."  
  */
 
 \defined('_JEXEC') or die;
@@ -36,15 +37,15 @@ if ($tagId = $params->get('tag_id', ''))
 $app = Factory::getApplication();
 $document = Factory::getDocument();
 $sitename = $app->get('sitename');
-$displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename')); // 1 yes 2 no
-$brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage'));
-$menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType'));
+$displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename','2')); // 1 yes 2 no
+$brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage',''));
+$menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType',''));
 $twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3, 5 or (default) 4 
 if ($twbs_version == 3) {
 	$menuType = str_replace(array("light", "dark", "bg-"), array("default", "inverse", ""), $menuType);	
 }
 $wsaDesktopExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaDesktopExpand', 'xl'));
-$wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext'));
+$wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext',''));
 
 $moduleTag     = $params->get('module_tag', 'div');
 $moduleIdPos          = 'M' . $module->id . $module->position;

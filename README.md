@@ -1,11 +1,11 @@
 # joomla-template-wsabootstrap
 
-=== Basic Template with Bootstrap and Joomla 5 or 4 ===
+=== Basic Template with Bootstrap and Joomla 6, 5 or 4 ===
 Template name: wsa_bootstrap
 Contributors: bramwaas
 Tags: bootstrap
 Requires at least Joomla: 4.1
-Tested up to: 5.2
+Tested up to: 6.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -43,6 +43,7 @@ This project is licensed under the [GNU GPL], version 3 or later.
 2018&thinsp;&ndash;&thinsp;2024 &copy; [Bram Waasdorp](http://www.waasdorpsoekhan.nl).
 
 ## Changelog
+* 2.3.1 solve deprecated messages  "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..."    
 * 2.3.0 new structure in connection with inherit/child templates, inheritable is implemented in joomla 4.1. and higher
 * 2.2.0 improvements rssfoto newsfeeds for J4,J5, remove suport BS3, use latest versions BS4 and BS5, remove some redundant code.
     original scss files of BS4 and BS5 in folders scss bs4 and bs5.
