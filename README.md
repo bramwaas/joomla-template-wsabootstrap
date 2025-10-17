@@ -40,7 +40,7 @@ Adjustments to newsfeed with photos from Fickr.<br>
 ## Copyright and License
 
 This project is licensed under the [GNU GPL], version 3 or later.
-2018&thinsp;&ndash;&thinsp;2024 &copy; [Bram Waasdorp](http://www.waasdorpsoekhan.nl).
+2018&thinsp;&ndash;&thinsp;2025 &copy; [Bram Waasdorp](http://www.waasdorpsoekhan.nl).
 
 ## Changelog
 * 2.3.1 solve deprecated messages  "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..."    
