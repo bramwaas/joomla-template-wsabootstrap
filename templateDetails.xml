@@ -8,8 +8,8 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>2.3.1</version>
-	<creationDate>17-10-2025</creationDate>
+	<version>2.4.0</version>
+	<creationDate>06-11-2025</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -310,6 +310,18 @@
 					label="Menuactivebg color:"
 					description="If not empty overwrite color of active menu background. Default empty  "
 					 />
+				<field name="explanationss"  type="spacer" hr="false"
+					label="WSA_SCROLLSPY_EXPL_LABEL"
+					 />
+				<field name="wsaScrollspyTarget"  type="text" default=""
+					label="WSA_SCROLLSPY_TARGET_LABEL"
+					description="WSA_SCROLLSPY_TARGET_DESCRIPTION"
+                   	/>
+				<field name="wsaScrollspyRootMargin"  type="text" default=""
+					label="WSA_SCROLLSPY_ROOTMARGIN_LABEL"
+					description="WSA_SCROLLSPY_ROOTMARGIN_DESCRIPTION"
+					showon="wsaScrollspyTarget!:"
+                   	/>
 			</fieldset>
 			<fieldset name="Developer" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
 				<field name="compile" type="radio"
