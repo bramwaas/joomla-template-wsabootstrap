@@ -1,7 +1,7 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 15-7-2016
+// BW 07-11-2025
 // CSS Document for Joomla 3 styles 21-9-2015 
 // 20161128 paginaweergave class blog_inline gedefinieerd 
 // om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
@@ -28,6 +28,7 @@
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
 //  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard. rss combined with tag-item-list and blog-list. 
+//  20251107 2.4.0  add scrollspy data attributes and position relative to body 
 /* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -296,6 +297,10 @@ body {
 	padding-top: 10px;
 	padding-bottom: 40px;
 	overflow: auto;
+	[data*spy] {
+		position: relative;
+		padding-top: 0px;
+	}
 }
 
 /* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
@@ -322,7 +327,7 @@ div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list
    margin-bottom: 0px; //$marginArea;
 }
 /* einde aanpassing alleen voor pagination */
-div.mod-languages {
+body div.mod-languages {
 	a {
 		padding: 0;
 	}
