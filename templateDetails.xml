@@ -109,7 +109,7 @@
 					 />	
 				<field name="bg1Width"   class="validate-numeric" type="text" default="80.0"
 					label="BGWIDTH_LABEL"
-					description="Width background image if Size = percentage or pixels"
+					description="BGWIDTH_DESCRIPTION"
 					 />
 				<field name="bg1Pos" type="list" default="%"
 					label="BGPOSITION_LABEL"	
@@ -120,15 +120,15 @@
 				</field>
 				<field name="bg1Top"  class="validate-numeric" type="text" default=""
 					label="BGTOP_LABEL"
-					description="Background image margin top"
+					description="BGTOP_DESCRIPTION"
 					 />	
 				<field name="bg1Left"  class="validate-numeric" type="text" default=""
 					label="BGLEFT_LABEL"
-					description="Background image margin left"
+					description="BGLEFT_DESCRIPTION"
 					 />					 
 				<field name="bg1Color"  type="color" default=""
 					label="BGCOLOR_LABEL"
-					description="Background color name or #RGB, #000000 = black, #FF0000 = red, #00FF00 = green, #0000FF = blue, #FFFFFF = white, default #080810  "
+					description="BGCOLOR_DESCRIPTION"
 					 />
 			</fieldset>
 			<fieldset name="Advanced">
