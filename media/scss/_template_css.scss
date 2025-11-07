@@ -270,8 +270,8 @@ body {
 	padding-top: 10px;
 	padding-bottom: 40px;
 	overflow: auto;
-	[data-bs-spy],
-	[data-spy] {
+	&[data-bs-spy],
+	&[data-spy] {
 		position: relative;
 		padding-top: 0px;
 	}
