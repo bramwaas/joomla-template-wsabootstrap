@@ -265,33 +265,6 @@ order: -1;
 display: $tagItemSearchDisplay; 
 }
 
-//.tag-category ul 
-//{ /* tag-list inline maken in plaats van opsomming */
-//    padding-left: 0;
-//	
-// li 
-//	{
-//    display: inline-block;
-//    position: static;
-//    vertical-align: top;
-//	max-width: 100%;
-//	margin-right: $marginArea;
-//	margin-bottom: $marginArea;
-//	}
-//  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-//	{
-//	background-color: transparent;
-//	max-width: 100%;
-//    width: $asMinWidthItem;
-//	
-//	}	
-//
-// li h3 
-//	{
-//	display: $tagItemTitleDisplay;
-//	}	
-//}
-	
 body { 
 	font-family: Verdana, Arial, sans-serif;
 	padding-top: 10px;
