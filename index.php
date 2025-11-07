@@ -121,6 +121,7 @@ if ('' < $wsaScrollspyTarget) {
             $wsaScrollspyRootMargin  ) . 
           '" data-bs-smooth-scroll="true"';
     }
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" prefix="og: http://ogp.me/ns#  fb: http://www.facebook.com/2008/fbml" >
