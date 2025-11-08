@@ -237,9 +237,7 @@ order: -1;
     padding: 0;
 }
 
-.mod-languages {
-    float: $asModLangFloat;
-}
+
 /* tijdelijk toegvoegd voor bs 3 en bs4  */
 .navbar-collapse.in {
     overflow-y: visible;
@@ -276,6 +274,9 @@ body {
 		padding-top: 0px;
 	}
 	div.mod-languages {
+		float: $asModLangFloat;
+		width: auto;
+		padding: 0;
 		a {
 			padding: 0;
 		}
