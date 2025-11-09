@@ -114,10 +114,10 @@ $wsaScrollspyAttr = '';
 if ('' < $wsaScrollspyTarget) {
     if ('5' > $twbs_version) {
         $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget . 
-        ((empty($wsaScrollspyRootMargin)) ? '' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
     } else {
         $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
-        ((empty($wsaScrollspyRootMargin)) ? '' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ? 
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ? 
         ($wsaScrollspyRootMargin . 'px  0px -30%') : 
         $wsaScrollspyRootMargin  ) ).
             '" data-bs-smooth-scroll="true"';
@@ -255,7 +255,7 @@ $cnt_mods = ($this->countModules('position-1')? ' cntpos1': '')
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_IE9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 </head>
-<body <?php echo ($itemid ? 'id="itemid-' . $itemid . '" ': '')  . ($wsaScrollspyAttr) . ' '; ?>
+<body <?php echo ($itemid ? 'id="itemid-' . $itemid . '" ': '')  . ($wsaScrollspyAttr); ?>
 <?php // added from cassiopeia ?>
 class="site-grid site <?php echo $option
 	. ' view-' . $view
