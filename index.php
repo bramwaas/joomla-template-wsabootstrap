@@ -109,17 +109,18 @@ $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
 $wsaDesktopExpand = htmlspecialchars($this->params->get('wsaDesktopExpand', 'lg'));
 $wsaScrollspyTarget =  htmlspecialchars($this->params->get('wsaScrollspyTarget', ''));
-$wsaScrollspyRootMargin =  htmlspecialchars($this->params->get('wsaScrollspyRootMargin', ''));
+$wsaScrollspyRootMargin = htmlspecialchars($this->params->get('wsaScrollspyRootMargin', ''));
 $wsaScrollspyAttr = '';
 if ('' < $wsaScrollspyTarget) {
-    if ('5' > $twbs_version ) {
-        $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget . '" data-offset="' . (int)$wsaScrollspyRootMargin . '"';
+    if ('5' > $twbs_version) {
+        $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget . 
+        ((empty($wsaScrollspyRootMargin)) ? '' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
     } else {
-        $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget .
-        '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ?
-            ($wsaScrollspyRootMargin .'px  0px ' . (-1 * $wsaScrollspyRootMargin) . 'px') :
-            $wsaScrollspyRootMargin  ) . 
-          '" data-bs-smooth-scroll="true"';
+        $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
+        ((empty($wsaScrollspyRootMargin)) ? '' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ? 
+        ($wsaScrollspyRootMargin . 'px  0px -30%') : 
+        $wsaScrollspyRootMargin  ) ).
+            '" data-bs-smooth-scroll="true"';
     }
 }
 ?>
