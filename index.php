@@ -255,7 +255,7 @@ $cnt_mods = ($this->countModules('position-1')? ' cntpos1': '')
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_IE9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 </head>
-<body <?php echo ($itemid ? 'id="itemid-' . $itemid . '" ': '')  . ($wsaScrollspyAttr); ?>
+<body <?php echo ($itemid ? 'id="itemid-' . $itemid . '" ': '')  . ($wsaScrollspyAttr) . ' '; ?>
 <?php // added from cassiopeia ?>
 class="site-grid site <?php echo $option
 	. ' view-' . $view
