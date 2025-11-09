@@ -113,13 +113,13 @@ $wsaScrollspyRootMargin = htmlspecialchars($this->params->get('wsaScrollspyRootM
 $wsaScrollspyAttr = '';
 if ('' < $wsaScrollspyTarget) {
     if ('5' > $twbs_version) {
-        $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget
-        . ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
+        $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget. 
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
     } else {
-        $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget
-        . ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) 
-        ? ($wsaScrollspyRootMargin . 'px  0px -30%') 
-        : $wsaScrollspyRootMargin  ) )
+        $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ?
+        ($wsaScrollspyRootMargin . 'px  0px -30%') :
+        $wsaScrollspyRootMargin  ) )
 //        . ' data-bs-smooth-scroll="true"'
         ;
     }
