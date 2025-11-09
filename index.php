@@ -118,8 +118,8 @@ if ('' < $wsaScrollspyTarget) {
     } else {
         $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
         ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ?
-        ($wsaScrollspyRootMargin . 'px  0px -30%') :
-        $wsaScrollspyRootMargin  ) )
+        ($wsaScrollspyRootMargin . 'px  0px -30%"') :
+        $wsaScrollspyRootMargin. '"'  ) )
 //        . ' data-bs-smooth-scroll="true"'
         ;
     }
