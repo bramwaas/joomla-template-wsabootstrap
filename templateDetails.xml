@@ -348,7 +348,7 @@
                    	/>
 				<field name="twbs_version" type="radio" class="btn-group" default="5" label="TPL_WSABOOTSTRAP_TWBS_VERSION" description="TPL_WSABOOTSTRAP_TWBS_VERSION_DESC" >
 					<option value="4">4.6.2</option>
-					<option value="5">5.3.3</option>
+					<option value="5">5.3.8</option>
 				</field>
 				<field name="wsaTime" type="calendar" default="NOW" label="WSA_TIME_LABEL" description="WSA_TIME_DESCRIPTION"
 	class="input-medium" required="true" filter="user_utc" format="%Y-%m-%d %H:%M:%S"
