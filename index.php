@@ -116,11 +116,12 @@ if ('' < $wsaScrollspyTarget) {
         $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget. 
         ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
     } else {
+
         $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
         ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ?
-        ($wsaScrollspyRootMargin . 'px  0px -30%"') :
-        $wsaScrollspyRootMargin. '"'  ) )
-//        . ' data-bs-smooth-scroll="true"'
+        ($wsaScrollspyRootMargin . 'px  0px -30%" ') :
+        $wsaScrollspyRootMargin. '" '  ) )
+       . 'data-bs-smooth-scroll="true" '
         ;
     }
 }
