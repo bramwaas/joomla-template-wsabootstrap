@@ -167,8 +167,8 @@ if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
  
- $wsaScrollspyTarget =  htmlspecialchars($params->get('wsaScrollspyTarget', ''));
- $wsaScrollspyRootMargin = htmlspecialchars($params->get('wsaScrollspyRootMargin', ''));
+ $wsaScrollspyTarget =  htmlspecialchars($params->wsaScrollspyTarget);
+ $wsaScrollspyRootMargin = htmlspecialchars($params->wsaScrollspyRootMargin);
  
  
  
