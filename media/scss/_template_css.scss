@@ -297,7 +297,7 @@ body {
 	}
 }
 
-@if variable-exists($wsaScrollspyTarget) {
+@if $wsaScrollspyTarget > '' {
 	#{$wsaScrollspyTarget} .list-group-item,
 	.testwsaScrollspyTarget
 	 {

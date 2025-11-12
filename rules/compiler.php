@@ -167,8 +167,8 @@ if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
  
- $wsaScrollspyTarget =  htmlspecialchars($params->wsaScrollspyTarget);
- $wsaScrollspyRootMargin = htmlspecialchars($params->wsaScrollspyRootMargin);
+ $wsaScrollspyTarget =  empty($wsaScrollspyTarget) ?'' :htmlspecialchars($params->wsaScrollspyTarget);
+ $wsaScrollspyRootMargin = empty($wsaScrollspyRootMargin) ?'' :htmlspecialchars($params->wsaScrollspyRootMargin);
  
  
  
@@ -272,11 +272,8 @@ if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $icons
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
 
-if ($wsaScrollspyTarget > ' '  ) fwrite($tv_file, '$wsaScrollspyTarget: '  . $wsaScrollspyTarget .  ";\n");
-if ($wsaScrollspyRootMargin > ' '  ) fwrite($tv_file, '$wsaScrollspyRootMargin: '  . $wsaScrollspyRootMargin .  ";\n");
-
-
-
+fwrite($tv_file, '$wsaScrollspyTarget: '  . $wsaScrollspyTarget .  ";\n");
+fwrite($tv_file, '$wsaScrollspyRootMargin: '  . $wsaScrollspyRootMargin .  ";\n");
 
 fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");
 fwrite($tv_file, '$navbar-theme:        ' . $navbartheme . ";\n");
