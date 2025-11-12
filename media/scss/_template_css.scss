@@ -298,9 +298,16 @@ body {
 }
 
 @if variable-exists($wsaScrollspyTarget) {
-	#{$wsaScrollspyTarget} .list-group-item {
+	#{$wsaScrollspyTarget} .list-group-item,
+	.testwsaScrollspyTarget
+	 {
       position: static;		
 	}
+} @else {
+	
+	.notexistwsaScrollspyTarget 	.list-group-item {
+	      position: static;
+		  }
 }
 
 /* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
