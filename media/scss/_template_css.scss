@@ -296,19 +296,13 @@ body {
 	}
 	}
 }
-
+/* adaptations .listgroup-item in scrollspy target block because scrollspy in BS5 needs postion static where BS 5 default makes it relative */ 
 @if variable-exists("wsaScrollspyTarget") {
-	#{$wsaScrollspyTarget} .list-group-item,
-	.testwsaScrollspyTarget
+	#{$wsaScrollspyTarget} .list-group-item
 	 {
       position: static;		
 	}
-} @else {
-	
-	.notexistwsaScrollspyTarget 	.list-group-item {
-	      position: static;
-		  }
-}
+} 
 
 /* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
 div.pagination   /* normale bootstrap class is ul.pagination */
