@@ -28,7 +28,7 @@
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
 //  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard. rss combined with tag-item-list and blog-list. 
-//  20251107 2.4.0  add scrollspy data attributes and position relative to body 
+//  20251107 2.4.0  add scrollspy data attributes. Add position relative to body and position: static list-group-item in scrollspy target area 
 /* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -294,6 +294,12 @@ body {
 	.mod-banners {
 		width:auto;
 	}
+	}
+}
+
+@if variable-exists($wsaScrollspyTarget) {
+	#{$wsaScrollspyTarget} .list-group-item {
+      position: static;		
 	}
 }
 
