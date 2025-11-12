@@ -167,8 +167,8 @@ if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
  
- $wsaScrollspyTarget =  htmlspecialchars($this->params->get('wsaScrollspyTarget', ''));
- $wsaScrollspyRootMargin = htmlspecialchars($this->params->get('wsaScrollspyRootMargin', ''));
+ $wsaScrollspyTarget =  htmlspecialchars($params->get('wsaScrollspyTarget', ''));
+ $wsaScrollspyRootMargin = htmlspecialchars($params->get('wsaScrollspyRootMargin', ''));
  
  
  
@@ -271,9 +271,6 @@ if ($iconsPosTop > ' '  ) 	fwrite($tv_file, '$iconsPosTop:       '  . $iconsPosT
 if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $iconsMobileLeft .  "%;\n");
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
-
-$wsaScrollspyTarget =  htmlspecialchars($this->params->get('wsaScrollspyTarget', ''));
-$wsaScrollspyRootMargin = htmlspecialchars($this->params->get('wsaScrollspyRootMargin', ''));
 
 if ($wsaScrollspyTarget > ' '  ) fwrite($tv_file, '$wsaScrollspyTarget: '  . $wsaScrollspyTarget .  ";\n");
 if ($wsaScrollspyRootMargin > ' '  ) fwrite($tv_file, '$wsaScrollspyRootMargin: '  . $wsaScrollspyRootMargin .  ";\n");
