@@ -274,6 +274,7 @@ body {
 		.list-group-item in scrollspy scrolling block because scrollspy in BS5 needs postion static where BS 5 default makes it relative */ 
 		position: relative;
 		padding-top: 0px;
+		overflow-y: scroll;
 		[class^="com-"].list-group .list-group-item
 			 {
 		      position: static;		
@@ -477,4 +478,5 @@ margin-top: -40px;
 }
 
 }
+
 
