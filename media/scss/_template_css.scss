@@ -267,17 +267,18 @@ body {
 	font-family: Verdana, Arial, sans-serif;
 	padding-top: 10px;
 	padding-bottom: 40px;
-	overflow: auto;
 	&[data-bs-spy][data-bs-target],
 	&[data-spy][data-target] {
-		/* adaptations scrollspy body needs position: relative,
-		.list-group-item in scrollspy scrolling block because scrollspy in BS5 needs postion static where BS 5 default makes it relative */ 
+		/* adaptations scrollspy tag BS5 needs position: relative, when body overflow visible else overflow-y scroll
+		 scrolling block (most times .list-group-item) postion static */ 
 		position: relative;
-		padding-top: 0px;
 		overflow: visible;
+		padding-top: 0px;
 		[class^="com-"].list-group .list-group-item
 			 {
-		      position: static;		
+		      position: static;
+			  width: 100%;
+			  min-height: 90vh;		
 			}
 	}
 	.iconssm {
