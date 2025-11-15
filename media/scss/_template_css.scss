@@ -274,11 +274,10 @@ body {
 		position: relative;
 		overflow: visible;
 		padding-top: 0px;
-		[class^="com-"].list-group .list-group-item
+		[class^="com-tags-"].list-group > .list-group-item,
+		.blog-items > .blog-item
 			 {
 		      position: static;
-			  width: 100%;
-			  min-height: 90vh;		
 			}
 	}
 	.iconssm {
