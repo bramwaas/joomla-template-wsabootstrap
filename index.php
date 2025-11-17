@@ -290,7 +290,7 @@ class="site-grid site <?php echo $option
  echo  ' />' . "\n";
 }?>
 
-<div id="wrapper1">
+<!-- div id="wrapper1" -->
 		<!-- Begin Header-->
 		<div class="header">
 			<div class="header-inner container-content<?php echo $hi_mods; ?>">
@@ -377,7 +377,7 @@ class="site-grid site <?php echo $option
 			<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
 	</div>
     <!--End Footer-->
-	</div> <!-- end wrapper1 -->
+	<!--  /div --> <!-- end wrapper1 -->
 	</div><!--End Container-->
 	<?php if ($this->countModules('messageIE')): ?>
 	<!--[if lte IE 7]>
