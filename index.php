@@ -47,7 +47,7 @@
    navbarexpand => desktopexpand. removed double loading jquery in BS4  
  24-12-2024 2.3.0 new structure in connection with inherit/child templates
  17-10-2025 2.3.1 solve "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..." messages.
- 07-11-2025 2.4.0 add scrollspy data attributes to body 
+ 07-11-2025 2.4.0 add scrollspy data attributes to body, upgrade bootstrap 5 to 5.3.8. 
            
  */
 // copied from cassiopeia
