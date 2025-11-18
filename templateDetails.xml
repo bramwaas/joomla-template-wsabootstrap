@@ -186,14 +186,14 @@
 					label="Top margin icons:"
 					description="Position top icons as percentage of height, 0 = top, 100 = (under) bottom"
 					 />
-				<field name="itemPageWidth"  class="validate-numeric" type="text" default=""
-					label="Width single article:"
-					description="Width single article as percentage"
-					 />
 				<field name="itemVideoHeight"  class="validate-numeric" type="text" default="56.25"
 					label="Height % Video:"
 					description="Height / Width percentage iframe (of video)."
 					/>
+				<field name="itemPageWidth"  class="validate-numeric" type="text" default=""
+					label="Width single article:"
+					description="Width single article as percentage"
+					 />
 				<field name="expl-blog-articles"  type="spacer" hr="false"
 					label="WSA_EXPLANATION_BLOG_ARTICLES"
 					 />
