@@ -278,7 +278,6 @@ body {
 		.blog-items > .blog-item
 			 {
 		      position: static;
-			  min-height: 80vh;
 			}
 	}
 	.iconssm {
@@ -302,6 +301,14 @@ body {
 	.mod-banners {
 		width:auto;
 	}
+	[class^="com-tags-"].list-group > .list-group-item,
+	.blog-items > .blog-item
+		 {
+		  @if variable-exists("wsaOnepageArticleMinheight") {
+			min-height: $wsaOnepageArticleMinheight;
+		  }
+		}
+
 	}
 }
 

@@ -169,6 +169,7 @@ if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'i
  
  $wsaScrollspyTarget =  empty($params->wsaScrollspyTarget) ?'' :htmlspecialchars($params->wsaScrollspyTarget);
  $wsaScrollspyRootMargin = empty($params->wsaScrollspyRootMargin) ?'' :htmlspecialchars($params->wsaScrollspyRootMargin);
+ $wsaOnepageArticleMinheight = empty($params->wsaOnepageArticleMinheight) ?'' :htmlspecialchars($params->wsaOnepageArticleMinheight);
  
  
  
@@ -274,6 +275,8 @@ if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:      
 
 if ($wsaScrollspyTarget > ' ') fwrite($tv_file, '$wsaScrollspyTarget: '  . $wsaScrollspyTarget .  ";\n");
 if ($wsaScrollspyRootMargin > ' ') fwrite($tv_file, '$wsaScrollspyRootMargin: '  . $wsaScrollspyRootMargin .  ";\n");
+if ($wsaOnepageArticleMinheight > ' ') fwrite($tv_file, '$wsaOnepageArticleMinheight: '  . $wsaOnepageArticleMinheight .  "vh;\n");
+
 
 fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");
 fwrite($tv_file, '$navbar-theme:        ' . $navbartheme . ";\n");

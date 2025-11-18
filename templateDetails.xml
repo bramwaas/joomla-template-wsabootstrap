@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>2.4.0</version>
-	<creationDate>06-11-2025</creationDate>
+	<creationDate>18-11-2025</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -316,11 +316,17 @@
 				<field name="wsaScrollspyTarget"  type="text" default=""
 					label="WSA_SCROLLSPY_TARGET_LABEL"
 					description="WSA_SCROLLSPY_TARGET_DESCRIPTION"
+					hint="WSA_SCROLLSPY_TARGET_HINT"
                    	/>
 				<field name="wsaScrollspyRootMargin"  type="text" default=""
 					label="WSA_SCROLLSPY_ROOTMARGIN_LABEL"
 					description="WSA_SCROLLSPY_ROOTMARGIN_DESCRIPTION"
+					hint="WSA_SCROLLSPY_ROOTMARGIN_HINT"
 					showon="wsaScrollspyTarget!:"
+                   	/>
+				<field name="wsaOnepageArticleMinheight"  type="text" default=""
+					label="WSA_ONEPAGE_ARTICLE_MINHEIGHT_LABEL"
+					description="WSA_ONEPAGE_ARTICLE_MINHEIGHT_DESCRIPTION"
                    	/>
 			</fieldset>
 			<fieldset name="Developer" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
