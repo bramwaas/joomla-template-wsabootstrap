@@ -281,34 +281,32 @@ body {
 			}
 	}
 	.iconssm {
-	.mod-languages {
-		float: $asModLangFloat;
-		width: auto;
-		padding: 0;
-		a {
+		.mod-languages {
+			float: $asModLangFloat;
+			width: auto;
 			padding: 0;
-		}
-		ul {
-			li {
-	    		margin-left: 5px;
-	    		margin-right: 5px;
+			a {
+				padding: 0;
 			}
-			li.lang-active {
+			ul {
+				li {
+	    			margin-left: 5px;
+	    			margin-right: 5px;
+				}
+				li.lang-active {
 	    		background-color:transparent;
+				}
 			}
 		}
-	}
-	.mod-banners {
-		width:auto;
-	}
-	[class^="com-tags-"].list-group > .list-group-item,
-	.blog-items > .blog-item
-		 {
-		  @if variable-exists("wsaOnepageArticleMinheight") {
-			min-height: $wsaOnepageArticleMinheight;
-		  }
+		.mod-banners {
+			width:auto;
 		}
-
+	}
+	@if variable-exists("wsaOnepageArticleMinheight") {
+		[class^="com-tags-"].list-group > .list-group-item,
+		.blog-items > .blog-item {
+			min-height: $wsaOnepageArticleMinheight;
+		}
 	}
 }
 

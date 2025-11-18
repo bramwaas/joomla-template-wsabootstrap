@@ -133,7 +133,7 @@
 			</fieldset>
 			<fieldset name="Advanced">
 				<field name="explanation3"  type="spacer" hr="false"
-					label="Other lay-out variables. &lt;br /&gt;"
+					label="WSA_EXPLANATION3"
 					 />
 				<field name="wsaDesktopExpand" type="list" default="lg"
 					label="WSA_DESKTOPEXPAND_LABEL"	
@@ -194,8 +194,27 @@
 					label="Height % Video:"
 					description="Height / Width percentage iframe (of video)."
 					/>
+				<field name="expl-blog-articles"  type="spacer" hr="false"
+					label="WSA_EXPLANATION_BLOG_ARTICLES"
+					 />
+				<field name="wsaOnepageArticleMinheight"  class="validate-numeric" type="text" default=""
+					label="WSA_ONEPAGE_ARTICLE_MINHEIGHT_LABEL"
+					description="WSA_ONEPAGE_ARTICLE_MINHEIGHT_DESCRIPTION"
+                   	/>
+				<field name="itemHeight"  class="validate-numeric" type="text" default=""
+					label="Row height:"
+					description="Row height articles."
+					/>
+				<field name="itemWidth"  class="validate-numeric" type="text" default=""
+					label="Article width:"
+					description="Width article."
+					/>
+				<field name="itemMargin"  class="validate-numeric" type="text" default=""
+					label="Margin:"
+					description="Margin between articles."
+					/>
 				<field name="expl-blog-lead"  type="spacer" hr="false"
-					label="Dimensions blog leading articles."
+					label="WSA_EXPLANATION_BLOG_LEAD"
 					 />
 				<field name="itemLeadHeight"  class="validate-numeric" type="text" default=""
 					label="Row height leading:"
@@ -208,21 +227,6 @@
 				<field name="itemLeadMargin"  class="validate-numeric" type="text" default=""
 					label="Margin leading:"
 					description="Margin leading articles."
-					/>
-				<field name="expl-blog-articles"  type="spacer" hr="false"
-					label="Dimensions blog other articles."
-					 />
-				<field name="itemHeight"  class="validate-numeric" type="text" default=""
-					label="Row height:"
-					description="Row height articles."
-					/>
-				<field name="itemWidth"  class="validate-numeric" type="text" default=""
-					label="Article width:"
-					description="Width article."
-					/>
-				<field name="itemMargin"  class="validate-numeric" type="text" default=""
-					label="Margin:"
-					description="Margin between articles."
 					/>
 			</fieldset>
 			<fieldset name="Navbar">
@@ -323,10 +327,6 @@
 					description="WSA_SCROLLSPY_ROOTMARGIN_DESCRIPTION"
 					hint="WSA_SCROLLSPY_ROOTMARGIN_HINT"
 					showon="wsaScrollspyTarget!:"
-                   	/>
-				<field name="wsaOnepageArticleMinheight"  type="text" default=""
-					label="WSA_ONEPAGE_ARTICLE_MINHEIGHT_LABEL"
-					description="WSA_ONEPAGE_ARTICLE_MINHEIGHT_DESCRIPTION"
                    	/>
 			</fieldset>
 			<fieldset name="Developer" addfieldpath="/templates/wsa_bootstrap/fields" addrulepath="/templates/wsa_bootstrap/rules">
