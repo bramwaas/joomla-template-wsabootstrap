@@ -10,7 +10,7 @@
  * 23-10-2021 aanpassingen tbv J4 overgenomen van wsa_onepage template.
  * 25-12-2021 eerste aanpassingen BS5 (data- => data-bs- )
  * 28-12-2021  ook hier nav-link toegevoegd bij class voor <a> ivm BS5
- * 21-11-2025 compared with joomla 6.1 original and made some smaal changes
+ * 21-11-2025 compared with joomla 6.1 original and made some small changes
  */
 
 defined('_JEXEC') or die;
@@ -76,6 +76,20 @@ else {
 }
 
 $attributes['class'] = ($attributes['class'] > ' ') ? str_ireplace('class="','class="nav-link ',$attributes['class']) : 'class="nav-link" ';
+
+if ($twbs_version >= '5') {
+    if (in_array($item->id, $path)) {
+        $attributes['class'] .= ' active';
+    } elseif ($item->type === 'alias') {
+        $aliasToId = $itemParams->get('aliasoptions');
+        if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
+            $attributes['class'] .= ' active';
+        } elseif (in_array($aliasToId, $path)) {
+            $attributes['class'] .= ' alias-parent-active';
+        }
+    }
+}
+
 
 $flink = $item->flink;
 $flink = OutputFilter::ampReplace(htmlspecialchars($flink));

@@ -20,7 +20,7 @@
  *  entries voor seperator en heading gekopieerd van mod_menu
  * 17-10-22 2.2.0 wsaDesktopExpand replaces breakpoint of wsaNavbarExpand
  * 17-10-25 2.3.1 solve deprecated messages  "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..." 
- * 22-11-25 2.4.0 compared with Joomla V6 original 
+ * 22-11-25 2.4.0 compared with Joomla V6 original. and more adaptations to BS5 (active from li to a tag, mr-auto => me-auto ) 
  */
 
 \defined('_JEXEC') or die;
@@ -40,7 +40,7 @@ $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename','2')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage',''));
 $menuType = htmlspecialchars($app->getTemplate(true)->params->get('menuType',''));
-$twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '4')); // bootstrap version 3, 5 or (default) 4 
+$twbs_version = htmlspecialchars($app->getTemplate(true)->params->get('twbs_version', '5')); // bootstrap version 5 (default) or  4 
 $wsaDesktopExpand = htmlspecialchars($app->getTemplate(true)->params->get('wsaDesktopExpand', 'xl'));
 $wsaNavtext = ($app->getTemplate(true)->params->get('wsaNavtext',''));
 
@@ -107,7 +107,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 				   <div id="navbar-<?php echo $moduleIdPos; ?>" class="collapse navbar-collapse">
 <!-- oude module -->
 
-<ul <?php echo $id; ?> class="mod-menu mod-list nav navbar-nav mr-auto menu<?php echo $class_sfx;?>">
+<ul <?php echo $id; ?> class="mod-menu mod-list nav navbar-nav me-auto mr-auto menu<?php echo $class_sfx;?>">
 <?php foreach ($list as $i => &$item) 
 {
 	$itemParams = $item->getParams();
@@ -117,20 +117,20 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 	    $class .= ' default';
 	}
 	if ($item->id == $active_id  || ($item->type === 'alias' && $itemParams->get('aliasoptions') == $active_id)) {
-		$class .= ' current';
-	}
+        $class .= ' current';
+    }
 
-	if (in_array($item->id, $path)) {
-		$class .= ' active';
-	}
-	elseif ($item->type === 'alias') {
-		$aliasToId = $itemParams->get('aliasoptions');
-
-		if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
-			$class .= ' active';
-		} elseif (in_array($aliasToId, $path)) {
-			$class .= ' alias-parent-active';
-		}
+    if ($twbs_version < '5') {
+        if (in_array($item->id, $path)) {
+            $class .= ' active';
+        } elseif ($item->type === 'alias') {
+          $aliasToId = $itemParams->get('aliasoptions');
+          if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
+            $class .= ' active';
+          } elseif (in_array($aliasToId, $path)) {
+    		$class .= ' alias-parent-active';
+		  }
+	   }
 	}
 
 	if ($item->type === 'separator') {
