@@ -17,9 +17,8 @@
 
 defined('_JEXEC') or die;
 
-$attributes = ['title'=>'','class'=>'','rel'=>''];
+$attributes = ['title'=>'','class'=>'', 'active'=>'', 'rel'=>''];
 
-// Note. It is important to remove spaces between elements.
 if (!empty($item->anchor_title)) {
     $attributes['title'] = $item->anchor_title;
 }
@@ -32,6 +31,19 @@ if (!empty($item->anchor_rel)) {
     $attributes['rel'] = $item->anchor_rel;
 }
 
+if ($twbs_version >= '5') {
+    if (in_array($item->id, $path)) {
+        $attributes['active'] = 'active ';
+    } elseif ($item->type === 'alias') {
+        $aliasToId = $itemParams->get('aliasoptions');
+        if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
+            $attributes['active'] = 'active ';
+        } elseif (in_array($aliasToId, $path)) {
+            $attributes['active'] = 'alias-parent-active ';
+        }
+    }
+}
+
 if ($item->menu_image)
 {
     $item->getParams()->get('menu_text', 1) ?
@@ -39,7 +51,7 @@ if ($item->menu_image)
     $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
     
     if ($item->deeper) {
-        $attributes['class'] = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="'. $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
 }
@@ -47,7 +59,7 @@ if ($item->menu_image)
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
     if ($item->level < 2) {
-        $attributes['class'] = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
         $item->flink = '#data-item-' . $moduleIdPos . $item->id ;
     }
     else { // level >= 2
@@ -60,25 +72,13 @@ else {
 }
 
 $attributes['class'] = ($attributes['class'] > ' ') ? str_ireplace('class="','class="nav-link ',$attributes['class']) : 'class="nav-link" ';
-if ($twbs_version >= '5') {
-    if (in_array($item->id, $path)) {
-        $attributes['class'] .= ' active';
-    } elseif ($item->type === 'alias') {
-        $aliasToId = $itemParams->get('aliasoptions');
-        if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
-            $attributes['class'] .= ' active';
-        } elseif (in_array($aliasToId, $path)) {
-            $attributes['class'] .= ' alias-parent-active';
-        }
-    }
-}
 
 
 
 switch ($item->browserNav) :
 default:
 case 0:
-    ?><a id="dropdownMenuLink-<?php echo $moduleIdPos . $item->id . '" ' . $attributes['class']; ?>href="<?php echo $item->flink; ?>"  <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
+    ?><a id="dropdownMenuLink-<?php echo $moduleIdPos . $item->id . '" ' . $attributes['class']; ?> href="<?php echo $item->flink; ?>"  <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
     break;
 
 	case 1:

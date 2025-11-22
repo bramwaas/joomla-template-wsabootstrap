@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Filter\OutputFilter;
 
-$attributes = ['title'=>'','class'=>'','rel'=>''];
+$attributes = ['title'=>'','class'=>'', 'active'=>'', 'rel'=>''];
 
 if (!empty($item->anchor_title)) {
     $attributes['title'] = $item->anchor_title;
@@ -31,6 +31,21 @@ if (!empty($item->anchor_css)) {
 if (!empty($item->anchor_rel)) {
     $attributes['rel'] = $item->anchor_rel;
 }
+
+if ($twbs_version >= '5') {
+    if (in_array($item->id, $path)) {
+        $attributes['active'] = 'active ';
+    } elseif ($item->type === 'alias') {
+        $aliasToId = $itemParams->get('aliasoptions');
+        if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
+            $attributes['active'] = 'active ';
+        } elseif (in_array($aliasToId, $path)) {
+            $attributes['active'] = 'alias-parent-active ';
+        }
+    }
+}
+
+
 
 $linktype = $item->title;
 
@@ -56,7 +71,7 @@ if ($item->menu_icon) {
 
     $linktype .= '<span class="image-title' . ($itemParams->get('menu_text', 1) ? '' : ' visually-hidden') . '">' . $item->title . '</span>';
     if ($item->deeper) {
-        $attributes['class'] = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
     
@@ -64,7 +79,7 @@ if ($item->menu_icon) {
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
     if ($item->level < 2) {
-        $attributes['class'] = 'class="'.$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
     else {
@@ -76,19 +91,6 @@ else {
 }
 
 $attributes['class'] = ($attributes['class'] > ' ') ? str_ireplace('class="','class="nav-link ',$attributes['class']) : 'class="nav-link" ';
-
-if ($twbs_version >= '5') {
-    if (in_array($item->id, $path)) {
-        $attributes['class'] .= ' active';
-    } elseif ($item->type === 'alias') {
-        $aliasToId = $itemParams->get('aliasoptions');
-        if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
-            $attributes['class'] .= ' active';
-        } elseif (in_array($aliasToId, $path)) {
-            $attributes['class'] .= ' alias-parent-active';
-        }
-    }
-}
 
 
 $flink = $item->flink;
