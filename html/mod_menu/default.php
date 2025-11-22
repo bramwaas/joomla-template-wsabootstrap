@@ -83,7 +83,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 
 <!-- Begin Navbar-->
 <?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
-		    	<<?php echo $moduleTag; ?>id="navbar-<?php echo $id; ?>" class="navbar navbar-expand-<?php  echo $wsaDesktopExpand .  ' ' . $menuType; ?> " role="navigation">
+		    	<<?php echo $moduleTag; ?> class="navbar navbar-expand-<?php  echo $wsaDesktopExpand .  ' ' . $menuType; ?> " role="navigation">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
