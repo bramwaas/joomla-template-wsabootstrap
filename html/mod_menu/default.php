@@ -85,7 +85,7 @@ if (!function_exists('wsa_load')) {
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
 					<?php if ($brandImage > " ") : ?>
-	         	   	<a class="navbar-brand brand" href="#">
+	         	   	<a class="navbar-brand brand" href="<?php echo Uri::root()?>">
 					  <img id="img_brandImage<?php echo $moduleIdPos; ?>" src="<?php echo $brandImage; ?>" alt="Brand image <?php echo $sitename ?>" />
 					</a>
 					<?php endif; ?>
@@ -199,4 +199,5 @@ if (!function_exists('wsa_load')) {
 				<?php endif; ?>
 	          	   </div>
 		    	</<?php echo $moduleTag; ?>>
+
 <!--End navbar-->
