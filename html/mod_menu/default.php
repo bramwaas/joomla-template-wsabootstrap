@@ -28,6 +28,8 @@
 use Joomla\CMS\Factory;   // this is the same as use Joomla\CMS\Factory as Factory
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 
 $tagId = $params->get('tag_id', '') ?: 'mod-menu' . $module->id;
 $id = ' id="' . htmlspecialchars($tagId, ENT_QUOTES, 'UTF-8') . '"';
@@ -35,7 +37,7 @@ $id = ' id="' . htmlspecialchars($tagId, ENT_QUOTES, 'UTF-8') . '"';
 
 // Note. It is important to remove spaces between elements.
 $app = Factory::getApplication();
-$document = Factory::getDocument();
+$document = $app->getDocument();
 $sitename = $app->get('sitename');
 $displaySitename = htmlspecialchars($app->getTemplate(true)->params->get('displaySitename','2')); // 1 yes 2 no
 $brandImage = htmlspecialchars($app->getTemplate(true)->params->get('brandImage',''));
@@ -58,31 +60,27 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 	 *
 	 * copied from plugins\content\loadmodule 
 	 */
+if (!function_exists('wsa_load')) {
 	 function wsa_load($position, $style = 'none')
 	{
-		
 		//self::$modules[$position] = '';
-		$document = Factory::getDocument();
+	    $document = Factory::getApplication()->getDocument();
 		$renderer = $document->loadRenderer('module');
 		$modules  = ModuleHelper::getModules($position);
 		$params   = array('style' => $style);
 		//ob_start();
-
 		foreach ($modules as $module)
 		{
 			echo $renderer->render($module, $params);
 		}
-
 		// self::$modules[$position] = ob_get_clean();
-
 		return $modules[$position];
-		
 	}
+    }
 ?>
 
 
 <!-- Begin Navbar-->
-<?php // div in plaats van nav gebruikt oa IE8 nav nog niet kent ?>
 		    	<<?php echo $moduleTag; ?> class="navbar navbar-expand-<?php  echo $wsaDesktopExpand .  ' ' . $menuType; ?> " role="navigation">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<!-- navbar-header -->
@@ -92,12 +90,12 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
 					</a>
 					<?php endif; ?>
 					<?php if(  $document->countModules('navbar-brand'))    : ?>
-					<span id="navbar-brand-mod<?php echo $moduleIdPos; ?>" class="navbar-text navbar-brand" >
-					<?php wsa_load('navbar-brand'); ?>
+						<span id="navbar-brand-mod<?php echo $moduleIdPos; ?>" class="navbar-text navbar-brand" >
+						<?php wsa_load('navbar-brand'); ?>
 					</span> <!-- end navbar-brand -->
 					<?php endif; ?>
 					<?php if ($displaySitename == "1") : ?>
-					<a class="navbar-brand brand" href="#"><?php echo $sitename ?></a>
+						<a class="navbar-brand brand" href="<?php echo Uri::root()?>" ><?php echo $sitename ?></a>
 					<?php endif; ?>
 					<?php echo '<!-- $twbs_version=' . $twbs_version . ". -->\n"; ?>
 				    <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"  data-target="#navbar-<?php echo $moduleIdPos; ?>" data-bs-target="#navbar-<?php echo $moduleIdPos; ?>" aria-controls="#navbar-<?php echo $moduleIdPos; ?>" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +118,7 @@ $moduleIdPos          = 'M' . $module->id . $module->position;
         $class .= ' current';
     }
 
-    if ($twbs_version < '5') {
+    if ($twbs_version < '5' && (empty($item->flink) || substr($item->flink,0,1) != '#' )) {
         if (in_array($item->id, $path)) {
             $class .= ' active';
         } elseif ($item->type === 'alias') {
