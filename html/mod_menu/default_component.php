@@ -17,7 +17,7 @@
 
 defined('_JEXEC') or die;
 
-$attributes = ['title'=>'','class'=>'', 'active'=>'', 'rel'=>''];
+$attributes = ['title'=>'','class'=>'', 'active'=>'', 'rel'=>'', 'data'=>''];
 
 if (!empty($item->anchor_title)) {
     $attributes['title'] = $item->anchor_title;
@@ -35,7 +35,7 @@ if ($twbs_version >= '5') {
     if (in_array($item->id, $path)) {
         $attributes['active'] = 'active ';
     } elseif ($item->type === 'alias') {
-        $aliasToId = $itemParams->get('aliasoptions');
+        $aliasToId = $itemParams->get('aliasoptions ');
         if (count($path) > 0 && $aliasToId == $path[count($path) - 1]) {
             $attributes['active'] = 'active ';
         } elseif (in_array($aliasToId, $path)) {
@@ -51,7 +51,8 @@ if ($item->menu_image)
     $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->title.'" />';
     
     if ($item->deeper) {
-        $attributes['class'] = 'class="'. $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="'. $attributes['active'] .$item->anchor_css.' dropdown-toggle"';
+        $attributes['data'] = ' data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#';
     }
 }
@@ -59,7 +60,8 @@ if ($item->menu_image)
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
     if ($item->level < 2) {
-        $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" ';
+        $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle"';
+        $attributes['data'] = ' data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#data-item-' . $moduleIdPos . $item->id ;
     }
     else { // level >= 2
@@ -83,13 +85,13 @@ case 0:
 
 	case 1:
 		// _blank
-?><a <?php echo $attributes['class']; ?>href="<?php echo $item->flink; ?>" target="_blank" <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
+		?><a <?php echo $attributes['class'] . $attributes['data']; ?>href="<?php echo $item->flink; ?>" target="_blank" <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
 		break;
 
 	case 2:
 	// window.open
 
-?><a <?php echo $attributes['class']; ?>href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a>
+	    ?><a <?php echo $attributes['class'] . $attributes['data']; ?>href="<?php echo $item->flink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a>
 <?php
 		break;
 
