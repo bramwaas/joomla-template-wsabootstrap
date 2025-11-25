@@ -9,7 +9,7 @@
   </compatibility>
 	<name>wsa_bootstrap</name>
 	<version>2.4.0</version>
-	<creationDate>18-11-2025</creationDate>
+	<creationDate>25-11-2025</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
@@ -363,8 +363,13 @@
 	
 			</fieldset>
 			<fieldset name="Documentation" >
-				<field name="explanation4"  type="spacer" hr="false"
-					label="WSA-DOCUMENTATION"
+				<field name="wsaDocumentation-1"  type="spacer" hr="false"
+				    label="WSA-DOCOMENTATION-1-LABEL"
+					description="WSA-DOCUMENTATION-1"
+					/>
+				<field name="wsaDocumentation-2"  type="spacer" hr="false"
+				    label="WSA-DOCOMENTATION-2-LABEL"
+					description="WSA-DOCUMENTATION-2"
  					 />
 			</fieldset>
 		</fields>
