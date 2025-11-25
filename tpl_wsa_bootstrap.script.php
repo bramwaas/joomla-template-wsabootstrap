@@ -73,13 +73,13 @@ return new class () implements ServiceProviderInterface {
             }
          }  
          $path = 'images/scss';
-         $this->app->enqueueMessage('Creaar: ' . (Path::clean(JPATH_ROOT . $TPL_PATH . $path))  ,'message');
-         if ((! is_dir(Path::clean(JPATH_ROOT . $TPL_PATH . $path))) && (mkdir(Path::clean(JPATH_ROOT . $TPL_PATH . $path)))) {
+         $this->app->enqueueMessage('Creaar: ' . (Path::clean(JPATH_ROOT . $path))  ,'message');
+         if ((! is_dir(Path::clean(JPATH_ROOT . $path))) && (mkdir(Path::clean(JPATH_ROOT . $path)))) {
              if ($first_message) {
                  $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') ,'message');
                  $first_message = false;
              }
-             $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_CREATED_TEXT')  , 'message');
+             $this->app->enqueueMessage( $path . Text::sprintf('TPL_WSA_BOOTSTRAP_CREATED_TEXT')  , 'message');
          }
          $paths[] = 'less';
          foreach($paths as $path) {
