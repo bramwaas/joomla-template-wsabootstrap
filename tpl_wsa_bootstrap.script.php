@@ -73,7 +73,6 @@ return new class () implements ServiceProviderInterface {
             }
          }  
          $path = 'images/scss';
-         $this->app->enqueueMessage('Creaar: ' . (Path::clean(JPATH_ROOT . $path))  ,'message');
          if ((! is_dir(Path::clean(JPATH_ROOT . $path))) && (mkdir(Path::clean(JPATH_ROOT . $path)))) {
              if ($first_message) {
                  $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') ,'message');
