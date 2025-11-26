@@ -174,7 +174,7 @@ if (!function_exists('wsa_load')) {
 
 	// The next item is deeper.
 	if ($item->deeper){
-	    echo '<ul id=data-item-' . $moduleIdPos . $item->id . ' class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu" . aria-labelledby="dropdownMenuLink-' . $moduleIdPos . $item->id . '">';
+	    echo '<ul id=data-item-' . $moduleIdPos . $item->id . ' class="nav-child unstyled mod-menu__sub list-unstyled small dropdown-menu"  aria-labelledby="dropdownMenuLink-' . $moduleIdPos . $item->id . '">';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
