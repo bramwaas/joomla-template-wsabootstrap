@@ -80,7 +80,7 @@ $attributes['class'] = ($attributes['class'] > ' ') ? str_ireplace('class="','cl
 switch ($item->browserNav) :
 default:
 case 0:
-    ?><a id="dropdownMenuLink-<?php echo $moduleIdPos . $item->id . '" ' . $attributes['class']; ?> href="<?php echo $item->flink; ?>"  <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
+    ?><a id="dropdownMenuLink-<?php echo $moduleIdPos . $item->id . '" ' . $attributes['class'] . $attributes['data']; ?> href="<?php echo $item->flink; ?>"  <?php echo $attributes['title']; ?>><span><?php echo $linktype; ?></span></a><?php
     break;
 
 	case 1:

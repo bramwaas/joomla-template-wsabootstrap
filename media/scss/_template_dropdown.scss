@@ -225,20 +225,17 @@ When scaled down to less than 768px, the menu collapses and works just like the 
 I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
 (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
 */
-/* all screnwidths Activates hovering the main items to show the sub items */
+/* all screnwidths Activates hovering the main items to show the sub items (in stead of .nav-pills or .nav-tabs .nav.mod-menu for all types of menu */
        .nav-pills > li > a,
        .dropdown-menu {
           margin: 0;
        }
-	   .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu,
-	   .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
+	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
 	      display: none;
 	   }
      
-       .nav-pills > li.dropdown:hover ul.dropdown-menu,
-       .nav-tabs > li.dropdown:hover ul.dropdown-menu,
-	   .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu,
-	   .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
+	   .nav.mod-menu > li.dropdown:hover ul.dropdown-menu,
+	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
           display: block;
        }
 
