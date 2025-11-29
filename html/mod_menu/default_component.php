@@ -59,7 +59,7 @@ if ($item->menu_image)
 
 elseif ($item->deeper) {
     $linktype = $item->title. '<b class="caret"></b>' ;
-    if ($item->level < 2) {
+    if ($item->level < 200) {
         $attributes['class'] = 'class="' . $attributes['active'] .$item->anchor_css.' dropdown-toggle"';
         $attributes['data'] = ' data-toggle="dropdown"  data-bs-toggle="dropdown" ';
         $item->flink = '#data-item-' . $moduleIdPos . $item->id ;
