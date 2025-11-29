@@ -233,7 +233,8 @@ I only made one small addition to the standard HTML â€“ I added a container
 	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
 	      display: none;
 	   }
-     
+	   .nav-mod-menu .open .dropdown-toggle,
+	   .nav-mod-menu  .dropdown-toggle:has(.open),
 	   .nav.mod-menu > li.dropdown:hover ul.dropdown-menu,
 	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
           display: block;
@@ -280,6 +281,8 @@ I only made one small addition to the standard HTML â€“ I added a container
       position: static;
       float: none;
    }
+.nav-child.dropdown-submenu:has(.open),   
+.nav-child.dropdown-menu:has(.open),   
 .open .nav-child.dropdown-menu {
       display: block;
       background-color: transparent;
@@ -312,6 +315,7 @@ I only made one small addition to the standard HTML â€“ I added a container
    }
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
+.nav-mod-menu .open .dropdown-toggle,
 .nav > li.dropdown.open > a.active:hover,
 .nav > li.dropdown.open > a.active:focus {
       border: none;
