@@ -150,7 +150,7 @@ color: #333;
 // uit nav.less
 .nav {
   > li {
-	&:has( ,dropdown-menu.show){
+	&:has( .dropdown-menu.show){
 		background-color: $nav-tabs-link-active-bg; // was $nav-link-hover-bg;
 	}
     > a {
