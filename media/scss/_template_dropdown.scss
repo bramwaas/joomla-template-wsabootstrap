@@ -230,11 +230,12 @@ I only made one small addition to the standard HTML â€“ I added a container
        .dropdown-menu {
           margin: 0;
        }
-	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
+	   .nav.mod-menu > .dropdown .dropdown-menu .dropdown-submenu .dropdown-menu {
 	      display: none;
 	   }
-	   .nav-mod-menu  .dropdown-menu.show,
-	   .nav-mod-menu  .dropdown-menu:has(.dropdown-menu.show),
+	   .nav-mod-menu  .dropdown	 .dropdown-menu.show,
+	   .nav-mod-menu  .dropdown	 .dropdown-menu .dropdown-submenu .dropdown-menu.show,
+	   .nav-mod-menu  .dropdown  .dropdown-menu:has(.dropdown-menu.show),
 	   .nav.mod-menu > li.dropdown:hover ul.dropdown-menu,
 	   .nav.mod-menu > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
           display: block;
