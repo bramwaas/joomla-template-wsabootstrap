@@ -8,12 +8,12 @@
     </include>
   </compatibility>
 	<name>wsa_bootstrap</name>
-	<version>2.4.0</version>
-	<creationDate>25-11-2025</creationDate>
+	<version>2.4.1</version>
+	<creationDate>12-01-2026</creationDate>
 	<author>AHC Waasdorp</author>
 	<authorEmail>info@waasdorpsoekhan.nl</authorEmail>
 	<authorUrl>http://www.waasdorpsoekhan.nl</authorUrl>
-	<copyright>AHC Waasdorp, Amsterdam 2015 - 2024</copyright>
+	<copyright>AHC Waasdorp, Amsterdam 2015 - 2026</copyright>
 	<description>TPL_WSA_BOOTSTRAP_DESCRIPTION</description>
 	<inheritable>1</inheritable>
 	<files>
@@ -30,6 +30,7 @@
 	<media destination="templates/site/wsa_bootstrap" folder="media">
 		<folder>css</folder>
 		<folder>images</folder>
+		<folder>img</folder>
 		<folder>js</folder>
 		<folder>scss</folder>
 	</media>
