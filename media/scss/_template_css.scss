@@ -98,7 +98,8 @@ body>div.container {
 	margin: 0;
 	padding: 0;
 }
-.photo-in-album,
+img.photo-in-album,
+figure.photo-in-album > img,
 .photo-album .blog-items img,
 .blog-items.photo-album img,
 .com-tags__items .list-group img,
