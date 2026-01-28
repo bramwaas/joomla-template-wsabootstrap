@@ -43,6 +43,9 @@ This project is licensed under the [GNU GPL], version 3 or later.
 2018&thinsp;&ndash;&thinsp;2025 &copy; [Bram Waasdorp](http://www.waasdorpsoekhan.nl).
 
 ## Changelog
+* 2.4.1 add css for img in figure because joomla admin adds classes for image to figure. Remove unused leafo scss compiler and unused parts of scssphp after
+	security alert on both. 
+* 2.4.0 (conditional) add scrollspy data-attributes to body
 * 2.3.1 solve deprecated messages  "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..."    
 * 2.3.0 new structure in connection with inherit/child templates, inheritable is implemented in joomla 4.1. and higher
 * 2.2.0 improvements rssfoto newsfeeds for J4,J5, remove suport BS3, use latest versions BS4 and BS5, remove some redundant code.

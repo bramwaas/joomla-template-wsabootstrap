@@ -1,7 +1,7 @@
 /* template_css.scss */
 // template standaard less afgeleid van template css voor standaard style van dit template
 // in eerste instatie door kleuren in variabele te zetten.
-// BW 15-7-2016
+// BW 21-11-2025
 // CSS Document for Joomla 3 styles 21-9-2015 
 // 20161128 paginaweergave class blog_inline gedefinieerd 
 // om items in blog als inline-block weer te kunnen geven daarbij lead-cols-2 om leading
@@ -28,6 +28,7 @@
 //     replaced by by ._rssfoto .newsfeed. At the same time make more use of scss possibillities use css attribute match selectors and
 //     remove unnecessary selectors.
 //  20241007 2.2.0 remove BS3 and replace some variables with BS4 BS5 standard. rss combined with tag-item-list and blog-list. 
+//  20251107 2.4.0  add scrollspy data attributes. Add position relative to body and position: static list-group-item in scrollspy target area 
 /* ===========================
 	alle schermbreedtes
 	Write your general styles eerst voor alle schermbreedtes, 
@@ -97,7 +98,8 @@ body>div.container {
 	margin: 0;
 	padding: 0;
 }
-.photo-in-album,
+img.photo-in-album,
+figure.photo-in-album > img,
 .photo-album .blog-items img,
 .blog-items.photo-album img,
 .com-tags__items .list-group img,
@@ -236,9 +238,7 @@ order: -1;
     padding: 0;
 }
 
-.mod-languages {
-    float: $asModLangFloat;
-}
+
 /* tijdelijk toegvoegd voor bs 3 en bs4  */
 .navbar-collapse.in {
     overflow-y: visible;
@@ -264,38 +264,51 @@ order: -1;
 display: $tagItemSearchDisplay; 
 }
 
-//.tag-category ul 
-//{ /* tag-list inline maken in plaats van opsomming */
-//    padding-left: 0;
-//	
-// li 
-//	{
-//    display: inline-block;
-//    position: static;
-//    vertical-align: top;
-//	max-width: 100%;
-//	margin-right: $marginArea;
-//	margin-bottom: $marginArea;
-//	}
-//  &.category.list-striped li /* element rij alleen in tag-lijst, vaste breedte */
-//	{
-//	background-color: transparent;
-//	max-width: 100%;
-//    width: $asMinWidthItem;
-//	
-//	}	
-//
-// li h3 
-//	{
-//	display: $tagItemTitleDisplay;
-//	}	
-//}
-	
 body { 
 	font-family: Verdana, Arial, sans-serif;
 	padding-top: 10px;
 	padding-bottom: 40px;
-	overflow: auto;
+	&[data-bs-spy][data-bs-target],
+	&[data-spy][data-target] {
+		/* adaptations scrollspy tag BS5 needs position: relative, when body overflow visible else overflow-y scroll
+		 scrolling block (most times .list-group-item) postion static */ 
+		position: relative;
+		overflow: visible;
+		padding-top: 0px;
+		[class^="com-tags-"].list-group > .list-group-item,
+		.blog-items > .blog-item
+			 {
+		      position: static;
+			}
+	}
+	.iconssm {
+		.mod-languages {
+			float: $asModLangFloat;
+			width: auto;
+			padding: 0;
+			a {
+				padding: 0;
+			}
+			ul {
+				li {
+	    			margin-left: 5px;
+	    			margin-right: 5px;
+				}
+				li.lang-active {
+	    		background-color:transparent;
+				}
+			}
+		}
+		.mod-banners {
+			width:auto;
+		}
+	}
+	@if variable-exists("wsaOnepageArticleMinheight") {
+		[class^="com-tags-"].list-group > .list-group-item,
+		.blog-items > .blog-item {
+			min-height: $wsaOnepageArticleMinheight;
+		}
+	}
 }
 
 /* aanpassingen rij in tag-lijst en tag overzicht, tag-list ongedaan maken voor pagination */
@@ -322,21 +335,6 @@ div div.pagination ul li /* element  rij in tag-lijst en tag overzicht, tag-list
    margin-bottom: 0px; //$marginArea;
 }
 /* einde aanpassing alleen voor pagination */
-div.mod-languages {
-	a {
-		padding: 0;
-	}
-	ul {
-		li {
-    		margin-left: 5px;
-    		margin-right: 5px;
-		}
-		li.lang-active {
-    		background-color:transparent;
-		}
-	}
-}
-
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans Condensed',sans-serif;
@@ -487,4 +485,7 @@ margin-top: -40px;
 }
 
 }
+
+
+
 

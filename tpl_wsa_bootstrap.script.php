@@ -2,12 +2,13 @@
 /**
  * @version $Id: tpl_wsa_bootstrap.script.php
  * @package wsa_bootstrap
- * @copyright Copyright (C) 2024 - 2024 AHC Waasdorp, All rights reserved.
+ * @copyright Copyright (C) 2024 - 2025 AHC Waasdorp, All rights reserved.
  * @license http://www.gnu.org/licenses GNU/GPL
  * @author url: https://www.waasdorpsoekhan.nl
  * @author email contact@waasdorpsoekhan.nl
  * @developer AHC Waasdorp
  * 2.3.0 2024-12-24 move assets from template to media remove unused file(s) and maps update inheritable in styles.
+ * 2.4.0 2025-11-25 verify availability of images/scss
  */
 defined('_JEXEC') or die;
 
@@ -71,6 +72,14 @@ return new class () implements ServiceProviderInterface {
                 $this->app->enqueueMessage( $TPL_PATH . $path . Text::sprintf('TPL_WSA_BOOTSTRAP_MOVED_TEXT') . $TPL_MEDIA, 'message');
             }
          }  
+         $path = '/images/scss';
+         if ((! is_dir(Path::clean(JPATH_ROOT . $path))) && (mkdir(Path::clean(JPATH_ROOT . $path)))) {
+             if ($first_message) {
+                 $this->app->enqueueMessage(Text::sprintf('TPL_WSA_BOOTSTRAP_PREFLIGHT_TEXT') ,'message');
+                 $first_message = false;
+             }
+             $this->app->enqueueMessage( $path . Text::sprintf('TPL_WSA_BOOTSTRAP_CREATED_TEXT')  , 'message');
+         }
          $paths[] = 'less';
          foreach($paths as $path) {
              

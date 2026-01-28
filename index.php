@@ -46,7 +46,8 @@
    which are replaced by col* classes since BS3 and Joomla 4. Updated to  latest versions of BS4 (4.6.2) and BS5 (5.3.3) javascript and css and assosited libraries.
    navbarexpand => desktopexpand. removed double loading jquery in BS4  
  24-12-2024 2.3.0 new structure in connection with inherit/child templates
- 17-10-2025 2.3.1 solve "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..." messages. 
+ 17-10-2025 2.3.1 solve "Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated ..." messages.
+ 21-11-2025 2.4.0 add scrollspy data attributes to body, upgrade bootstrap 5 to 5.3.8. 
            
  */
 // copied from cassiopeia
@@ -107,6 +108,23 @@ $twbs_version 		= htmlspecialchars($this->params->get('twbs_version', '5'));
 $wsaTime            = htmlspecialchars($this->params->get('wsaTime',''));
 $wsaTime 			= strtr($wsaTime, array(' '=> 't', ':' => '' ));
 $wsaDesktopExpand = htmlspecialchars($this->params->get('wsaDesktopExpand', 'lg'));
+$wsaScrollspyTarget =  htmlspecialchars($this->params->get('wsaScrollspyTarget', ''));
+$wsaScrollspyRootMargin = htmlspecialchars($this->params->get('wsaScrollspyRootMargin', ''));
+$wsaScrollspyAttr = '';
+if ('' < $wsaScrollspyTarget) {
+    if ('5' > $twbs_version) {
+        $wsaScrollspyAttr = 'data-spy="scroll" data-target="' . $wsaScrollspyTarget. 
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-offset="' . (int) $wsaScrollspyRootMargin . '"');
+    } else {
+
+        $wsaScrollspyAttr = 'data-bs-spy="scroll" data-bs-target="' . $wsaScrollspyTarget . 
+        ((empty($wsaScrollspyRootMargin)) ? '" ' : '" data-bs-root-margin="' . (is_numeric($wsaScrollspyRootMargin) ?
+        ($wsaScrollspyRootMargin . 'px  0px -30%" ') :
+        $wsaScrollspyRootMargin. '" '  ) )
+       . 'data-bs-smooth-scroll="true" '
+        ;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" prefix="og: http://ogp.me/ns#  fb: http://www.facebook.com/2008/fbml" >
@@ -134,9 +152,8 @@ type: \'image\'
 // register overrides for older BS versions
 switch ($twbs_version) {
 //   case "5" : {
-//       $wa->registerStyle('bootstrap.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', ['version'=>'5.3.3'], ['integrity' => 'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH', 'crossorigin' => 'anonymous'],[])
-//       ->registerScript('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', ['version'=>'5.3.3'], ['integrity' => 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz', 'crossorigin' => 'anonymous', 'defer' => TRUE],[])
-//       ;
+// 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+// <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 //   }
 //   break;
    case "4" :  {
@@ -239,7 +256,7 @@ $cnt_mods = ($this->countModules('position-1')? ' cntpos1': '')
 <link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template_IE9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 </head>
-<body id="<?php echo ($itemid ? 'itemid-' . $itemid : ''); ?>"
+<body <?php echo ($itemid ? 'id="itemid-' . $itemid . '" ': '')  . ($wsaScrollspyAttr); ?>
 <?php // added from cassiopeia ?>
 class="site-grid site <?php echo $option
 	. ' view-' . $view

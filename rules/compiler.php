@@ -3,7 +3,7 @@
  * @package Joomla.Site
  * @subpackage Templates.dna
  *
- * @copyright Copyright (C) 2016 - 2024 Bram Waasdorp. All rights reserved.
+ * @copyright Copyright (C) 2016 - 2025 Bram Waasdorp. All rights reserved.
  * @license GNU General Public License version 2 or later; see LICENSE.txt
  */
 /* regel voor validatie type compiler, bedoeld om samenstellen en compileren Less bestanden uit te voeren vlak voor
@@ -25,7 +25,8 @@ v 26-12-2021 added Joomla version info to use J4 specific code.
 2023-12-07 resolved Unknown constant path_parts (is var $path_parts). 
 2024-10-03 v2.2.0 New scss compiler scssphp/scssphp 1.13.0 and server scssphp/server 1.1.0 as continuation of leafo/scssphp.
     Remove Bootstrap 3, use latest versions 5.3.3 and 4.6.2 of BS 5 and 4. Remove extra breakpoints
-2024-12-20 v2.3.0 inheritable    
+2024-12-20 v2.3.0 inheritable  
+2025-11-19 v2.4.0 (conditional) add scrollspy data-attributes to body  
 	*/
  
 defined('_JEXEC') or die('caught by _JEXEC');
@@ -166,6 +167,12 @@ if ($wsaCustomSCSS == '-1' ) {$wsaCustomSCSS = '';};
 if ($wsaCustomSCSS > ' ' and strtolower(substr ( $wsaCustomSCSS , 0 , 7 )) == 'images/' ) 
  {$wsaCustomSCSS = '/' . $wsaCustomSCSS;}; 
  
+ $wsaScrollspyTarget =  empty($params->wsaScrollspyTarget) ?'' :htmlspecialchars($params->wsaScrollspyTarget);
+ $wsaScrollspyRootMargin = empty($params->wsaScrollspyRootMargin) ?'' :htmlspecialchars($params->wsaScrollspyRootMargin);
+ $wsaOnepageArticleMinheight = empty($params->wsaOnepageArticleMinheight) ?'' :htmlspecialchars($params->wsaOnepageArticleMinheight);
+ 
+ 
+ 
 $wsaCssFilename = strtolower(htmlspecialchars($params->wsaCssFilename));
  if ($wsaCssFilename > " ")
  {$path_parts = pathinfo($wsaCssFilename);
@@ -266,6 +273,9 @@ if ($iconsMobileLeft > ' '  ) 	fwrite($tv_file, '$iconsMobileLeft:   '  . $icons
 if ($iconsMobileWidth > ' '  ) 	fwrite($tv_file, '$iconsMobileWidth:  '  . $iconsMobileWidth .  "%;\n");
 if ($wsaNavbarRightWidth > ' '  ) 	fwrite($tv_file, '$wsaNavbarRightWidth:        '  . $wsaNavbarRightWidth .  "px;\n");
 
+if ($wsaScrollspyTarget > ' ') fwrite($tv_file, '$wsaScrollspyTarget: "'  . $wsaScrollspyTarget .  '"' . ";\n");
+if ($wsaScrollspyRootMargin > ' ') fwrite($tv_file, '$wsaScrollspyRootMargin: "'  . $wsaScrollspyRootMargin .  '"' . ";\n");
+if ($wsaOnepageArticleMinheight > ' ') fwrite($tv_file, '$wsaOnepageArticleMinheight: '  . $wsaOnepageArticleMinheight .  "vh;\n");
 
 
 fwrite($tv_file, '$menuType:            ' . $menuType . ";\n");

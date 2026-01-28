@@ -34,9 +34,9 @@ width: $brandWidth * 300 / 960; // < es = 375
     white-space: nowrap;
   }
 
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus  {
+  > * > a.nav-link.active,
+  > * > a.nav-link.active:hover,
+  > * > a.nav-link.active:focus  {
 	background-color: $graynavbarbg;
 	background-image: none;
     	background-repeat: repeat-x;
@@ -150,6 +150,9 @@ color: #333;
 // uit nav.less
 .nav {
   > li {
+	&:has( .dropdown-menu.show){
+		background-color: $nav-tabs-link-active-bg; // was $nav-link-hover-bg;
+	}
     > a {
       &:hover,
       &:focus {
@@ -198,7 +201,7 @@ color: #333;
     }
 
     // Active state, and its :hover to override normal :hover
-    &.active > a { // keep 7/24
+    & > a.nav-link.active { // keep 7/24
       &,
       &:hover,
       &:focus {
@@ -225,6 +228,22 @@ When scaled down to less than 768px, the menu collapses and works just like the 
 I only made one small addition to the standard HTML â€“ I added a container div around the menu with a class called â€œsidebar-navâ€�.
 (In joomla kan je deze wellicht als menu-class, of module-class meegeven)
 */
+/* all screnwidths Activates hovering the main items to show the sub items (in stead of .nav-pills or .nav-tabs .nav.mod-menu for all types of menu */
+       .nav-pills > li > a,
+       .dropdown-menu {
+          margin: 0;
+       }
+	   .nav.mod-menu > .dropdown       .dropdown-menu .dropdown-submenu .dropdown-menu {
+	      display: none;
+	   }
+	   .nav.mod-menu > .dropdown	   .dropdown-menu.show,
+	   .nav.mod-menu > .dropdown	   .dropdown-menu .dropdown-submenu .dropdown-menu.show,
+	   .nav.mod-menu > .dropdown       .dropdown-menu:has( .dropdown-menu.show),
+	   .nav.mod-menu > .dropdown:hover .dropdown-menu,
+	   .nav.mod-menu > .dropdown       .dropdown-menu .dropdown-submenu:hover .dropdown-menu {
+          display: block;
+       }
+
 @include media-breakpoint-up(md) { // min 768
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -246,33 +265,12 @@ I only made one small addition to the standard HTML â€“ I added a container
   }
 }
 // * einde make sidebar nav vertical * / 
-@include media-breakpoint-up(md) { // min 768 Activates hovering the main items to show the sub items
-       .nav-pills > li > a,
-       .dropdown-menu {
-          margin: 0;
-       }
-     
-       .nav-pills > li.dropdown:hover ul.dropdown-menu,
-       .nav-tabs > li.dropdown:hover ul.dropdown-menu {
-          display: block;
-       }
-     
-       .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu,
-       .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu .dropdown-menu {
-          display: none;
-       }
-     
-       .nav-pills > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu,
-       .nav-tabs > li.dropdown ul.dropdown-menu .dropdown-submenu:hover .dropdown-menu {
-          display: block;
-       }
-}
 
 @media (max-width: $screen-xs-max) {/* minimale breedte voor horizontaal tabs menu */
 .nav-tabs > li {
     float: none;
   }
-.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+.nav-tabs > * > a.nav-link.active, .nav-tabs > * > a.nav-link.active:hover {
     border: none;
   }
  
@@ -304,23 +302,24 @@ I only made one small addition to the standard HTML â€“ I added a container
 .dropdown-menu > li > a {
       padding: 8px 12px 8px 20px;
    }
-/* Achtergrond kleur van de actieve hoofdmenu items, caret en border correctie */
-.nav > li.active > a,
-.nav > li.active > a:hover,
-.nav > li.active > a:focus {
+/* Achtergrond kleur van de actieve hoofdmenu items, caret en border correctie BS5 active moved to */
+.nav > li > a.nav-link.active,
+.nav > li > a.nav-link.active:hover,
+.nav > li > a.nav-link.active:focus {
       background-color: $activenavbarbg;
       color: $activenavbarfg;
    }
 .nav li.dropdown.active .caret,
-.nav li.dropdown.active a:hover .caret,
-.nav li.dropdown.active a:focus .caret {
+.nav li.dropdown a.active:hover .caret,
+.nav li.dropdown a.active:focus .caret {
       border-bottom-color: #FFFFFF;
       border-top-color: #FFFFFF;
    }
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover,
-.nav > li.dropdown.open.active > a:focus {
+.nav-mod-menu .open .dropdown-toggle,
+.nav > li.dropdown.open > a.active:hover,
+.nav > li.dropdown.open > a.active:focus {
       border: none;
    }
 
